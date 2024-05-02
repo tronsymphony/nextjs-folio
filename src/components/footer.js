@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <footer className="Footer_footer_main__c8Opy" >
+      <footer className="Footer_footer_main__c8Opy" data-scroll-section>
         <div className="container">
           <div className="Footer_content__8dWV_">
             <h2 className="h2">Start a project</h2>
@@ -17,8 +17,14 @@ export default function Footer() {
               </span>
             </button>
           </div>
-          <div className="Footer_socbox__GjFWJ">
-            <div>Follow Me</div>
+          
+        </div>
+        <section className="copy">
+          <div className="container find">
+            <div className="find">
+              <h2 className="title">Find Us</h2>
+              <address>Los Angeles, California 90066</address>
+              <h3 class="social-title">Follow Me</h3>
             <div className="Footer_soc__t4u0Z">
               <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/nityananda-h-b5a65080/">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -49,8 +55,20 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
+            </div>
+            <div className="chat">
+              <h2 className="title">Contact</h2>
+              <span className="email">hello@gmail.com</span>
+            </div>
           </div>
-        </div>
+          <div className="container">
+            <div className="copy-right">© 2024 Nitya Hoyos All Rights Reserved</div>
+            <nav className="priv">
+              <a href="">Contact Us</a>
+              <a href="">Privacy Policy</a>
+            </nav>
+          </div>
+        </section>
       </footer>
     </>
   );
