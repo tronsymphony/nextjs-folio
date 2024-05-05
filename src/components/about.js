@@ -6,60 +6,73 @@ export default function About() {
     <>
       <section className={styles.page} data-scroll-section>
         <div className="container">
-          <h1 className={styles.title}>Hello,</h1>
+          <h1 className={styles.title}>Helping businesses thrive in the digital world</h1>
           <p>
-          We are a design and technology agency that builds world class products for the digital age.
-
-          </p>
-          <p>
-            Welcome to my personal space on the web! I'm Nitya Hoyos, a
-            dedicated and passionate full-stack web developer based in the
-            vibrant city of Los Angeles. With a robust 8 years of experience in
-            the tech industry, I specialize in creating seamless and dynamic
-            digital experiences from the ground up.
-          </p>
-          <h2>My Journey</h2>
-          <p>
-            Born and raised in Los Angeles, I have always been fascinated by the
-            endless possibilities that coding and technology present. My career
-            began straight out of college, where I dived deep into both
-            front-end and back-end technologies. Over the years, I've had the
-            privilege of working on a wide range of projects, from innovative
-            startup websites to complex enterprise solutions.
-          </p>
-          <h2>What I Do</h2>
-          <p>
-            As a solo developer, I handle every aspect of the development
-            process, ensuring that every line of code not only meets but exceeds
-            the expectations of my clients and their users. My expertise spans a
-            variety of programming languages and frameworks, including but not
-            limited to JavaScript, Python, React, Node.js, and Django. I am
-            deeply committed to leveraging the latest technologies to deliver
-            responsive, user-friendly, and efficient applications.
-          </p>
-          <h2>Beyond Coding</h2>
-          <p>
-            {" "}
-            When I'm not glued to my computer screen, you'll likely find me
-            exploring the lush trails around Los Angeles on my bike. Cycling is
-            not just a hobby—it's a way for me to recharge, find inspiration,
-            and connect with nature.
+            I help companies from all over the world with tailor-made solutions. With each project, I push my work to new horizons, always putting quality first.
           </p>
 
-          <h2>Let's Connect</h2>
-          <p>
-            Whether you're looking to build a website from scratch or seeking
-            expertise to enhance your current digital assets, I'm here to help.
-            Let's create something amazing together! Feel free to reach out and
-            discuss your project or just connect to share ideas.
-          </p>
-
-          <p>
-            Thank you for stopping by, and I look forward to collaborating with
-            you!
-          </p>
         </div>
       </section>
+
+
+      <section className="home_skillset" data-scroll-section>
+        <div className="container">
+          <h4>I can help you with ...</h4>
+          <div
+            data-scroll=""
+            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
+            data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-2.jpg"
+          >
+            <div className="row hover-row">
+              <div className="col-xl-5 col-lg-6 desc-title">
+                <h3 className="h2">Design</h3>
+              </div>
+              <div className="col-xl-5 col-lg-6 desc-text">
+                {" "}
+                <span>
+                  With a solid track record in designing websites, I deliver strong and user-friendly digital designs. (Since 2024 only in combination with development)
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            data-scroll=""
+            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
+            data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-3.jpg"
+          >
+            <div className="row hover-row">
+              <div className="col-xl-5 col-lg-6 desc-title">
+                <h3 className="h2">Development</h3>
+              </div>
+              <div className="col-xl-5 col-lg-6 desc-text">
+                {" "}
+                <span>
+                  I build scalable websites from scratch that fit seamlessly with design. My focus is on micro animations, transitions and interaction. Build with Kirby CMS or Webflow.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            data-scroll=""
+            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
+            data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-4.jpg"
+          >
+            <div className="row hover-row">
+              <div className="col-xl-5 col-lg-6 desc-title">
+                <h3 className="h2">The full package
+                </h3>
+              </div>
+              <div className="col-xl-5 col-lg-6 desc-text">
+                {" "}
+                <span>
+                  A complete website from concept to implementation, that&apos;s what makes me stand out. My great sense for design and my development skills enable me to create kick-ass projects.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </>
   );
 }

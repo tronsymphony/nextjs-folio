@@ -1,34 +1,19 @@
-'use client'
-import React, { useEffect, useRef } from "react";
-import { useRouter } from 'next/router';
-
-import styles from "./page.module.css";
+// import styles from "./page.module.css";
 import HomeFollow from "../components/home-follow";
 import HomeMain from "../components/home-main";
 import Footer from "../components/footer";
 
-import 'locomotive-scroll/dist/locomotive-scroll.css';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-
 export default function Home() {
-  const containerRef = useRef(null)
- 
   return (
-    <LocomotiveScrollProvider
-      options={
-        {
-          smooth: true,
-        }
-      }
-     
-      containerRef={containerRef}
-    >
-      <main data-scroll-container ref={containerRef}>
-        <HomeFollow></HomeFollow>
-        <HomeMain></HomeMain>
-        <Footer></Footer>
-      </main>
-
-    </LocomotiveScrollProvider>
+    <>
+      <HomeFollow></HomeFollow>
+      <HomeMain></HomeMain>
+      <Footer></Footer>
+    </>
   );
 }
+
+export const metadata = {
+  title: "Nitya Hoyos | Full-Stack Developer | WordPress, Laravel, ReactJS, NodeJS, Shopify | 10+ Years Experience",
+  description: "Experienced Full-Stack Freelance Developer proficient in WordPress, Laravel, ReactJS, NodeJS, and Shopify. Offering top-notch solutions tailored to your business needs. Available for hire or contract work. Let's bring your ideas to life and create exceptional web experiences together.",
+};

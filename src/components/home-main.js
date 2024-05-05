@@ -114,6 +114,7 @@ export default function HomeMain({ Component, pageProps }) {
           </div>
         </div>
       </section>
+      
       <section className="home_skillset" data-scroll-section>
         <div className="container">
           <h4>
@@ -131,7 +132,7 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="col-xl-5 col-lg-6 desc-text">
                 {" "}
                 <span>
-                  As a web developer, I've been proudly serving the Los Angeles
+                  As a web developer, I&apos;ve been proudly serving the Los Angeles
                   community for nearly a decade, offering exceptional web
                   development services with a personal touch.
                 </span>
@@ -192,7 +193,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>
                   Branding is my business, and as one of the best branding
                   professionals, I personally take care of your brand
-                  development and integration. I've helped numerous brands
+                  development and integration. I&apos;ve helped numerous brands
                   exceed their web design requirements by delivering versatility
                   through web design elements and features.
                 </span>
@@ -231,7 +232,7 @@ export default function HomeMain({ Component, pageProps }) {
                 {" "}
                 <span>
                   You can expect to receive clear and transparent communication
-                  from the beginning of your web design project through til its'
+                  from the beginning of your web design project through til it&apos;s
                   completion. And once your project has launched, I am here to
                   support your continued success online with our web maintenance
                   services, available by request.
@@ -724,7 +725,7 @@ export default function HomeMain({ Component, pageProps }) {
             <div className="row">
               <div className="col-lg-10 col-xl-6 client-wrap-heading">
                 <p>
-                  We've spent almost 2 decades in web design, and have crafted
+                  We&apos;ve spent almost 2 decades in web design, and have crafted
                   creative web design solutions using a wide variety of
                   platforms.
                 </p>{" "}
@@ -835,9 +836,9 @@ export default function HomeMain({ Component, pageProps }) {
               </h2>
               <div className="w-100">
                 <p>
-                  As a web designer in Los Angeles, I'm here to transform your
+                  As a web designer in Los Angeles, I&apos;m here to transform your
                   digital space into an immersive journey. Reach out to me
-                  today, and let's craft an online platform that leaves a
+                  today, and let&apos;s craft an online platform that leaves a
                   lasting impression.
                 </p>
               </div>
@@ -856,7 +857,7 @@ export default function HomeMain({ Component, pageProps }) {
         <div className="container">
           <h2 className="title">
             More Traffic, More Revenue <br />
-            Let's Go Digital
+            Let&apos;s Go Digital
           </h2>
           <div className="services">
             <div className="item">
@@ -875,9 +876,9 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Speed Optimisation</span>
               </h3>
               <p>
-                With our eCommerce agency's expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+                With our eCommerce agency&apos;s expert CRO insights and
+                recommendations, we&apos;ll help you supercharge your site and
+                elevate your brand on Shopify Plus.
               </p>
             </div>
             <div className="item">
@@ -885,8 +886,8 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Design</span>
               </h3>
               <p>
-                With our eCommerce agency's expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
+                With our eCommerce agency&apos;s expert CRO insights and
+                recommendations, we&apos;ll help you supercharge your site and
                 elevate your brand on Shopify Plus.{" "}
               </p>
             </div>
@@ -895,8 +896,8 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Development</span>
               </h3>
               <p>
-                With our eCommerce agency's expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
+                With our eCommerce agency&apos;s expert CRO insights and
+                recommendations, we&apos;ll help you supercharge your site and
                 elevate your brand on Shopify Plus.{" "}
               </p>
             </div>
@@ -905,8 +906,8 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Enterprise CMS Solutions</span>
               </h3>
               <p>
-                With our eCommerce agency's expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
+                With our eCommerce agency&apos;s expert CRO insights and
+                recommendations, we&apos;ll help you supercharge your site and
                 elevate your brand on Shopify Plus.{" "}
               </p>
             </div>
@@ -915,8 +916,8 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Redesign Services</span>
               </h3>
               <p>
-                With our eCommerce agency's expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
+                With our eCommerce agency&apos;s expert CRO insights and
+                recommendations, we&apos;ll help you supercharge your site and
                 elevate your brand on Shopify Plus.{" "}
               </p>
             </div>
@@ -925,8 +926,8 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Maintenance Services</span>
               </h3>
               <p>
-                With our eCommerce agency's expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
+                With our eCommerce agency&apos;s expert CRO insights and
+                recommendations, we&apos;ll help you supercharge your site and
                 elevate your brand on Shopify Plus.{" "}
               </p>
             </div>
@@ -935,8 +936,8 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Search Engine Optimization</span>
               </h3>
               <p>
-                With our eCommerce agency's expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
+                With our eCommerce agency&apos;s expert CRO insights and
+                recommendations, we&apos;ll help you supercharge your site and
                 elevate your brand on Shopify Plus.{" "}
               </p>
             </div>
