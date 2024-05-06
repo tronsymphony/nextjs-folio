@@ -7,7 +7,7 @@ export default function About() {
       <section className={styles.page} data-scroll-section>
         <div className={styles.container}>
           <h1 className={styles.title}>About</h1>
-          <span className={styles.subtitle}>Helping businesses thrive in the digital world</span>
+          <span className={styles.subtitle}>Creative web and app developer with a flair for design.</span>
         </div>
       </section>
       <section className="home_skillset" data-scroll-section>
@@ -23,10 +23,9 @@ export default function About() {
                 <h3 className="h2">Design</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
                 <span>
-                  With a solid track record in designing websites, I deliver strong and user-friendly digital designs. (Since 2024 only in combination with development)
-                </span>
+                With a proven history in website design, I craft robust, user-friendly digital solutions, focusing on development 
+                 </span>
               </div>
             </div>
           </div>
@@ -42,7 +41,7 @@ export default function About() {
               <div className="col-xl-5 col-lg-6 desc-text">
                 {" "}
                 <span>
-                  I build scalable websites from scratch that fit seamlessly with design. My focus is on micro animations, transitions and interaction. Build with Kirby CMS or Webflow.
+                  I build scalable websites from scratch that fit seamlessly with design. My focus is on PHP CMS, NextJS, React Phone Apps or Shopify.
                 </span>
               </div>
             </div>

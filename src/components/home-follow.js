@@ -6,7 +6,6 @@ export default function HomeFollow() {
     <>
       <section className="Home_followme__eTWWW" data-scroll-section>
         <div className="Home_phone__DAGCv">
-          <a href="tel:424-269-4720">+1 (424) 269-4720</a>
         </div>
         <div>
           <div className="Home_followlabel__I422i">Follow Me</div>

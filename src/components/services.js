@@ -8,9 +8,11 @@ export default function Services() {
         <div className={styles.container}>
           <h1 className={styles.title}>Services</h1>
           <span className={styles.subtitle}>
-            Creating next level digital products
+            Creating next level digital sites
           </span>
-          <p>With collaboration at our core, we are ready to work with you to craft winning solutions. We excel at listening, and then acting on your needs, to deliver a successful project outcome. Our team of experts are equipped with the knowledge and experience needed to get the job done, and are poised to deliver a wide range of services, detailed below.</p>
+          <p>
+            With collaboration at my core, I am ready to work with you to craft winning apps. I excel at listening, and then acting on your needs, to deliver a successful project outcome. I am equipped with the knowledge and experience needed to get the job done, and am poised to deliver a wide range of services, detailed below.
+            </p>
         </div>
       </section>
       <section className="home_services" data-scroll-section>
@@ -36,9 +38,7 @@ export default function Services() {
                 <span>Speed Optimisation</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I specialize in optimizing website performance, ensuring faster load times and a smoother user experience. By fine-tuning backend functionalities and streamlining front-end elements, I can significantly boost your site’s speed, enhancing both user satisfaction and SEO rankings. Whether you're looking to improve response times or reduce bounce rates, I can tailor a solution to meet your needs.
               </p>
             </div>
             <div className="item">
@@ -46,9 +46,10 @@ export default function Services() {
                 <span>Website Design</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you're launching a new site or revamping an existing one, I'm here to create a compelling online presence that resonates with your audience.
+
+
+
               </p>
             </div>
             <div className="item">
@@ -56,9 +57,14 @@ export default function Services() {
                 <span>Website Development</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I excel in website development, transforming designs into dynamic, fully functional websites tailored to specific business needs. Leveraging the latest technologies and best practices, I build responsive, scalable, and secure online platforms. My approach involves thorough testing and optimization to ensure top performance across all devices and browsers. Whether you need a simple static page or a complex web application, I deliver solutions that drive digital growth and enhance user engagement.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -66,9 +72,14 @@ export default function Services() {
                 <span>Enterprise CMS Solutions</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I specialize in implementing enterprise CMS solutions that streamline content management processes and enhance collaboration across large organizations. By customizing robust CMS platforms, I empower businesses to manage their digital content efficiently, ensuring consistency and compliance across all channels. My expertise includes integrating advanced features like multi-language support, role-based access control, and automated workflows to create scalable, secure, and user-friendly environments that meet the complex needs of enterprise operations.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -76,9 +87,14 @@ export default function Services() {
                 <span>Website Redesign Services</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I offer comprehensive website redesign services that breathe new life into your online presence. By assessing your current website and understanding your business goals, I craft a fresh, modern design that enhances user experience and engagement. My redesign strategies focus on improving site navigation, aesthetics, and functionality, ensuring your website aligns with the latest web standards and trends. This revitalization not only attracts more visitors but also boosts conversions, helping your business stay competitive in a rapidly evolving digital landscape.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -86,9 +102,14 @@ export default function Services() {
                 <span>Website Maintenance Services</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I provide reliable website maintenance services to ensure your online platform remains up-to-date, secure, and performing at its best. My services include regular updates to software and plugins, security checks to protect against vulnerabilities, and performance optimizations to keep your site running smoothly. I also offer timely troubleshooting and support to address any issues that arise, minimizing downtime and maintaining a seamless user experience. With my maintenance services, you can have peace of mind knowing your website is in expert hands, allowing you to focus on growing your business.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -96,16 +117,21 @@ export default function Services() {
                 <span>Search Engine Optimization</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we’ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I offer specialized services in Search Engine Optimization (SEO) to enhance your website’s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site’s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site's authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
+
+
+
+
+
+
+
               </p>
             </div>
           </div>
           <div className="link-widget-wrap">
             <a
               className="btn_link btn_link--light"
-              href="/our-services/"
+              href="/contact/"
               target="_blank"
               rel="noopener"
             >
@@ -114,7 +140,7 @@ export default function Services() {
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
 
             </a>
-            <a className="btn_link btn_link--light" href="/talk-to-specialist/">
+            <a className="btn_link btn_link--light" href="/contact/">
               Talk To Specialist
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
             </a>
@@ -136,7 +162,7 @@ export default function Services() {
                 <h3 className="h2">Longevity</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   As a web developer, I&apos;ve been proudly serving the Los Angeles
                   community for nearly a decade, offering exceptional web
@@ -155,7 +181,7 @@ export default function Services() {
                 <h3 className="h2">Web Dev &amp; Design Focus</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   I am known for my expert web development services and creative
                   design concepts. My main focus on web design sets your website
@@ -175,7 +201,7 @@ export default function Services() {
                 <h3 className="h2">Breathtaking Design</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   One thing that sets me apart is my approach to design. I take
                   pride in developing design elements that are flexible,
@@ -195,7 +221,7 @@ export default function Services() {
                 <h3 className="h2">On-Brand Experiences</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   Branding is my business, and as one of the best branding
                   professionals, I personally take care of your brand
@@ -216,7 +242,7 @@ export default function Services() {
                 <h3 className="h2">One-Of-A-Kind Solutions</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   As a web designer, I excel at creating customized,
                   comprehensive design solutions for each individual client I
@@ -235,14 +261,14 @@ export default function Services() {
                 <h3 className="h2">Partnership &amp; Collaboration</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   You can expect to receive clear and transparent communication
                   from the beginning of your web design project through til its&apos;
                   completion. And once your project has launched, I am here to
                   support your continued success online with our web maintenance
                   services, available by request.
-                </span>{" "}
+                </span>
               </div>
             </div>
           </div>

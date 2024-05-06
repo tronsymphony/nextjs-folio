@@ -2784,7 +2784,6 @@ h3.cfadeinup-inner-hero.h1.gradient-title9.is-inview {
 }
 
 section.project-output {
-  background: #000;
   margin: 0 0 120px;
   padding: 0 20px;
 }
@@ -2814,8 +2813,8 @@ column-reverse .container .item {
 
 section.project-output .container .item img,
 section.project-output .container .item svg {
-  width: 200px;
-  height: 100px;
+  width: 90px;
+  height: 70px;
 }
 
 section.project-output {
@@ -2968,7 +2967,7 @@ section.in-touch {
     font-size: 2rem;
     color: #fff;
     font-weight: 700;
-    word-break: break-all;
+    word-break: break-word;
 
     span {
       -webkit-text-fill-color: transparent;

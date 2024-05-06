@@ -7,7 +7,7 @@ export default function About() {
       <section className={styles.page} data-scroll-section>
         <div className={styles.container}>
           <h1 className={styles.title}>Pricing</h1>
-          <span className={styles.subtitle}>Creating next level digital products</span>
+          <span className={styles.subtitle}>Pricing for your next level digital products</span>
         </div>
       </section>
 

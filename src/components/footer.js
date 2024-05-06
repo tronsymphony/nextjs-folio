@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 export default function Footer() {
   return (
     <>
@@ -14,11 +14,11 @@ export default function Footer() {
               Im always on the lookout for <span>great clients</span> who are <span>passionate</span>
               about their <span>business and customers</span>. Get in touch
             </p>
-            <button
-              className="btn_link btn_link--light"
-              aria-describedby="popup-1"
+            <Link
+            href="/contact"
+            className="btn_link btn_link--light"
             >
-              Start a project request
+            Start a project request
               <span>
                 <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -27,7 +27,7 @@ export default function Footer() {
                   ></path>
                 </svg>
               </span>
-            </button>
+            </Link>
           </div>
         </div>
       </section>

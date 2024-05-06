@@ -42,9 +42,7 @@ export default function HomeMain({ Component, pageProps }) {
                 </defs>
               </svg>
             </div>
-            <h3 className="welcome_h3" data-scroll data-scroll-speed="2">
-            Experience Enterprise-level Solutions without the Enterprise Price Tag
-            </h3>
+            <h3 className="welcome_h3" data-scroll data-scroll-speed="2">Experience Enterprise-level Solutions without the Enterprise Price Tag</h3>
 
           </div>
           <div className="Home_btn_content__PvvjD"></div>
@@ -59,7 +57,7 @@ export default function HomeMain({ Component, pageProps }) {
           </h2>
           <p className="ptitle">
             I design, build and optimise bespoke Shopify Plus, Laravel,
-            WordPress solutions to elevate and grow your business.{" "}
+            WordPress solutions to elevate and grow your business.
           </p>
         </div>
         <div data-scroll data-scroll-speed="4">
@@ -68,12 +66,12 @@ export default function HomeMain({ Component, pageProps }) {
             alt=""
             width="294"
             height="308"
-            nitro-lazy-src="https://images.pexels.com/photos/2181230/pexels-photo-2181230.jpeg"
+            nitro-lazy-src="images/pexels-photo-2181230.jpeg"
             className="img-fluid lazyloaded"
             decoding="async"
             nitro-lazy-empty=""
             id="MzY2OjE2OA==-1"
-            src="https://images.pexels.com/photos/2181230/pexels-photo-2181230.jpeg"
+            src="images/pexels-photo-2181230.jpeg"
           ></img>
         </div>
       </section>
@@ -118,7 +116,7 @@ export default function HomeMain({ Component, pageProps }) {
       <section className="home_skillset" data-scroll-section>
         <div className="container">
           <h4>
-            What makes me one the best designer/developer for your new project?
+            What makes me a great designer/developer option for your new project?
           </h4>
           <div
             data-scroll=""
@@ -130,7 +128,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Longevity</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   As a web developer, I&apos;ve been proudly serving the Los Angeles
                   community for nearly a decade, offering exceptional web
@@ -149,7 +147,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Web Dev &amp; Design Focus</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   I am known for my expert web development services and creative
                   design concepts. My main focus on web design sets your website
@@ -169,7 +167,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Breathtaking Design</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   One thing that sets me apart is my approach to design. I take
                   pride in developing design elements that are flexible,
@@ -189,7 +187,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">On-Brand Experiences</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   Branding is my business, and as one of the best branding
                   professionals, I personally take care of your brand
@@ -210,7 +208,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">One-Of-A-Kind Solutions</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   As a web designer, I excel at creating customized,
                   comprehensive design solutions for each individual client I
@@ -229,14 +227,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Partnership &amp; Collaboration</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   You can expect to receive clear and transparent communication
                   from the beginning of your web design project through til it&apos;s
                   completion. And once your project has launched, I am here to
                   support your continued success online with our web maintenance
                   services, available by request.
-                </span>{" "}
+                </span>
               </div>
             </div>
           </div>
@@ -268,8 +266,8 @@ export default function HomeMain({ Component, pageProps }) {
           <div className="item">
             <a href="">
               <img
-                src="https://cdn.worldvectorlogo.com/logos/google-pagespeed-insights-icon-2021-.svg"
-                alt=""
+                src="./images/googlepagespeed.svg"
+                alt="Google Pagespeed Insights"
               />
               <span className="text">Google Pagespeed Insights</span>
             </a>
@@ -277,8 +275,8 @@ export default function HomeMain({ Component, pageProps }) {
           <div className="item">
             <a href="">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                alt=""
+                src="images/Google__G__logo.svg"
+                alt="Google Search Engine Optimized"
               />
               <span className="text">Google Search Engine Optimized</span>
             </a>
@@ -337,7 +335,7 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTMxOjE5Ng==-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2022/09/icon-wordpress.svg"
+                    src="images/icon-wordpress.svg"
                   ></img>
                 </span>
                 <span className="d-block">Wordpress</span>
@@ -353,7 +351,7 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTM1OjE5MA==-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2022/09/icon-shopify.svg"
+                    src="images/icon-shopify.svg"
                   ></img>
                 </span>
                 <span className="d-block">Shopify</span>
@@ -385,7 +383,7 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTQzOjE5OQ==-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2022/09/microsoft-net.svg"
+                    src="images/microsoft-net.svg"
                   ></img>
                 </span>
                 <span className="d-block">Microsoft .NET</span>
@@ -401,7 +399,7 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTQ3OjIy</img>MQ==-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2023/01/Property-1Sitefinity-2.svg"
+                    src=""
                   ></img>
                 </span>
                 <span className="d-block">Progress Sitefinity</span>
@@ -417,7 +415,7 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTUxOjE5NA==-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2022/09/client-magento.svg"
+                    src="images/client-magento.svg"
                   ></img>
                 </span>
                 <span className="d-block">Magento</span>
@@ -514,7 +512,7 @@ export default function HomeMain({ Component, pageProps }) {
               data-scroll-speed="-3"
             >
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="Shape"
@@ -531,7 +529,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJs</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-sitecore"
@@ -548,7 +546,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">VueJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-kentico"
@@ -565,7 +563,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">.Net</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-react"
@@ -576,13 +574,13 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTkzOjE4Nw==-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2022/09/icon-react.svg"
+                    src="images/icon-react.svg"
                   ></img>
                 </span>
                 <span className="d-block">React JS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-apple"
@@ -593,13 +591,13 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTk3OjE4OA==-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2022/09/icon-apple.svg"
+                    src="images/icon-apple.svg"
                   ></img>
                 </span>
                 <span className="d-block">Apple iOS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-android"
@@ -610,13 +608,13 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="MTAwMToxOTA=-1"
-                    src="https://cdn-eahjn.nitrocdn.com/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-82d6b35/www.spinxdigital.com/app/uploads/2022/09/icon-android.svg"
+                    src="images/icon-android.svg"
                   ></img>
                 </span>
                 <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="Shape"
@@ -633,7 +631,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-sitecore"
@@ -650,7 +648,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Sitecore</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-kentico"
@@ -667,7 +665,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Kentico</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-react"
@@ -684,7 +682,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">React JS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-apple"
@@ -701,7 +699,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Apple iOS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
                     title="icon-android"
@@ -728,7 +726,7 @@ export default function HomeMain({ Component, pageProps }) {
                   We&apos;ve spent almost 2 decades in web design, and have crafted
                   creative web design solutions using a wide variety of
                   platforms.
-                </p>{" "}
+                </p>
                 <a
                   href="/enterprise-cms-solutions/"
                   className="btn-link btn-link-white"
@@ -769,7 +767,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <div className="casestudy-image-wrapper ">
                     <img
                       src="images/god.jpg"
-                      alt="The California Endowment Website Design Case Study"
+                      alt="Godaddy"
                       height="370"
                       width="740"
                     ></img>
@@ -789,7 +787,7 @@ export default function HomeMain({ Component, pageProps }) {
                   data-scroll-target="#featured_2"
                   className="casestudy-title"
                 >
-                  <span>seed.com</span>
+                  <span>bulletproof.com</span>
                   <h3>Lighting up an internet presence.</h3>
                 </div>
               </div>
@@ -800,8 +798,8 @@ export default function HomeMain({ Component, pageProps }) {
                 >
                   <div className="casestudy-image-wrapper ">
                     <img
-                      src="images/oo.jpg"
-                      alt="The California Endowment Website Design Case Study"
+                      src="images/bulletproof.jpg"
+                      alt="Bulletproof"
                       height="370"
                       width="740"
                     ></img>
@@ -831,7 +829,7 @@ export default function HomeMain({ Component, pageProps }) {
             </div>
             <div className="col-lg-7">
               <h2>
-                Are you looking for a website with a{" "}
+                Are you looking for a website with a
                 <span>fresh and modern user experience?</span>
               </h2>
               <div className="w-100">
@@ -843,10 +841,10 @@ export default function HomeMain({ Component, pageProps }) {
                 </p>
               </div>
               <a
-                href="https://www.aaaaa.com/start-a-project/"
+                href="/contact/"
                 className="btn btn-primary"
               >
-                Contact Us
+                Contact
               </a>
             </div>
           </div>
@@ -876,9 +874,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Speed Optimisation</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we&apos;ll help you supercharge your site and
-                elevate your brand on Shopify Plus.
+              I specialize in optimizing website performance, ensuring faster load times and a smoother user experience. By fine-tuning backend functionalities and streamlining front-end elements, I can significantly boost your site’s speed, enhancing both user satisfaction and SEO rankings. Whether you're looking to improve response times or reduce bounce rates, I can tailor a solution to meet your needs.
               </p>
             </div>
             <div className="item">
@@ -886,9 +882,10 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Design</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we&apos;ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you're launching a new site or revamping an existing one, I'm here to create a compelling online presence that resonates with your audience.
+
+
+
               </p>
             </div>
             <div className="item">
@@ -896,9 +893,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Development</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we&apos;ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I excel in website development, transforming designs into dynamic, fully functional websites tailored to specific business needs. Leveraging the latest technologies and best practices, I build responsive, scalable, and secure online platforms. My approach involves thorough testing and optimization to ensure top performance across all devices and browsers. Whether you need a simple static page or a complex web application, I deliver solutions that drive digital growth and enhance user engagement.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -906,9 +908,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Enterprise CMS Solutions</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we&apos;ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I specialize in implementing enterprise CMS solutions that streamline content management processes and enhance collaboration across large organizations. By customizing robust CMS platforms, I empower businesses to manage their digital content efficiently, ensuring consistency and compliance across all channels. My expertise includes integrating advanced features like multi-language support, role-based access control, and automated workflows to create scalable, secure, and user-friendly environments that meet the complex needs of enterprise operations.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -916,9 +923,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Redesign Services</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we&apos;ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I offer comprehensive website redesign services that breathe new life into your online presence. By assessing your current website and understanding your business goals, I craft a fresh, modern design that enhances user experience and engagement. My redesign strategies focus on improving site navigation, aesthetics, and functionality, ensuring your website aligns with the latest web standards and trends. This revitalization not only attracts more visitors but also boosts conversions, helping your business stay competitive in a rapidly evolving digital landscape.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -926,9 +938,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Maintenance Services</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we&apos;ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I provide reliable website maintenance services to ensure your online platform remains up-to-date, secure, and performing at its best. My services include regular updates to software and plugins, security checks to protect against vulnerabilities, and performance optimizations to keep your site running smoothly. I also offer timely troubleshooting and support to address any issues that arise, minimizing downtime and maintaining a seamless user experience. With my maintenance services, you can have peace of mind knowing your website is in expert hands, allowing you to focus on growing your business.
+
+
+
+
+
+
+
               </p>
             </div>
             <div className="item">
@@ -936,16 +953,21 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Search Engine Optimization</span>
               </h3>
               <p>
-                With our eCommerce agency&apos;s expert CRO insights and
-                recommendations, we&apos;ll help you supercharge your site and
-                elevate your brand on Shopify Plus.{" "}
+              I offer specialized services in Search Engine Optimization (SEO) to enhance your website’s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site’s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site's authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
+
+
+
+
+
+
+
               </p>
             </div>
           </div>
           <div className="link-widget-wrap">
             <a
               className="btn_link btn_link--light"
-              href="/our-services/"
+              href="/contact/"
               target="_blank"
               rel="noopener"
             >
@@ -954,7 +976,7 @@ export default function HomeMain({ Component, pageProps }) {
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
 
             </a>
-            <a className="btn_link btn_link--light" href="/talk-to-specialist/">
+            <a className="btn_link btn_link--light" href="/contact/">
               Talk To Specialist
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
             </a>
