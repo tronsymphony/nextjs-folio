@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../app/pricing/pricing.module.css";
+import styles from "../app/pricing/pricing.module.scss";
 
 export default function About() {
   return (

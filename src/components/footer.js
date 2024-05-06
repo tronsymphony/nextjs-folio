@@ -82,8 +82,8 @@ export default function Footer() {
               © 2024 Nitya Hoyos All Rights Reserved
             </div>
             <nav className="priv">
-              <a href="">Contact Us</a>
-              <a href="">Privacy Policy</a>
+              <a href="/contact">Contact</a>
+              <a href="/privacy-policy">Privacy Policy</a>
             </nav>
           </div>
         </section>

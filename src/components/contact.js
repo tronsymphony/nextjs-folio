@@ -1,5 +1,5 @@
 'use client'
-import styles from "../app/contact/contact.module.css";
+import styles from "../app/contact/contact.module.scss";
 import ContactForm from '../components/ContactForm';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';

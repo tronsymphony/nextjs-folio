@@ -1,4 +1,3 @@
-// import styles from "./page.module.css";
 import HomeFollow from "../components/home-follow";
 import HomeMain from "../components/home-main";
 import Footer from "../components/footer";

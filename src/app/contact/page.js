@@ -1,6 +1,6 @@
 import Footer from "../../components/footer";
 import HomeFollow from "../../components/home-follow";
-import Contact from "../../components/contact"
+import Contact from "../../components/contact";
 
 export default function Home() {
   return (
@@ -13,6 +13,6 @@ export default function Home() {
 }
 
 export const metadata = {
-  title: "Contact Nitya Hoyos | Full-Stack Developer | WordPress, Laravel, ReactJS, NodeJS, Shopify | 10+ Years Experience",
-  description: "Experienced Full-Stack Freelance Developer proficient in WordPress, Laravel, ReactJS, NodeJS, and Shopify. Offering top-notch solutions tailored to your business needs. Available for hire or contract work. Let's bring your ideas to life and create exceptional web experiences together.",
+  title: "Contact Nitya Hoyos | Get in Touch for Web Development Projects",
+  description: "Reach out to Nitya Hoyos for queries on web and app development projects. Available for hire or contract in Los Angeles and remotely. Let's connect and discuss how I can help your business grow."
 };

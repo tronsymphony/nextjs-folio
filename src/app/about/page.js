@@ -13,6 +13,6 @@ export default function Home() {
 }
 
 export const metadata = {
-  title: "About",
-  description: "Experienced Full-Stack Freelance Developer proficient in WordPress, Laravel, ReactJS, NodeJS, and Shopify. Offering top-notch solutions tailored to your business needs. Available for hire or contract work. Let's bring your ideas to life and create exceptional web experiences together.",
+  title: "About Nitya Hoyos | Experienced Full-Stack Developer | Los Angeles",
+    description: "Learn more about Nitya Hoyos, a dedicated full-stack developer based in Los Angeles with over 10 years of experience in building robust web and app solutions. Discover my journey and professional philosophy."
 };

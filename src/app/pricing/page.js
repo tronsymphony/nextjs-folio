@@ -13,6 +13,6 @@ export default function Home() {
 }
 
 export const metadata = {
-  title: "Pricing Nitya Hoyos | Full-Stack Developer | WordPress, Laravel, ReactJS, NodeJS, Shopify | 10+ Years Experience",
-  description: "Experienced Full-Stack Freelance Developer proficient in WordPress, Laravel, ReactJS, NodeJS, and Shopify. Offering top-notch solutions tailored to your business needs. Available for hire or contract work. Let's bring your ideas to life and create exceptional web experiences together.",
+  title: "Pricing Plans | Nitya Hoyos Full-Stack Development Services",
+  description: "Affordable pricing plans for top-tier web and app development services. Get cost-effective solutions without compromising on quality. Explore packages suited for various budgets and projects."
 };

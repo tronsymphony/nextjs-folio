@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../app/about/about.module.css";
+import styles from "../app/about/about.module.scss";
 
 export default function Services() {
   return (
@@ -38,7 +38,7 @@ export default function Services() {
                 <span>Speed Optimisation</span>
               </h3>
               <p>
-              I specialize in optimizing website performance, ensuring faster load times and a smoother user experience. By fine-tuning backend functionalities and streamlining front-end elements, I can significantly boost your site’s speed, enhancing both user satisfaction and SEO rankings. Whether you're looking to improve response times or reduce bounce rates, I can tailor a solution to meet your needs.
+              I specialize in optimizing website performance, ensuring faster load times and a smoother user experience. By fine-tuning backend functionalities and streamlining front-end elements, I can significantly boost your site&apos;s speed, enhancing both user satisfaction and SEO rankings. Whether you&apos;re looking to improve response times or reduce bounce rates, I can tailor a solution to meet your needs.
               </p>
             </div>
             <div className="item">
@@ -46,7 +46,7 @@ export default function Services() {
                 <span>Website Design</span>
               </h3>
               <p>
-              I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you're launching a new site or revamping an existing one, I'm here to create a compelling online presence that resonates with your audience.
+              I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you&apos;re launching a new site or revamping an existing one, I&apos;m here to create a compelling online presence that resonates with your audience.
 
 
 
@@ -117,7 +117,7 @@ export default function Services() {
                 <span>Search Engine Optimization</span>
               </h3>
               <p>
-              I offer specialized services in Search Engine Optimization (SEO) to enhance your website’s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site’s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site's authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
+              I offer specialized services in Search Engine Optimization (SEO) to enhance your website&apos;s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site&apos;s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site&apos;s authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
 
 
 

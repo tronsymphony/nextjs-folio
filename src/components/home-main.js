@@ -1,12 +1,18 @@
+import Image from 'next/image'
+
+
 export default function HomeMain({ Component, pageProps }) {
   return (
     <section className="Home_main__OVLM4">
       <section className="Home_welcome__aWiKA" data-scroll-section>
-        <img
+        <Image
           alt="Desktop gradiant image"
           className="bgdesktop"
           src="images/hp-desktop-gradiant.png"
-        ></img>
+          width={1000}
+          height={1000}
+        />
+
         <div className="Home_container__97eC3">
           <div className="Home_content__WcTpR">
             <div data-scroll="" className="svg-mask cfadeinup-hero ">
@@ -57,7 +63,7 @@ export default function HomeMain({ Component, pageProps }) {
           </h2>
           <p className="ptitle">
             I design, build and optimise bespoke Shopify Plus, Laravel,
-            WordPress solutions to elevate and grow your business.
+            WordPress solutions to elevate and grow your business.{" "}
           </p>
         </div>
         <div data-scroll data-scroll-speed="4">
@@ -128,7 +134,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Longevity</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                
+                {" "}
                 <span>
                   As a web developer, I&apos;ve been proudly serving the Los Angeles
                   community for nearly a decade, offering exceptional web
@@ -147,7 +153,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Web Dev &amp; Design Focus</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                
+                {" "}
                 <span>
                   I am known for my expert web development services and creative
                   design concepts. My main focus on web design sets your website
@@ -167,7 +173,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Breathtaking Design</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                
+                {" "}
                 <span>
                   One thing that sets me apart is my approach to design. I take
                   pride in developing design elements that are flexible,
@@ -187,7 +193,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">On-Brand Experiences</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                
+                {" "}
                 <span>
                   Branding is my business, and as one of the best branding
                   professionals, I personally take care of your brand
@@ -208,7 +214,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">One-Of-A-Kind Solutions</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                
+                {" "}
                 <span>
                   As a web designer, I excel at creating customized,
                   comprehensive design solutions for each individual client I
@@ -227,14 +233,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Partnership &amp; Collaboration</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                
+                {" "}
                 <span>
                   You can expect to receive clear and transparent communication
                   from the beginning of your web design project through til it&apos;s
                   completion. And once your project has launched, I am here to
                   support your continued success online with our web maintenance
                   services, available by request.
-                </span>
+                </span>{" "}
               </div>
             </div>
           </div>
@@ -512,7 +518,7 @@ export default function HomeMain({ Component, pageProps }) {
               data-scroll-speed="-3"
             >
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="Shape"
@@ -529,7 +535,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJs</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-sitecore"
@@ -546,7 +552,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">VueJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-kentico"
@@ -563,7 +569,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">.Net</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-react"
@@ -580,7 +586,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">React JS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-apple"
@@ -597,7 +603,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Apple iOS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-android"
@@ -614,7 +620,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="Shape"
@@ -631,7 +637,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-sitecore"
@@ -648,7 +654,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Sitecore</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-kentico"
@@ -665,7 +671,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Kentico</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-react"
@@ -682,7 +688,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">React JS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-apple"
@@ -699,7 +705,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Apple iOS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                
+                {" "}
                 <span className="img-wrapper">
                   <img
                     title="icon-android"
@@ -726,7 +732,7 @@ export default function HomeMain({ Component, pageProps }) {
                   We&apos;ve spent almost 2 decades in web design, and have crafted
                   creative web design solutions using a wide variety of
                   platforms.
-                </p>
+                </p>{" "}
                 <a
                   href="/enterprise-cms-solutions/"
                   className="btn-link btn-link-white"
@@ -829,7 +835,7 @@ export default function HomeMain({ Component, pageProps }) {
             </div>
             <div className="col-lg-7">
               <h2>
-                Are you looking for a website with a
+                Are you looking for a website with a{" "}
                 <span>fresh and modern user experience?</span>
               </h2>
               <div className="w-100">
@@ -874,7 +880,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Speed Optimisation</span>
               </h3>
               <p>
-              I specialize in optimizing website performance, ensuring faster load times and a smoother user experience. By fine-tuning backend functionalities and streamlining front-end elements, I can significantly boost your site’s speed, enhancing both user satisfaction and SEO rankings. Whether you're looking to improve response times or reduce bounce rates, I can tailor a solution to meet your needs.
+                I specialize in optimizing website performance, ensuring faster load times and a smoother user experience. By fine-tuning backend functionalities and streamlining front-end elements, I can significantly boost your site&apos;s speed, enhancing both user satisfaction and SEO rankings. Whether you&apos;re looking to improve response times or reduce bounce rates, I can tailor a solution to meet your needs.
               </p>
             </div>
             <div className="item">
@@ -882,7 +888,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Design</span>
               </h3>
               <p>
-              I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you're launching a new site or revamping an existing one, I'm here to create a compelling online presence that resonates with your audience.
+                I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you&apos;re launching a new site or revamping an existing one, I&apos;m here to create a compelling online presence that resonates with your audience.
 
 
 
@@ -893,7 +899,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Development</span>
               </h3>
               <p>
-              I excel in website development, transforming designs into dynamic, fully functional websites tailored to specific business needs. Leveraging the latest technologies and best practices, I build responsive, scalable, and secure online platforms. My approach involves thorough testing and optimization to ensure top performance across all devices and browsers. Whether you need a simple static page or a complex web application, I deliver solutions that drive digital growth and enhance user engagement.
+                I excel in website development, transforming designs into dynamic, fully functional websites tailored to specific business needs. Leveraging the latest technologies and best practices, I build responsive, scalable, and secure online platforms. My approach involves thorough testing and optimization to ensure top performance across all devices and browsers. Whether you need a simple static page or a complex web application, I deliver solutions that drive digital growth and enhance user engagement.
 
 
 
@@ -908,7 +914,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Enterprise CMS Solutions</span>
               </h3>
               <p>
-              I specialize in implementing enterprise CMS solutions that streamline content management processes and enhance collaboration across large organizations. By customizing robust CMS platforms, I empower businesses to manage their digital content efficiently, ensuring consistency and compliance across all channels. My expertise includes integrating advanced features like multi-language support, role-based access control, and automated workflows to create scalable, secure, and user-friendly environments that meet the complex needs of enterprise operations.
+                I specialize in implementing enterprise CMS solutions that streamline content management processes and enhance collaboration across large organizations. By customizing robust CMS platforms, I empower businesses to manage their digital content efficiently, ensuring consistency and compliance across all channels. My expertise includes integrating advanced features like multi-language support, role-based access control, and automated workflows to create scalable, secure, and user-friendly environments that meet the complex needs of enterprise operations.
 
 
 
@@ -923,7 +929,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Redesign Services</span>
               </h3>
               <p>
-              I offer comprehensive website redesign services that breathe new life into your online presence. By assessing your current website and understanding your business goals, I craft a fresh, modern design that enhances user experience and engagement. My redesign strategies focus on improving site navigation, aesthetics, and functionality, ensuring your website aligns with the latest web standards and trends. This revitalization not only attracts more visitors but also boosts conversions, helping your business stay competitive in a rapidly evolving digital landscape.
+                I offer comprehensive website redesign services that breathe new life into your online presence. By assessing your current website and understanding your business goals, I craft a fresh, modern design that enhances user experience and engagement. My redesign strategies focus on improving site navigation, aesthetics, and functionality, ensuring your website aligns with the latest web standards and trends. This revitalization not only attracts more visitors but also boosts conversions, helping your business stay competitive in a rapidly evolving digital landscape.
 
 
 
@@ -938,7 +944,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Website Maintenance Services</span>
               </h3>
               <p>
-              I provide reliable website maintenance services to ensure your online platform remains up-to-date, secure, and performing at its best. My services include regular updates to software and plugins, security checks to protect against vulnerabilities, and performance optimizations to keep your site running smoothly. I also offer timely troubleshooting and support to address any issues that arise, minimizing downtime and maintaining a seamless user experience. With my maintenance services, you can have peace of mind knowing your website is in expert hands, allowing you to focus on growing your business.
+                I provide reliable website maintenance services to ensure your online platform remains up-to-date, secure, and performing at its best. My services include regular updates to software and plugins, security checks to protect against vulnerabilities, and performance optimizations to keep your site running smoothly. I also offer timely troubleshooting and support to address any issues that arise, minimizing downtime and maintaining a seamless user experience. With my maintenance services, you can have peace of mind knowing your website is in expert hands, allowing you to focus on growing your business.
 
 
 
@@ -953,11 +959,11 @@ export default function HomeMain({ Component, pageProps }) {
                 <span>Search Engine Optimization</span>
               </h3>
               <p>
-              I offer specialized services in Search Engine Optimization (SEO) to enhance your website’s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site’s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site's authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
+                I offer specialized services in Search Engine Optimization (SEO) to enhance your website&apos;s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site&apos;s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site&apos;s authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
 
 
 
-
+                &apos;
 
 
 
