@@ -13,6 +13,6 @@ export default function Home() {
 }
 
 export const metadata = {
-  title: "Contact Nitya Hoyos | Get in Touch for Web Development Projects",
+  title: "Contact Nitya Hoyos | Get in Touch for Web Development Projects.",
   description: "Reach out to Nitya Hoyos for queries on web and app development projects. Available for hire or contract in Los Angeles and remotely. Let's connect and discuss how I can help your business grow."
 };
