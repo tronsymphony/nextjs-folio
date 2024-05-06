@@ -3,6 +3,10 @@ export default function Footer() {
   return (
     <>
       <section className="in-touch" data-scroll-section>
+        <div className="bg-text">
+          <span>nitya</span><span>nitya</span><span>nitya</span><span>nitya</span><span>nitya</span>
+        </div>
+
         <div className="container">
           <div className="Footer_content__8dWV_">
             <h2 className="h2"><b>Start a project</b></h2>
@@ -31,9 +35,7 @@ export default function Footer() {
         <section className="copy">
           <div className="container find">
             <div className="find">
-              <h2 className="title">Find Us On</h2>
-              <address>Los Angeles, California 90066</address>
-              <h3 className="social-title">Follow Me</h3>
+              <h2 className="title">Find Me On</h2>
               <div className="Footer_soc__t4u0Z">
                 <a
                   target="_blank"
@@ -71,6 +73,8 @@ export default function Footer() {
                   </svg>
                 </a>
               </div>
+              <address>Los Angeles, California 90066</address>
+
             </div>
           </div>
           <div className="container">

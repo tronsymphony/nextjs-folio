@@ -43,7 +43,7 @@ export default function HomeMain({ Component, pageProps }) {
               </svg>
             </div>
             <h3 className="welcome_h3" data-scroll data-scroll-speed="2">
-              Immersive, Web Accessible, Performant Websites & Applications
+            Experience Enterprise-level Solutions without the Enterprise Price Tag
             </h3>
 
           </div>
@@ -114,7 +114,7 @@ export default function HomeMain({ Component, pageProps }) {
           </div>
         </div>
       </section>
-      
+
       <section className="home_skillset" data-scroll-section>
         <div className="container">
           <h4>
@@ -369,10 +369,10 @@ export default function HomeMain({ Component, pageProps }) {
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTM5OjE5MA==-1"
-                    src="/images/javascript-js-square.svg"
+                    src="/images/ios.svg"
                   ></img>
                 </span>
-                <span className="d-block">JS</span>
+                <span className="d-block">iPhone</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
@@ -949,10 +949,10 @@ export default function HomeMain({ Component, pageProps }) {
               target="_blank"
               rel="noopener"
             >
-            
-                 More Services
-                 <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
-             
+
+              More Services
+              <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
+
             </a>
             <a className="btn_link btn_link--light" href="/talk-to-specialist/">
               Talk To Specialist

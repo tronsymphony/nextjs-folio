@@ -5,16 +5,11 @@ export default function About() {
   return (
     <>
       <section className={styles.page} data-scroll-section>
-        <div className="container">
-          <h1 className={styles.title}>Helping businesses thrive in the digital world</h1>
-          <p>
-            I help companies from all over the world with tailor-made solutions. With each project, I push my work to new horizons, always putting quality first.
-          </p>
-
+        <div className={styles.container}>
+          <h1 className={styles.title}>About</h1>
+          <span className={styles.subtitle}>Helping businesses thrive in the digital world</span>
         </div>
       </section>
-
-
       <section className="home_skillset" data-scroll-section>
         <div className="container">
           <h4>I can help you with ...</h4>
@@ -72,7 +67,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
     </>
   );
 }

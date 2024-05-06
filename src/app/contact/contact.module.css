@@ -1,5 +1,7 @@
 .page {
     padding-top: 200px;
+    padding-bottom: 60px;
+    /* min-height: 100vh; */
 
     &:after {
         content: "";
@@ -55,7 +57,13 @@
     font-size: 6rem;
     margin-bottom: 0px;
     text-transform: capitalize;
+
     @media screen and (max-width:900px) {
         font-size: 3rem;
     }
+}
+
+.pagedForm {
+    /* background: #16171a; */
+    padding-bottom: 60px;
 }

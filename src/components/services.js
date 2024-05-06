@@ -5,11 +5,12 @@ export default function Services() {
   return (
     <>
       <section className={styles.page} data-scroll-section>
-        <div className="container">
-          <h1 className={styles.title}>Creating next level digital products</h1>
-          <p>
-          With collaboration at our core, we are ready to work with you to craft winning solutions. We excel at listening, and then acting on your needs, to deliver a successful project outcome. Our team of experts are equipped with the knowledge and experience needed to get the job done, and are poised to deliver a wide range of services, detailed below.
-          </p>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Services</h1>
+          <span className={styles.subtitle}>
+            Creating next level digital products
+          </span>
+          <p>With collaboration at our core, we are ready to work with you to craft winning solutions. We excel at listening, and then acting on your needs, to deliver a successful project outcome. Our team of experts are equipped with the knowledge and experience needed to get the job done, and are poised to deliver a wide range of services, detailed below.</p>
         </div>
       </section>
       <section className="home_services" data-scroll-section>
@@ -108,10 +109,10 @@ export default function Services() {
               target="_blank"
               rel="noopener"
             >
-            
-                 More Services
-                 <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
-             
+
+              More Services
+              <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
+
             </a>
             <a className="btn_link btn_link--light" href="/talk-to-specialist/">
               Talk To Specialist

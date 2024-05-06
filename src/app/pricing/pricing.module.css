@@ -1,45 +1,98 @@
 .page {
     padding-top: 200px;
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: -578px;
+        top: -622px;
+        width: 1446px;
+        height: 1446px;
+        background: radial-gradient(50.03% 50.03% at 50% 49.97%, rgba(22, 23, 26, 0) 0, #16171a 100%);
+        z-index: 1;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: -578px;
+        top: -622px;
+        width: 1446px;
+        height: 1446px;
+        opacity: .2;
+        z-index: -1;
+        background: linear-gradient(90deg, #a2aaf0, #a88fef 50.56%, #cd32e3);
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        z-index: 3;
+        position: relative;
+    }
+
+
+    .subtitle {
+        margin-bottom: 120px;
+        color: #fff;
+        font-weight: 600;
+        font-size: calc(32px + 22 * ((100vw - 375px) / 1065));
+        display: flex;
+        max-width: 600px;
+    }
+
+    .title {
+        font-size: calc(32px + 22 * ((100vw - 375px) / 1065));
+        font-weight: 600;
+        line-height: 1.19;
+        letter-spacing: -.778846px;
+        background: linear-gradient(90deg, #a2aaf0, #a88fef, #cd32e3);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        font-size: 6rem;
+        margin-bottom: 0px;
+        text-transform: capitalize;
+        @media screen and (max-width:900px) {
+            font-size: 3rem;
+        }
+    }
+
 }
 
-.title {
-    font-size: calc(32px + 22 * ((100vw - 375px) / 1065));
-    font-weight: 600;
-    line-height: 1.19;
-    letter-spacing: -.778846px;
-    background: linear-gradient(90deg, #0e96ee, #4eebd5, #fdd68d, #fb8c61);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    font-size: 6rem;
-    margin-bottom: 20px;
-}
-
-.nst-container.nst-column-gap-default {
+.nstContainer {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    @media screen and (max-width:900px) {
+    }
 }
 
-.nst-column {
+.nstColumn {
     background-color: rgba(150, 144, 162, .08);
     padding: 20px;
     border-radius: 5px;
+    @media screen and (max-width:900px) {
+    width: 100%;
+
+    }
 }
 
-.pricing-table-headline {
+.pricingTableHeadline {
     margin-bottom: 1.25rem;
 }
 
-.pricing-table-headline .title {
+.pricingTableHeadline .title {
     letter-spacing: -.025em;
     line-height: 1.25;
     font-size: -webkit-calc(1.25rem + 0*((100vw - 576px)/864));
     font-size: 0.9rem;
 }
 
-.pricing-table-headline .subtitle {
-    font-size: .9rem;
+.pricingTableHeadline .subtitle {
+    font-size: 0.8rem;
 }
 
 span.price-number.titles-typo.title {
@@ -94,13 +147,86 @@ ul.-unlist.-large li.missing .icon svg {
     fill: #555;
 }
 
-section.nst-section {
-    max-width: 960px;
+section.nstSection {
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.nst-widget-ohio_heading {
+.nstWidgetOhioHeading {
     margin: 0 auto;
-    max-width: 960px;
+    max-width: 1100px;
+    padding: 60px 20px 40px;
+}
+
+.nst-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
     padding: 0 20px;
+}
+
+.nst-container .nst-column {
+    width: 25%;
+
+    @media screen and (max-width:900px) {
+        width: 100%;
+    }
+}
+
+.pricingTableHeadline .title {
+    font-size: 1rem;
+    margin: 0 0 5px;
+}
+
+.pricingTableFeatures .title {
+    font-size: 1rem;
+    font-size: 0.8rem;
+}
+
+.pricingTableFeatures li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.pricingTableFeatures li i {
+    width: 20px;
+    height: 20px;
+    background: #b5e300;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+.pricingTableFeatures ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pricingTableHeadline {}
+
+.pricingTableFeatures ul li.missing {
+    opacity: 0.3;
+}
+
+.pricingTablePrice {
+    margin: 20px 0;
+}
+
+.pricingTablePrice span {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.ohio-widget.pricing-table {
+    background: #444;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
 }
