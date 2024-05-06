@@ -1,3 +1,4 @@
+
 /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
 *,
 ::after,
@@ -1893,6 +1894,9 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   .logo {
     font-weight: 700;
     font-size: 2rem;
+    @media screen and (max-width:900px) {
+      font-size: 1.4rem;
+    }
   }
 
   nav.links {
@@ -2019,7 +2023,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   z-index: 1;
   margin-left: 60px;
   text-transform: uppercase;
-  position: absolute;
+  position: fixed;
   top: 70px;
   right: 20px;
   display: inline-flex;
@@ -2083,6 +2087,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   padding: 0 24px;
   order: 2;
   position: relative;
+  z-index: 10;
 
   @media screen and (max-width:900px) {
     padding-left: 20vw;
@@ -2116,11 +2121,13 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
   @media screen and (max-width:900px) {
     margin-left: 0px;
-    max-width: 40vw;
+    max-width: 70vw;
     width: 100vw;
     position: absolute;
     top: 0;
     left: 20px;
+    z-index: 1;
+    opacity: 0.3;
   }
 }
 
@@ -2137,7 +2144,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   line-height: 1.2;
   letter-spacing: -4px;
   margin: 0 0 20px;
-  word-break: break-all;
+  word-break: break-word;
 
   @media screen and (max-width:900px) {
     font-size: 3rem;
@@ -2256,9 +2263,10 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
   .col-lg-7 {
     @media screen and (max-width:900px) {
-    margin-left: -70px;
-    position: relative;
-    z-index: 10;
+      margin-left: -90px;
+      position: relative;
+      z-index: 10;
+      margin-right: 0;
   }
 
 }
@@ -2276,6 +2284,8 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
     @media screen and (max-width:900px) {
       max-width: 40vw;
+      min-height: 100vh;
+      opacity: 0.2;
     }
   }
 }
@@ -2663,6 +2673,9 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
     width: 100%;
     min-height: 500px;
     object-fit: cover;
+    @media screen and (max-width:900px) {
+      min-height: 200px;
+    }
   }
 
   .site_project {
@@ -2808,8 +2821,6 @@ column-reverse .container .item {
   }
 }
 
-.item {}
-
 section.project-output .container .item img,
 section.project-output .container .item svg {
   width: 90px;
@@ -2818,6 +2829,9 @@ section.project-output .container .item svg {
 
 section.project-output {
   padding: 90px 20px;
+  @media screen and (max-width:900px) {
+    padding: 20px 20px;
+  }
 
   .container {
     .item {
@@ -2832,10 +2846,6 @@ section.project-output {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         flex-direction: column;
         color: #fff;
         gap: 40px;
@@ -2845,6 +2855,7 @@ section.project-output {
 
         @media screen and (max-width:900px) {
           border: none;
+          padding: 3rem 20px;
         }
       }
     }
@@ -2863,7 +2874,7 @@ section.project-output {
   line-height: 1.2;
   letter-spacing: -4px;
   margin: 0 0 20px;
-  word-break: break-all;
+  word-break: break-word;
   text-align: center;
   padding: 0 0;
 
@@ -2928,8 +2939,8 @@ section.in-touch {
   margin-top: 60px;
   padding: 8rem 0;
   background: #16171a;
-
   overflow: hidden;
+  position: relative;
 
   .Footer_content__8dWV_ {
     color: #000;
@@ -2946,7 +2957,7 @@ section.in-touch {
     text-transform: capitalize;
     margin: 0;
     font-size: 4rem;
-    word-break: break-all;
+    word-break: break-word;
     color: white;
     @media screen and (max-width:900px) {
       font-size: 3rem;

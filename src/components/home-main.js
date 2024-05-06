@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-
 export default function HomeMain({ Component, pageProps }) {
   return (
     <section className="Home_main__OVLM4">
@@ -11,6 +10,7 @@ export default function HomeMain({ Component, pageProps }) {
           src="images/hp-desktop-gradiant.png"
           width={1000}
           height={1000}
+          priority={true}
         />
 
         <div className="Home_container__97eC3">
@@ -87,7 +87,7 @@ export default function HomeMain({ Component, pageProps }) {
             <div data-scroll="" className="">
               <div data-scroll="" className="cfadeinup-inner-hero ">
                 <h2 className="hero-heading gradient-title5">
-                  Developer/Designer
+                  Developer / Designer
                 </h2>
               </div>
               <div data-scroll="" className="cfadeinup-inner-sub ">
@@ -973,7 +973,7 @@ export default function HomeMain({ Component, pageProps }) {
           <div className="link-widget-wrap">
             <a
               className="btn_link btn_link--light"
-              href="/contact/"
+              href="/services/"
               target="_blank"
               rel="noopener"
             >
