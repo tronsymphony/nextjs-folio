@@ -1924,6 +1924,18 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   line-height: 1.2;
   max-width: 1070px;
 
+  opacity: 0;
+  transform: translateY(100%) rotateX(-80deg);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transition: opacity .8s cubic-bezier(.215, .61, .355, 1), transform .8s cubic-bezier(.215, .61, .355, 1);
+
+  &.is-inview {
+    opacity: 1;
+    transform: none;
+    transition-delay: .4s;
+  }
+
   @media screen and (max-width:900px) {
     font-size: 1.5rem;
   }
@@ -1937,6 +1949,18 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   overflow: hidden;
   max-width: 73vw;
   position: relative;
+
+  opacity: 0;
+  transform: translateY(100%) rotateX(-80deg);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transition: opacity .8s cubic-bezier(.215, .61, .355, 1), transform .8s cubic-bezier(.215, .61, .355, 1);
+
+  &.is-inview {
+    opacity: 1;
+    transform: none;
+    transition-delay: .1s;
+  }
 
   @media screen and (max-width:900px) {
     max-width: 80vw;
@@ -2028,6 +2052,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   top: 70px;
   right: 20px;
   display: inline-flex;
+  z-index: 900;
 
   &:hover {
     background-color: transparent;
@@ -2704,7 +2729,8 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   .casestudy-title span {
     color: #000;
   }
-  .info_col{
+
+  .info_col {
     mix-blend-mode: unset;
   }
 }
@@ -2809,7 +2835,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   border-color: #313131;
 }
 
- .cfadeinup-inner-hero.h1.gradient-title9.is-inview {
+.cfadeinup-inner-hero.h1.gradient-title9.is-inview {
   font-size: calc(40px + 36 * ((100vw - 375px) / 1065));
   background: linear-gradient(90deg, #e1ff00, #1cc574, #00bd84);
   background-clip: text;
@@ -2867,7 +2893,7 @@ section.project-output .container .item svg {
 }
 
 section.project-output {
-  padding: 90px 20px;
+  padding: 20px 20px;
 
   @media screen and (max-width:900px) {
     padding: 20px 20px;

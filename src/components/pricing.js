@@ -46,7 +46,10 @@ export default function About() {
                   <ul className={styles["-unlist -large"]}>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         Functional Website &amp; Design
@@ -54,25 +57,37 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}> 1-4 Pages</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Design Customization</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Responsive Design</span>
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <Image src="../images/close.svg" alt="close" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="../images/close.svg" alt="close" ></Image>
                       </i>
                       <span className={styles.title}>
                         Custom Design Or Feature
@@ -80,25 +95,37 @@ export default function About() {
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <Image src="../images/close.svg" alt="close" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="../images/close.svg" alt="close" ></Image>
                       </i>
                       <span className={styles.title}>Content Upload</span>
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <Image src="../images/close.svg" alt="close" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="../images/close.svg" alt="close" ></Image>
                       </i>
                       <span className={styles.title}> E-Commerce</span>
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <Image src="../images/close.svg" alt="close" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="../images/close.svg" alt="close" ></Image>
                       </i>
                       <span className={styles.title}> Live Chat</span>
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <Image src="../images/close.svg" alt="close" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="../images/close.svg" alt="close" ></Image>
                       </i>
                       <span className={styles.title}>SEO</span>
                     </li>
@@ -128,25 +155,37 @@ export default function About() {
                   <ul className={styles["-unlist -large"]}>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}> Functional website</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>1-10 Pages</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Design customization</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         Custom Design &amp; Features
@@ -154,13 +193,19 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Content upload</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         E-commerce + Payment Setup
@@ -168,13 +213,19 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>10 Revisions</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         Live Chat (Only On Request)
@@ -182,7 +233,10 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Basic SEO</span>
                     </li>
@@ -212,7 +266,10 @@ export default function About() {
                   <ul>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         Functional Website &amp; Design
@@ -220,19 +277,28 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>10-15 pages</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Design customization</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         Custom Design &amp; Features
@@ -240,13 +306,19 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>5 Revisions</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         E-commerce + Business Growth
@@ -254,19 +326,28 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>20 Revisions</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Live Chat Automation</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>SEO + FREE Strategy</span>
                     </li>
@@ -294,7 +375,10 @@ export default function About() {
                   <ul className={styles["-unlist -large"]}>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         Functional Website &amp; Design
@@ -302,25 +386,37 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}># Pages</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Design Customization</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Responsive Design</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>
                         Custom Design Or Feature
@@ -328,25 +424,37 @@ export default function About() {
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Content Upload</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}> E-Commerce + Strategy</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}> Live Chat &amp; More</span>
                     </li>
                     <li className="exist">
                       <i className={styles.icon}>
-                        <Image src="/images/check.svg" role="presentation" alt="check" ></Image>
+                        <Image
+                        width={20}
+          height={20}
+                        src="/images/check.svg" role="presentation" alt="check" ></Image>
                       </i>
                       <span className={styles.title}>Many More</span>
                     </li>
