@@ -4,13 +4,15 @@ export default function HomeMain({ Component, pageProps }) {
   return (
     <section className="Home_main__OVLM4">
       <section className="Home_welcome__aWiKA" data-scroll-section>
+
         <Image
           alt="Desktop gradiant image"
           className="bgdesktop"
-          src="images/hp-desktop-gradiant.png"
+          src="images/hp-desktop-gradiant2.webp"
           width={1000}
           height={1000}
           priority={true}
+          aria-hidden={true}
         />
 
         <div className="Home_container__97eC3">
@@ -20,6 +22,8 @@ export default function HomeMain({ Component, pageProps }) {
                 autoPlay
                 playsInline
                 muted
+                aria-hidden="true"
+                role="img"
                 loop
                 poster="./images/hero-txt-img.jpg"
                 className=""
@@ -48,7 +52,7 @@ export default function HomeMain({ Component, pageProps }) {
                 </defs>
               </svg>
             </div>
-            <h3 className="welcome_h3" data-scroll data-scroll-speed="2">Experienced Freelance website / app developer for hire.</h3>
+            <h1 className="welcome_h3" data-scroll data-scroll-speed="2">Experienced Freelance website / app developer for hire.</h1>
 
           </div>
           <div className="Home_btn_content__PvvjD"></div>
@@ -66,18 +70,17 @@ export default function HomeMain({ Component, pageProps }) {
           </p>
         </div>
         <div data-scroll data-scroll-speed="4">
-          <img
-            title="image-intro1"
-            alt=""
+          <Image
+            loading="lazy"
+            alt="Crafting Digital Magic in the Heart of Los Angeles"
             width="294"
             height="308"
-            nitro-lazy-src="images/pexels-photo-2181230.jpeg"
             className="img-fluid lazyloaded"
             decoding="async"
             nitro-lazy-empty=""
             id="MzY2OjE2OA==-1"
             src="images/pexels-photo-2181230.jpeg"
-          ></img>
+          ></Image>
         </div>
       </section>
       <section className="home_info" data-scroll-section>
@@ -133,7 +136,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Longevity</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   As a web developer, I&apos;ve been proudly serving the Los Angeles
                   community for nearly a decade, offering exceptional web
@@ -152,7 +155,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Web Dev &amp; Design Focus</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   I am known for my expert web development services and creative
                   design concepts. My main focus on web design sets your website
@@ -172,7 +175,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Breathtaking Design</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   One thing that sets me apart is my approach to design. I take
                   pride in developing design elements that are flexible,
@@ -192,7 +195,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">On-Brand Experiences</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   Branding is my business, and as one of the best branding
                   professionals, I personally take care of your brand
@@ -213,7 +216,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">One-Of-A-Kind Solutions</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   As a web designer, I excel at creating customized,
                   comprehensive design solutions for each individual client I
@@ -232,14 +235,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Partnership &amp; Collaboration</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+                
                 <span>
                   You can expect to receive clear and transparent communication
                   from the beginning of your web design project through til it&apos;s
                   completion. And once your project has launched, I am here to
                   support your continued success online with our web maintenance
                   services, available by request.
-                </span>{" "}
+                </span>
               </div>
             </div>
           </div>
@@ -272,7 +275,7 @@ export default function HomeMain({ Component, pageProps }) {
             <a href="">
               <img
                 src="./images/googlepagespeed.svg"
-                alt="Google Pagespeed Insights"
+                alt="Google Pagespeed Insights Link"
               />
               <span className="text">Google Pagespeed Insights</span>
             </a>
@@ -281,7 +284,7 @@ export default function HomeMain({ Component, pageProps }) {
             <a href="">
               <img
                 src="images/Google__G__logo.svg"
-                alt="Google Search Engine Optimized"
+                alt="Google Search Engine Optimized Link"
               />
               <span className="text">Google Search Engine Optimized</span>
             </a>
@@ -316,10 +319,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="client-magento"
                     height="80"
                     width="62"
-                    alt="Magento"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -332,10 +335,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="icon-wordpress"
                     height="80"
                     width="62"
-                    alt="Wordpress"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -348,10 +351,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="icon-shopify"
                     height="80"
                     width="62"
-                    alt="Shopify"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -364,10 +367,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="icon-umbraco"
                     height="80"
                     width="62"
-                    alt="Umbraco"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -380,10 +383,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="microsoft-net"
                     height="80"
                     width="62"
-                    alt="Microsoft .NET"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -396,10 +399,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="icon-wordpress"
                     height="80"
                     width="62"
-                    alt="Wordpress"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -412,10 +415,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="client-magento"
                     height="80"
                     width="62"
-                    alt="Magento"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -428,10 +431,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="icon-wordpress"
                     height="80"
                     width="62"
-                    alt="Wordpress"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -444,10 +447,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="icon-shopify"
                     height="80"
                     width="62"
-                    alt="Shopify"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -460,10 +463,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="microsoft-net"
                     height="80"
                     width="62"
-                    alt="Microsoft .NET"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -476,10 +479,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="microsoft-net"
                     height="80"
                     width="62"
-                    alt="Microsoft .NET"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -492,10 +495,10 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="icon-wordpress"
                     height="80"
                     width="62"
-                    alt="Wordpress"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -517,13 +520,13 @@ export default function HomeMain({ Component, pageProps }) {
               data-scroll-speed="-3"
             >
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="Shape"
                     height="80"
                     width="62"
-                    alt="Drupal"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -534,13 +537,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJs</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-sitecore"
                     height="80"
                     width="62"
-                    alt="Sitecore"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -551,13 +554,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">VueJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-react"
                     height="80"
                     width="62"
-                    alt="React JS"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -568,17 +571,14 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">React JS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-sitecore"
                     height="80"
                     width="62"
-                    alt="Sitecore"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTg1OjE5Mw==-1"
                     src="/images/vue-js.svg"
                   ></img>
                 </span>
@@ -586,13 +586,13 @@ export default function HomeMain({ Component, pageProps }) {
               </div>
               
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-apple"
                     height="80"
                     width="62"
-                    alt="Apple iOS"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -603,13 +603,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Apple iOS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-android"
                     height="80"
                     width="62"
-                    alt="Android"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -620,13 +620,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="Shape"
                     height="80"
                     width="62"
-                    alt="Drupal"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -637,13 +637,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="Shape"
                     height="80"
                     width="62"
-                    alt="Drupal"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -654,13 +654,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="Shape"
                     height="80"
                     width="62"
-                    alt="Drupal"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -671,13 +671,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-android"
                     height="80"
                     width="62"
-                    alt="Android"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -688,13 +688,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-android"
                     height="80"
                     width="62"
-                    alt="Android"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -705,13 +705,13 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+                
                 <span className="img-wrapper">
                   <img
-                    title="icon-android"
                     height="80"
                     width="62"
-                    alt="Android"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
@@ -732,7 +732,7 @@ export default function HomeMain({ Component, pageProps }) {
                   We&apos;ve spent almost 2 decades in web design, and have crafted
                   creative web design solutions using a wide variety of
                   platforms.
-                </p>{" "}
+                </p>
                 <a
                   href="/enterprise-cms-solutions/"
                   className="btn-link btn-link-white"
@@ -788,9 +788,6 @@ export default function HomeMain({ Component, pageProps }) {
             <div className="row">
               <div className="info_col" id="featured_2">
                 <div
-                  data-scroll=""
-                  data-scroll-sticky=""
-                  data-scroll-target="#featured_2"
                   className="casestudy-title"
                 >
                   <span>bulletproof.com</span>
@@ -805,7 +802,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <div className="casestudy-image-wrapper ">
                     <img
                       src="images/bulletproof.jpg"
-                      alt="Bulletproof"
+                      alt="Bulletproof Screenshot"
                       height="370"
                       width="740"
                     ></img>
@@ -835,7 +832,7 @@ export default function HomeMain({ Component, pageProps }) {
             </div>
             <div className="col-lg-7">
               <h2>
-                Are you looking for a website with a{" "}
+                Are you looking for a website with a
                 <span>fresh and modern user experience?</span>
               </h2>
               <div className="w-100">

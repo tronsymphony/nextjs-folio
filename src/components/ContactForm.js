@@ -1,11 +1,10 @@
-'use client'
-// components/ContactForm.js
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 const ContactForm = () => {
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,43 +16,37 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
     setFormData({ ...formData, [name]: value });
-    setError(false);
-    // isValidUrl
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("https://getform.io/f/jbwxknxa", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
-      if (response.ok) {
-        console.log("Form submitted successfully");
-        // Reset form fields if needed
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
+    if (!error) {
+      try {
+        const response = await fetch("https://getform.io/f/jbwxknxa", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
         });
-      } else {
-        console.error("Form submission failed");
+        if (response.ok) {
+          alert("Form submitted successfully");
+          setFormData({
+            name: "",
+            email: "",
+            message: "",
+            url: "",
+          });
+        } else {
+          console.error("Form submission failed");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    } else {
+      setError(true);
     }
   };
-
-  const isValidUrl = (url) => {
-    try {
-      new URL(url);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
 
   return (
     <div className="form-container-object">
@@ -63,14 +56,17 @@ const ContactForm = () => {
         sx={{
           "& > :not(style)": { m: 1 },
         }}
-        noValidate
+        
         autoComplete="off"
       >
+
         <TextField
           id="outlined-basic"
           label="Your Name"
           variant="outlined"
-          name="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
           fullWidth
           required
         />
@@ -79,6 +75,8 @@ const ContactForm = () => {
           type="email"
           name="email"
           label="Your Email"
+          value={formData.email}
+          onChange={handleChange}
           variant="outlined"
           fullWidth
           required
@@ -87,18 +85,20 @@ const ContactForm = () => {
         <TextField
           label="Your Website URL"
           variant="outlined"
+          name="url"
+          type="text"
           value={formData.url}
           onChange={handleChange}
-          error={error}
-          helperText={error ? 'Invalid URL' : ''}
           fullWidth
         />
 
         <TextField
           multiline
-          rows={4} // Adjust the number of rows as needed
+          rows={4}
           name="message"
           label="Your Message"
+          value={formData.message}
+          onChange={handleChange}
           variant="outlined"
           fullWidth
         />
