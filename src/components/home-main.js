@@ -21,7 +21,7 @@ export default function HomeMain({ Component, pageProps }) {
                 playsInline
                 muted
                 loop
-                poster="images/hero-txt-img.jpg"
+                poster="./images/hero-txt-img.jpg"
                 className=""
               >
                 <source src="images/hero-bg-video.mp4"></source>
@@ -48,7 +48,7 @@ export default function HomeMain({ Component, pageProps }) {
                 </defs>
               </svg>
             </div>
-            <h3 className="welcome_h3" data-scroll data-scroll-speed="2">Experience Enterprise-level Solutions without the Enterprise Price Tag</h3>
+            <h3 className="welcome_h3" data-scroll data-scroll-speed="2">Experienced Freelance website / app developer for hire.</h3>
 
           </div>
           <div className="Home_btn_content__PvvjD"></div>
@@ -58,12 +58,11 @@ export default function HomeMain({ Component, pageProps }) {
       <section className="home_about" data-scroll-section>
         <div className="container">
           <h2 className="title">
-            Crafting Digital Magic in the Heart of Los Angeles: Where Web Design
-            Meets Innovation
+            Crafting Digital Magic in the Heart of Los Angeles
           </h2>
           <p className="ptitle">
             I design, build and optimise bespoke Shopify Plus, Laravel,
-            WordPress solutions to elevate and grow your business.{" "}
+            WordPress, ReactJS, and Nextjs solutions to elevate and grow your business.
           </p>
         </div>
         <div data-scroll data-scroll-speed="4">
@@ -105,11 +104,11 @@ export default function HomeMain({ Component, pageProps }) {
             </div>
             <div className="stats-block " data-scroll data-scroll-speed="4">
               <div className="statistics">
-                <span className="h2 d-block">10+</span>
+                <span className="h2 d-block">Many Years</span>
                 <span className="body-large d-block">Years of experience</span>
               </div>
               <div className="statistics">
-                <span className="h2 d-block">250+</span>
+                <span className="h2 d-block">100s</span>
                 <span className="body-large d-block">
                   Websites &amp; projects launched
                 </span>
@@ -397,18 +396,18 @@ export default function HomeMain({ Component, pageProps }) {
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="Property 1=Sitefinity"
+                    title="icon-wordpress"
                     height="80"
                     width="62"
-                    alt="Progress Sitefinity"
+                    alt="Wordpress"
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTQ3OjIy</img>MQ==-1"
-                    src=""
+                    id="OTMxOjE5Ng==-1"
+                    src="images/icon-wordpress.svg"
                   ></img>
                 </span>
-                <span className="d-block">Progress Sitefinity</span>
+                <span className="d-block">Wordpress</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
@@ -433,11 +432,11 @@ export default function HomeMain({ Component, pageProps }) {
                     height="80"
                     width="62"
                     alt="Wordpress"
-                    className="nitro-lazy"
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTU1OjE5Ng==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTU1OjE5Ng==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODMgODMiIHdpZHRoPSI4MyIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
+                    id="OTMxOjE5Ng==-1"
+                    src="images/icon-wordpress.svg"
                   ></img>
                 </span>
                 <span className="d-block">Wordpress</span>
@@ -449,30 +448,14 @@ export default function HomeMain({ Component, pageProps }) {
                     height="80"
                     width="62"
                     alt="Shopify"
-                    className="nitro-lazy"
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTU5OjE5MA==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTU5OjE5MA==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzggODciIHdpZHRoPSI3OCIgaGVpZ2h0PSI4NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
+                    id="OTM1OjE5MA==-1"
+                    src="images/icon-shopify.svg"
                   ></img>
                 </span>
                 <span className="d-block">Shopify</span>
-              </div>
-              <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                <span className="img-wrapper">
-                  <img
-                    title="icon-umbraco"
-                    height="80"
-                    width="62"
-                    alt="Umbraco"
-                    className="nitro-lazy"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTYzOjE5MA==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTYzOjE5MA==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTY0IDE2NiIgd2lkdGg9IjE2NCIgaGVpZ2h0PSIxNjYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+"
-                  ></img>
-                </span>
-                <span className="d-block">Umbraco</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
@@ -481,30 +464,46 @@ export default function HomeMain({ Component, pageProps }) {
                     height="80"
                     width="62"
                     alt="Microsoft .NET"
-                    className="nitro-lazy"
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTY3OjE5OQ==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTY3OjE5OQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzggNzciIHdpZHRoPSI3OCIgaGVpZ2h0PSI3NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
+                    id="OTQzOjE5OQ==-1"
+                    src="images/microsoft-net.svg"
                   ></img>
                 </span>
-                <span className="d-block">Microsoft .NET</span>
+                <span className="d-block">Microsoft .Net</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
                   <img
-                    title="Property 1=Sitefinity"
+                    title="microsoft-net"
                     height="80"
                     width="62"
-                    alt="Progress Sitefinity"
-                    className="nitro-lazy"
+                    alt="Microsoft .NET"
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTcxOjIy</img>MQ==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTcxOjIyMQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+"
+                    id="OTQzOjE5OQ==-1"
+                    src="images/microsoft-net.svg"
                   ></img>
                 </span>
-                <span className="d-block">Progress Sitefinity</span>
+                <span className="d-block">Microsoft .Net</span>
+              </div>
+              <div className="client-block d-flex justify-content-center align-items-center flex-column">
+                <span className="img-wrapper">
+                  <img
+                    title="icon-wordpress"
+                    height="80"
+                    width="62"
+                    alt="Wordpress"
+                    className="lazyloaded"
+                    decoding="async"
+                    nitro-lazy-empty=""
+                    id="OTMxOjE5Ng==-1"
+                    src="images/icon-wordpress.svg"
+                  ></img>
+                </span>
+                <span className="d-block">Wordpress</span>
               </div>
             </div>
           </div>
@@ -555,23 +554,6 @@ export default function HomeMain({ Component, pageProps }) {
                 {" "}
                 <span className="img-wrapper">
                   <img
-                    title="icon-kentico"
-                    height="80"
-                    width="62"
-                    alt="Kentico"
-                    className="lazyloaded"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTg5OjE5MA==-1"
-                    src="/images/dot-net.svg"
-                  ></img>
-                </span>
-                <span className="d-block">.Net</span>
-              </div>
-              <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
-                <span className="img-wrapper">
-                  <img
                     title="icon-react"
                     height="80"
                     width="62"
@@ -585,6 +567,24 @@ export default function HomeMain({ Component, pageProps }) {
                 </span>
                 <span className="d-block">React JS</span>
               </div>
+              <div className="client-block d-flex justify-content-center align-items-center flex-column">
+                {" "}
+                <span className="img-wrapper">
+                  <img
+                    title="icon-sitecore"
+                    height="80"
+                    width="62"
+                    alt="Sitecore"
+                    className="lazyloaded"
+                    decoding="async"
+                    nitro-lazy-empty=""
+                    id="OTg1OjE5Mw==-1"
+                    src="/images/vue-js.svg"
+                  ></img>
+                </span>
+                <span className="d-block">VueJS</span>
+              </div>
+              
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 {" "}
                 <span className="img-wrapper">
@@ -640,69 +640,35 @@ export default function HomeMain({ Component, pageProps }) {
                 {" "}
                 <span className="img-wrapper">
                   <img
-                    title="icon-sitecore"
+                    title="Shape"
                     height="80"
                     width="62"
-                    alt="Sitecore"
-                    className="nitro-lazy"
+                    alt="Drupal"
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAwOToxOTM=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAwOToxOTM=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODMgODMiIHdpZHRoPSI4MyIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
+                    id="MTAwNToxNzU=-1"
+                    src="/images/nextjs.svg"
                   ></img>
                 </span>
-                <span className="d-block">Sitecore</span>
+                <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 {" "}
                 <span className="img-wrapper">
                   <img
-                    title="icon-kentico"
+                    title="Shape"
                     height="80"
                     width="62"
-                    alt="Kentico"
-                    className="nitro-lazy"
+                    alt="Drupal"
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAxMzoxOTA=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAxMzoxOTA=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODMgODMiIHdpZHRoPSI4MyIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
+                    id="MTAwNToxNzU=-1"
+                    src="/images/nextjs.svg"
                   ></img>
                 </span>
-                <span className="d-block">Kentico</span>
-              </div>
-              <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
-                <span className="img-wrapper">
-                  <img
-                    title="icon-react"
-                    height="80"
-                    width="62"
-                    alt="React JS"
-                    className="nitro-lazy"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAxNzoxODc=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAxNzoxODc=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODcgNzciIHdpZHRoPSI4NyIgaGVpZ2h0PSI3NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
-                </span>
-                <span className="d-block">React JS</span>
-              </div>
-              <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
-                <span className="img-wrapper">
-                  <img
-                    title="icon-apple"
-                    height="80"
-                    width="62"
-                    alt="Apple iOS"
-                    className="nitro-lazy"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAyMToxODg=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAyMToxODg=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzAgODMiIHdpZHRoPSI3MCIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
-                </span>
-                <span className="d-block">Apple iOS</span>
+                <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 {" "}
@@ -712,11 +678,45 @@ export default function HomeMain({ Component, pageProps }) {
                     height="80"
                     width="62"
                     alt="Android"
-                    className="nitro-lazy"
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAyNToxOTA=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAyNToxOTA=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODUgNDgiIHdpZHRoPSI4NSIgaGVpZ2h0PSI0OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
+                    id="MTAwMToxOTA=-1"
+                    src="images/icon-android.svg"
+                  ></img>
+                </span>
+                <span className="d-block">Android</span>
+              </div>
+              <div className="client-block d-flex justify-content-center align-items-center flex-column">
+                {" "}
+                <span className="img-wrapper">
+                  <img
+                    title="icon-android"
+                    height="80"
+                    width="62"
+                    alt="Android"
+                    className="lazyloaded"
+                    decoding="async"
+                    nitro-lazy-empty=""
+                    id="MTAwMToxOTA=-1"
+                    src="images/icon-android.svg"
+                  ></img>
+                </span>
+                <span className="d-block">Android</span>
+              </div>
+              <div className="client-block d-flex justify-content-center align-items-center flex-column">
+                {" "}
+                <span className="img-wrapper">
+                  <img
+                    title="icon-android"
+                    height="80"
+                    width="62"
+                    alt="Android"
+                    className="lazyloaded"
+                    decoding="async"
+                    nitro-lazy-empty=""
+                    id="MTAwMToxOTA=-1"
+                    src="images/icon-android.svg"
                   ></img>
                 </span>
                 <span className="d-block">Android</span>

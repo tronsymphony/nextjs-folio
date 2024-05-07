@@ -1,4 +1,3 @@
-
 /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
 *,
 ::after,
@@ -1195,6 +1194,7 @@ img {
   left: -50px;
   width: 100%;
 
+  
 
 }
 
@@ -1894,6 +1894,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   .logo {
     font-weight: 700;
     font-size: 2rem;
+
     @media screen and (max-width:900px) {
       font-size: 1.4rem;
     }
@@ -2240,6 +2241,8 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
 .home_skillset {
   padding: 90px 0px 90px;
+  position: relative;
+  z-index: 2;
 
   .container {
     max-width: 1100px;
@@ -2267,9 +2270,9 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
       position: relative;
       z-index: 10;
       margin-right: 0;
-  }
+    }
 
-}
+  }
 
   .container {
     max-width: 1100px;
@@ -2328,6 +2331,8 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
 .home_services {
   padding: 90px 0;
+  position: relative;
+  z-index: 2;
 
   h3.title {
     font-size: 1.4rem;
@@ -2673,6 +2678,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
     width: 100%;
     min-height: 500px;
     object-fit: cover;
+
     @media screen and (max-width:900px) {
       min-height: 200px;
     }
@@ -2706,14 +2712,15 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   }
 }
 
-.gradient-title5 {}
-
-
 .d-flex.client-slide {
   display: flex;
-}
 
-.client-block.d-flex.justify-content-center.align-items-center.flex-column {}
+  @media screen and (max-width:900px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
 
 .client-block {
   color: #16171a;
@@ -2726,6 +2733,26 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+
+  @media screen and (max-width:900px) {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    min-width: 0;
+    display: none;
+
+    &:nth-child(1) {
+      display: flex;
+    }
+
+    &:nth-child(2) {
+      display: flex;
+    }
+
+    &:nth-child(3) {
+      display: flex;
+    }
+  }
 }
 
 .client-slider {
@@ -2781,6 +2808,7 @@ h3.cfadeinup-inner-hero.h1.gradient-title9.is-inview {
   letter-spacing: -1.25px;
   -webkit-text-fill-color: transparent;
   color: transparent;
+
   @media screen and (max-width:900px) {
     font-size: 3rem;
   }
@@ -2829,6 +2857,7 @@ section.project-output .container .item svg {
 
 section.project-output {
   padding: 90px 20px;
+
   @media screen and (max-width:900px) {
     padding: 20px 20px;
   }
@@ -2848,10 +2877,11 @@ section.project-output {
         justify-content: center;
         flex-direction: column;
         color: #fff;
-        gap: 40px;
+        gap: 20px;
         font-weight: 700;
         text-align: center;
         border-right: 1px solid #2d2d2d;
+        font-size: 1.6rem;
 
         @media screen and (max-width:900px) {
           border: none;
@@ -2893,6 +2923,7 @@ section.copy {
 section.copy .container {
   max-width: 960px;
   margin: 0 auto;
+
   @media screen and (max-width:900px) {
     display: flex;
     flex-wrap: wrap;
@@ -2959,6 +2990,7 @@ section.in-touch {
     font-size: 4rem;
     word-break: break-word;
     color: white;
+
     @media screen and (max-width:900px) {
       font-size: 3rem;
     }
@@ -2974,7 +3006,7 @@ section.in-touch {
   }
 
   .Footer_content__8dWV_ p {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #fff;
     font-weight: 700;
     word-break: break-word;

@@ -71,7 +71,7 @@ export default function About() {
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <img src="images/close.svg" alt="" />
+                        <img src="../images/close.svg" alt="close" />
                       </i>
                       <span className={styles.title}>
                         Custom Design Or Feature
@@ -79,25 +79,25 @@ export default function About() {
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <img src="images/close.svg" alt="" />
+                        <img src="../images/close.svg" alt="close" />
                       </i>
                       <span className={styles.title}>Content Upload</span>
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <img src="images/close.svg" alt="" />
+                        <img src="../images/close.svg" alt="close" />
                       </i>
                       <span className={styles.title}> E-Commerce</span>
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <img src="images/close.svg" alt="" />
+                        <img src="../images/close.svg" alt="close" />
                       </i>
                       <span className={styles.title}> Live Chat</span>
                     </li>
                     <li className={styles.missing}>
                       <i className={styles.icon}>
-                        <img src="images/close.svg" alt="" />
+                        <img src="../images/close.svg" alt="close" />
                       </i>
                       <span className={styles.title}>SEO</span>
                     </li>
