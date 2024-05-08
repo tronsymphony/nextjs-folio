@@ -1,16 +1,19 @@
-import Image from 'next/image'
+import Image from 'next/image';
+import Link from "next/link";
 
 export default function HomeMain({ Component, pageProps }) {
   return (
     <section className="Home_main__OVLM4">
       <section className="Home_welcome__aWiKA" data-scroll-section>
+
         <Image
           alt="Desktop gradiant image"
           className="bgdesktop"
-          src="images/hp-desktop-gradiant.png"
+          src="images/hp-desktop-gradiant2.webp"
           width={1000}
           height={1000}
           priority={true}
+          aria-hidden={true}
         />
 
         <div className="Home_container__97eC3">
@@ -20,8 +23,10 @@ export default function HomeMain({ Component, pageProps }) {
                 autoPlay
                 playsInline
                 muted
+                aria-hidden="true"
+                role="img"
                 loop
-                poster="images/hero-txt-img.jpg"
+                poster="./images/hero-txt-img.jpg"
                 className=""
               >
                 <source src="images/hero-bg-video.mp4"></source>
@@ -33,6 +38,7 @@ export default function HomeMain({ Component, pageProps }) {
                 height="280"
                 viewBox="0 0 975 280"
                 xmlns="http://www.w3.org/2000/svg"
+                data-scroll data-scroll-speed="1"
               >
                 <defs>
                   <clipPath
@@ -48,37 +54,35 @@ export default function HomeMain({ Component, pageProps }) {
                 </defs>
               </svg>
             </div>
-            <h3 className="welcome_h3" data-scroll data-scroll-speed="2">Experience Enterprise-level Solutions without the Enterprise Price Tag</h3>
+            <h1 className="welcome_h3" data-scroll data-scroll-speed="2">Experienced Freelance website / app developer for hire.</h1>
 
           </div>
           <div className="Home_btn_content__PvvjD"></div>
         </div>
-        {/* <img className="Home_arrow__2WCZ0" src="/_next/static/media/arrow.22337a2c.svg" alt=""></img> */}
+        {/* <Image className="Home_arrow__2WCZ0" src="/_next/static/media/arrow.22337a2c.svg" alt=""></Image> */}
       </section>
       <section className="home_about" data-scroll-section>
         <div className="container">
           <h2 className="title">
-            Crafting Digital Magic in the Heart of Los Angeles: Where Web Design
-            Meets Innovation
+            Crafting Digital Magic in the Heart of Los Angeles
           </h2>
           <p className="ptitle">
             I design, build and optimise bespoke Shopify Plus, Laravel,
-            WordPress solutions to elevate and grow your business.{" "}
+            WordPress, ReactJS, and Nextjs solutions to elevate and grow your business.
           </p>
         </div>
         <div data-scroll data-scroll-speed="4">
-          <img
-            title="image-intro1"
-            alt=""
+          <Image
+            loading="lazy"
+            alt="Crafting Digital Magic in the Heart of Los Angeles"
             width="294"
             height="308"
-            nitro-lazy-src="images/pexels-photo-2181230.jpeg"
             className="img-fluid lazyloaded"
             decoding="async"
             nitro-lazy-empty=""
             id="MzY2OjE2OA==-1"
             src="images/pexels-photo-2181230.jpeg"
-          ></img>
+          ></Image>
         </div>
       </section>
       <section className="home_info" data-scroll-section>
@@ -104,12 +108,12 @@ export default function HomeMain({ Component, pageProps }) {
               </div>
             </div>
             <div className="stats-block " data-scroll data-scroll-speed="4">
+              {/* <div className="statistics">
+                <span className="h2 d-block">Many Years</span>
+                <span className="body-large d-block">Years of </span>
+              </div> */}
               <div className="statistics">
-                <span className="h2 d-block">10+</span>
-                <span className="body-large d-block">Years of experience</span>
-              </div>
-              <div className="statistics">
-                <span className="h2 d-block">250+</span>
+                <span className="h2 d-block">100s</span>
                 <span className="body-large d-block">
                   Websites &amp; projects launched
                 </span>
@@ -124,7 +128,7 @@ export default function HomeMain({ Component, pageProps }) {
           <h4>
             What makes me a great designer/developer option for your new project?
           </h4>
-          <div
+          {/* <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
             data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-1.jpg"
@@ -134,7 +138,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Longevity</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+
                 <span>
                   As a web developer, I&apos;ve been proudly serving the Los Angeles
                   community for nearly a decade, offering exceptional web
@@ -143,6 +147,7 @@ export default function HomeMain({ Component, pageProps }) {
               </div>
             </div>
           </div>
+           */}
           <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
@@ -153,7 +158,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Web Dev &amp; Design Focus</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+
                 <span>
                   I am known for my expert web development services and creative
                   design concepts. My main focus on web design sets your website
@@ -173,7 +178,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Breathtaking Design</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+
                 <span>
                   One thing that sets me apart is my approach to design. I take
                   pride in developing design elements that are flexible,
@@ -183,7 +188,7 @@ export default function HomeMain({ Component, pageProps }) {
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
             data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-4.jpg"
@@ -193,7 +198,7 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">On-Brand Experiences</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+
                 <span>
                   Branding is my business, and as one of the best branding
                   professionals, I personally take care of your brand
@@ -203,27 +208,9 @@ export default function HomeMain({ Component, pageProps }) {
                 </span>
               </div>
             </div>
-          </div>
-          <div
-            data-scroll=""
-            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
-            data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-5.jpg"
-          >
-            <div className="row hover-row">
-              <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">One-Of-A-Kind Solutions</h3>
-              </div>
-              <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
-                <span>
-                  As a web designer, I excel at creating customized,
-                  comprehensive design solutions for each individual client I
-                  serve.
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
+          </div> */}
+
+          {/* <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
             data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-6-1.jpg"
@@ -233,62 +220,21 @@ export default function HomeMain({ Component, pageProps }) {
                 <h3 className="h2">Partnership &amp; Collaboration</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                {" "}
+
                 <span>
                   You can expect to receive clear and transparent communication
                   from the beginning of your web design project through til it&apos;s
                   completion. And once your project has launched, I am here to
                   support your continued success online with our web maintenance
                   services, available by request.
-                </span>{" "}
+                </span>
               </div>
             </div>
-          </div>
+          </div> */}
+
         </div>
       </section>
-      <section className="project-output" data-scroll-section>
-        <div className="container-header">
-          <h2 className="title">Gauranteed Results In</h2>
-        </div>
-        <div className="container">
-          <div className="item">
-            <a lang="en" className="home w3c" href="https://www.w3.org/">
-              <svg
-                role="img"
-                aria-label="W3C"
-                viewBox="0 0 68 34"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g>
-                  <path d="m16.117 1.006 5.759 19.58 5.759-19.58h4.17 11.444v1.946l-5.879 10.128c2.065.663 3.627 1.868 4.686 3.615 1.059 1.748 1.589 3.799 1.589 6.155 0 2.914-.775 5.363-2.324 7.348s-3.555 2.978-6.017 2.978c-1.854 0-3.469-.589-4.845-1.767-1.377-1.178-2.396-2.773-3.058-4.786l3.256-1.35c.477 1.218 1.106 2.178 1.887 2.879.781.702 1.701 1.052 2.76 1.052 1.112 0 2.052-.622 2.82-1.866.768-1.245 1.152-2.74 1.152-4.489 0-1.933-.411-3.429-1.231-4.488-.954-1.244-2.45-1.867-4.489-1.867h-1.588v-1.906l5.56-9.612h-6.712l-.382.65-8.163 27.548h-.397l-5.958-19.937-5.957 19.937h-.397l-9.53-32.168h4.17l5.759 19.58 3.892-13.185-1.906-6.395z" fill="#fff"></path>
-                  <path d="m64.92 1.006c-.819 0-1.554.295-2.111.861-.591.6-.92 1.376-.92 2.178s.313 1.545.887 2.128c.583.591 1.334.912 2.145.912.793 0 1.562-.321 2.161-.903.574-.557.887-1.3.887-2.136 0-.811-.321-1.57-.878-2.136-.584-.592-1.344-.904-2.171-.904zm2.643 3.065c0 .701-.271 1.351-.768 1.832-.524.507-1.174.777-1.892.777-.675 0-1.342-.278-1.84-.785s-.777-1.157-.777-1.849.287-1.368.802-1.891c.481-.49 1.131-.751 1.84-.751.726 0 1.376.271 1.883.785.49.489.752 1.147.752 1.882zm-2.559-1.807h-1.3v3.445h.65v-1.469h.642l.701 1.469h.726l-.769-1.57c.498-.102.785-.439.785-.929 0-.625-.472-.946-1.435-.946zm-.118.422c.608 0 .886.169.886.591 0 .405-.278.549-.87.549h-.549v-1.14z" fill="#fff"></path>
-                  <path d="m59.807.825.676 4.107-2.391 4.575s-.918-1.941-2.443-3.015c-1.285-.905-2.122-1.102-3.431-.832-1.681.347-3.587 2.357-4.419 4.835-.995 2.965-1.005 4.4-1.04 5.718-.056 2.113.277 3.362.277 3.362s-1.452-2.686-1.438-6.62c.009-2.808.451-5.354 1.75-7.867 1.143-2.209 2.842-3.535 4.35-3.691 1.559-.161 2.791.59 3.743 1.403 1 .854 2.01 2.721 2.01 2.721z" fill="#fff"></path>
-                  <path d="m60.102 24.063s-1.057 1.889-1.715 2.617c-.659.728-1.837 2.01-3.292 2.651s-2.218.762-3.656.624c-1.437-.138-2.772-.97-3.24-1.317s-1.664-1.369-2.34-2.322-1.733-2.859-1.733-2.859.589 1.91.958 2.721c.212.467.864 1.894 1.789 3.136.863 1.159 2.539 3.154 5.086 3.604 2.547.451 4.297-.693 4.73-.97s1.346-1.042 1.924-1.66c.603-.645 1.174-1.468 1.49-1.962.231-.36.607-1.092.607-1.092z" fill="#fff"></path>
-                </g>
-              </svg>
-              <span className="text">Web Accessibility Initiative WAI</span>
-            </a>
-          </div>
-          <div className="item">
-            <a href="">
-              <img
-                src="./images/googlepagespeed.svg"
-                alt="Google Pagespeed Insights"
-              />
-              <span className="text">Google Pagespeed Insights</span>
-            </a>
-          </div>
-          <div className="item">
-            <a href="">
-              <img
-                src="images/Google__G__logo.svg"
-                alt="Google Search Engine Optimized"
-              />
-              <span className="text">Google Search Engine Optimized</span>
-            </a>
-          </div>
-        </div>
-      </section>
+
 
       <section
         className="hp-client-wrap client-wrap technologies-logos nitro-offscreen nitro-lazy-render"
@@ -316,195 +262,197 @@ export default function HomeMain({ Component, pageProps }) {
             >
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="client-magento"
+                  <Image
+                    loading="lazy"
                     height="80"
                     width="62"
-                    alt="Magento"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTI3OjE5NA==-1"
                     src="/images/laravel.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">Laravel</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="icon-wordpress"
+                  <Image
+                    loading="lazy"
                     height="80"
                     width="62"
-                    alt="Wordpress"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTMxOjE5Ng==-1"
                     src="images/icon-wordpress.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">Wordpress</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="icon-shopify"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Shopify"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTM1OjE5MA==-1"
                     src="images/icon-shopify.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">Shopify</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="icon-umbraco"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Umbraco"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTM5OjE5MA==-1"
                     src="/images/ios.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">iPhone</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="microsoft-net"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Microsoft .NET"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTQzOjE5OQ==-1"
                     src="images/microsoft-net.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">Microsoft .NET</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="Property 1=Sitefinity"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Progress Sitefinity"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTQ3OjIy</img>MQ==-1"
-                    src=""
-                  ></img>
-                </span>
-                <span className="d-block">Progress Sitefinity</span>
-              </div>
-              <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                <span className="img-wrapper">
-                  <img
-                    title="client-magento"
-                    height="80"
-                    width="62"
-                    alt="Magento"
-                    className="lazyloaded"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTUxOjE5NA==-1"
-                    src="images/client-magento.svg"
-                  ></img>
-                </span>
-                <span className="d-block">Magento</span>
-              </div>
-              <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                <span className="img-wrapper">
-                  <img
-                    title="icon-wordpress"
-                    height="80"
-                    width="62"
-                    alt="Wordpress"
-                    className="nitro-lazy"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTU1OjE5Ng==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTU1OjE5Ng==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODMgODMiIHdpZHRoPSI4MyIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="OTMxOjE5Ng==-1"
+                    src="images/icon-wordpress.svg"
+                  ></Image>
                 </span>
                 <span className="d-block">Wordpress</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="icon-shopify"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Shopify"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTU5OjE5MA==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTU5OjE5MA==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzggODciIHdpZHRoPSI3OCIgaGVpZ2h0PSI4NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="OTUxOjE5NA==-1"
+                    src="images/client-magento.svg"
+                  ></Image>
+                </span>
+                <span className="d-block">Magento</span>
+              </div>
+              <div className="client-block d-flex justify-content-center align-items-center flex-column">
+                <span className="img-wrapper">
+                  <Image
+                    height="80"
+                    width="62"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
+                    decoding="async"
+                    nitro-lazy-empty=""
+                    id="OTMxOjE5Ng==-1"
+                    src="images/icon-wordpress.svg"
+                  ></Image>
+                </span>
+                <span className="d-block">Wordpress</span>
+              </div>
+              <div className="client-block d-flex justify-content-center align-items-center flex-column">
+                <span className="img-wrapper">
+                  <Image
+                    height="80"
+                    width="62"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
+                    decoding="async"
+                    nitro-lazy-empty=""
+                    id="OTM1OjE5MA==-1"
+                    src="images/icon-shopify.svg"
+                  ></Image>
                 </span>
                 <span className="d-block">Shopify</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="icon-umbraco"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Umbraco"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTYzOjE5MA==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTYzOjE5MA==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTY0IDE2NiIgd2lkdGg9IjE2NCIgaGVpZ2h0PSIxNjYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+"
-                  ></img>
+                    id="OTQzOjE5OQ==-1"
+                    src="images/microsoft-net.svg"
+                  ></Image>
                 </span>
-                <span className="d-block">Umbraco</span>
+                <span className="d-block">Microsoft .Net</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="microsoft-net"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Microsoft .NET"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTY3OjE5OQ==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTY3OjE5OQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzggNzciIHdpZHRoPSI3OCIgaGVpZ2h0PSI3NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="OTQzOjE5OQ==-1"
+                    src="images/microsoft-net.svg"
+                  ></Image>
                 </span>
-                <span className="d-block">Microsoft .NET</span>
+                <span className="d-block">Microsoft .Net</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
                 <span className="img-wrapper">
-                  <img
-                    title="Property 1=Sitefinity"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Progress Sitefinity"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="OTcxOjIy</img>MQ==-1"
-                    src="data:image/svg+xml;nitro-empty-id=OTcxOjIyMQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+"
-                  ></img>
+                    id="OTMxOjE5Ng==-1"
+                    src="images/icon-wordpress.svg"
+                  ></Image>
                 </span>
-                <span className="d-block">Progress Sitefinity</span>
+                <span className="d-block">Wordpress</span>
               </div>
             </div>
           </div>
@@ -518,206 +466,204 @@ export default function HomeMain({ Component, pageProps }) {
               data-scroll-speed="-3"
             >
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="Shape"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Drupal"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTgxOjE3NQ==-1"
                     src="/images/nextjs.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">NextJs</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-sitecore"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Sitecore"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTg1OjE5Mw==-1"
                     src="/images/vue-js.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">VueJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-kentico"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Kentico"
-                    className="lazyloaded"
-                    decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTg5OjE5MA==-1"
-                    src="/images/dot-net.svg"
-                  ></img>
-                </span>
-                <span className="d-block">.Net</span>
-              </div>
-              <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
-                <span className="img-wrapper">
-                  <img
-                    title="icon-react"
-                    height="80"
-                    width="62"
-                    alt="React JS"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTkzOjE4Nw==-1"
                     src="images/icon-react.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">React JS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-apple"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Apple iOS"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
+                    src="/images/vue-js.svg"
+                  ></Image>
+                </span>
+                <span className="d-block">VueJS</span>
+              </div>
+
+              <div className="client-block d-flex justify-content-center align-items-center flex-column">
+
+                <span className="img-wrapper">
+                  <Image
+                    height="80"
+                    width="62"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="OTk3OjE4OA==-1"
                     src="images/icon-apple.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">Apple iOS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-android"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Android"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="MTAwMToxOTA=-1"
                     src="images/icon-android.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="Shape"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Drupal"
+                    aria-hidden="true"
+                    alt=""
                     className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
                     id="MTAwNToxNzU=-1"
                     src="/images/nextjs.svg"
-                  ></img>
+                  ></Image>
                 </span>
                 <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-sitecore"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Sitecore"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAwOToxOTM=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAwOToxOTM=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODMgODMiIHdpZHRoPSI4MyIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="MTAwNToxNzU=-1"
+                    src="/images/nextjs.svg"
+                  ></Image>
                 </span>
-                <span className="d-block">Sitecore</span>
+                <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-kentico"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Kentico"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAxMzoxOTA=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAxMzoxOTA=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODMgODMiIHdpZHRoPSI4MyIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="MTAwNToxNzU=-1"
+                    src="/images/nextjs.svg"
+                  ></Image>
                 </span>
-                <span className="d-block">Kentico</span>
+                <span className="d-block">NextJS</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-react"
+                  <Image
                     height="80"
                     width="62"
-                    alt="React JS"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAxNzoxODc=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAxNzoxODc=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODcgNzciIHdpZHRoPSI4NyIgaGVpZ2h0PSI3NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="MTAwMToxOTA=-1"
+                    src="images/icon-android.svg"
+                  ></Image>
                 </span>
-                <span className="d-block">React JS</span>
+                <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-apple"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Apple iOS"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAyMToxODg=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAyMToxODg=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzAgODMiIHdpZHRoPSI3MCIgaGVpZ2h0PSI4MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="MTAwMToxOTA=-1"
+                    src="images/icon-android.svg"
+                  ></Image>
                 </span>
-                <span className="d-block">Apple iOS</span>
+                <span className="d-block">Android</span>
               </div>
               <div className="client-block d-flex justify-content-center align-items-center flex-column">
-                {" "}
+
                 <span className="img-wrapper">
-                  <img
-                    title="icon-android"
+                  <Image
                     height="80"
                     width="62"
-                    alt="Android"
-                    className="nitro-lazy"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
                     decoding="async"
                     nitro-lazy-empty=""
-                    id="MTAyNToxOTA=-1"
-                    src="data:image/svg+xml;nitro-empty-id=MTAyNToxOTA=-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgODUgNDgiIHdpZHRoPSI4NSIgaGVpZ2h0PSI0OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48L3N2Zz4="
-                  ></img>
+                    id="MTAwMToxOTA=-1"
+                    src="images/icon-android.svg"
+                  ></Image>
                 </span>
                 <span className="d-block">Android</span>
               </div>
@@ -732,13 +678,13 @@ export default function HomeMain({ Component, pageProps }) {
                   We&apos;ve spent almost 2 decades in web design, and have crafted
                   creative web design solutions using a wide variety of
                   platforms.
-                </p>{" "}
-                <a
-                  href="/enterprise-cms-solutions/"
+                </p>
+                <Link
+                  href="/services/"
                   className="btn-link btn-link-white"
                 >
                   Which platform is right for you?
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -771,12 +717,13 @@ export default function HomeMain({ Component, pageProps }) {
                   style={{ backgroundColor: "#dde5ef" }}
                 >
                   <div className="casestudy-image-wrapper ">
-                    <img
+                    <Image
+                      loading="lazy"
                       src="images/god.jpg"
                       alt="Godaddy"
                       height="370"
                       width="740"
-                    ></img>
+                    ></Image>
                   </div>
                 </div>
               </div>
@@ -788,9 +735,6 @@ export default function HomeMain({ Component, pageProps }) {
             <div className="row">
               <div className="info_col" id="featured_2">
                 <div
-                  data-scroll=""
-                  data-scroll-sticky=""
-                  data-scroll-target="#featured_2"
                   className="casestudy-title"
                 >
                   <span>bulletproof.com</span>
@@ -803,12 +747,13 @@ export default function HomeMain({ Component, pageProps }) {
                   style={{ backgroundColor: "#dde5ef" }}
                 >
                   <div className="casestudy-image-wrapper ">
-                    <img
+                    <Image
+                      loading="lazy"
                       src="images/bulletproof.jpg"
-                      alt="Bulletproof"
+                      alt="Bulletproof Screenshot"
                       height="370"
                       width="740"
-                    ></img>
+                    ></Image>
                   </div>
                 </div>
               </div>
@@ -825,18 +770,19 @@ export default function HomeMain({ Component, pageProps }) {
               data-scroll=""
               data-scroll-speed="5"
             >
-              <img
+              <Image
+                loading="lazy"
                 alt=""
                 width="522"
                 height="560"
                 className="img-fluid lazyloaded"
                 src="images/dpc.jpg"
-              ></img>
+              ></Image>
             </div>
             <div className="col-lg-7">
               <h2>
-                Are you looking for a website with a{" "}
-                <span>fresh and modern user experience?</span>
+                Are you looking for a website with a
+                <span> fresh and modern user experience?</span>
               </h2>
               <div className="w-100">
                 <p>
@@ -846,17 +792,64 @@ export default function HomeMain({ Component, pageProps }) {
                   lasting impression.
                 </p>
               </div>
-              <a
+              <Link
                 href="/contact/"
                 className="btn btn-primary"
               >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </section>
+      <section className="project-output" data-scroll-section>
+        <div className="container-header">
+          <h2 className="title">Experienced with</h2>
+        </div>
+        <div className="container">
+          <div className="item">
+            <Link lang="en" target="_blank" className="home w3c" href="https://www.w3.org/">
+              <svg
+                role="img"
+                aria-label="W3C"
+                viewBox="0 0 68 34"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <path d="m16.117 1.006 5.759 19.58 5.759-19.58h4.17 11.444v1.946l-5.879 10.128c2.065.663 3.627 1.868 4.686 3.615 1.059 1.748 1.589 3.799 1.589 6.155 0 2.914-.775 5.363-2.324 7.348s-3.555 2.978-6.017 2.978c-1.854 0-3.469-.589-4.845-1.767-1.377-1.178-2.396-2.773-3.058-4.786l3.256-1.35c.477 1.218 1.106 2.178 1.887 2.879.781.702 1.701 1.052 2.76 1.052 1.112 0 2.052-.622 2.82-1.866.768-1.245 1.152-2.74 1.152-4.489 0-1.933-.411-3.429-1.231-4.488-.954-1.244-2.45-1.867-4.489-1.867h-1.588v-1.906l5.56-9.612h-6.712l-.382.65-8.163 27.548h-.397l-5.958-19.937-5.957 19.937h-.397l-9.53-32.168h4.17l5.759 19.58 3.892-13.185-1.906-6.395z" fill="#fff"></path>
+                  <path d="m64.92 1.006c-.819 0-1.554.295-2.111.861-.591.6-.92 1.376-.92 2.178s.313 1.545.887 2.128c.583.591 1.334.912 2.145.912.793 0 1.562-.321 2.161-.903.574-.557.887-1.3.887-2.136 0-.811-.321-1.57-.878-2.136-.584-.592-1.344-.904-2.171-.904zm2.643 3.065c0 .701-.271 1.351-.768 1.832-.524.507-1.174.777-1.892.777-.675 0-1.342-.278-1.84-.785s-.777-1.157-.777-1.849.287-1.368.802-1.891c.481-.49 1.131-.751 1.84-.751.726 0 1.376.271 1.883.785.49.489.752 1.147.752 1.882zm-2.559-1.807h-1.3v3.445h.65v-1.469h.642l.701 1.469h.726l-.769-1.57c.498-.102.785-.439.785-.929 0-.625-.472-.946-1.435-.946zm-.118.422c.608 0 .886.169.886.591 0 .405-.278.549-.87.549h-.549v-1.14z" fill="#fff"></path>
+                  <path d="m59.807.825.676 4.107-2.391 4.575s-.918-1.941-2.443-3.015c-1.285-.905-2.122-1.102-3.431-.832-1.681.347-3.587 2.357-4.419 4.835-.995 2.965-1.005 4.4-1.04 5.718-.056 2.113.277 3.362.277 3.362s-1.452-2.686-1.438-6.62c.009-2.808.451-5.354 1.75-7.867 1.143-2.209 2.842-3.535 4.35-3.691 1.559-.161 2.791.59 3.743 1.403 1 .854 2.01 2.721 2.01 2.721z" fill="#fff"></path>
+                  <path d="m60.102 24.063s-1.057 1.889-1.715 2.617c-.659.728-1.837 2.01-3.292 2.651s-2.218.762-3.656.624c-1.437-.138-2.772-.97-3.24-1.317s-1.664-1.369-2.34-2.322-1.733-2.859-1.733-2.859.589 1.91.958 2.721c.212.467.864 1.894 1.789 3.136.863 1.159 2.539 3.154 5.086 3.604 2.547.451 4.297-.693 4.73-.97s1.346-1.042 1.924-1.66c.603-.645 1.174-1.468 1.49-1.962.231-.36.607-1.092.607-1.092z" fill="#fff"></path>
+                </g>
+              </svg>
+              <span className="text">Web Accessibility Initiative WAI</span>
+            </Link>
+          </div>
+          <div className="item">
+            <Link href="https://pagespeed.web.dev/" target="_blank">
+              <Image
+                loading="lazy"
+                width={200}
+                height={200}
+                src="./images/googlepagespeed.svg"
+                alt="Google Pagespeed Insights Link"></Image>
+              <span className="text">Google Pagespeed Insights</span>
+            </Link>
+          </div>
+          <div className="item">
+            <Link href="https://www.google.com/" target="_blank">
+              <Image
+                loading="lazy"
+                width={200}
+                height={200}
+                src="images/Google__G__logo.svg"
+                alt="Google Search Engine Optimized Link"></Image>
 
+              <span className="text">Google Search Engine Optimized</span>
+            </Link>
+          </div>
+        </div>
+      </section>
       <section className="home_services" data-scroll-section>
         <div className="container">
           <h2 className="title">
@@ -889,9 +882,6 @@ export default function HomeMain({ Component, pageProps }) {
               </h3>
               <p>
                 I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you&apos;re launching a new site or revamping an existing one, I&apos;m here to create a compelling online presence that resonates with your audience.
-
-
-
               </p>
             </div>
             <div className="item">
@@ -900,58 +890,33 @@ export default function HomeMain({ Component, pageProps }) {
               </h3>
               <p>
                 I excel in website development, transforming designs into dynamic, fully functional websites tailored to specific business needs. Leveraging the latest technologies and best practices, I build responsive, scalable, and secure online platforms. My approach involves thorough testing and optimization to ensure top performance across all devices and browsers. Whether you need a simple static page or a complex web application, I deliver solutions that drive digital growth and enhance user engagement.
-
-
-
-
-
-
-
               </p>
             </div>
-            <div className="item">
+
+            {/* <div className="item">
               <h3 className="title">
                 <span>Enterprise CMS Solutions</span>
               </h3>
               <p>
                 I specialize in implementing enterprise CMS solutions that streamline content management processes and enhance collaboration across large organizations. By customizing robust CMS platforms, I empower businesses to manage their digital content efficiently, ensuring consistency and compliance across all channels. My expertise includes integrating advanced features like multi-language support, role-based access control, and automated workflows to create scalable, secure, and user-friendly environments that meet the complex needs of enterprise operations.
-
-
-
-
-
-
-
               </p>
-            </div>
-            <div className="item">
+            </div> */}
+
+            {/* <div className="item">
               <h3 className="title">
                 <span>Website Redesign Services</span>
               </h3>
               <p>
                 I offer comprehensive website redesign services that breathe new life into your online presence. By assessing your current website and understanding your business goals, I craft a fresh, modern design that enhances user experience and engagement. My redesign strategies focus on improving site navigation, aesthetics, and functionality, ensuring your website aligns with the latest web standards and trends. This revitalization not only attracts more visitors but also boosts conversions, helping your business stay competitive in a rapidly evolving digital landscape.
-
-
-
-
-
-
-
               </p>
-            </div>
+            </div> */}
+
             <div className="item">
               <h3 className="title">
                 <span>Website Maintenance Services</span>
               </h3>
               <p>
                 I provide reliable website maintenance services to ensure your online platform remains up-to-date, secure, and performing at its best. My services include regular updates to software and plugins, security checks to protect against vulnerabilities, and performance optimizations to keep your site running smoothly. I also offer timely troubleshooting and support to address any issues that arise, minimizing downtime and maintaining a seamless user experience. With my maintenance services, you can have peace of mind knowing your website is in expert hands, allowing you to focus on growing your business.
-
-
-
-
-
-
-
               </p>
             </div>
             <div className="item">
@@ -960,18 +925,11 @@ export default function HomeMain({ Component, pageProps }) {
               </h3>
               <p>
                 I offer specialized services in Search Engine Optimization (SEO) to enhance your website&apos;s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site&apos;s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site&apos;s authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
-
-
-
-                &apos;
-
-
-
               </p>
             </div>
           </div>
           <div className="link-widget-wrap">
-            <a
+            <Link
               className="btn_link btn_link--light"
               href="/services/"
               target="_blank"
@@ -980,12 +938,11 @@ export default function HomeMain({ Component, pageProps }) {
 
               More Services
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
-
-            </a>
-            <a className="btn_link btn_link--light" href="/contact/">
-              Talk To Specialist
+            </Link>
+            <Link className="btn_link btn_link--light" href="/contact/">
+              Talk To Me
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

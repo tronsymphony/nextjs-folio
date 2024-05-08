@@ -12,6 +12,12 @@
         height: 1446px;
         background: radial-gradient(50.03% 50.03% at 50% 49.97%, rgba(22, 23, 26, 0) 0, #121212 100%);
         z-index: 1;
+        @media screen and (max-width:900px) {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+        }
     }
 
     &:before {
@@ -24,6 +30,12 @@
         opacity: .2;
         z-index: -1;
         background: linear-gradient(270deg, #fb8c61, #fdd68d 39.1%, #4eebd5 68.27%, #0e96ee);
+        @media screen and (max-width:900px) {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+        }
     }
 
     .container {
@@ -66,4 +78,6 @@
 .pagedForm {
     /* background: #16171a; */
     padding-bottom: 60px;
+    position: relative;
+    z-index: 2;
 }

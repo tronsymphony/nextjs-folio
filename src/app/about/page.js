@@ -13,6 +13,13 @@ export default function Home() {
 }
 
 export const metadata = {
-  title: "About Nitya Hoyos | Experienced Full-Stack Developer | Los Angeles",
-    description: "Learn more about Nitya Hoyos, a dedicated full-stack developer based in Los Angeles with over 10 years of experience in building robust web and app solutions. Discover my journey and professional philosophy."
+  metadataBase: new URL('https://wordpresspro.biz'),
+  alternates: {
+    canonical: '/about',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
+  title: "About | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
+  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
 };
