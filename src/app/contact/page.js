@@ -13,6 +13,13 @@ export default function Home() {
 }
 
 export const metadata = {
+  metadataBase: new URL('https://wordpresspro.biz'),
+  alternates: {
+    canonical: '/contact',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
   title: "Contact Nitya Hoyos | Get in Touch for Web Development Projects.",
   description: "Reach out to Nitya Hoyos for queries on web and app development projects. Available for hire or contract in Los Angeles and remotely. Let's connect and discuss how I can help your business grow."
 };
