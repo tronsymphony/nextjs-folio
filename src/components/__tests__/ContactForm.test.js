@@ -1,11 +1,12 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ContactForm from '../ContactForm'; // Assuming the file is named ContactForm.js
+import ContactForm from '../ContactForm'; 
 
 beforeAll(() => {
     window.alert = jest.fn();
 });
+
 // Mock fetch for form submission
 global.fetch = jest.fn(() =>
     Promise.resolve({
