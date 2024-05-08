@@ -9,7 +9,7 @@ export default function Footer() {
 
         <div className="container">
           <div className="Footer_content__8dWV_">
-            <h2 className="h2"><b>Start a project</b></h2>
+            <h2 className="h2"><b>Reach Out</b></h2>
             <p>
               Im always on the lookout for <span>great clients</span> who are <span>passionate</span>
               about their <span>business and customers</span>. Get in touch
@@ -18,7 +18,7 @@ export default function Footer() {
             href="/contact"
             className="btn_link btn_link--light"
             >
-            Start a project request
+            Reach Out
               <span>
                 <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
                   <path

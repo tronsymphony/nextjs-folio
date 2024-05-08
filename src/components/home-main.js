@@ -108,10 +108,10 @@ export default function HomeMain({ Component, pageProps }) {
               </div>
             </div>
             <div className="stats-block " data-scroll data-scroll-speed="4">
-              <div className="statistics">
+              {/* <div className="statistics">
                 <span className="h2 d-block">Many Years</span>
-                <span className="body-large d-block">Years of experience</span>
-              </div>
+                <span className="body-large d-block">Years of </span>
+              </div> */}
               <div className="statistics">
                 <span className="h2 d-block">100s</span>
                 <span className="body-large d-block">
@@ -128,7 +128,7 @@ export default function HomeMain({ Component, pageProps }) {
           <h4>
             What makes me a great designer/developer option for your new project?
           </h4>
-          <div
+          {/* <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
             data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-1.jpg"
@@ -147,6 +147,7 @@ export default function HomeMain({ Component, pageProps }) {
               </div>
             </div>
           </div>
+           */}
           <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
@@ -187,7 +188,7 @@ export default function HomeMain({ Component, pageProps }) {
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
             data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-4.jpg"
@@ -207,27 +208,9 @@ export default function HomeMain({ Component, pageProps }) {
                 </span>
               </div>
             </div>
-          </div>
-          <div
-            data-scroll=""
-            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
-            data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-5.jpg"
-          >
-            <div className="row hover-row">
-              <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">One-Of-A-Kind Solutions</h3>
-              </div>
-              <div className="col-xl-5 col-lg-6 desc-text">
+          </div> */}
 
-                <span>
-                  As a web designer, I excel at creating customized,
-                  comprehensive design solutions for each individual client I
-                  serve.
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
+          {/* <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
             data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-6-1.jpg"
@@ -247,10 +230,11 @@ export default function HomeMain({ Component, pageProps }) {
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
+
         </div>
       </section>
-      
+
 
       <section
         className="hp-client-wrap client-wrap technologies-logos nitro-offscreen nitro-lazy-render"
@@ -798,7 +782,7 @@ export default function HomeMain({ Component, pageProps }) {
             <div className="col-lg-7">
               <h2>
                 Are you looking for a website with a
-                <span>fresh and modern user experience?</span>
+                <span> fresh and modern user experience?</span>
               </h2>
               <div className="w-100">
                 <p>
@@ -820,7 +804,7 @@ export default function HomeMain({ Component, pageProps }) {
       </section>
       <section className="project-output" data-scroll-section>
         <div className="container-header">
-          <h2 className="title">Gauranteed <br></br> Results In</h2>
+          <h2 className="title">Experienced with</h2>
         </div>
         <div className="container">
           <div className="item">
@@ -898,9 +882,6 @@ export default function HomeMain({ Component, pageProps }) {
               </h3>
               <p>
                 I bring a unique blend of creativity and technical expertise to website design, crafting visually appealing and functionally robust websites tailored to meet your business objectives. Focused on user experience, I design intuitive interfaces that engage visitors and facilitate seamless interactions. Whether you&apos;re launching a new site or revamping an existing one, I&apos;m here to create a compelling online presence that resonates with your audience.
-
-
-
               </p>
             </div>
             <div className="item">
@@ -909,58 +890,33 @@ export default function HomeMain({ Component, pageProps }) {
               </h3>
               <p>
                 I excel in website development, transforming designs into dynamic, fully functional websites tailored to specific business needs. Leveraging the latest technologies and best practices, I build responsive, scalable, and secure online platforms. My approach involves thorough testing and optimization to ensure top performance across all devices and browsers. Whether you need a simple static page or a complex web application, I deliver solutions that drive digital growth and enhance user engagement.
-
-
-
-
-
-
-
               </p>
             </div>
-            <div className="item">
+
+            {/* <div className="item">
               <h3 className="title">
                 <span>Enterprise CMS Solutions</span>
               </h3>
               <p>
                 I specialize in implementing enterprise CMS solutions that streamline content management processes and enhance collaboration across large organizations. By customizing robust CMS platforms, I empower businesses to manage their digital content efficiently, ensuring consistency and compliance across all channels. My expertise includes integrating advanced features like multi-language support, role-based access control, and automated workflows to create scalable, secure, and user-friendly environments that meet the complex needs of enterprise operations.
-
-
-
-
-
-
-
               </p>
-            </div>
-            <div className="item">
+            </div> */}
+
+            {/* <div className="item">
               <h3 className="title">
                 <span>Website Redesign Services</span>
               </h3>
               <p>
                 I offer comprehensive website redesign services that breathe new life into your online presence. By assessing your current website and understanding your business goals, I craft a fresh, modern design that enhances user experience and engagement. My redesign strategies focus on improving site navigation, aesthetics, and functionality, ensuring your website aligns with the latest web standards and trends. This revitalization not only attracts more visitors but also boosts conversions, helping your business stay competitive in a rapidly evolving digital landscape.
-
-
-
-
-
-
-
               </p>
-            </div>
+            </div> */}
+
             <div className="item">
               <h3 className="title">
                 <span>Website Maintenance Services</span>
               </h3>
               <p>
                 I provide reliable website maintenance services to ensure your online platform remains up-to-date, secure, and performing at its best. My services include regular updates to software and plugins, security checks to protect against vulnerabilities, and performance optimizations to keep your site running smoothly. I also offer timely troubleshooting and support to address any issues that arise, minimizing downtime and maintaining a seamless user experience. With my maintenance services, you can have peace of mind knowing your website is in expert hands, allowing you to focus on growing your business.
-
-
-
-
-
-
-
               </p>
             </div>
             <div className="item">
@@ -969,13 +925,6 @@ export default function HomeMain({ Component, pageProps }) {
               </h3>
               <p>
                 I offer specialized services in Search Engine Optimization (SEO) to enhance your website&apos;s visibility and ranking on search engines. By implementing the latest SEO strategies, I focus on optimizing your site&apos;s content, structure, and on-page elements like meta tags and images. I also improve off-page factors such as backlinks and social media engagement to boost your site&apos;s authority and search rankings. Through a combination of thorough keyword research, competitive analysis, and continuous performance monitoring, I ensure your website attracts more organic traffic and reaches its target audience effectively.
-
-
-
-                &apos;
-
-
-
               </p>
             </div>
           </div>
@@ -989,10 +938,9 @@ export default function HomeMain({ Component, pageProps }) {
 
               More Services
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
-
             </Link>
             <Link className="btn_link btn_link--light" href="/contact/">
-              Talk To Specialist
+              Talk To Me
               <span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span>
             </Link>
           </div>

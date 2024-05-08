@@ -79,8 +79,8 @@ export default function HomeFollow() {
 
       <Link href="/contact" className="marquee" data-scroll-section>
         <div>
-          <span>Get a quote</span>
-          <span>Get a quote</span>
+          <span>Get in Touch</span>
+          <span>Get in Touch</span>
         </div>
       </Link>
     </>

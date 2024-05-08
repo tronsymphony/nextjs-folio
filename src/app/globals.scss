@@ -2098,7 +2098,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   position: relative;
   display: grid;
   grid-template-columns: 0.5fr 1fr;
-  padding: 180px 0px 90px;
+  padding: 20px 0px 90px;
   display: flex;
   align-items: center;
 
@@ -2283,7 +2283,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 }
 
 .home_look {
-  padding: 180px 0px 180px;
+  padding: 180px 0px 90px;
 
   @media screen and (max-width:900px) {
     padding: 90px 0px;
@@ -2861,7 +2861,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 }
 
 section.project-output {
-  margin: 0 0 120px;
+  margin: 0 0 30px;
   padding: 0 20px;
 }
 
@@ -2906,9 +2906,15 @@ section.project-output {
           border: none;
         }
       }
+      .item {
+        
+        @media screen and (min-width:900px) {
+          width: 100%;
+        }
+    }
 
       a {
-        padding: 3rem;
+        padding: 3rem 20px;
         display: flex;
         align-items: center;
         justify-content: center;

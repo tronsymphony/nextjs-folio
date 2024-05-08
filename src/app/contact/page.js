@@ -20,6 +20,6 @@ export const metadata = {
       'en-US': '/en-US',
     },
   },
-  title: "Contact Nitya Hoyos | Get in Touch for Web Development Projects.",
-  description: "Reach out to Nitya Hoyos for queries on web and app development projects. Available for hire or contract in Los Angeles and remotely. Let's connect and discuss how I can help your business grow."
+  title: "Contact | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
+  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
 };

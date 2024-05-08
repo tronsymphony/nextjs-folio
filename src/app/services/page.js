@@ -19,6 +19,6 @@ export const metadata = {
       'en-US': '/en-US',
     },
   },
-  title: "Web & App Development Services by Nitya Hoyos | Expert in WordPress, ReactJS",
-  description: "Explore the professional services offered by Nitya Hoyos, including custom web and app development using WordPress, Laravel, ReactJS, and more. Tailored solutions to meet your digital needs."
+  title: "Services | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
+  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
 };
