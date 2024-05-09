@@ -5,17 +5,6 @@ export default function HomeMain({ Component, pageProps }) {
   return (
     <section className="Home_main__OVLM4">
       <section className="Home_welcome__aWiKA" data-scroll-section>
-
-        {/* <Image
-          alt="Desktop gradiant image"
-          className="bgdesktop"
-          src="images/pexels-photo-1426718.webp"
-          width={1000}
-          height={1000}
-          priority={true}
-          aria-hidden={true}
-        /> */}
-
         <div className="Home_container__97eC3">
           <div className="Home_content__WcTpR">
             <div data-scroll="" className="svg-mask cfadeinup-hero ">
@@ -26,6 +15,7 @@ export default function HomeMain({ Component, pageProps }) {
                 aria-hidden="true"
                 role="img"
                 loop
+                poster='./images/pexels-photo-1426718.webp'
               >
                 <source src="images/ocean.mp4"></source>
               </video>
