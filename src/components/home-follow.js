@@ -68,9 +68,6 @@ export default function HomeFollow() {
           <Link href="/services">
             <span>Services</span>
           </Link>
-          <Link href="/pricing">
-            <span>Pricing</span>
-          </Link>
           <Link href="/contact">
             <span>Contact</span>
           </Link>

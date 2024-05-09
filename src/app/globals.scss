@@ -1383,7 +1383,8 @@ img {
 .Home_welcome__aWiKA .Home_content__WcTpR {
   position: relative;
   z-index: 12;
-  padding-top: 13rem;
+  margin-top: 100px;
+  padding-top: 2rem;
 }
 
 .Home_welcome__aWiKA .Home_arrow__2WCZ0 {
@@ -1947,20 +1948,20 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   clip-path: url(#text-path);
   margin: 0 0 15px;
   overflow: hidden;
-  max-width: 73vw;
+  max-width: 100vw;
   position: relative;
 
-  opacity: 0;
-  transform: translateY(100%) rotateX(-80deg);
-  transform-origin: center top;
-  transform-style: preserve-3d;
-  transition: opacity .8s cubic-bezier(.215, .61, .355, 1), transform .8s cubic-bezier(.215, .61, .355, 1);
+  // opacity: 0;
+  // transform: translateY(100%) rotateX(-80deg);
+  // transform-origin: center top;
+  // transform-style: preserve-3d;
+  // transition: opacity .8s cubic-bezier(.215, .61, .355, 1), transform .8s cubic-bezier(.215, .61, .355, 1);
 
-  &.is-inview {
-    opacity: 1;
-    transform: none;
-    transition-delay: .1s;
-  }
+  // &.is-inview {
+  //   opacity: 1;
+  //   transform: none;
+  //   transition-delay: .1s;
+  // }
 
   @media screen and (max-width:900px) {
     max-width: 80vw;
@@ -1970,9 +1971,10 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 .svg-mask.cfadeinup-hero video {
   pointer-events: none;
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
   width: 100%;
+  transform: translate(0%, 0%);
 }
 
 .svg-mask.cfadeinup-hero svg {
@@ -2010,6 +2012,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   z-index: 0;
   left: -50px;
   width: 100%;
+  opacity: .2;
 
   @media screen and (max-width:900px) {
     top: 0;
