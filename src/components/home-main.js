@@ -26,8 +26,6 @@ export default function HomeMain({ Component, pageProps }) {
                 aria-hidden="true"
                 role="img"
                 loop
-                poster="./images/hero-txt-img.jpg"
-                className=""
               >
                 <source src="images/ocean.mp4"></source>
               </video>
@@ -53,7 +51,7 @@ export default function HomeMain({ Component, pageProps }) {
                 </defs>
               </svg>
             </div>
-            <h1 className="welcome_h3" data-scroll data-scroll-speed="2">Welcome, I am Nitya, full-stack developer</h1>
+            <h1 className="welcome_h3" data-scroll data-scroll-speed="2">Welcome, I am Nitya, a full-stack developer in Los Angeles, CA</h1>
 
           </div>
           <div className="Home_btn_content__PvvjD"></div>

@@ -1307,7 +1307,7 @@ img {
 
 .Home_welcome__aWiKA {
   position: relative;
-  min-height: 100vh;
+  min-height: 900px;
 
   @media screen and (max-width:900px) {
     min-height: 0;
@@ -2147,6 +2147,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   position: relative;
   width: 100%;
   max-width: 600px;
+  opacity: .5;
 
   @media screen and (max-width:900px) {
     margin-left: 0px;
