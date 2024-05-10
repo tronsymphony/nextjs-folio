@@ -1559,7 +1559,11 @@ section.Home_followme__eTWWW>div {
   position: relative
 }
 
-section.Home_followme__eTWWW .Home_phone__DAGCv {}
+section.Home_followme__eTWWW .Home_phone__DAGCv {
+  @media screen and (max-width:900px) {
+    display: none;
+  }
+}
 
 section.Home_followme__eTWWW .Home_followlabel__I422i,
 section.Home_followme__eTWWW .Home_phone__DAGCv {
@@ -2378,6 +2382,9 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   margin-bottom: 40px;
   color: #fff;
   font-size: 3rem;
+  @media screen and (max-width:900px) {
+    font-size: 2.2rem;
+  }
 
   span {
     background: linear-gradient(90deg, #ed2f3b, #f76a41, #ffbe64);

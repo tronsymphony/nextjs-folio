@@ -6,6 +6,12 @@ export default function HomeFollow() {
     <>
       <section className="Home_followme__eTWWW" data-scroll-section>
         <div className="Home_phone__DAGCv">
+          <Link
+          target="_blank"
+          href="https://github.com/tronsymphony/nextjs-folio"
+          >
+          Made with ReactJS, NextJS. Hosted on a Raspberry Pi
+          </Link>
         </div>
         <div>
           <div className="Home_followlabel__I422i">Follow Me</div>
