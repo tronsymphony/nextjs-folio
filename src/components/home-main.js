@@ -5,17 +5,6 @@ export default function HomeMain({ Component, pageProps }) {
   return (
     <section className="Home_main__OVLM4">
       <section className="Home_welcome__aWiKA" data-scroll-section>
-
-        <Image
-          alt="Desktop gradiant image"
-          className="bgdesktop"
-          src="images/hp-desktop-gradiant2.webp"
-          width={1000}
-          height={1000}
-          priority={true}
-          aria-hidden={true}
-        />
-
         <div className="Home_container__97eC3">
           <div className="Home_content__WcTpR">
             <div data-scroll="" className="svg-mask cfadeinup-hero ">
@@ -26,11 +15,9 @@ export default function HomeMain({ Component, pageProps }) {
                 aria-hidden="true"
                 role="img"
                 loop
-                poster="./images/hero-txt-img.jpg"
-                className=""
+                poster='./images/pexels-photo-1426718.webp'
               >
-                <source src="images/hero-bg-video.mp4"></source>
-                <source src="images/Hero.webm"></source>
+                <source src="images/ocean.mp4"></source>
               </video>
 
               <svg
@@ -54,7 +41,7 @@ export default function HomeMain({ Component, pageProps }) {
                 </defs>
               </svg>
             </div>
-            <h1 className="welcome_h3" data-scroll data-scroll-speed="2">Experienced Freelance website / app developer for hire.</h1>
+            <h1 className="welcome_h3" data-scroll data-scroll-speed="2">Welcome, I am Nitya, a full-stack developer in Los Angeles, CA</h1>
 
           </div>
           <div className="Home_btn_content__PvvjD"></div>
@@ -81,7 +68,7 @@ export default function HomeMain({ Component, pageProps }) {
             decoding="async"
             nitro-lazy-empty=""
             id="MzY2OjE2OA==-1"
-            src="images/pexels-photo-2181230.jpeg"
+            src="images/pexels-photo-2763964.jpeg"
           ></Image>
         </div>
       </section>
@@ -248,7 +235,7 @@ export default function HomeMain({ Component, pageProps }) {
               data-scroll=""
               className="cfadeinup-inner-hero h1 gradient-title9 "
             >
-              Experts in leading industry standard platforms &amp; technologies.
+              Expert in leading industry standard platforms &amp; technologies.
             </h3>
           </div>
         </div>
@@ -675,7 +662,7 @@ export default function HomeMain({ Component, pageProps }) {
             <div className="row">
               <div className="col-lg-10 col-xl-6 client-wrap-heading">
                 <p>
-                  We&apos;ve spent almost 2 decades in web design, and have crafted
+                  I have designed, and have crafted
                   creative web design solutions using a wide variety of
                   platforms.
                 </p>
@@ -776,7 +763,7 @@ export default function HomeMain({ Component, pageProps }) {
                 width="522"
                 height="560"
                 className="img-fluid lazyloaded"
-                src="images/dpc.jpg"
+                src="images/pexels-photo-1181271.webp"
               ></Image>
             </div>
             <div className="col-lg-7">

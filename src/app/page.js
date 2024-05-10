@@ -34,8 +34,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Nitya Hoyos | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-    description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
+    title: "Nitya Hoyos Software Engineer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
+    description: "Nitya Hoyos is an experienced Full-Stack Developer from Los Angeles, specializing in WordPress, Laravel, ReactJS, NodeJS, and Shopify. I focus on creating custom digital solutions to help grow your business. Looking to boost your online presence? Get in touch for personalized development services.",
     url: 'https://wordpresspro.biz',
     siteName: 'Nitya Hoyos',
     images: [
@@ -48,6 +48,6 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
   },
-  title: "Nitya Hoyos | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
+  title: "Nitya Hoyos Software Engineer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
+  description: "Nitya Hoyos is an experienced Full-Stack Developer from Los Angeles, specializing in WordPress, Laravel, ReactJS, NodeJS, and Shopify. I focus on creating custom digital solutions to help grow your business. Looking to boost your online presence? Get in touch for personalized development services.",
 };
