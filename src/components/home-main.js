@@ -58,7 +58,7 @@ export default function HomeMain({ Component, pageProps }) {
             WordPress, ReactJS, and Nextjs solutions to elevate and grow your business.
           </p>
         </div>
-        <div data-scroll data-scroll-speed="4">
+        <div data-scroll data-scroll-speed="2">
           <Image
             loading="lazy"
             alt="Crafting Digital Magic in the Heart of Los Angeles"
@@ -66,7 +66,7 @@ export default function HomeMain({ Component, pageProps }) {
             height="308"
             className="img-fluid lazyloaded"
             decoding="async"
-            src="images/pexels-photo-2763964.jpeg"
+            src="images/PXL_20231015_163749011.MP.webp"
           ></Image>
         </div>
       </section>
@@ -91,11 +91,11 @@ export default function HomeMain({ Component, pageProps }) {
                   experiences!
                 </p>
                 <Link
-                href="/contact/"
-                className="btn btn-primary"
-              >
-                Contact
-              </Link>
+                  href="/contact/"
+                  className="btn btn-primary"
+                >
+                  Contact
+                </Link>
               </div>
             </div>
             <div className="stats-block " data-scroll data-scroll-speed="4">
@@ -110,15 +110,15 @@ export default function HomeMain({ Component, pageProps }) {
                 </span>
               </div> */}
               <Image
-                    loading="lazy"
-                    height="400"
-                    width="400"
-                    aria-hidden="true"
-                    alt=""
-                    className="lazyloaded"
-                    decoding="async"
-                    src="/images/pho.webp"
-                  ></Image>
+                loading="lazy"
+                height="400"
+                width="400"
+                aria-hidden="true"
+                alt=""
+                className="lazyloaded"
+                decoding="async"
+                src="/images/pho.webp"
+              ></Image>
             </div>
           </div>
         </div>
@@ -688,9 +688,13 @@ export default function HomeMain({ Component, pageProps }) {
         <div className="work-casestudy-loop pattern-2">
           <div className="container">
             <div className="row">
-              <div className="info_col" id="featured_2">
+              <div className="info_col" id="featured_2"
+              >
                 <div
                   className="casestudy-title"
+                  data-scroll
+                  data-scroll-sticky
+                  data-scroll-target="#featured_2"
                 >
                   <span>bulletproof.com</span>
                   <h3>Lighting up an internet presence.</h3>
@@ -718,23 +722,25 @@ export default function HomeMain({ Component, pageProps }) {
       </section>
 
       <section className="home_look" data-scroll-section>
+        <div
+          className="home_look_image"
+
+        >
+          <Image
+            loading="lazy"
+            alt=""
+            width="522"
+            height="560"
+            className="image-home_look"
+            src="images/PXL_20231021_180041403.MP.webp"
+          ></Image>
+        </div>
         <div className="container">
           <div className="row align-items-center">
-            <div
-              className="col-lg-5 mb-5 mb-lg-0 home_look_image"
+
+            <div className="col-lg-7"
               data-scroll=""
-              data-scroll-speed="5"
-            >
-              <Image
-                loading="lazy"
-                alt=""
-                width="522"
-                height="560"
-                className="img-fluid lazyloaded"
-                src="images/pexels-photo-1181271.webp"
-              ></Image>
-            </div>
-            <div className="col-lg-7">
+              data-scroll-speed="2">
               <h2>
                 Are you looking for a website with a
                 <span> fresh and modern user experience?</span>
@@ -760,9 +766,12 @@ export default function HomeMain({ Component, pageProps }) {
       <section className="project-output" data-scroll-section>
         <div className="container-header">
           <h2 className="title">Experienced with</h2>
+          <p>Providing Results in an Otherwise Complicated landscape</p>
         </div>
         <div className="container">
-          <div className="item">
+          <div className="item"
+
+          >
             <Link lang="en" target="_blank" className="home w3c" href="https://www.w3.org/">
               <svg
                 role="img"
@@ -780,7 +789,9 @@ export default function HomeMain({ Component, pageProps }) {
               <span className="text">Web Accessibility Initiative WAI</span>
             </Link>
           </div>
-          <div className="item">
+          <div className="item"
+
+          >
             <Link href="https://pagespeed.web.dev/" target="_blank">
               <Image
                 loading="lazy"
@@ -791,7 +802,9 @@ export default function HomeMain({ Component, pageProps }) {
               <span className="text">Google Pagespeed Insights</span>
             </Link>
           </div>
-          <div className="item">
+          <div className="item"
+
+          >
             <Link href="https://www.google.com/" target="_blank">
               <Image
                 loading="lazy"
