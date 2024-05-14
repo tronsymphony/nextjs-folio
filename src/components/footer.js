@@ -39,7 +39,7 @@ export default function Footer() {
           <h2>Get in touch for a free audit.</h2>
           <p>
             Let me create a personalized list of enhancements to boost your
-            brand's online presence. I'll help with usability, SEO, speed, and
+            brand&apos;s online presence. I&apos;ll help with usability, SEO, speed, and
             design. Get in touch to start improving your site today!
           </p>
         </div>
