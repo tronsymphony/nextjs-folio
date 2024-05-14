@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import Footer from '../footer'; 
-import '@testing-library/jest-dom/extend-expect';
+// import '@testing-library/jest-dom/extend-expect';
 
 jest.useFakeTimers();
 

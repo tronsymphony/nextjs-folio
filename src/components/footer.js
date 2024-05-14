@@ -19,13 +19,13 @@ export default function Footer() {
 
   useEffect(() => {
     const modalShown = sessionStorage.getItem("modalShown");
-    // if (!modalShown) {
+    if (!modalShown) {
       const timer = setTimeout(() => {
         setShowModal(true);
         sessionStorage.setItem('modalShown', 'true');
       }, 1);
       return () => clearTimeout(timer);
-    // }
+    }
   }, []);
 
   const closeModal = () => {
@@ -43,7 +43,6 @@ export default function Footer() {
             design. Get in touch to start improving your site today!
           </p>
         </div>
-
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
           <ContactForm></ContactForm>
