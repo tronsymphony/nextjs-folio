@@ -78,12 +78,12 @@ export default function HomeMain({ Component, pageProps }) {
             <div data-scroll="" className="">
               <div data-scroll="" className="cfadeinup-inner-hero ">
                 <h2 className="hero-heading gradient-title5">
-                  Developer / Designer
+                  Websites, eCommerce, Mobile Apps and more
                 </h2>
               </div>
               <div data-scroll="" className="cfadeinup-inner-sub ">
                 <h3 className="h2">
-                  Skilled Developer, Strategic Thinker, and a quick learner
+                  I provide services using the latest technologies and methodologies
                 </h3>
               </div>
               <div className="we-text">
@@ -92,6 +92,12 @@ export default function HomeMain({ Component, pageProps }) {
                   development & digital solutions, crafting exceptional digital
                   experiences!
                 </p>
+                <Link
+                href="/contact/"
+                className="btn btn-primary"
+              >
+                Contact
+              </Link>
               </div>
             </div>
             <div className="stats-block " data-scroll data-scroll-speed="4">
@@ -99,12 +105,12 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="h2 d-block">Many Years</span>
                 <span className="body-large d-block">Years of </span>
               </div> */}
-              <div className="statistics">
+              {/* <div className="statistics">
                 <span className="h2 d-block">100s</span>
                 <span className="body-large d-block">
                   Websites &amp; projects launched
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

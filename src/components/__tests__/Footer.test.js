@@ -21,7 +21,7 @@ describe('Footer', () => {
 
     // Advance timers to simulate timeout
     act(() => {
-      jest.advanceTimersByTime(4000);
+      jest.advanceTimersByTime(10000);
     });
 
     // Modal should be in the document after the timeout
@@ -37,7 +37,7 @@ describe('Footer', () => {
 
     // Advance timers to simulate timeout
     act(() => {
-      jest.advanceTimersByTime(4000);
+      jest.advanceTimersByTime(10000);
     });
 
     // Modal should not be in the document
