@@ -66,8 +66,6 @@ export default function HomeMain({ Component, pageProps }) {
             height="308"
             className="img-fluid lazyloaded"
             decoding="async"
-            nitro-lazy-empty=""
-            id="MzY2OjE2OA==-1"
             src="images/pexels-photo-2763964.jpeg"
           ></Image>
         </div>
@@ -78,12 +76,12 @@ export default function HomeMain({ Component, pageProps }) {
             <div data-scroll="" className="">
               <div data-scroll="" className="cfadeinup-inner-hero ">
                 <h2 className="hero-heading gradient-title5">
-                  Developer / Designer
+                  Websites, eCommerce, Mobile Apps and more
                 </h2>
               </div>
               <div data-scroll="" className="cfadeinup-inner-sub ">
                 <h3 className="h2">
-                  Skilled Developer, Strategic Thinker, and a quick learner
+                  I provide services using the latest technologies and methodologies
                 </h3>
               </div>
               <div className="we-text">
@@ -92,6 +90,12 @@ export default function HomeMain({ Component, pageProps }) {
                   development & digital solutions, crafting exceptional digital
                   experiences!
                 </p>
+                <Link
+                href="/contact/"
+                className="btn btn-primary"
+              >
+                Contact
+              </Link>
               </div>
             </div>
             <div className="stats-block " data-scroll data-scroll-speed="4">
@@ -99,12 +103,22 @@ export default function HomeMain({ Component, pageProps }) {
                 <span className="h2 d-block">Many Years</span>
                 <span className="body-large d-block">Years of </span>
               </div> */}
-              <div className="statistics">
+              {/* <div className="statistics">
                 <span className="h2 d-block">100s</span>
                 <span className="body-large d-block">
                   Websites &amp; projects launched
                 </span>
-              </div>
+              </div> */}
+              <Image
+                    loading="lazy"
+                    height="400"
+                    width="400"
+                    aria-hidden="true"
+                    alt=""
+                    className="lazyloaded"
+                    decoding="async"
+                    src="/images/pho.webp"
+                  ></Image>
             </div>
           </div>
         </div>
@@ -257,8 +271,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTI3OjE5NA==-1"
                     src="/images/laravel.svg"
                   ></Image>
                 </span>
@@ -274,8 +286,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTMxOjE5Ng==-1"
                     src="images/icon-wordpress.svg"
                   ></Image>
                 </span>
@@ -290,8 +300,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTM1OjE5MA==-1"
                     src="images/icon-shopify.svg"
                   ></Image>
                 </span>
@@ -306,8 +314,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTM5OjE5MA==-1"
                     src="/images/ios.svg"
                   ></Image>
                 </span>
@@ -322,8 +328,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTQzOjE5OQ==-1"
                     src="images/microsoft-net.svg"
                   ></Image>
                 </span>
@@ -338,8 +342,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTMxOjE5Ng==-1"
                     src="images/icon-wordpress.svg"
                   ></Image>
                 </span>
@@ -354,8 +356,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTUxOjE5NA==-1"
                     src="images/client-magento.svg"
                   ></Image>
                 </span>
@@ -370,8 +370,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTMxOjE5Ng==-1"
                     src="images/icon-wordpress.svg"
                   ></Image>
                 </span>
@@ -386,8 +384,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTM1OjE5MA==-1"
                     src="images/icon-shopify.svg"
                   ></Image>
                 </span>
@@ -402,8 +398,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTQzOjE5OQ==-1"
                     src="images/microsoft-net.svg"
                   ></Image>
                 </span>
@@ -418,8 +412,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTQzOjE5OQ==-1"
                     src="images/microsoft-net.svg"
                   ></Image>
                 </span>
@@ -434,8 +426,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTMxOjE5Ng==-1"
                     src="images/icon-wordpress.svg"
                   ></Image>
                 </span>
@@ -462,8 +452,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTgxOjE3NQ==-1"
                     src="/images/nextjs.svg"
                   ></Image>
                 </span>
@@ -479,8 +467,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTg1OjE5Mw==-1"
                     src="/images/vue-js.svg"
                   ></Image>
                 </span>
@@ -496,8 +482,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTkzOjE4Nw==-1"
                     src="images/icon-react.svg"
                   ></Image>
                 </span>
@@ -528,8 +512,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="OTk3OjE4OA==-1"
                     src="images/icon-apple.svg"
                   ></Image>
                 </span>
@@ -545,8 +527,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAwMToxOTA=-1"
                     src="images/icon-android.svg"
                   ></Image>
                 </span>
@@ -562,8 +542,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAwNToxNzU=-1"
                     src="/images/nextjs.svg"
                   ></Image>
                 </span>
@@ -579,8 +557,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAwNToxNzU=-1"
                     src="/images/nextjs.svg"
                   ></Image>
                 </span>
@@ -596,8 +572,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAwNToxNzU=-1"
                     src="/images/nextjs.svg"
                   ></Image>
                 </span>
@@ -613,8 +587,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAwMToxOTA=-1"
                     src="images/icon-android.svg"
                   ></Image>
                 </span>
@@ -630,8 +602,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAwMToxOTA=-1"
                     src="images/icon-android.svg"
                   ></Image>
                 </span>
@@ -647,8 +617,6 @@ export default function HomeMain({ Component, pageProps }) {
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    nitro-lazy-empty=""
-                    id="MTAwMToxOTA=-1"
                     src="images/icon-android.svg"
                   ></Image>
                 </span>

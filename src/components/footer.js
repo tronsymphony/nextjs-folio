@@ -1,24 +1,75 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import Modal from "../components/Modal";
 import Link from "next/link";
+
+import styles from "../app/contact/contact.module.scss";
+import ContactForm from "../components/ContactForm";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
 export default function Footer() {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const modalShown = sessionStorage.getItem("modalShown");
+    if (!modalShown) {
+      const timer = setTimeout(() => {
+        setShowModal(true);
+        sessionStorage.setItem('modalShown', 'true');
+      }, 10000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
+      <Modal show={showModal} onClose={closeModal} data-scroll-section>
+        <div className="content">
+          <h2>Get in touch for a free audit.</h2>
+          <p>
+            Let me create a personalized list of enhancements to boost your
+            brand&apos;s online presence. I&apos;ll help with usability, SEO, speed, and
+            design. Get in touch to start improving your site today!
+          </p>
+        </div>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <ContactForm></ContactForm>
+        </ThemeProvider>
+      </Modal>
+
       <section className="in-touch" data-scroll-section>
         <div className="bg-text">
-          <span>nitya</span><span>nitya</span><span>nitya</span><span>nitya</span><span>nitya</span>
+          <span>nitya</span>
+          <span>nitya</span>
+          <span>nitya</span>
+          <span>nitya</span>
+          <span>nitya</span>
         </div>
 
         <div className="container">
           <div className="Footer_content__8dWV_">
-            <h2 className="h2"><b>Reach Out</b></h2>
+            <h2 className="h2">
+              <b>Reach Out</b>
+            </h2>
             <p>
-              Im always on the lookout for <span>great clients</span> who are <span>passionate</span>
+              Im always on the lookout for <span>great clients</span> who are{" "}
+              <span>passionate</span>
               about their <span>business and customers</span>. Get in touch
             </p>
-            <Link
-            href="/contact"
-            className="btn_link btn_link--light"
-            >
-            Reach Out
+            <Link href="/contact" className="btn_link btn_link--light">
+              Reach Out
               <span>
                 <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -78,7 +129,6 @@ export default function Footer() {
                 </Link>
               </div>
               <address>Los Angeles, California 90066</address>
-
             </div>
           </div>
           <div className="container">

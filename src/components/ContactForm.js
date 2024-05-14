@@ -61,9 +61,9 @@ const ContactForm = () => {
       >
 
         <TextField
-          id="outlined-basic"
+          id="standard-basic"
           label="Your Name"
-          variant="outlined"
+          variant="standard"
           name="name"
           value={formData.name}
           onChange={handleChange}
@@ -77,14 +77,14 @@ const ContactForm = () => {
           label="Your Email"
           value={formData.email}
           onChange={handleChange}
-          variant="outlined"
+          variant="standard"
           fullWidth
           required
         />
 
         <TextField
           label="Your Website URL"
-          variant="outlined"
+          variant="standard"
           name="url"
           type="text"
           value={formData.url}
@@ -99,14 +99,14 @@ const ContactForm = () => {
           label="Your Message"
           value={formData.message}
           onChange={handleChange}
-          variant="outlined"
+          variant="standard"
           fullWidth
         />
 
         <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
-        <Button variant="outlined" type="submit">
-          Send
+        <Button variant="standard" type="submit" className="btn btn-primary">
+          Submit
         </Button>
       </Box>
     </div>

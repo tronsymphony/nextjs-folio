@@ -21,7 +21,7 @@ test('renders contact form with all fields', () => {
     expect(screen.getByLabelText(/Your Email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Your Website URL/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Your Message/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /send/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument();
 });
 
 
@@ -48,7 +48,7 @@ test('submits the form successfully and shows alert', async () => {
     fireEvent.change(screen.getByLabelText(/Your Name/i), { target: { value: 'John Doe' } });
     fireEvent.change(screen.getByLabelText(/Your Email/i), { target: { value: 'john@example.com' } });
     fireEvent.change(screen.getByLabelText(/Your Message/i), { target: { value: 'Hello, this is a test message.' } });
-    fireEvent.click(screen.getByRole('button', { name: /send/i }));
+    fireEvent.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {
         expect(global.fetch).toHaveBeenCalledTimes(1);

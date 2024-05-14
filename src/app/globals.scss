@@ -2628,6 +2628,13 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
     display: inline-block;
     border: 2px solid transparent;
 
+    &[type="submit"]{
+      margin: 20px 10px;
+      min-width: 0;
+      padding: 15px 20px;
+      border-radius: 0;
+    }
+
     &:hover {
       background-color: #16171a;
       border: 2px solid #b4e300;
