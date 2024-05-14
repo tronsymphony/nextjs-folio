@@ -46,4 +46,27 @@ describe('Modal', () => {
 
         expect(handleClose).toHaveBeenCalledTimes(1);
     });
+
+    test('prevents body scroll when modal is open', () => {
+        render(
+            <Modal show={true} onClose={() => { }}>
+                <h2>Modal Title</h2>
+                <p>This is the content of the modal.</p>
+            </Modal>
+        );
+        expect(document.body.style.overflow).toBe('hidden');
+    });
+
+    test('allows body scroll when modal is closed', () => {
+        render(
+            <Modal show={false} onClose={() => { }}>
+                <h2>Modal Title</h2>
+                <p>This is the content of the modal.</p>
+            </Modal>
+        );
+        expect(document.body.style.overflow).toBe('');
+    })
+
+
+
 });

@@ -23,7 +23,7 @@ export default function Footer() {
       const timer = setTimeout(() => {
         setShowModal(true);
         sessionStorage.setItem('modalShown', 'true');
-      }, 1);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, []);
