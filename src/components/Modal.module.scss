@@ -1,0 +1,52 @@
+/* components/Modal.module.css */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(255 255 255 / 50%);
+  background: radial-gradient(50.03% 50.03% at 50% 49.97%, rgba(22, 23, 26, 0) 0, #0040ff1c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: radial-gradient(50.03% 50.03% at 50% 49.97%, rgb(22 23 26) 0, rgb(0 14 57) 100%);
+  border-radius: 2px;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 60px 50px;
+  max-width: 1100px;
+
+
+}
+
+.modalContent {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-transform: capitalize;
+  }
+
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
