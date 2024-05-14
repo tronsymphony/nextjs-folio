@@ -7,6 +7,8 @@ import styles from "../app/contact/contact.module.scss";
 import ContactForm from "../components/ContactForm";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import BackToTopButton from '../components/BackToTopButton';
+
 
 const darkTheme = createTheme({
   palette: {
@@ -142,6 +144,7 @@ export default function Footer() {
           </div>
         </section>
       </footer>
+      <BackToTopButton />
     </>
   );
 }
