@@ -143,8 +143,9 @@ export default function Footer() {
             </nav>
           </div>
         </section>
+        <BackToTopButton  />
       </footer>
-      <BackToTopButton />
+      
     </>
   );
 }
