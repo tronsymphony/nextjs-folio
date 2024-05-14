@@ -1,7 +1,7 @@
 // pages/Footer.test.js
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import Footer from './index'; // Update the path if necessary
+import Footer from '../footer'; 
 import '@testing-library/jest-dom/extend-expect';
 
 jest.useFakeTimers();
