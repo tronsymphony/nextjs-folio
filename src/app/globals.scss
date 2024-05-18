@@ -2640,6 +2640,8 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
 
 .home_work {
+  position: relative;
+  z-index: 2;
   .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -2840,6 +2842,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
       display: flex;
     }
   }
+ 
 }
 
 .client-slider {

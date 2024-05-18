@@ -15,9 +15,9 @@ export default function HomeMain({ Component, pageProps }) {
                 aria-hidden="true"
                 role="img"
                 loop
-                poster='./images/pexels-photo-1426718.webp'
+                poster='/images/pexels-photo-1426718.webp'
               >
-                <source src="images/ocean.mp4"></source>
+                <source src="/images/ocean.mp4"></source>
               </video>
 
               <svg
@@ -66,7 +66,7 @@ export default function HomeMain({ Component, pageProps }) {
             height="308"
             className="img-fluid lazyloaded"
             decoding="async"
-            src="images/PXL_20231015_163749011.MP.webp"
+            src="/images/PXL_20231015_163749011.MP.webp"
           ></Image>
         </div>
       </section>
@@ -267,6 +267,7 @@ export default function HomeMain({ Component, pageProps }) {
                     loading="lazy"
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -282,11 +283,12 @@ export default function HomeMain({ Component, pageProps }) {
                     loading="lazy"
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-wordpress.svg"
+                    src="/images/icon-wordpress.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Wordpress</span>
@@ -296,11 +298,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-shopify.svg"
+                    src="/images/icon-shopify.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Shopify</span>
@@ -310,6 +313,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -324,11 +328,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/microsoft-net.svg"
+                    src="/images/microsoft-net.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Microsoft .NET</span>
@@ -338,11 +343,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-wordpress.svg"
+                    src="/images/icon-wordpress.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Wordpress</span>
@@ -352,11 +358,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/client-magento.svg"
+                    src="/images/client-magento.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Magento</span>
@@ -366,11 +373,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-wordpress.svg"
+                    src="/images/icon-wordpress.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Wordpress</span>
@@ -380,11 +388,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-shopify.svg"
+                    src="/images/icon-shopify.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Shopify</span>
@@ -394,11 +403,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/microsoft-net.svg"
+                    src="/images/microsoft-net.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Microsoft .Net</span>
@@ -408,11 +418,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/microsoft-net.svg"
+                    src="/images/microsoft-net.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Microsoft .Net</span>
@@ -422,11 +433,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-wordpress.svg"
+                    src="/images/icon-wordpress.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Wordpress</span>
@@ -448,6 +460,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -463,6 +476,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -478,11 +492,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-react.svg"
+                    src="/images/icon-react.svg"
                   ></Image>
                 </span>
                 <span className="d-block">React JS</span>
@@ -493,6 +508,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -508,11 +524,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-apple.svg"
+                    src="/images/icon-apple.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Apple iOS</span>
@@ -523,11 +540,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-android.svg"
+                    src="/images/icon-android.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Android</span>
@@ -538,6 +556,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -553,6 +572,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -568,6 +588,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
@@ -583,11 +604,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-android.svg"
+                    src="/images/icon-android.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Android</span>
@@ -598,11 +620,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-android.svg"
+                    src="/images/icon-android.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Android</span>
@@ -613,11 +636,12 @@ export default function HomeMain({ Component, pageProps }) {
                   <Image
                     height="80"
                     width="62"
+                    style={{ width: '62px', height: '80px' }}
                     aria-hidden="true"
                     alt=""
                     className="lazyloaded"
                     decoding="async"
-                    src="images/icon-android.svg"
+                    src="/images/icon-android.svg"
                   ></Image>
                 </span>
                 <span className="d-block">Android</span>
@@ -674,7 +698,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <div className="casestudy-image-wrapper ">
                     <Image
                       loading="lazy"
-                      src="images/god.jpg"
+                      src="/images/god.jpg"
                       alt="Godaddy"
                       height="370"
                       width="740"
@@ -708,7 +732,7 @@ export default function HomeMain({ Component, pageProps }) {
                   <div className="casestudy-image-wrapper ">
                     <Image
                       loading="lazy"
-                      src="images/bulletproof.jpg"
+                      src="/images/bulletproof.jpg"
                       alt="Bulletproof Screenshot"
                       height="370"
                       width="740"
@@ -732,7 +756,7 @@ export default function HomeMain({ Component, pageProps }) {
             width="522"
             height="560"
             className="image-home_look"
-            src="images/PXL_20231021_180041403.MP.webp"
+            src="/images/PXL_20231021_180041403.MP.webp"
           ></Image>
         </div>
         <div className="container">
@@ -797,7 +821,7 @@ export default function HomeMain({ Component, pageProps }) {
                 loading="lazy"
                 width={200}
                 height={200}
-                src="./images/googlepagespeed.svg"
+                src="/images/googlepagespeed.svg"
                 alt="Google Pagespeed Insights Link"></Image>
               <span className="text">Google Pagespeed Insights</span>
             </Link>
@@ -810,7 +834,7 @@ export default function HomeMain({ Component, pageProps }) {
                 loading="lazy"
                 width={200}
                 height={200}
-                src="images/Google__G__logo.svg"
+                src="/images/Google__G__logo.svg"
                 alt="Google Search Engine Optimized Link"></Image>
 
               <span className="text">Google Search Engine Optimized</span>
