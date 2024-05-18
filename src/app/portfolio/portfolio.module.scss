@@ -83,6 +83,7 @@
 .portfolioItems {
     position: relative;
     z-index: 1;
+    padding: 90px 0;
 
     .container {
         max-width: 1100px;
@@ -95,6 +96,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 90px 60px;
+
+        @media screen and (max-width:900px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     .workGridItem {
@@ -102,10 +107,12 @@
         .workGridItemImage {
             width: 100%;
             height: 400px;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
             border-radius: 5px;
+            background-color: #fff;
             margin-bottom: 20px;
+            padding: 20px;
         }
 
         a {
@@ -113,6 +120,10 @@
             position: relative;
             flex-direction: column;
             gap: 1rem;
+
+            .btn_link {
+                width: 30px;
+            }
         }
 
         .title {
@@ -120,8 +131,6 @@
             font-weight: 700;
         }
 
-        .description {
-            font-size: 1.4rem;
-        }
+        .description {}
     }
 }
