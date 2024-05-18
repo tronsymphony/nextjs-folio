@@ -71,6 +71,9 @@ export default function HomeFollow() {
           <Link href="/about">
             <span>About</span>
           </Link>
+          <Link href="/portfolio">
+            <span>Portfolio</span>
+          </Link>
           <Link href="/services">
             <span>Services</span>
           </Link>
