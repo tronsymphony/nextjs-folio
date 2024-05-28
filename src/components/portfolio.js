@@ -89,10 +89,44 @@ export default function Portfolio() {
 
       <section data-scroll-section className={styles.portfolioItems}>
         <div className={styles.container}>
-          <h2 className={styles.title}></h2>
+          <h2 className={styles.title}>Sample project structures</h2>
           <div className={styles.workGrid}>
+          <div className={styles.workGridItem}>
+              <Link href="https://github.com/tronsymphony/vnzla/blob/main/wp-content/themes/banescocontigo/blocks/src/accordions/edit.js">
+                <Image
+                  loading="lazy"
+                  alt="NodeJS"
+                  width="294"
+                  height="308"
+                  className={styles.workGridItemImage}
+                  src="/images/wp.jpg"
+                ></Image>
+                <span className={styles.title}>Wordpress</span>
+                <span className={styles.description}>
+                 Wordpress ReactJS Blocks
+                </span>
+                <span class="btn_link btn_link--light" href="/contact/">View Project<span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span></span>
+              </Link>
+            </div>
             <div className={styles.workGridItem}>
               <Link href="https://github.com/tronsymphony/nextjs-folio">
+                <Image
+                  loading="lazy"
+                  alt="NodeJS"
+                  width="294"
+                  height="308"
+                  className={styles.workGridItemImage}
+                  src="/images/nextjs.jpg"
+                ></Image>
+                <span className={styles.title}>Nextjs Backend</span>
+                <span className={styles.description}>
+                  NextJS SSR frontend for my personal site.
+                </span>
+                <span class="btn_link btn_link--light" href="/contact/">View Project<span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span></span>
+              </Link>
+            </div>
+            <div className={styles.workGridItem}>
+              <Link href="https://github.com/tronsymphony/nestjsbackendapi">
                 <Image
                   loading="lazy"
                   alt="NodeJS"
@@ -121,45 +155,13 @@ export default function Portfolio() {
                 ></Image>
                 <span className={styles.title}>Laravel Backend</span>
                 <span className={styles.description}>
-                  User authentication along with session management api.
+                Project to Showcase Coming Soon
                 </span>
                 <span class="btn_link btn_link--light" href="/contact/">View Project<span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span></span>
               </Link>
             </div>
-            <div className={styles.workGridItem}>
-              <Link href="https://github.com/tronsymphony/nextjs-folio">
-                <Image
-                  loading="lazy"
-                  alt="NodeJS"
-                  width="294"
-                  height="308"
-                  className={styles.workGridItemImage}
-                  src="/images/nextjs.jpg"
-                ></Image>
-                <span className={styles.title}>Nextjs Backend</span>
-                <span className={styles.description}>
-                  User authentication along with session management api.
-                </span>
-                <span class="btn_link btn_link--light" href="/contact/">View Project<span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span></span>
-              </Link>
-            </div>
-            <div className={styles.workGridItem}>
-              <Link href="https://github.com/tronsymphony/vnzla/blob/main/wp-content/themes/banescocontigo/blocks/src/accordions/edit.js">
-                <Image
-                  loading="lazy"
-                  alt="NodeJS"
-                  width="294"
-                  height="308"
-                  className={styles.workGridItemImage}
-                  src="/images/wp.jpg"
-                ></Image>
-                <span className={styles.title}>Wordpress</span>
-                <span className={styles.description}>
-                  User authentication along with session management api.
-                </span>
-                <span class="btn_link btn_link--light" href="/contact/">View Project<span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span></span>
-              </Link>
-            </div>
+            
+           
             <div className={styles.workGridItem}>
               <Link href="https://github.com/tronsymphony">
                 <Image
@@ -172,7 +174,7 @@ export default function Portfolio() {
                 ></Image>
                 <span className={styles.title}>Shopify</span>
                 <span className={styles.description}>
-                  User authentication along with session management api.
+                  Project to Showcase Coming Soon
                 </span>
                 <span class="btn_link btn_link--light" href="/contact/">View Project<span><svg width="8" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z" fill="currentColor"></path></svg></span></span>
               </Link>
