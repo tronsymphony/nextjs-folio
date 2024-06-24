@@ -117,7 +117,7 @@ export default function HomeMain({ Component, pageProps }) {
                 alt=""
                 className="lazyloaded"
                 decoding="async"
-                src="/images/pho.webp"
+                src="/images/pexels-joshsorenson-1714208.jpg"
               ></Image>
             </div>
           </div>
