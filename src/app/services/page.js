@@ -12,7 +12,7 @@ export default function Home() {
 }
 
 export const metadata = {
-  metadataBase: new URL('https://wordpresspro.biz'),
+  metadataBase: new URL('http://casa-dev.com'),
   alternates: {
     canonical: '/services',
     languages: {

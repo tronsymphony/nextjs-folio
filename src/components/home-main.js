@@ -42,7 +42,7 @@ export default function HomeMain({ Component, pageProps }) {
               </svg>
             </div>
             <h1 className="welcome_h3" data-scroll data-scroll-speed="2">Welcome, I am Nitya, a full-stack developer in Los Angeles, CA</h1>
-
+            <span className="welcome_h3_role" data-scroll data-scroll-speed="2">Currently in search of employment opportunities or freelance projcts.</span>
           </div>
           <div className="Home_btn_content__PvvjD"></div>
         </div>
@@ -117,7 +117,7 @@ export default function HomeMain({ Component, pageProps }) {
                 alt=""
                 className="lazyloaded"
                 decoding="async"
-                src="/images/pho.webp"
+                src="/images/pexels-joshsorenson-1714208.jpg"
               ></Image>
             </div>
           </div>

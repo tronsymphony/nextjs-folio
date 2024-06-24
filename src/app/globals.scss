@@ -1969,6 +1969,26 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   }
 }
 
+.welcome_h3_role{
+  display: flex;
+  opacity: 0;
+  transform: translateY(100%);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transition: opacity .8s cubic-bezier(.215, .61, .355, 1), transform .8s cubic-bezier(.215, .61, .355, 1);
+
+  &.is-inview {
+    opacity: 1;
+    transform: none;
+    transition-delay: .4s;
+  }
+
+  @media screen and (max-width:900px) {
+    font-size: 1rem;
+    margin: 10px 0 0;
+  }
+}
+
 .svg-mask.cfadeinup-hero {
   display: block;
   -webkit-clip-path: url(#text-path);
