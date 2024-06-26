@@ -58,7 +58,7 @@ export default function HomeFollow() {
         <div className="logo">
           <Link href="/">
             Casa Dev.
-            {/* <div className="sub">Web Design,  Marketer <br></br> & App Developer</div> */}
+            <div className="sub">Web Design,  Marketer <br></br> & App Developer</div>
           </Link>
         </div>
 

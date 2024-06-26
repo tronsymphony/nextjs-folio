@@ -2156,7 +2156,10 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 }
 
 /* // about */
-
+.about_data{
+  position: relative;
+  z-index: 123;
+}
 .home_about {
   position: relative;
   display: grid;
@@ -2263,7 +2266,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 }
 
 .home_info {
-  padding: 90px 0px 90px;
+  padding: 90px 0px 180px;
 
   @media screen and (max-width:900px) {
     padding: 90px 0px 20px;
@@ -3257,6 +3260,7 @@ section.in-touch {
 }
 
 .home_pricing {
+  padding-bottom: 180px;
   @media screen and (max-width:900px) {
     padding: 100px 0;
   }
