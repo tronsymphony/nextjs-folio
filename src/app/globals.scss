@@ -1928,17 +1928,20 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
     @media screen and (max-width:900px) {
       font-size: 1.4rem;
+      min-height:50px;
     }
   }
 
   nav.links {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     font-size: 14px;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     text-transform: capitalize;
+    justify-content: flex-start;
   }
 }
 
@@ -2122,6 +2125,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   @media screen and (max-width:900px) {
     width: 120px;
     z-index: 900;
+    top: 50px;
   }
 }
 
