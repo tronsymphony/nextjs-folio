@@ -34,10 +34,10 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Nitya Hoyos Software Engineer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-    description: "Nitya Hoyos is an experienced Full-Stack Developer from Los Angeles, specializing in WordPress, Laravel, ReactJS, NodeJS, and Shopify. I focus on creating custom digital solutions to help grow your business. Looking to boost your online presence? Get in touch for personalized development services.",
+    title: "Casa Dev {Web Design & Marketing} | Santa Monica, Los Angeles",
+    description: "Casa Dev is a Los Angeles based Website Developer and Designer specializing in producing hand coded websites . I focus on delivering ROI-driven solutions that efficiently and effectively grow your business.",
     url: 'http://casa-dev.com',
-    siteName: 'Nitya Hoyos',
+    siteName: 'Casa Dev',
     images: [
       {
         url: 'https://nextjs.org/images/og.jpg', // Must be an absolute URL
@@ -48,6 +48,5 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
   },
-  title: "Nitya Hoyos Software Engineer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-  description: "Nitya Hoyos is an experienced Full-Stack Developer from Los Angeles, specializing in WordPress, Laravel, ReactJS, NodeJS, and Shopify. I focus on creating custom digital solutions to help grow your business. Looking to boost your online presence? Get in touch for personalized development services.",
+  title: "Casa Dev {Web Design & Marketing} | Santa Monica, Los Angeles",
 };
