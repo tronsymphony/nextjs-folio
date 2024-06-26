@@ -6,12 +6,7 @@ export default function HomeFollow() {
     <>
       <section className="Home_followme__eTWWW" data-scroll-section>
         <div className="Home_phone__DAGCv">
-          <Link
-          target="_blank"
-          href="https://github.com/tronsymphony/nextjs-folio"
-          >
-          Made with ReactJS, NextJS. Hosted on a Raspberry Pi
-          </Link>
+          {/* <Link target="_blank" href="https://github.com/tronsymphony/nextjs-folio">Made with ReactJS, NextJS. Hosted on a Raspberry Pi</Link> */}
         </div>
         <div>
           <div className="Home_followlabel__I422i">Follow Me</div>
@@ -62,8 +57,8 @@ export default function HomeFollow() {
       <span className="page_title" data-scroll-section>
         <div className="logo">
           <Link href="/">
-            Nitya Hoyos
-            <div className="sub">Website & App Developer</div>
+            Casa Dev.
+            {/* <div className="sub">Web Design,  Marketer <br></br> & App Developer</div> */}
           </Link>
         </div>
 
@@ -76,6 +71,9 @@ export default function HomeFollow() {
           </Link>
           <Link href="/services">
             <span>Services</span>
+          </Link>
+          <Link href="/pricing">
+            <span>Pricing</span>
           </Link>
           <Link href="/contact">
             <span>Contact</span>

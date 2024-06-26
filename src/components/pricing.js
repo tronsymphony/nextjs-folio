@@ -39,7 +39,7 @@ export default function About() {
                 </div>
                 <div className={styles.pricingTablePrice}>
                   <span className="price-number">
-                    $100{" "}
+                    $150
                   </span>
                 </div>
                 <div className={styles.pricingTableFeatures}>
