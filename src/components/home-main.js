@@ -44,10 +44,10 @@ export default function HomeMain() {
               </svg>
             </div>
             <h1 className="welcome_h3" data-scroll data-scroll-speed="0">
-            Business Web Design + Development and Digital Marketing
+              I am a fullstack developer in Los Angeles CA
             </h1>
             <span className="welcome_h3_role" data-scroll data-scroll-speed="0">
-              No page builders or wix - I offer 100% custom-coded websites and apps with superior results starting at <b> $150/mo</b>.
+              I&#39;ve been developing various projects in a variety of languages such as PHP, JavaScript and C# for many years, I have experience with all types of industries and web applications.
             </span>
           </div>
           <div className="Home_btn_content__PvvjD"></div>
@@ -59,9 +59,11 @@ export default function HomeMain() {
             Crafting Digital Solutions in Los Angeles
           </h2>
           <p className="ptitle">
-          Today&apos;s businesses, regardless of size, are increasingly marketing-savvy, leveraging current trends to stay competitive and relevant. To truly compete in the digital arena, embracing digital marketing is essential, not optional. Platforms such as Google, Facebook, Instagram, and LinkedIn are critical arenas for your business to make an impact.
+            I&#39;ve created applications using all sorts of web technologies. Some of those range from Wordpress, Shopify CMS systems to frameworks such as NextJS, Laravel, and Umbraco.
           </p>
-          
+          <div className="ptitle">
+            I have a passion for learning and am currently pursuing IT certifications such as CCNA and Comptia SEC+.
+          </div>
         </div>
         <div data-scroll data-scroll-speed="2">
           <Image
@@ -81,13 +83,17 @@ export default function HomeMain() {
             <div data-scroll="" className="">
               <div data-scroll="" className="cfadeinup-inner-hero ">
                 <h2 className="hero-heading gradient-title5">
-                  The Dropout Cyclery
+                  Safe Streets Map
                 </h2>
               </div>
               <div data-scroll="" className="cfadeinup-inner-sub ">
                 <p className="ptitle">
-                The Dropout, an e-commerce platform, offers a comprehensive online experience. This dedicated portal ensures seamless management of their sales, inventory, and customer interactions, enhancing their operational efficiency and business growth.
+                  An app designed to assist commuters in their daily commutes and errands.
                 </p>
+                <p className="tech-title">
+                  Tech stack: ReactJS, NextJS, PostgreSQL and NodeJS. 
+                </p>
+                <div className="tech-title">Includes a native ReactJS app</div>
               </div>
               <div className="we-text">
                 
@@ -105,17 +111,13 @@ export default function HomeMain() {
                 alt=""
                 className="lazyloaded"
                 decoding="async"
-                src="/images/dodesktop.jpg"
+                src="/images/stm.jpg"
               ></Image>
             
             </div>
           </div>
         </div>
       </section>
-
-      <HomePricing></HomePricing>
-
-
 
       <section className="home_skillset" data-scroll-section>
         <div className="container">
