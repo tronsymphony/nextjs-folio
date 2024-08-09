@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import HomePricing from "../components/home-pricing"
+// import HomePricing from "../components/home-pricing"
 import HomeDot from "../components/homepage-threedot"
 export default function HomeMain() {
   return (
@@ -10,16 +10,11 @@ export default function HomeMain() {
       </section>
       <section className="Home_welcome__aWiKA" data-scroll-section>
         <div className="Home_container__97eC3">
-            <div data-scroll="" className="svg-mask cfadeinup-hero ">
-             
-            <h1 className="welcome_h3 gradient-title5" data-scroll data-scroll-speed="0">
-              I am a fullstack developer in Los Angeles CA
-            </h1>
-
+          <div data-scroll="" className="svg-mask cfadeinup-hero ">
+            <h1 className="welcome_h3 gradient-title5" data-scroll data-scroll-speed="0">I am a fullstack developer in Los Angeles CA</h1>
             <span className="welcome_h3_role" data-scroll data-scroll-speed="0">
               I&#39;ve been developing various projects in a variety of languages such as PHP, JavaScript and C# for many years, I have experience with all types of industries and web applications.
             </span>
-
           </div>
           <div className="Home_btn_content__PvvjD"></div>
         </div>
@@ -62,12 +57,12 @@ export default function HomeMain() {
                   An app designed to assist commuters in their daily commutes and errands.
                 </p>
                 <p className="tech-title">
-                  Tech stack: ReactJS, NextJS, PostgreSQL and NodeJS. 
+                  Tech stack: ReactJS, NextJS, PostgreSQL and NodeJS.
                 </p>
                 <div className="tech-title">Includes a native ReactJS app</div>
               </div>
               <div className="we-text">
-                
+
                 <Link href="/contact/" className="btn btn-primary">
                   Get in Touch
                 </Link>
@@ -84,7 +79,7 @@ export default function HomeMain() {
                 decoding="async"
                 src="/images/stm.jpg"
               ></Image>
-            
+
             </div>
           </div>
         </div>
@@ -183,7 +178,7 @@ export default function HomeMain() {
               <div className="col-xl-5 col-lg-6 desc-text">
 
                 <span>
-                Paid advertising offers key opportunities to drive impactful results. Through Google Ads, you can target potential customers at the exact moment they are searching for your products or services. Social media campaigns also allow precise targeting based on demographics, geographic locations, and purchasing behaviors. With over 3.5 billion Google searches daily and consumers spending nearly an hour on Facebook, the era of billboards and radio spots is long gone. Today, an effective online presence is crucial; merely having a website isn&apos;t enough.
+                  Paid advertising offers key opportunities to drive impactful results. Through Google Ads, you can target potential customers at the exact moment they are searching for your products or services. Social media campaigns also allow precise targeting based on demographics, geographic locations, and purchasing behaviors. With over 3.5 billion Google searches daily and consumers spending nearly an hour on Facebook, the era of billboards and radio spots is long gone. Today, an effective online presence is crucial; merely having a website isn&apos;t enough.
 
                 </span>
               </div>

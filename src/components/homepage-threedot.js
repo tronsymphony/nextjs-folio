@@ -1,6 +1,6 @@
 'use client'
 import { useRef, useState } from 'react'
-import { Canvas, useThree } from '@react-three/fiber'
+import { Canvas,useFrame, useThree } from '@react-three/fiber'
 // import { Physics, RigidBody } from '@react-three/rapier'
 
 
@@ -28,13 +28,11 @@ export default function HomeDot() {
     return (
         <>
             <div ref={ref} className="dotcontainer">
-                <div className="dottext">
-                    Full stack dev nitya nanda hoyos. apps, ecommerce, sites
-                </div>
+                <div className="dottext">dev nitya nanda hoyos laravel wordpress shopify apps ecommerce php javascript react dev nitya nanda hoyos laravel wordpress shopify apps ecommerce php javascript react  </div>
                 <Canvas
                     shadows
                     frameloop="demand"
-                    camera={{ position: [0, 0, 4] }}
+                    camera={{ position: [0, 0, 4], fov: 105 }}
                     // camera={{ position: [-10, 0,22], fov: 45 }}
                     // camera={{ position: [5, 5, 5], fov: 75, up: [0, 0, 2]}}
                     style={{ pointerEvents: 'none' }}
@@ -43,10 +41,14 @@ export default function HomeDot() {
                     <ambientLight intensity={1} />
                     <directionalLight position={[10, 10, 10]} angle={0.15} penumbra={1} castShadow shadow-mapSize={[2024, 2024]} />
                     <pointLight position={[10, 0, 0]} />
-                    <Box position={[1, 1.5, 0]}  />
+                    <Box position={[1, 2.5, .5]} frequency={1.5}  />
+                    <Box position={[1, 1.5, .5]}  frequency={2} />
+                    <Box position={[-0.5, 1.8, .5]} frequency={.5} />
+                    <Box position={[-1.5, 2.8, 0]} frequency={3} />
                     {/* <Model position={[-.4, 1, 0]} scale={[0.5, 0.5, 0.5]} /> */}
-                    <Box position={[.5, -.5, 0]} />
-                    <Shadows position={[1, 0, -0.1]} />
+
+
+                    <Shadows position={[0, 0, 0]} />
 
                     {/* <Physics timeStep="vary">
                         <KeyboardControls map={keyboardMap}>
@@ -69,12 +71,28 @@ export default function HomeDot() {
 
 
 
-function Box(props) {
+
+function Box({ frequency, ...props }) {
     const ref = useRef()
     const [hovered, hover] = useState(false)
+    const [scaleX, setScaleX] = useState(0.1) // Start with a small height
+
+    useFrame((state, delta) => {
+        if (!hovered) {
+        setScaleX(1 + Math.sin( frequency) * 1) // Oscillate between 1 and 3
+        }
+    })
+
     return (
-        <mesh {...props} castShadow ref={ref} onPointerOver={(event) => hover(true)} onPointerOut={(event) => hover(false)}>
-            <boxGeometry args={[1, .5, 2]} />
+        <mesh 
+            {...props} 
+            castShadow 
+            ref={ref} 
+            onPointerOver={() => hover(true)} 
+            onPointerOut={() => hover(false)} 
+            scale={[1, 1, scaleX]}
+            >
+            <boxGeometry args={[.3, .5, 1]} />
             <meshStandardMaterial color={hovered ? 'yellow' : '#b4e300'} />
         </mesh>
     )
@@ -84,7 +102,7 @@ function Shadows(props) {
     const { viewport } = useThree()
     return (
         <mesh receiveShadow scale={[viewport.width, viewport.height, 1]} {...props}>
-            <planeGeometry />
+            <planeGeometry args={[10, 10]}  />
             <shadowMaterial transparent opacity={0.5} />
         </mesh>
     )

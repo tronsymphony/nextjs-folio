@@ -950,7 +950,7 @@ html {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: #fff;
   /* background: linear-gradient(to bottom, transparent, #0e1d2d) rgb(var(--background-start-rgb)); */
   background-color: #16171a;
   font-size: 1rem;
@@ -974,7 +974,7 @@ h2 {
 
 h3 {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 a {
@@ -1313,10 +1313,11 @@ img {
   }
 
   .dottext {
-    line-height: 1em;
+    line-height: .8;
     text-align: left;
-    font-size: 12vh;
-    word-break: break-word;
+    font-size: 10vh;
+    // word-break: break-word;
+    word-break: break-all;
     position: absolute;
     top: 0;
     left: 0;
@@ -1326,6 +1327,7 @@ img {
     font-weight: 900;
     display: flex;
     align-items: center;
+    color: #ffffff30;
     justify-content: center;
     text-align: right;
 
@@ -1586,6 +1588,7 @@ section.Home_followme__eTWWW {
   width: 100%;
   padding: 5px 50px;
   border-bottom: 1px solid #eeeeee24;
+  background-color: #16171a;
 
   @media screen and (max-width:900px) {
     padding: 5px 20px;
@@ -2253,7 +2256,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 
 .title {
   font-size: calc(32px + 22 * ((100vw - 375px) / 1065));
-  font-weight: 600;
+  font-weight: 900;
   line-height: 1.19;
   letter-spacing: -.778846px;
 }
@@ -2301,7 +2304,7 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   background-clip: text;
   -webkit-background-clip: text;
   font-size: 4rem;
-  font-weight: 600;
+  font-weight: 900;
   line-height: 1.2;
   letter-spacing: -4px;
   margin: 0 0 20px;
@@ -2508,7 +2511,6 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
 }
 
 .home_look h2 {
-  font-weight: 600;
   line-height: 1.19;
   letter-spacing: -.778846px;
   margin-bottom: 40px;
@@ -2861,10 +2863,8 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
     color: transparent;
     background: linear-gradient(90deg, #a2aaf0, #a88fef 50.56%, #cd32e3);
     background-clip: border-box;
-    background-clip: border-box;
     background-clip: text;
     -webkit-background-clip: text;
-    font-weight: 600;
     line-height: 1.2;
     letter-spacing: -4px;
     font-size: 4rem;
@@ -3029,7 +3029,6 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   background: linear-gradient(90deg, #e1ff00, #1cc574, #00bd84);
   background-clip: text;
   -webkit-background-clip: text;
-  font-weight: 600;
   line-height: 1.133;
   letter-spacing: -1.25px;
   -webkit-text-fill-color: transparent;
@@ -3166,13 +3165,11 @@ section.project-output {
     background-clip: text;
     -webkit-background-clip: text;
     font-size: 4rem;
-    font-weight: 600;
     line-height: 1.2;
     letter-spacing: -4px;
     margin: 0 0 20px;
     word-break: break-word;
     padding: 0 0;
-    font-weight: 600;
     line-height: 1.19;
     letter-spacing: -0.778846px;
 
