@@ -13,7 +13,7 @@ export default function Home() {
 }
 
 export const metadata = {
-  metadataBase: new URL('http://casa-dev.com'),
+  metadataBase: new URL("https://casa-dev.com"),
   alternates: {
     canonical: '/contact',
     languages: {

@@ -1,96 +1,90 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 // import HomePricing from "../components/home-pricing"
-import HomeDot from "../components/homepage-threedot"
+import HomeDot from "./homepage-threedot";
+// import { useEffect } from "react";
+import ContactForm from "./ContactForm";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+// const HubSpotForm = ({ portalId, formId, targetId }) => {
+//   useEffect(() => {
+//     const loadHubSpotForm = () => {
+//       if (window.hbspt) {
+//         window.hbspt.forms.create({
+//           portalId,
+//           formId,
+//           target: `#${targetId}`,
+//         });
+//       }
+//     };
+
+//     // Check if the HubSpot script is already added
+//     if (
+//       !document.querySelector(
+//         'script[src="//js.hsforms.net/forms/embed/v2.js"]'
+//       )
+//     ) {
+//       const script = document.createElement("script");
+//       script.src = "//js.hsforms.net/forms/embed/v2.js";
+//       script.type = "text/javascript";
+//       script.charset = "utf-8";
+//       script.onload = loadHubSpotForm;
+//       document.body.appendChild(script);
+//     } else {
+//       loadHubSpotForm();
+//     }
+//   }, [portalId, formId, targetId]);
+
+//   return <div id={targetId}></div>;
+// };
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 export default function HomeMain() {
   return (
-    <section className="Home_main__OVLM4" >
+    <section className="Home_main__OVLM4">
       <section className="threedot" data-scroll-section>
         <HomeDot />
       </section>
       <section className="Home_welcome__aWiKA" data-scroll-section>
         <div className="Home_container__97eC3">
           <div data-scroll="" className="svg-mask cfadeinup-hero ">
-            <h1 className="welcome_h3 gradient-title5" data-scroll data-scroll-speed="0">I am a fullstack developer in Los Angeles CA</h1>
+            <h1
+              className="welcome_h3 gradient-title5"
+              data-scroll
+              data-scroll-speed="0"
+            >
+              Custom Websites and Apps That Drive Growth.
+            </h1>
             <span className="welcome_h3_role" data-scroll data-scroll-speed="0">
-              I&#39;ve been developing various projects in a variety of languages such as PHP, JavaScript and C# for many years, I have experience with all types of industries and web applications.
+              I help businesses create scalable, modern, and results-driven
+              digital solutions.
             </span>
+            <div
+              className="welcome_h3_role_btn"
+              data-scroll
+              data-scroll-speed="0"
+            >
+              <a href="/contact" className="btn btn-primary">
+                Schedule a Consultation.
+              </a>
+            </div>
           </div>
           <div className="Home_btn_content__PvvjD"></div>
         </div>
       </section>
-      <section className="home_about" data-scroll-section>
-        <div className="container">
-          <h2 className="title">
-            Crafting Digital Solutions in Los Angeles
-          </h2>
-          <p className="ptitle">
-            I&#39;ve created applications using all sorts of web technologies. Some of those range from Wordpress, Shopify CMS systems to frameworks such as NextJS, Laravel, and Umbraco.
-          </p>
-          <div className="ptitle">
-            I have a passion for learning and am currently pursuing IT certifications such as CCNA and Comptia SEC+.
-          </div>
-        </div>
-        <div data-scroll data-scroll-speed="2">
-          <Image
-            loading="lazy"
-            alt="Crafting Digital Magic in the Heart of Los Angeles"
-            width="294"
-            height="308"
-            className="img-fluid lazyloaded"
-            decoding="async"
-            src="/images/PXL_20231015_163749011.MP.webp"
-          ></Image>
-        </div>
-      </section>
-      <section className="home_info" data-scroll-section>
-        <div className="container">
-          <div className="row">
-            <div data-scroll="" className="">
-              <div data-scroll="" className="cfadeinup-inner-hero ">
-                <h2 className="hero-heading gradient-title5">
-                  Safe Streets Map
-                </h2>
-              </div>
-              <div data-scroll="" className="cfadeinup-inner-sub ">
-                <p className="ptitle">
-                  An app designed to assist commuters in their daily commutes and errands.
-                </p>
-                <p className="tech-title">
-                  Tech stack: ReactJS, NextJS, PostgreSQL and NodeJS.
-                </p>
-                <div className="tech-title">Includes a native ReactJS app</div>
-              </div>
-              <div className="we-text">
 
-                <Link href="/contact/" className="btn btn-primary">
-                  Get in Touch
-                </Link>
-              </div>
-            </div>
-            <div className="stats-block " data-scroll data-scroll-speed="2">
-              <Image
-                loading="lazy"
-                height="400"
-                width="400"
-                aria-hidden="true"
-                alt=""
-                className="lazyloaded"
-                decoding="async"
-                src="/images/stm.jpg"
-              ></Image>
-
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="home_skillset" data-scroll-section>
         <div className="container">
-          <h4>
-            What makes me a great designer/developer option for your new
-            project?
-          </h4>
+          <h2>
+          What Makes Me the Perfect Partner for Your Next Project?
+          </h2>
           {/* <div
             data-scroll=""
             className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
@@ -118,15 +112,17 @@ export default function HomeMain() {
           >
             <div className="row hover-row">
               <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">Web Dev &amp; Design Focus</h3>
+                <h3 className="h2">Web Development & Design Expertise</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                <span>
-                  I am known for my expert web development services and creative
-                  design concepts. My main focus on web design sets your website
-                  apart from the online competition, ensuring a unique and
-                  compelling online presence.
-                </span>
+                <p>I specialize in delivering expert web development services paired with creative, user-centered design. My primary focus is on crafting visually stunning and functional websites that:</p>
+              <ul>
+                <li>
+                Stand Out From the Competition: Your website will be a unique reflection of your brand, designed to captivate your audience.
+                </li>
+                <li>  Deliver Results: From increased traffic to improved conversions, I prioritize websites that drive measurable growth for your business.
+              </li>
+              </ul>
               </div>
             </div>
           </div>
@@ -137,15 +133,17 @@ export default function HomeMain() {
           >
             <div className="row hover-row">
               <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">Breathtaking Design</h3>
+                <h3 className="h2">Breathtaking, Responsive Designs</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                <span>
-                  One thing that sets me apart is my approach to design. I take
-                  pride in developing design elements that are flexible,
-                  dynamic, and responsive, all while adhering to the highest
-                  industry standards.
-                </span>
+                <p>
+                My design philosophy revolves around creating flexible, dynamic, and responsive elements that adapt seamlessly to any device. I adhere to the highest industry standards to ensure that your website:
+                </p>
+                <ul>
+                  <li>Looks exceptional across all devices (mobile, tablet, and desktop).</li>
+                  <li>Offers an intuitive user experience that keeps visitors engaged.</li>
+                  <li>Aligns with your business goals to generate leads, boost sales, or enhance visibility.</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -173,20 +171,75 @@ export default function HomeMain() {
           >
             <div className="row hover-row">
               <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">Advertising &  Marketing</h3>
+                <h3 className="h2">Advertising & Marketing Integration</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
+                <p>A stunning website is only the beginning. I help businesses amplify their reach through targeted advertising and data-driven marketing strategies, including:</p>
+                <ul>
+                  <li>Google Ads: Reach your audience at the exact moment they’re searching for your products or services.</li>
+                  <li>Social Media Campaigns: Engage your target demographics based on location, behaviors, and interests.</li>
+                  <li>SEO Optimization: Rank higher on search engines and attract organic traffic to your site.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-                <span>
-                  Paid advertising offers key opportunities to drive impactful results. Through Google Ads, you can target potential customers at the exact moment they are searching for your products or services. Social media campaigns also allow precise targeting based on demographics, geographic locations, and purchasing behaviors. With over 3.5 billion Google searches daily and consumers spending nearly an hour on Facebook, the era of billboards and radio spots is long gone. Today, an effective online presence is crucial; merely having a website isn&apos;t enough.
-
-                </span>
+          <div
+            data-scroll=""
+            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
+            data-src="/ChEvwayTHZmZJUAdsUNMLXuXZdBprFoQ/assets/images/optimized/rev-21ec0b7/www.aaaaa.com/app/uploads/2022/09/image-abouthover-6-1.jpg"
+          >
+            <div className="row hover-row">
+              <div className="col-xl-5 col-lg-6 desc-title">
+                <h3 className="h2">Why Choose Me?</h3>
+              </div>
+              <div className="col-xl-5 col-lg-6 desc-text">
+                <ul>
+                  <li>Proven Expertise: With years of experience, I’ve delivered exceptional web and marketing solutions across industries.</li>
+                  <li>Results-Driven Approach: Every project I work on is designed to meet your specific goals, whether that’s generating leads, improving brand recognition, or boosting sales.</li>
+                  <li>End-to-End Support: From the initial concept to ongoing optimization, I’m your dedicated partner for long-term success.</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+     
+      <section className="home_about" data-scroll-section>
+        <div className="container">
+          <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <div className="container">
+              <h2 className=" gradient-title5">Let&apos;s Collaborate</h2>
+              <p>
+                Whether you&apos;re a startup looking to build your MVP, an
+                established business seeking technical expertise, or a fellow
+                developer in need of collaboration, I&apos;m here to help bring
+                your ideas to life.
+              </p>
+              <p>
+                Need advice on a technical problem or project scope? Schedule a
+                consultation call with me to discuss your requirements and
+                explore how we can work together.
+              </p>
+              <ContactForm></ContactForm>
+            </div>
+          </ThemeProvider>
+        </div>
+        <div data-scroll data-scroll-speed="2">
+          <Image
+            loading="lazy"
+            alt="Crafting Digital Magic in the Heart of Los Angeles"
+            width="294"
+            height="308"
+            className="img-fluid lazyloaded"
+            decoding="async"
+            src="/images/PXL_20231015_163749011.MP.webp"
+          ></Image>
+        </div>
+      </section>
+   
       <section
         className="hp-client-wrap client-wrap technologies-logos nitro-offscreen nitro-lazy-render"
         data-scroll-section=""
@@ -195,12 +248,12 @@ export default function HomeMain() {
       >
         <div className="client-title">
           <div className="container">
-            <h3
+            <h2
               data-scroll=""
               className="cfadeinup-inner-hero h1 gradient-title9 "
             >
               Expert in leading industry standard platforms &amp; technologies.
-            </h3>
+            </h2>
           </div>
         </div>
         <div className="client-section client-label">
@@ -592,8 +645,8 @@ export default function HomeMain() {
             <div className="row">
               <div className="col-lg-10 col-xl-6 client-wrap-heading">
                 <p>
-                  I have designed, and have crafted creative web
-                  solutions using a wide variety of platforms.
+                  I have designed, and have crafted creative web solutions using
+                  a wide variety of platforms.
                 </p>
                 <Link href="/services/" className="btn-link btn-link-white">
                   Which platform is right for you?
@@ -678,7 +731,7 @@ export default function HomeMain() {
         </div>
       </section>
 
-      <section className="home_look" data-scroll-section>
+      {/* <section className="home_look" data-scroll-section>
         <div className="home_look_image">
           <Image
             loading="lazy"
@@ -710,7 +763,7 @@ export default function HomeMain() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="project-output" data-scroll-section>
         <div className="container-header">
           <h2 className="title">Experienced with</h2>
@@ -926,6 +979,19 @@ export default function HomeMain() {
               </span>
             </Link>
           </div>
+        </div>
+      </section>
+      <section className="home_about whatkind" data-scroll-section>
+        <div className="container">
+          <h2 className=" gradient-title5">What Kind of Website Do You Need?</h2>
+          <p>With a team of over 200 experts specializing in a wide range of platforms, coding languages, and frameworks, we’re equipped to bring your vision to life. Whether you’re looking to:</p>
+          <ul>
+            <li>Launch a thriving eCommerce store to boost online sales,</li>
+            <li>Generate local leads and grow your business,</li>
+            <li>Develop a custom web application tailored to your unique needs, or</li>
+            <li>Create an engaging website for informational or entertainment purposes,</li>
+          </ul>
+          <p>We have the skills and experience to deliver. Let us build a website that’s not only beautiful but also drives results.</p>
         </div>
       </section>
     </section>

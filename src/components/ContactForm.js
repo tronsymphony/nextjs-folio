@@ -106,7 +106,7 @@ const ContactForm = () => {
         <input type="hidden" name="_gotcha" style={{ display: "none" }} />
 
         <Button variant="standard" type="submit" className="btn btn-primary">
-          Submit
+          Get in Touch
         </Button>
       </Box>
     </div>
