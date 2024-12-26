@@ -64,16 +64,13 @@ export default function HomeFollow() {
             )}
           </div>
 
-          {/* Other Links */}
           <Link href="/portfolio">
             <span>Portfolio</span>
           </Link>
           <Link href="/services">
             <span>Services</span>
           </Link>
-          <Link href="/pricing">
-            <span>Pricing</span>
-          </Link>
+        
           <Link href="/blog">
             <span>Blog</span>
           </Link>

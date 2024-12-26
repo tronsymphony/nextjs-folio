@@ -73,7 +73,6 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={inter.className}>
         <GoogleAnalytics trackPageViews />
-       
           <main data-scroll-container ref={containerRef}>
             {children}
           </main>

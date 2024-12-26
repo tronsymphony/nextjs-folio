@@ -13,6 +13,7 @@
   --tw-content: ''
 }
 
+
 html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
@@ -52,7 +53,7 @@ h6 {
 
 a {
   color: inherit;
-  text-decoration: inherit
+  text-decoration: none;
 }
 
 b,
@@ -990,7 +991,6 @@ h3 {
 
 a {
   color: inherit;
-  text-decoration: none
 }
 
 @media(prefers-color-scheme:dark) {
@@ -2466,8 +2466,8 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   position: relative;
   z-index: 2;
 
-  ul{
-    li{
+  ul {
+    li {
       margin-bottom: 1rem;
     }
   }
@@ -2806,14 +2806,26 @@ section.Home_followme__eTWWW .Home_soc__jkbmt a svg {
   }
 }
 
+.blogpage-image {
+  width: 100%;
+  object-fit: cover;
+  height: 300px;
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+}
 
 .home_work {
   position: relative;
   z-index: 2;
 
+  a {
+    text-decoration: underline;
+  }
+
   .container {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 0 24px;
   }
 
   .row {
@@ -3404,16 +3416,16 @@ section.in-touch {
 
 
   .subtitle {
-    margin-bottom: 120px;
+    margin-bottom: 2rem;
     color: #fff;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1rem;
     display: flex;
     max-width: 600px;
   }
 
   .title {
-    font-size: calc(32px + 22 * ((100vw - 375px) / 1065));
+    font-size: 3rem;
     font-weight: 600;
     line-height: 1.19;
     letter-spacing: -.778846px;
@@ -3422,7 +3434,7 @@ section.in-touch {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
-    font-size: 6rem;
+    font-size: 3rem;
     margin-bottom: 0px;
     text-transform: capitalize;
 
@@ -3432,8 +3444,47 @@ section.in-touch {
   }
 }
 
-.blogul{
-  list-style-type:none;
+.blogul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0;
+
+  li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .publishdata {
+    font-size: .8rem;
+  }
+
+  .btn_link.btn_link--light {
+    padding: 0.5rem ;
+    width: auto;
+    font-size: 14px;
+    min-width: 0;
+    color: #b4e300;
+    background: transparent;
+  }
+}
+
+.page {
+  .blog-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
 }
 
 .seo-services {
