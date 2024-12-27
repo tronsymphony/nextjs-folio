@@ -1,9 +1,9 @@
 import Footer from "../../components/footer";
 import HomeFollow from "../../components/home-follow";
 import RichContentRenderer from "../../components/RichContentRenderer";
-// import axios from "axios";
 import '../../app/globals.scss';
 import Image from "next/image";
+import Head from "next/head";
 
 // Fetch article by slug
 const fetchArticle = async (slug) => {
@@ -81,6 +81,14 @@ export default function BlogPage({ article }) {
 
     return (
         <>
+            <Head>
+                <title>{article.title} | Your Blog Name</title>
+                <meta name="description" content={article.excerpt || "Read this insightful blog post."} />
+                <meta property="og:title" content={article.title} />
+                <meta property="og:description" content={article.excerpt || "Read this insightful blog post."} />
+                <meta property="og:image" content={`${process.env.NEXT_PUBLIC_PAYLOAD_URL}${article.featuredImage?.url}`} />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/articles/${article.slug}`} />
+            </Head>
             <HomeFollow />
             <section className="page" data-scroll-section>
                 <div className="container">
@@ -117,12 +125,6 @@ export default function BlogPage({ article }) {
                                 return null;
                         }
                     })}
-                    {/* {article.categories?.length > 0 && (
-                        <p>
-                            <strong>Categories:</strong>{" "}
-                            {article.categories.map((cat) => cat.name).join(", ")}
-                        </p>
-                    )} */}
                 </div>
             </section>
             <Footer />

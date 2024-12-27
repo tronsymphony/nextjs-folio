@@ -2,6 +2,9 @@ import Footer from "../../components/footer";
 import HomeFollow from "../../components/home-follow";
 import axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
+import Head from "next/head";
+import '../../app/globals.scss';
 
 const fetchArticles = async () => {
   const response = await axios.get(
@@ -12,6 +15,7 @@ const fetchArticles = async () => {
       },
     }
   );
+  
   return response.data.docs;
 };
 
@@ -54,18 +58,67 @@ const RichContentRenderer = ({ node }) => {
       );
 
     case "image":
-      return <img src={node.url} alt={node.alt || ""} />;
-
+      return (
+        <Image
+          width={500}
+          height={400}
+          src={`${process.env.NEXT_PUBLIC_PAYLOAD_API_URL}${node.url}`}
+          alt={node.alt || ""}
+        />
+      );
     default:
       return <div>Unknown block type: {node.type}</div>;
   }
 };
 
-export default async function Home() {
-  const articles = await fetchArticles();
+
+export async function getStaticProps() {
+  try {
+    const articles = await fetchArticles();
+
+    return {
+      props: {
+        articles: articles || [], // Default to empty array if undefined
+      },
+      revalidate: 60, // Regenerate the page every 60 seconds
+    };
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+
+    return {
+      props: {
+        articles: [], // Default to empty array if an error occurs
+      },
+      revalidate: 60,
+    };
+  }
+}
+
+export default function Blog({ articles = [] }) {
 
   return (
     <>
+      <Head>
+        <title>Blog | Full-Stack Developer | Nitya Hoyos</title>
+        <meta
+          name="description"
+          content="Discover insights, guides, and tips on web development by Nitya Hoyos, a skilled Full-Stack Developer based in Los Angeles."
+        />
+        <meta property="og:title" content="Blog | Nitya Hoyos" />
+        <meta
+          property="og:description"
+          content="Insights on WordPress, Laravel, ReactJS, and more."
+        />
+        <meta
+          property="og:image"
+          content={
+            articles.length > 0
+              ? `${process.env.NEXT_PUBLIC_PAYLOAD_API_URL}${articles[0]?.featuredImage?.url}`
+              : "/default-blog-image.jpg"
+          }
+        />
+        <meta property="og:url" content="https://casa-dev.com/blog" />
+      </Head>
       <HomeFollow />
       <section className="page" data-scroll-section>
         <div className="container">
@@ -78,23 +131,27 @@ export default async function Home() {
 
       <section className="home_work" data-scroll-section>
         <div className="container">
-          <ul className="blogul">
-            {articles.map((article) => (
-              <li key={article.id}>
-                <Link href={`/blog/${article.slug}`}>
-                  <h2>{article.title}</h2>
-                </Link>
-                <div className="link_blog">
-                  <Link
-                    href={`/blog/${article.slug}`}
-                    className="btn_link btn_link--light"
-                  >
-                    Read More
+          {articles?.length > 0 ? (
+            <ul className="blogul">
+              {articles.map((article) => (
+                <li key={article.id}>
+                  <Link href={`/blog/${article.slug}`}>
+                    <h2>{article.title}</h2>
                   </Link>
-                </div>
-              </li>
-            ))}
-          </ul>
+                  <div className="link_blog">
+                    <Link
+                      href={`/blog/${article.slug}`}
+                      className="btn_link btn_link--light"
+                    >
+                      Read More
+                    </Link>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No articles found. Please check back later.</p>
+          )}
         </div>
       </section>
       <Footer />
@@ -102,27 +159,6 @@ export default async function Home() {
   );
 }
 
-export async function getStaticProps() {
-  try {
-    const articles = await fetchArticles();
-
-    return {
-      props: {
-        articles,
-      },
-      revalidate: 60, // Regenerate the page every 60 seconds
-    };
-  } catch (error) {
-    console.error("Error fetching articles:", error);
-
-    return {
-      props: {
-        articles: [],
-      },
-      revalidate: 60, // Ensure the page regenerates even if there was an error
-    };
-  }
-}
 
 export const metadata = {
   metadataBase: new URL("https://casa-dev.com"),

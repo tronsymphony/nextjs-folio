@@ -112,7 +112,7 @@ export default function LosAngelesSEO() {
 export const metadata = {
   metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: "/los-angeles",
+    canonical: "/about/los-angeles",
     languages: {
       "en-US": "/en-US",
     },

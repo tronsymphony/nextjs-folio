@@ -112,7 +112,7 @@ export default function PortlandSEO() {
 export const metadata = {
   metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: "/portland",
+    canonical: "/about/portland",
     languages: {
       "en-US": "/en-US",
     },

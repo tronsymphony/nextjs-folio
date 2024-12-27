@@ -112,7 +112,7 @@ export default function IrvineSEO() {
 export const metadata = {
   metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: "/irvine",
+    canonical: "/about/irvine",
     languages: {
       "en-US": "/en-US",
     },
