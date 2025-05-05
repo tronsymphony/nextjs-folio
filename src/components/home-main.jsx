@@ -186,124 +186,84 @@ export default function HomeMain() {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-b from-gray-900 to-black">
+      <section className="py-12 sm:py-14">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Beyond AI and Site Builders: Why Your Business Needs Professional
-              Web Development
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              While AI tools and drag-and-drop builders promise quick solutions,
-              they fall short of delivering the professional experience your
-              business deserves.
-            </p>
-          </div>
+          {/* Header Section */}
+          <div className="text-center mb-10 sm:mb-12">
+  <h2 className="gradient-title5">
+    Why Your Business Needs Professional Web Development
+  </h2>
+  <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
+    AI and site builders offer speed, but not the performance, flexibility, or polish your business deserves.
+  </p>
+</div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
+
+          {/* Section 1 */}
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start md:items-center mb-12 md:mb-16">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">
+              <h3 className="!text-lg md:text-2xl font-bold text-white mb-4 sm:mb-6">
                 The Limitations of AI and Site Builders
               </h3>
 
               <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="mt-1 p-2 bg-red-900 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-red-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                      />
-                    </svg>
+                {/* Point Item */}
+                {[
+                  {
+                    title: "Template Constraints",
+                    desc: "AI and site builders lock you into rigid templates that limit your brand's unique expression and ability to evolve with your business.",
+                    iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+                  },
+                  {
+                    title: "Performance Issues",
+                    desc: "Automatically generated code often results in bloated websites with slower load times and poor performance metrics that hurt SEO and user experience.",
+                    iconPath: "M13 10V3L4 14h7v7l9-11h-7z",
+                  },
+                  {
+                    title: "Limited Customization",
+                    desc: "Complex business requirements and custom features are often impossible to implement without direct code access and expertise.",
+                    iconPath:
+                      "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+                  },
+                ].map(({ title, desc, iconPath }, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="mt-1 p-2 bg-red-900 rounded-full shrink-0">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-red-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d={iconPath}
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-base sm:text-lg text-gray-200">
+                        {title}
+                      </h4>
+                      <p className="text-sm sm:text-base text-gray-400">
+                        {desc}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-gray-200">
-                      Template Constraints
-                    </h4>
-                    <p className="text-gray-400">
-                      AI and site builders lock you into rigid templates that
-                      limit your brand's unique expression and ability to evolve
-                      with your business.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="mt-1 p-2 bg-red-900 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-red-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-gray-200">
-                      Performance Issues
-                    </h4>
-                    <p className="text-gray-400">
-                      Automatically generated code often results in bloated
-                      websites with slower load times and poor performance
-                      metrics that hurt SEO and user experience.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="mt-1 p-2 bg-red-900 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-red-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-gray-200">
-                      Limited Customization
-                    </h4>
-                    <p className="text-gray-400">
-                      Complex business requirements and custom features are
-                      often impossible to implement without direct code access
-                      and expertise.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="relative h-60 md:h-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg opacity-70"></div>
-              <div className="absolute inset-4 bg-gray-900 rounded-lg shadow-lg border border-gray-700 p-6 flex items-center justify-center">
+            {/* Stat Box */}
+            <div className="relative min-h-[200px] md:h-auto w-full">
+              <div className="relative md:absolute bg-gray-900 rounded-lg shadow-lg border border-gray-700 p-6 flex items-center justify-center h-full">
                 <div className="text-center">
-                  <div className="text-5xl font-bold text-red-400 mb-2">
+                  <div className="text-4xl sm:text-5xl font-bold text-red-400 mb-2">
                     71%
                   </div>
-                  <p className="text-gray-300">
+                  <p className="text-sm sm:text-base text-gray-300">
                     of businesses report limitations with auto-generated
                     websites that impact their growth
                   </p>
@@ -312,195 +272,115 @@ export default function HomeMain() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 relative h-60 md:h-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-indigo-900 rounded-lg opacity-30"></div>
-              <div className="absolute inset-4 bg-gray-900 rounded-lg shadow-lg border border-gray-700 p-6">
-                <ul className="space-y-4 py-2">
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="p-1 bg-blue-900 rounded-full">
-                      <svg
-                        className="w-4 h-4 text-blue-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </div>
-                    <span>
-                      Custom-built functionality tailored to your business needs
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="p-1 bg-blue-900 rounded-full">
-                      <svg
-                        className="w-4 h-4 text-blue-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </div>
-                    <span>
-                      Optimized performance with clean, efficient code
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="p-1 bg-blue-900 rounded-full">
-                      <svg
-                        className="w-4 h-4 text-blue-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </div>
-                    <span>
-                      Scalable architecture that grows with your business
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="p-1 bg-blue-900 rounded-full">
-                      <svg
-                        className="w-4 h-4 text-blue-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </div>
-                    <span>SEO-friendly structure built for conversion</span>
-                  </li>
+          {/* Section 2 */}
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start md:items-center">
+            {/* Benefits List */}
+            <div className="order-2 md:order-1 relative min-h-[200px] md:h-auto w-full">
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-900 to-indigo-900 rounded-lg opacity-30" />
+              <div className=" md:absolute bg-gray-900 rounded-lg shadow-lg border border-gray-700 p-6">
+                <ul className="space-y-4 py-2 text-sm sm:text-base">
+                  {[
+                    "Custom-built functionality tailored to your business needs",
+                    "Optimized performance with clean, efficient code",
+                    "Scalable architecture that grows with your business",
+                    "SEO-friendly structure built for conversion",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-gray-300"
+                    >
+                      <div className="p-1 bg-blue-900 rounded-full shrink-0">
+                        <svg
+                          className="w-4 h-4 text-blue-400"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          />
+                        </svg>
+                      </div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
 
+            {/* Benefits Explanation */}
             <div className="order-1 md:order-2">
-              <h3 className="text-2xl font-bold text-white mb-6">
+              <h3 className="!text-lg sm:text-2xl font-bold text-white mb-4 sm:mb-6">
                 The Professional Development Advantage
               </h3>
-
               <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="mt-1 p-2 bg-blue-900 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-blue-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                      />
-                    </svg>
+                {[
+                  {
+                    title: "Experience & Expertise",
+                    desc: "Professional developers bring years of problem-solving experience and technical knowledge to create solutions that perfectly align with your business objectives.",
+                    iconPath:
+                      "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
+                  },
+                  {
+                    title: "Security & Reliability",
+                    desc: "Custom development follows best practices for security, performance, and accessibility that automated tools simply cannot match.",
+                    iconPath:
+                      "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+                  },
+                  {
+                    title: "Strategic Growth",
+                    desc: "Professional developers build with scalability in mind, creating foundations that can evolve as your business grows and technology changes.",
+                    iconPath:
+                      "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+                  },
+                ].map(({ title, desc, iconPath }, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="mt-1 p-2 bg-blue-900 rounded-full shrink-0">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-blue-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d={iconPath}
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-base sm:text-lg text-gray-200">
+                        {title}
+                      </h4>
+                      <p className="text-sm sm:text-base text-gray-400">
+                        {desc}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-gray-200">
-                      Experience & Expertise
-                    </h4>
-                    <p className="text-gray-400">
-                      Professional developers bring years of problem-solving
-                      experience and technical knowledge to create solutions
-                      that perfectly align with your business objectives.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="mt-1 p-2 bg-blue-900 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-blue-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-gray-200">
-                      Security & Reliability
-                    </h4>
-                    <p className="text-gray-400">
-                      Custom development follows best practices for security,
-                      performance, and accessibility that automated tools simply
-                      cannot match.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="mt-1 p-2 bg-blue-900 rounded-full">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-blue-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-gray-200">
-                      Strategic Growth
-                    </h4>
-                    <p className="text-gray-400">
-                      Professional developers build with scalability in mind,
-                      creating foundations that can evolve as your business
-                      grows and technology changes.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="mt-16 text-center">
-            <div className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 p-px rounded-lg">
-              <button className="bg-gray-900 hover:bg-gray-800 text-blue-400 font-semibold py-3 px-8 rounded-lg transition duration-300">
-                Discuss Your Project
-              </button>
-            </div>
-            <p className="mt-4 text-gray-400">
-              Let's create a website that truly represents your business
+          {/* CTA */}
+          <div className="mt-12 sm:mt-16 text-center">
+            <a
+              href="/contact"
+              className="btn_link btn_link--light inline-block px-6 py-3"
+            >
+              Discuss Your Project
+            </a>
+            <p className="mt-4 text-gray-400 text-sm sm:text-base">
+              Let&apos;s create a website that truly represents your business
               potential
             </p>
           </div>
         </div>
       </section>
-
 
       <ProjectCalculator></ProjectCalculator>
 
@@ -625,7 +505,6 @@ export default function HomeMain() {
           </div>
         </div>
       </section>
-
 
       <section className="home_services" data-scroll-section>
         <div className="container">

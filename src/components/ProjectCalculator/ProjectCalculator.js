@@ -439,7 +439,7 @@ const ProjectCalculator = () => {
       {formSubmitted && (
         <div className={styles.thankYouMessage}>
           <h3>Thank You!</h3>
-          <p>I've received your project details and will contact you within 1 business day with a detailed quote and next steps.</p>
+          <p>I&apos;ve received your project details and will contact you within 1 business day with a detailed quote and next steps.</p>
           <p>A confirmation email has been sent to your inbox.</p>
           <button
             onClick={() => {
