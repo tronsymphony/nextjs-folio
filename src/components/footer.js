@@ -36,23 +36,7 @@ export default function Footer() {
 
   return (
     <>
-      <Modal show={showModal} onClose={closeModal} data-scroll-section>
-        <div className="content">
-          <h2>
-Schedule a Free
-30-min Consultation</h2>
-          <p>
-            Let me create a personalized list of enhancements to boost your
-            brand&apos;s online presence. I&apos;ll help with usability, SEO, speed, and
-            design. Get in touch to start improving your site today!
-          </p>
-        </div>
-        <ThemeProvider theme={darkTheme}>
-          <CssBaseline />
-          <ContactForm></ContactForm>
-        </ThemeProvider>
-      </Modal>
-
+      
       <section className="in-touch" data-scroll-section>
         <div className="bg-text">
           <span>nitya</span>
@@ -145,9 +129,9 @@ Schedule a Free
             </nav>
           </div>
         </section>
-        <BackToTopButton  />
+        <BackToTopButton />
       </footer>
-      
+
     </>
   );
 }

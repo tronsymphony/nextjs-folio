@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import '../../app/globals.scss';
+import "../../app/globals.scss";
 
 const fetchArticles = async () => {
   const response = await axios.get(
@@ -15,7 +15,7 @@ const fetchArticles = async () => {
       },
     }
   );
-  
+
   return response.data.docs;
 };
 
@@ -71,7 +71,6 @@ const RichContentRenderer = ({ node }) => {
   }
 };
 
-
 export async function getStaticProps() {
   try {
     const articles = await fetchArticles();
@@ -95,7 +94,6 @@ export async function getStaticProps() {
 }
 
 export default function Blog({ articles = [] }) {
-
   return (
     <>
       <Head>
@@ -129,36 +127,43 @@ export default function Blog({ articles = [] }) {
         </div>
       </section>
 
-      <section className="home_work" data-scroll-section>
+      <section className="blog-listing" data-scroll-section>
         <div className="container">
           {articles?.length > 0 ? (
-            <ul className="blogul">
+            <ul className="blog-list">
               {articles.map((article) => (
-                <li key={article.id}>
-                  <Link href={`/blog/${article.slug}`}>
-                    <h2>{article.title}</h2>
-                  </Link>
-                  <div className="link_blog">
+                <li key={article.id} className="blog-list__item">
+                  <article className="blog-post">
                     <Link
                       href={`/blog/${article.slug}`}
-                      className="btn_link btn_link--light"
+                      className="blog-post__title-link"
                     >
-                      Read More
+                      <h2 className="blog-post__title">{article.title}</h2>
                     </Link>
-                  </div>
+                    <div className="blog-post__actions">
+                      <Link
+                        href={`/blog/${article.slug}`}
+                        className="btn btn--light"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  </article>
                 </li>
               ))}
             </ul>
           ) : (
-            <p>No articles found. Please check back later.</p>
+            <p className="blog-listing__empty">
+              No articles found. Please check back later.
+            </p>
           )}
         </div>
       </section>
+
       <Footer />
     </>
   );
 }
-
 
 export const metadata = {
   metadataBase: new URL("https://casa-dev.com"),

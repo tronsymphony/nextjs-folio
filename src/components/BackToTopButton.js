@@ -40,7 +40,6 @@ const BackToTopButton = () => {
                         width: '30px',
                         height: '30px',
                         backgroundColor: 'rgb(22 23 26 / 66%)',
-                        border: '1px solid #b4e300',
                         color: '#b4e300',
                     }}
                 >

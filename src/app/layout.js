@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
           <main data-scroll-container ref={containerRef}>
             {children}
           </main>
-      <Script
+      {/* <Script
         id="tawk-to"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
@@ -92,7 +92,7 @@ export default function RootLayout({ children }) {
             })();
           `,
         }}
-      />
+      /> */}
       </body>
     </html>
   );

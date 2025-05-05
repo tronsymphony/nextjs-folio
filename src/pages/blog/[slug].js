@@ -29,51 +29,100 @@ const fetchArticle = async (slug) => {
 
 // getStaticPaths: Define which pages to generate at build time
 export async function getStaticPaths() {
-    const response = await fetch(
-        `${process.env.NEXT_PUBLIC_PAYLOAD_API_URL}/articles?limit=50`,
+    try {
+      const API_URL = process.env.NEXT_PUBLIC_PAYLOAD_API_URL;
+      const API_KEY = process.env.PAYLOAD_API_KEY;
+      
+      // Verify environment variables exist
+      if (!API_URL || !API_KEY) {
+        console.error("Missing required environment variables");
+        return { paths: [], fallback: 'blocking' };
+      }
+      
+      const response = await fetch(
+        `${API_URL}/articles?limit=50`,
         {
-            headers: {
-                Authorization: `Bearer ${process.env.PAYLOAD_API_KEY}`,
-                "Content-Type": "application/json",
-            },
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          // Add timeout to prevent hanging
+          timeout: 10000
         }
-    );
-
-    if (!response.ok) {
+      );
+  
+      if (!response.ok) {
         console.error("Error fetching articles:", response.statusText);
-        return { paths: [], fallback: false };
-    }
-
-    const data = await response.json();
-    const articles = data.docs || [];
-
-    // Generate paths for all article slugs
-    const paths = articles.map((article) => ({
-        params: { slug: article.slug },
-    }));
-
-    return {
+        return { paths: [], fallback: 'blocking' };
+      }
+  
+      const data = await response.json();
+      const articles = data.docs || [];
+  
+      // Filter out any articles with missing or invalid slugs
+      const paths = articles
+        .filter(article => article.slug && typeof article.slug === 'string')
+        .map(article => ({
+          params: { slug: article.slug },
+        }));
+  
+      return {
         paths,
-        fallback: "blocking", // Only pre-rendered paths will be available
-    };
-}
+        // Using 'blocking' means pages not generated at build time will be 
+        // generated on-demand and cached for future requests
+        fallback: 'blocking', 
+      };
+    } catch (error) {
+      console.error("Error in getStaticPaths:", error);
+      // Return an empty paths array with blocking fallback to
+      // handle errors gracefully without breaking the build
+      return { 
+        paths: [],
+        fallback: 'blocking'
+      };
+    }
+  }
 
 // getStaticProps: Fetch data for each page
 export async function getStaticProps({ params }) {
-    const { slug } = params;
-    const article = await fetchArticle(slug);
-
-    if (!article) {
-        return { notFound: true }; // Return 404 if article not found
-    }
-
-    return {
+    try {
+      // Safely access the slug parameter
+      const slug = params?.slug;
+      
+      // Handle case where slug is missing
+      if (!slug) {
+        return { 
+          notFound: true 
+        };
+      }
+      
+      const article = await fetchArticle(slug);
+  
+      // Handle case where article is not found
+      if (!article) {
+        return { 
+          notFound: true 
+        };
+      }
+  
+      return {
         props: {
-            article,
-            revalidate: 60,
+          article,
         },
-    };
-}
+        // revalidate should be a property of the returned object, not inside props
+        revalidate: 60,
+      };
+    } catch (error) {
+      // Catch any errors during the process
+      console.error('Error in getStaticProps:', error);
+      
+      return {
+        notFound: true,
+        // Alternatively, you could return a custom error page:
+        // props: { error: true, message: 'Something went wrong' },
+      };
+    }
+  }
 
 // Blog Page Component
 export default function BlogPage({ article }) {
@@ -82,24 +131,39 @@ export default function BlogPage({ article }) {
     return (
         <>
             <Head>
-                <title>{article.title} | Your Blog Name</title>
-                <meta name="description" content={article.excerpt || "Read this insightful blog post."} />
+                <title>{article.title} | Safe Streets Map Blog</title>
+                <meta name="description" content={article.excerpt || "Discover insights and tips on web development and design."} />
+                <meta name="author" content="Casa Dev" />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph */}
                 <meta property="og:title" content={article.title} />
-                <meta property="og:description" content={article.excerpt || "Read this insightful blog post."} />
+                <meta property="og:description" content={article.excerpt || "A helpful article from the Safe Streets Map blog."} />
+                <meta property="og:type" content="article" />
                 <meta property="og:image" content={`${process.env.NEXT_PUBLIC_PAYLOAD_URL}${article.featuredImage?.url}`} />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/articles/${article.slug}`} />
+                <meta property="og:site_name" content="Safe Streets Map" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={article.title} />
+                <meta name="twitter:description" content={article.excerpt || "A curated article from the Safe Streets Map blog."} />
+                <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_PAYLOAD_URL}${article.featuredImage?.url}`} />
             </Head>
+
             <HomeFollow />
+
             <section className="page" data-scroll-section>
                 <div className="container">
                     {article.featuredImage && (
-                        <div style={{ marginBottom: "1.5rem" }}>
+                        <div className="blogpage-image-wrapper">
                             <Image
                                 src={`${process.env.NEXT_PUBLIC_PAYLOAD_URL}/${article.featuredImage.url}`.replace(/\/\//g, '/')}
-                                alt={article.featuredImage.alt || "Featured image"}
+                                alt={article.featuredImage.alt || article.title}
                                 className="blogpage-image"
                                 width={900}
                                 height={400}
+                                priority
                             />
                         </div>
                     )}
@@ -107,17 +171,24 @@ export default function BlogPage({ article }) {
                 </div>
             </section>
 
-            <section className="home_work" data-scroll-section>
+            <section className="blog-content" data-scroll-section>
                 <div className="container">
-                    <p>
-                        Published on: {new Date(article.publishedDate).toLocaleDateString()}
+                    <p className="blog-meta">
+                        Published on:{" "}
+                        <time dateTime={article.publishedDate}>
+                            {new Date(article.publishedDate).toLocaleDateString(undefined, {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </time>
                     </p>
-                    {/* Render dynamic blocks */}
+
                     {article.content.map((block, index) => {
                         switch (block.blockType) {
                             case "wysiwyg":
                                 return (
-                                    <div key={index} style={{ marginBottom: "2rem" }}>
+                                    <div key={index} className="blog-content__block">
                                         {RichContentRenderer(block.content.root)}
                                     </div>
                                 );
@@ -127,6 +198,7 @@ export default function BlogPage({ article }) {
                     })}
                 </div>
             </section>
+
             <Footer />
         </>
     );

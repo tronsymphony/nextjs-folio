@@ -1,13 +1,14 @@
 'use client'
 import Link from "next/link";
 import { useState } from "react";
+import Navigation from "./Navigation";
+import Image from 'next/image';
 
+ 
 export default function HomeFollow() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
+
 
   return (
     <>
@@ -34,58 +35,27 @@ export default function HomeFollow() {
       <span className="page_title" data-scroll-section>
         <div className="logo">
           <Link href="/">
-            Casa Dev.
-            <div className="sub">Developer, Artist, Cyclist</div>
+          <Image
+        src="/images/casa-dev.webp" // Path relative to the public folder
+        alt="Casa Dev"
+        width={100}
+        height={50}
+        priority // Optional: loads image with higher priority
+      />
           </Link>
         </div>
 
-        <nav className="links">
-          {/* About Link with Dropdown */}
-          <div
-            className="dropdown"
-            onMouseEnter={toggleDropdown}
-            onMouseLeave={toggleDropdown}
-          >
-            <Link href="/about">
-              <span>About</span>
-            </Link>
-            {dropdownOpen && (
-              <div className="dropdown-menu">
-                <Link href="/about/los-angeles">
-                  <span>Los Angles</span>
-                </Link>
-                <Link href="/about/portland">
-                  <span>Portland</span>
-                </Link>
-                <Link href="/about/irvine">
-                  <span>Irvine</span>
-                </Link>
-              </div>
-            )}
-          </div>
-
-          <Link href="/portfolio">
-            <span>Portfolio</span>
-          </Link>
-          <Link href="/services">
-            <span>Services</span>
-          </Link>
+        <Navigation />
         
-          <Link href="/blog">
-            <span>Blog</span>
-          </Link>
-          <Link href="/contact">
-            <span>Contact</span>
-          </Link>
-        </nav>
       </span>
 
-      <Link href="/contact" className="marquee" data-scroll-section>
+
+      {/* <Link href="/contact" className="marquee" data-scroll-section>
         <div>
           <span>Get in Touch</span>
           <span>Get in Touch</span>
         </div>
-      </Link>
+      </Link> */}
     </>
   );
 }
