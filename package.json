@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--trace-warnings' next build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "postbuild": "next-sitemap"
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
