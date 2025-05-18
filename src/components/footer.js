@@ -1,20 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Modal from "../components/Modal";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
 
-import styles from "../app/contact/contact.module.scss";
-import ContactForm from "../components/ContactForm";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import BackToTopButton from '../components/BackToTopButton';
-
-
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
 
 export default function Footer() {
   const [showModal, setShowModal] = useState(false);
@@ -29,6 +18,10 @@ export default function Footer() {
       return () => clearTimeout(timer);
     }
   }, []);
+  const pathname = usePathname()
+
+  console.log(pathname);
+  
 
   const closeModal = () => {
     setShowModal(false);
@@ -37,7 +30,9 @@ export default function Footer() {
   return (
     <>
       
-      <section className="in-touch" data-scroll-section>
+
+      {pathname !== '/contact/' && (
+        <section className="in-touch" data-scroll-section>
         <div className="bg-text">
           <span>nitya</span>
           <span>nitya</span>
@@ -70,6 +65,9 @@ export default function Footer() {
           </div>
         </div>
       </section>
+      )}
+      
+
       <footer className="Footer_footer_main__c8Opy" data-scroll-section>
         <section className="copy">
           <div className="container find">

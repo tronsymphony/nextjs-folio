@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
     // 1. Send email to you (site owner)
     const ownerEmailResult = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'onboarding@casa-dev.com',
       to: 'tronsymphony@gmail.com', // Your email
       subject: `New Project Quote Request: ${projectDetails.projectType}`,
       html: `
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
 
     // 2. Send confirmation email to client
     const clientEmailResult = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'onboarding@casa-dev.com',
       to: email, // Client's email
       subject: 'Your Project Quote Request has been received',
       html: `

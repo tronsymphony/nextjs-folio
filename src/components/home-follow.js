@@ -12,6 +12,8 @@ export default function HomeFollow() {
 
   return (
     <>
+      
+
       <span className="page_title" data-scroll-section>
         <div className="logo">
           <Link href="/">

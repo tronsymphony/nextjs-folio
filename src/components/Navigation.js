@@ -119,11 +119,11 @@ const Navigation = () => {
               </div>
             )}
           </li>
-          <li className="nav__item">
+          {/* <li className="nav__item">
             <Link href="/blog" className="nav__link">
               <span>Blog</span>
             </Link>
-          </li>
+          </li> */}
           <li className="nav__item">
             <Link href="/contact" className="nav__link">
               <span>Contact</span>

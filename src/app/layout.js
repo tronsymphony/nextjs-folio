@@ -1,10 +1,10 @@
 'use client'
-import "./globals.scss";
+import './globals.css';
+import "./global-custums.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 import Head from 'next/head'
 import Script from 'next/script';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { Inter } from "next/font/google";
 import React, { useRef } from "react";

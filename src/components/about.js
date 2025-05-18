@@ -58,8 +58,8 @@ export default function About() {
             <iframe
               height="454"
               width="300"
-              frameborder="0"
-              allowtransparency="true"
+              frameBorder="0"
+              allowTransparency="true"
               scrolling="no"
               src="https://www.strava.com/athletes/15797336/latest-rides/594248b42a8f75c469c571310aedb6ddf1691468"
             ></iframe>
