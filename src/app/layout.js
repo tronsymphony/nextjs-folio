@@ -7,7 +7,7 @@ import { PostHogProvider } from '../providers/providers';
 const inter = Inter({ subsets: ["latin"] });
 import Head from 'next/head'
 import Script from 'next/script';
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Inter } from "next/font/google";
 import React, { useRef } from "react";
 import { useRouter } from 'next/navigation';
@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
         />
       </Head>
       <body className={inter.className}>
-        <GoogleAnalytics trackPageViews />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         <main data-scroll-container ref={containerRef}>
           <PostHogProvider>
             {children}
