@@ -2,6 +2,8 @@
 import './globals.css';
 import "./global-custums.scss";
 
+import { PostHogProvider } from '../providers/providers';
+
 const inter = Inter({ subsets: ["latin"] });
 import Head from 'next/head'
 import Script from 'next/script';
@@ -73,10 +75,12 @@ export default function RootLayout({ children }) {
       </Head>
       <body className={inter.className}>
         <GoogleAnalytics trackPageViews />
-          <main data-scroll-container ref={containerRef}>
+        <main data-scroll-container ref={containerRef}>
+          <PostHogProvider>
             {children}
-          </main>
-      {/* <Script
+          </PostHogProvider>
+        </main>
+        {/* <Script
         id="tawk-to"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
