@@ -1,0 +1,591 @@
+/* ProjectCalculator.module.css */
+
+.calculatorContainer {
+  max-width: 1100px;
+  margin: 4rem auto;
+  color: #f0f0f0;
+  padding: 0 24px;
+}
+
+.calculatorTitleSub{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1.4rem;
+}
+.calculatorTitle {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #4a9eff, #9e4aff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 900;
+  color: transparent;
+  text-transform: uppercase;
+}
+
+.calculatorDescription {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  color: #b0b0b0;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  font-weight: 500;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+  letter-spacing: -0.778846px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+}
+
+/* Project Type Selection */
+.projectTypeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.projectTypeCard {
+  background-color: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: .8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.projectTypeCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: #4a9eff;
+}
+
+.projectTypeCard h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.projectTypeCard p {
+  margin: 0;
+  color: #888;
+}
+
+.projectTypeCard.selected {
+  background-color: #1e3a5f;
+  border-color: #4a9eff;
+  box-shadow: 0 0 15px rgba(74, 158, 255, 0.3);
+}
+
+/* Features Selection */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.featureCard {
+  background-color: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.featureCard:hover {
+  background-color: #2a2a2a;
+  border-color: #777;
+}
+
+.featureCard.selected {
+  background-color: #2c3b4d;
+  border-color: #4a9eff;
+}
+
+.featureCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.featureCard p {
+  margin: 0;
+  color: #4a9eff;
+  font-weight: 600;
+}
+
+/* Timeframe Selection */
+.timeframeOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.timeframeCard {
+  background-color: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: .8rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.timeframeCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.timeframeCard.selected {
+  background-color: #1e3a5f;
+  border-color: #4a9eff;
+  box-shadow: 0 0 15px rgba(74, 158, 255, 0.3);
+}
+
+.timeframeCard h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.timeframeCard p {
+  margin: 0;
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+/* Maintenance Option */
+.maintenanceOption {
+  max-width: 600px;
+}
+
+.maintenanceCard {
+  background-color: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.maintenanceCard:hover {
+  background-color: #2a2a2a;
+  border-color: #777;
+}
+
+.maintenanceCard.selected {
+  background-color: #2c3b4d;
+  border-color: #4a9eff;
+}
+
+.maintenanceCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.maintenanceCard p {
+  margin: 0;
+  color: #4a9eff;
+  font-weight: 600;
+}
+
+.maintenanceDetails {
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Cost Estimate */
+.costEstimate {
+  background-color: #252525;
+  border-radius: 10px;
+  padding: .8rem;
+  margin-top: 3rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.costEstimate h3 {
+  font-size: 2rem;
+  letter-spacing: -0.778846px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+}
+
+.costBreakdown {
+  margin-bottom: 2rem;
+}
+
+.costItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.costItem:last-child {
+  border-bottom: none;
+}
+
+.totalCost {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #444;
+}
+
+.getQuoteButton {
+  background: #b4e300;
+  color: #16171a;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.getQuoteButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(74, 158, 255, 0.4);
+}
+
+.getQuoteButton:disabled {
+  background: #555;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Contact Form */
+.contactFormContainer {
+  margin-top: 3rem;
+  padding: .8rem;
+  background-color: #252525;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  h3{
+    font-size: 1.5rem;
+  }
+}
+
+.contactForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.formGroupspan2{
+  @media screen and (min-width:768px) {
+    grid-column: span 2;
+  }
+}
+
+.formGroup label {
+  font-weight: 500;
+  color: #bbb;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 0.8rem;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formSummary {
+  grid-column: span 2;
+  background-color: #2e2e2e;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.formSummary h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #4a9eff;
+}
+
+.formSummary p {
+  margin: 0.5rem 0;
+}
+
+.submitButton {
+  grid-column: span 2;
+  background: #b4e300;
+  color: #16171a;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submitButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(74, 158, 255, 0.4);
+}
+
+/* Thank You Message */
+.thankYouMessage {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: #252525;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.thankYouMessage h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4a9eff;
+}
+
+.thankYouMessage p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.backButton {
+  background: #b4e300;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(74, 158, 255, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+  .calculatorTitle {
+    font-size: 1.6rem;
+
+  }
+
+  .contactForm {
+    grid-template-columns: 1fr;
+  }
+
+  .formSummary {
+    grid-column: span 1;
+  }
+
+  .submitButton {
+    grid-column: span 1;
+  }
+}
+
+
+/* Add this to your ProjectCalculator.module.css file */
+
+.errorMessage {
+  grid-column: span 2;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff5555;
+  color: #ff5555;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .errorMessage {
+    grid-column: span 1;
+  }
+}
+
+/* Make sure the checkbox class is included as mentioned earlier */
+.checkbox {
+  position: relative;
+  display: inline-block;
+}
+
+.checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"]:checked {
+  background-color: #4a9eff;
+  border-color: #4a9eff;
+}
+
+.checkbox input[type="checkbox"]:checked:after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Add these styles to your ProjectCalculator.module.css file */
+
+.designPackageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.designPackageCard {
+  background-color: #252525;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.designPackageCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-color: #4a9eff;
+}
+
+.designPackageCard h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.designPackagePrice {
+  color: #4a9eff;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.designPackageDescription {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 0.5rem;
+  flex-grow: 1;
+}
+
+.designPackageCard.selected {
+  background-color: #1e3a5f;
+  border-color: #4a9eff;
+  box-shadow: 0 0 15px rgba(74, 158, 255, 0.3);
+}
+
+/* Make sure these existing styles are applied properly */
+.errorMessage {
+  grid-column: span 2;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff5555;
+  color: #ff5555;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .errorMessage {
+    grid-column: span 1;
+  }
+
+  .designPackageGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensure checkbox class is included */
+.checkbox {
+  position: relative;
+  display: inline-block;
+}
+
+.checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"]:checked {
+  background-color: #4a9eff;
+  border-color: #4a9eff;
+}
+
+.checkbox input[type="checkbox"]:checked:after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

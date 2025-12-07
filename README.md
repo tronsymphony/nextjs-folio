@@ -14,3 +14,15 @@ raspberry pi image
 2024-03-12-raspios-bullseye-armhf-lite.img.xz
 192.168.1.9
 nitya
+
+ssh nitya@192.168.1.18
+
+rm -rf node_modules package-lock.json .next
+
+
+cd ../..
+cd var/www/html
+npm install
+npm run build
+pm2 restart 0
+npx next-sitemap

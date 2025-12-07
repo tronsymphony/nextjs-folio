@@ -1,25 +1,27 @@
-// About
+// About Page
 import Footer from "../../components/footer";
 import HomeFollow from "../../components/home-follow";
-import About from "../../components/about"
+import About from "../../components/about";
+
 export default function Home() {
   return (
     <>
-      <HomeFollow></HomeFollow>
-      <About></About>
-      <Footer></Footer>
+      <HomeFollow />
+      <About />
+      <Footer />
     </>
   );
 }
 
 export const metadata = {
-  metadataBase: new URL('http://casa-dev.com'),
+  metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: '/about',
+    canonical: "/about",
     languages: {
-      'en-US': '/en-US',
+      "en-US": "/en-US",
     },
   },
-  title: "About | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
+  title: "About | Full-Stack Developer | WordPress, Laravel, ReactJS, PHP, NodeJS, Shopify | Santa Monica & Los Angeles",
+  description:
+    "Explore world-class web development and design with Nitya Hoyos, a Los Angeles-based Full-Stack Developer. Specializing in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I craft tailored digital solutions to elevate your business. Let's create something extraordinary—contact me today!",
 };

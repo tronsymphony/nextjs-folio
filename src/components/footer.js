@@ -1,20 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Modal from "../components/Modal";
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
 
-import styles from "../app/contact/contact.module.scss";
-import ContactForm from "../components/ContactForm";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import BackToTopButton from '../components/BackToTopButton';
-
-
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
 
 export default function Footer() {
   const [showModal, setShowModal] = useState(false);
@@ -25,10 +14,14 @@ export default function Footer() {
       const timer = setTimeout(() => {
         setShowModal(true);
         sessionStorage.setItem('modalShown', 'true');
-      }, 10000);
+      }, 30000);
       return () => clearTimeout(timer);
     }
   }, []);
+  const pathname = usePathname()
+
+  console.log(pathname);
+  
 
   const closeModal = () => {
     setShowModal(false);
@@ -36,22 +29,10 @@ export default function Footer() {
 
   return (
     <>
-      <Modal show={showModal} onClose={closeModal} data-scroll-section>
-        <div className="content">
-          <h2>Get in touch for a free audit.</h2>
-          <p>
-            Let me create a personalized list of enhancements to boost your
-            brand&apos;s online presence. I&apos;ll help with usability, SEO, speed, and
-            design. Get in touch to start improving your site today!
-          </p>
-        </div>
-        <ThemeProvider theme={darkTheme}>
-          <CssBaseline />
-          <ContactForm></ContactForm>
-        </ThemeProvider>
-      </Modal>
+      
 
-      <section className="in-touch" data-scroll-section>
+      {pathname !== '/contact/' && (
+        <section className="in-touch" data-scroll-section>
         <div className="bg-text">
           <span>nitya</span>
           <span>nitya</span>
@@ -84,6 +65,9 @@ export default function Footer() {
           </div>
         </div>
       </section>
+      )}
+      
+
       <footer className="Footer_footer_main__c8Opy" data-scroll-section>
         <section className="copy">
           <div className="container find">
@@ -143,9 +127,9 @@ export default function Footer() {
             </nav>
           </div>
         </section>
-        <BackToTopButton  />
+        <BackToTopButton />
       </footer>
-      
+
     </>
   );
 }
