@@ -26,3 +26,57 @@ npm install
 npm run build
 pm2 restart 0
 npx next-sitemap
+
+
+# Configuration for Dynu.com
+daemon=300                       # Check every 300 seconds (5 mins)
+syslog=yes                       # Log update msgs to syslog
+pid=/var/run/ddclient.pid        # Record PID in file
+ssl=yes                          # Use SSL for security
+
+
+sudo apt update
+sudo apt install ddclient
+
+sudo nano /etc/ddclient.conf
+
+use=web, web=checkip.dynu.com/, web-skip='192.168.1.21'  # Get IP from server
+server=api.dynu.com                                    # IP update server
+protocol=dyndns2
+login=nityahoyos
+password='k.tTb#95.Es2hTW'
+casa-dev.com
+
+sudo systemctl restart ddclient
+sudo systemctl enable ddclient
+
+sudo ddclient -daemon=0 -debug -verbose -noquiet
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+nvm install --lts
+
+npm install -g pm2
+
+sudo nano /etc/nginx/sites-available/casa-dev
+sudo nano /etc/nginx/sites-available/casa-dev
+
+server {
+    listen 80;
+    server_name casa-dev.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/casa-dev /etc/nginx/sites-enabled/
+sudo rm /etc/nginx/sites-enabled/default
+
+sudo apt update
+sudo apt install certbot python3-certbot-nginx -y
