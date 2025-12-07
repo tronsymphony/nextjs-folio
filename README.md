@@ -25,5 +25,4 @@ cd var/www/html
 npm install
 npm run build
 pm2 restart 0
-
 npx next-sitemap

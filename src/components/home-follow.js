@@ -18,7 +18,7 @@ export default function HomeFollow() {
         <div className="logo">
           <Link href="/">
           <Image
-        src="/images/casa-dev.webp" // Path relative to the public folder
+        src="/images/logo.webp" // Path relative to the public folder
         alt="Casa Dev"
         width={100}
         height={50}

@@ -172,8 +172,8 @@ export default function HomeMain() {
       {/* Hero Section */}
       <section className="Home_welcome__aWiKA" data-scroll-section>
         <div className="Home_container__97eC3">
-          <div data-scroll="" className="svg-mask cfadeinup-hero">
-            <h1 className="!text-5xl uppercase font-black leading-[1.2] mb-5 break-words text-transparent bg-clip-text bg-gradient-to-r from-[#0e96ee] via-[#4eebd5] via-[#fdd68d] to-[#fb8c61] tracking-[-0.025em]">
+          <div data-scroll="" className="svg-mask cfadeinup-hero !max-w-2xl">
+            <h1 className="!text-4xl uppercase font-black leading-[1.2] mb-5 break-words text-transparent bg-clip-text bg-gradient-to-r from-[#0e96ee] via-[#4eebd5] via-[#fdd68d] to-[#fb8c61] tracking-[-0.025em]">
               Web & App Development for Growing Businesses
             </h1>
             <span className="welcome_h3_role" data-scroll data-scroll-speed="0">
@@ -194,7 +194,7 @@ export default function HomeMain() {
         </div>
       </section>
 
-      <section className="bg-gray-900 text-white py-16 px-6 md:px-12 overflow-hidden relative">
+      <section className=" text-white py-16 px-6 md:px-12 overflow-hidden relative">
 
   {/* Content container */}
   <div className="max-w-6xl mx-auto relative z-10">
@@ -245,7 +245,7 @@ export default function HomeMain() {
       <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-700 relative group">
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-10"></div>
         <img
-          src="https://safestreetsmap.com/_next/image?url=%2Fmap.jpg&w=3840&q=90"
+          src="./images/map.webp"
           alt="Screenshot of Safe Streets Map application"
           className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
         />
