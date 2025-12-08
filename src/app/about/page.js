@@ -21,7 +21,10 @@ export const metadata = {
       "en-US": "/en-US",
     },
   },
-  title: "About | Full-Stack Developer | WordPress, Laravel, ReactJS, PHP, NodeJS, Shopify | Santa Monica & Los Angeles",
+  // 📢 UPDATED TITLE: Focus on Strategic Role and Expertise
+  title: "About Nitya Hoyos | Full-Stack Digital Partner (Dev, Design, Marketing) | 10+ YOE",
+  
+  // 📢 UPDATED DESCRIPTION: Emphasizes the all-in-one strategic value and risk mitigation.
   description:
-    "Explore world-class web development and design with Nitya Hoyos, a Los Angeles-based Full-Stack Developer. Specializing in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I craft tailored digital solutions to elevate your business. Let's create something extraordinary—contact me today!",
+    "Meet your strategic digital partner. With 10+ years of holistic expertise in development, design, and marketing, I offer experienced companies an all-in-one solution. I build scalable, custom platforms that minimize vendor fragmentation, eliminate technical debt, and maximize long-term ROI.",
 };

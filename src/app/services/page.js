@@ -19,6 +19,18 @@ export const metadata = {
       'en-US': '/en-US',
     },
   },
-  title: "Services | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
+  // 📢 UPDATED TITLE: Focus on Strategic Solutions and Risk Mitigation
+  title: "Services | Strategic Web Development & Risk Mitigation | Full-Stack Partner",
+  
+  // 📢 UPDATED DESCRIPTION: Emphasizes expertise, holistic skills, and the anti-AI stance.
+  description: "Explore strategic, hand-crafted digital solutions by a Full-Stack Partner with 10+ years in Dev, Design, and Marketing. I build clean, scalable platforms (React, Laravel, WordPress) that minimize technical debt and maximize long-term ROI. Stop relying on AI boilerplate—invest in a strategic foundation.",
+  
+  // You might want to update the openGraph data here as well, mirroring the Title/Description:
+  openGraph: {
+      title: "Services | Strategic Web Development & Risk Mitigation | Full-Stack Partner",
+      description: "Explore strategic, hand-crafted digital solutions by a Full-Stack Partner with 10+ years in Dev, Design, and Marketing. I build clean, scalable platforms (React, Laravel, WordPress) that minimize technical debt and maximize long-term ROI. Stop relying on AI boilerplate—invest in a strategic foundation.",
+      url: 'https://casa-dev.com/services',
+      siteName: 'Casa Dev',
+      // ... other openGraph fields
+  }
 };

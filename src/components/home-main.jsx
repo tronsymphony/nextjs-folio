@@ -5,26 +5,70 @@ import ContactForm from "./ContactForm";
 import ProjectCalculator from "./ProjectCalculator/ProjectCalculator";
 
 import {
+  Shield,
+  Zap,
+  Clock,
+  ArrowRight,
   ArrowUpRight,
   MapPin,
-  Shield,
   Users,
   Code,
-  Zap,
   Bell,
   BarChart,
-  Clock,
   Check,
   Star,
   Award,
-  ArrowRight,
 } from "lucide-react";
 
+import { X, TrendingUp } from "lucide-react"; // Importing Lucide Icons
 import { useState } from "react";
 
 export default function HomeMain() {
   const [isHovered, setIsHovered] = useState(false);
   const [isCtaHovered, setIsCtaHovered] = useState(false);
+
+  // Note: Replaced raw SVG paths with Lucide components for cleaner JSX and better maintainability.
+  // Assuming these Lucide icons map to the original SVG intent:
+  // X (for Limitation marker)
+  // Check (for Advantage marker)
+  // Limitation Icons: Code (for Templates/Customization), Zap (for Performance)
+  // Advantage Icons: Award (for Experience), Shield (for Security), TrendingUp (for Strategic Growth)
+
+  const aiLimitations = [
+    {
+      title: "Boilerplate Risk & Technical Debt",
+      desc: "AI-generated or cheap code bases quickly become unmaintainable and insecure.",
+      Icon: Code,
+    },
+    {
+      title: "Performance Compromise",
+      desc: "Bloated code and unnecessary dependencies kill load times, SEO, and user experience.",
+      Icon: Zap,
+    },
+    {
+      title: "Marketing & Design Blind Spots",
+      desc: "Limited customization prevents the integration of strategic design or complex marketing funnels.",
+      Icon: X, // Using X for generic "problem"
+    },
+  ];
+
+  const strategicAdvantages = [
+    {
+      title: "Holistic Expertise (Dev, Design, Marketing)",
+      desc: "10+ years of problem-solving expertise aligned with your business goals, not just code functions.",
+      Icon: Award,
+    },
+    {
+      title: "Minimizing Risk & Technical Debt",
+      desc: "Clean, hand-crafted code ensures high security, optimal performance, and long-term scalability.",
+      Icon: Shield,
+    },
+    {
+      title: "Strategic Growth Foundation",
+      desc: "Building a platform designed to evolve and scale with your business's future requirements.",
+      Icon: TrendingUp,
+    },
+  ];
 
   const skills = [
     {
@@ -144,7 +188,38 @@ export default function HomeMain() {
         "Targeted optimization to help nearby customers find your business online. I implement proven SEO strategies specific to local businesses, including Google Business optimization, local keyword targeting, and review management to improve your visibility in local search results.",
     },
   ];
-
+  const strategicValueProps = [
+    {
+      id: "holistic-expertise",
+      title: "Holistic Expertise: Dev + Design + Marketing",
+      description:
+        "My 10+ years of cross-disciplinary experience means you hire a partner, not just a programmer, eliminating costly communication gaps and maximizing results.",
+      benefits: [
+        "**Unified Vision:** Flawless execution where design supports conversion, and code supports SEO.",
+        "**Faster Velocity:** No delays waiting for handoffs between external design or marketing agencies.",
+      ],
+    },
+    {
+      id: "risk-mitigation",
+      title: "Future-Proof Platforms & Risk Mitigation",
+      description:
+        "Unlike AI boilerplate or cheap outsourcing that leads to technical debt, I hand-craft a scalable foundation.",
+      benefits: [
+        "**Minimized Rebuild Risk:** Clean, documented code that grows with your business needs.",
+        "Enterprise-level security and performance built from the ground up, not patched on later.",
+      ],
+    },
+    {
+      id: "strategic-partnership",
+      title: "Strategic Partnership, Not Freelance Task-Taker",
+      description:
+        "I integrate into your team, advising on the right technical strategy to meet specific business objectives (lead generation, conversion, scaling).",
+      benefits: [
+        "Direct communication with a decision-making expert—no account managers or middlemen.",
+        "Agile project scopes that adapt to evolving market demands and opportunities.",
+      ],
+    },
+  ];
   // Featured projects data
   const featuredProjects = [
     {
@@ -172,22 +247,32 @@ export default function HomeMain() {
       {/* Hero Section */}
       <section className="Home_welcome__aWiKA" data-scroll-section>
         <div className="Home_container__97eC3">
+          {/* Retain the scroll and mask classes */}
           <div data-scroll="" className="svg-mask cfadeinup-hero !max-w-2xl">
+            {/* H1: Expert Focus (Retains original style and gradient) */}
             <h1 className="!text-4xl uppercase font-black leading-[1.2] mb-5 break-words text-transparent bg-clip-text bg-gradient-to-r from-[#0e96ee] via-[#4eebd5] via-[#fdd68d] to-[#fb8c61] tracking-[-0.025em]">
-              Web & App Development for Growing Businesses
+              Code Built by an Expert, Not Generated by AI.
             </h1>
+
+            {/* *** IMPROVED SUBTITLE *** Highlights 10+ years of expertise across Development, Design, and Marketing
+             */}
             <span className="welcome_h3_role" data-scroll data-scroll-speed="0">
-              I&rsquo;m a solo developer who delivers agency-quality websites
-              and apps at prices small businesses and startups can afford
+              I am your full-stack digital partner. With 10+ years in
+              development, design, and marketing, I build strategic, scalable
+              platforms that minimize risk and maximize long-term business ROI.
             </span>
+
+            {/* CTA: Strategic Partnering */}
             <div
               className="welcome_h3_role_btn"
               data-scroll
               data-scroll-speed="0"
             >
-              <a href="/contact" className="btn btn-primary">
-                Connect With Me
-              </a>
+              <Link href="/contact" className="btn btn-primary">
+                Partner on Your Strategic Project
+                {/* Optional Icon */}
+                {/* <ArrowUpRight className="ml-2 w-5 h-5" /> */}
+              </Link>
             </div>
           </div>
           <div className="Home_btn_content__PvvjD"></div>
@@ -195,390 +280,358 @@ export default function HomeMain() {
       </section>
 
       <section className=" text-white py-16 px-6 md:px-12 overflow-hidden relative">
-
-  {/* Content container */}
-  <div className="max-w-6xl mx-auto relative z-10">
-    {/* Header */}
-    <div className="!text-center mb-10 relative">
-      <div className="inline-block px-3 py-1 bg-blue-600 text-xs font-bold rounded-full mb-4 text-white">
-        DEVELOPER SHOWCASE
-      </div>
-      <h2 className="!text-3xl md:text-5xl font-bold mb-4 gradient-title5">
-        Turning Ideas Into Powerful Web Applications
-      </h2>
-      <p className="!text-xl text-gray-300 max-w-3xl mx-auto mb-6">
-        The{" "}
-        <span className="!text-blue-400 font-semibold">
-          Safe Streets Map
-        </span>{" "}
-        project demonstrates how I transform complex challenges into
-        user-friendly digital solutions that deliver real results.
-      </p>
-      
-      <div className="flex flex-wrap justify-center gap-4 mb-6">
-        <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full">
-          <Star className="!text-yellow-400 mr-2" size={16} />
-          <span className="!text-gray-200 text-sm font-medium">
-            95% Client Satisfaction
-          </span>
-        </div>
-        <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full">
-          <Award className="!text-purple-400 mr-2" size={16} />
-          <span className="!text-gray-200 text-sm font-medium">
-            Expert-Level Development
-          </span>
-        </div>
-      </div>
-
-      <a
-        href="https://safestreetsmap.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn btn-primary "
-      >
-        See My Work In Action
-      </a>
-    </div>
-
-    {/* Project showcase */}
-    <div className="grid gap-6 items-start">
-      <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-700 relative group">
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-10"></div>
-        <img
-          src="./images/map.webp"
-          alt="Screenshot of Safe Streets Map application"
-          className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute top-4 right-4 z-20">
-          <span className="px-4 py-2 bg-blue-600 text-sm font-bold rounded-lg shadow-lg">
-            FULL-STACK PROJECT
-          </span>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-gray-900">
-          <div className="flex flex-wrap gap-3">
-            <span className="px-3 py-1 bg-blue-900 bg-opacity-70 text-xs font-medium rounded-full">
-              React
-            </span>
-            <span className="px-3 py-1 bg-green-900 bg-opacity-70 text-xs font-medium rounded-full">
-              Node.js
-            </span>
-            <span className="px-3 py-1 bg-yellow-900 bg-opacity-70 text-xs font-medium rounded-full">
-              MongoDB
-            </span>
-            <span className="px-3 py-1 bg-purple-900 bg-opacity-70 text-xs font-medium rounded-full">
-              Mapbox API
-            </span>
-            <span className="px-3 py-1 bg-red-900 bg-opacity-70 text-xs font-medium rounded-full">
-              Tailwind CSS
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Condensed value proposition */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Left side */}
-        <div className="p-6 rounded-lg bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700">
-          <h3 className="!text-2xl font-bold text-white mb-4 flex items-center">
-            <Code className="mr-3 text-blue-400" size={24} />
-            Complete Project Ownership
-          </h3>
-          <p className="!text-gray-300 mb-4">
-            I handled <span className="!text-blue-400 font-semibold">every aspect</span> of this project, from UX/UI design to frontend and backend development.
-          </p>
-          <ul className="space-y-3">
-            <li className="flex items-start">
-              <div className="mt-1 mr-3 p-1 rounded-full bg-green-500 bg-opacity-20">
-                <Check className="!text-green-400" size={16} />
-              </div>
-              <div>
-                <span className="font-semibold text-white">
-                  Full-Stack Expertise
-                </span>
-                <p className="!text-gray-300 text-sm">
-                  From UI design to database architecture and API development.
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start">
-              <div className="mt-1 mr-3 p-1 rounded-full bg-green-500 bg-opacity-20">
-                <Check className="!text-green-400" size={16} />
-              </div>
-              <div>
-                <span className="font-semibold text-white">
-                  End-to-End Implementation
-                </span>
-                <p className="!text-gray-300 text-sm">
-                  Design, development, testing, and deployment—all by me.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        {/* Right side */}
-        <div className="space-y-6">
-          <div className="p-5 rounded-lg bg-gray-800 border-l-4 border-blue-500">
-            <div className="flex items-start">
-              <div className="p-2 bg-blue-500 bg-opacity-20 rounded-lg mr-4">
-                <MapPin className="!text-blue-100" size={24} />
-              </div>
-              <div>
-                <h3 className="!text-lg font-semibold text-white mb-2">
-                  Client Success Story
-                </h3>
-                <p className="!text-gray-300 text-base">
-                &apos;The Safe Streets Map completely transformed how our 
-                  community advocates for safety improvements.&apos;
-                </p>
-                <p className="!text-blue-400 text-sm mt-2 font-medium">
-                  — Community Safety Coalition
-                </p>
-              </div>
+        {/* Content container */}
+        <div className="max-w-6xl mx-auto relative z-10">
+          {/* Header */}
+          <div className="!text-center mb-10 relative">
+            <div className="inline-block px-3 py-1 bg-blue-600 text-xs font-bold rounded-full mb-4 text-white">
+              STRATEGIC PARTNERSHIP SHOWCASE
             </div>
-          </div>
-          
-          <div className="p-5 rounded-lg bg-gray-800">
-            <h3 className="!text-lg font-semibold text-white mb-2">
-              Project Highlights
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="text-center p-3 bg-gray-700 rounded-lg">
-                <div className="text-sm font-medium text-blue-400">
-                  <MapPin className="inline mr-1 mb-1" size={14} />
-                  Interactive Mapping
-                </div>
-                <div className="text-xs text-gray-300">
-                  Real-time hazard reporting
-                </div>
-              </div>
-              <div className="text-center p-3 bg-gray-700 rounded-lg">
-                <div className="text-sm font-medium text-green-400">
-                  <Users className="inline mr-1 mb-1" size={14} />
-                  Community Engagement
-                </div>
-                <div className="text-xs text-gray-300">Voting & comments</div>
-              </div>
-              <div className="text-center p-3 bg-gray-700 rounded-lg">
-                <div className="text-sm font-medium text-yellow-400">
-                  <Bell className="inline mr-1 mb-1" size={14} />
-                  Alert System
-                </div>
-                <div className="text-xs text-gray-300">Customizable notifications</div>
-              </div>
-              <div className="text-center p-3 bg-gray-700 rounded-lg">
-                <div className="text-sm font-medium text-purple-400">
-                  <BarChart className="inline mr-1 mb-1" size={14} />
-                  Data Analytics
-                </div>
-                <div className="text-xs text-gray-300">Safety trend insights</div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-
-      {/* Enhanced CTA section */}
-      <div className="p-6 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 rounded-lg border border-blue-700 shadow-lg mt-6">
-        <div className="md:flex items-center justify-between">
-          <div className="md:mr-8 mb-6 md:mb-0">
-            <h3 className="!text-2xl font-bold text-white mb-3">
-              Ready to Build Your Next Digital Product?
-            </h3>
-            <p className="!text-gray-200">
-              Let&apos;s discuss how I can help bring your vision to life.
+            <h2 className="!text-3xl md:text-5xl font-bold mb-4 gradient-title5">
+              From Complex Problem to Scalable Digital Platform
+            </h2>
+            <p className="!text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+              The{" "}
+              <span className="!text-blue-400 font-semibold">
+                Safe Streets Map
+              </span>{" "}
+              is an example of how **holistic expertise (Dev, Design,
+              Marketing)** solves complex challenges to deliver measurable,
+              real-world results.
             </p>
-          </div>
-          <div className="!text-center md:text-right">
+
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full">
+                <Award className="!text-purple-400 mr-2" size={16} />
+                <span className="!text-gray-200 text-sm font-medium">
+                  10+ Years of Expertise
+                </span>
+              </div>
+              <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full">
+                <Star className="!text-yellow-400 mr-2" size={16} />
+                <span className="!text-gray-200 text-sm font-medium">
+                  Minimized Long-Term Risk
+                </span>
+              </div>
+            </div>
+
             <a
-              href="/contact"
-              className="btn btn-primary"
+              href="https://safestreetsmap.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary "
             >
-              Start Your Project
+              See Strategic Results In Action
+              <ArrowUpRight className="ml-2 w-4 h-4" />
             </a>
-            <p className="!text-sm text-gray-300 mt-2">
-              No commitment required
-            </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<ProjectCalculator></ProjectCalculator>
-
-
-<section className="py-8">
-  <div className="container mx-auto px-4 max-w-6xl">
-    {/* Header */}
-    <div className="text-center mb-8">
-      <h2 className="gradient-title5">
-        Why Your Business Needs Professional Web Development
-      </h2>
-      <p className="text-base text-gray-300 max-w-2xl mx-auto">
-        AI and site builders offer speed, but not the performance, flexibility, or polish your business deserves.
-      </p>
-    </div>
-
-    <div className="grid md:grid-cols-2 gap-8 mb-8">
-      {/* Left Column - Limitations */}
-      <div>
-        <h3 className="!text-lg font-bold text-white mb-4 flex items-center">
-          <span className="p-1 bg-red-900 rounded-full mr-2">
-            <svg className="w-4 h-4 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </span>
-          Limitations of AI & Site Builders
-        </h3>
-
-        <div className="space-y-3">
-          {[
-            {
-              title: "Template Constraints",
-              desc: "Rigid templates limit your brand's unique expression",
-              iconPath: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-            },
-            {
-              title: "Performance Issues",
-              desc: "Bloated code hurts load times, SEO and user experience",
-              iconPath: "M13 10V3L4 14h7v7l9-11h-7z",
-            },
-            {
-              title: "Limited Customization",
-              desc: "Complex business requirements need direct code access",
-              iconPath: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
-            },
-          ].map(({ title, desc, iconPath }, i) => (
-            <div key={i} className="flex gap-3 items-start">
-              <div className="mt-1 p-1 bg-red-900 rounded-full shrink-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-red-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
-                </svg>
+          {/* Project showcase (No structural change needed here) */}
+          <div className="grid gap-6 items-start">
+            <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-700 relative group">
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70 z-10"></div>
+              <img
+                src="./images/map.webp"
+                alt="Screenshot of Safe Streets Map application"
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute top-4 right-4 z-20">
+                <span className="px-4 py-2 bg-blue-600 text-sm font-bold rounded-lg shadow-lg">
+                  STRATEGIC FULL-STACK BUILD
+                </span>
               </div>
-              <div>
-                <h4 className="font-semibold text-sm text-gray-200">{title}</h4>
-                <p className="text-xs text-gray-400">{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-gray-900 rounded-lg border border-gray-700 p-4 mt-4">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-red-400">71%</div>
-            <p className="text-xs text-gray-300">
-              of businesses report limitations with auto-generated websites
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Column - Advantages */}
-      <div>
-        <h3 className="!text-lg font-bold text-white mb-4 flex items-center">
-          <span className="p-1 bg-blue-900 rounded-full mr-2">
-            <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" clipRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-            </svg>
-          </span>
-          Professional Development Advantages
-        </h3>
-
-        <div className="space-y-3">
-          {[
-            {
-              title: "Experience & Expertise",
-              desc: "Years of problem-solving aligned with your business goals",
-              iconPath: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
-            },
-            {
-              title: "Security & Reliability",
-              desc: "Best practices for security, performance, and accessibility",
-              iconPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-            },
-            {
-              title: "Strategic Growth",
-              desc: "Scalable foundations that evolve with your business",
-              iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-            },
-          ].map(({ title, desc, iconPath }, i) => (
-            <div key={i} className="flex gap-3 items-start">
-              <div className="mt-1 p-1 bg-blue-900 rounded-full shrink-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-blue-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm text-gray-200">{title}</h4>
-                <p className="text-xs text-gray-400">{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-gray-900 rounded-lg border border-gray-700 p-4 mt-4">
-          <ul className="space-y-2 text-xs">
-            {[
-              "Custom functionality tailored to your needs",
-              "Optimized performance with clean code",
-              "Scalable architecture for growth",
-              "SEO-friendly structure built for conversion",
-            ].map((item, i) => (
-              <li key={i} className="flex items-center gap-2 text-gray-300">
-                <div className="p-1 bg-blue-900 rounded-full shrink-0">
-                  <svg className="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-gray-900">
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-3 py-1 bg-blue-900 bg-opacity-70 text-xs font-medium rounded-full">
+                    React
+                  </span>
+                  <span className="px-3 py-1 bg-green-900 bg-opacity-70 text-xs font-medium rounded-full">
+                    Node.js
+                  </span>
+                  <span className="px-3 py-1 bg-yellow-900 bg-opacity-70 text-xs font-medium rounded-full">
+                    MongoDB
+                  </span>
+                  <span className="px-3 py-1 bg-purple-900 bg-opacity-70 text-xs font-medium rounded-full">
+                    Mapbox API
+                  </span>
+                  <span className="px-3 py-1 bg-red-900 bg-opacity-70 text-xs font-medium rounded-full">
+                    Tailwind CSS
+                  </span>
                 </div>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </div>
+
+            {/* Condensed value proposition */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Left side: Focus on Strategy and Design */}
+              <div className="p-6 rounded-lg bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700">
+                <h3 className="!text-2xl font-bold text-white mb-4 flex items-center">
+                  <Code className="mr-3 text-blue-400" size={24} />
+                  Holistic Project Strategy & Execution
+                </h3>
+                <p className="!text-gray-300 mb-4">
+                  Leveraging 10+ years of combined **Dev, Design, and
+                  Marketing** experience to eliminate team silos and ensure a
+                  unified vision.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <div className="mt-1 mr-3 p-1 rounded-full bg-green-500 bg-opacity-20">
+                      <Check className="!text-green-400" size={16} />
+                    </div>
+                    <div>
+                      <span className="font-semibold text-white">
+                        Integrated Design & UX
+                      </span>
+                      <p className="!text-gray-300 text-sm">
+                        Design choices made with a marketing/conversion focus.
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="mt-1 mr-3 p-1 rounded-full bg-green-500 bg-opacity-20">
+                      <Check className="!text-green-400" size={16} />
+                    </div>
+                    <div>
+                      <span className="font-semibold text-white">
+                        Scalable, Clean Codebase
+                      </span>
+                      <p className="!text-gray-300 text-sm">
+                        Hand-crafted structure, future-proofed against
+                        limitations.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Right side */}
+              <div className="space-y-6">
+                <div className="p-5 rounded-lg bg-gray-800 border-l-4 border-blue-500">
+                  <div className="flex items-start">
+                    <div className="p-2 bg-blue-500 bg-opacity-20 rounded-lg mr-4">
+                      <MapPin className="!text-blue-100" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="!text-lg font-semibold text-white mb-2">
+                        Client Success: Results Over Features
+                      </h3>
+                      <p className="!text-gray-300 text-base">
+                        &apos;The Safe Streets Map completely transformed how
+                        our community advocates for safety improvements and data
+                        collection.&apos;
+                      </p>
+                      <p className="!text-blue-400 text-sm mt-2 font-medium">
+                        — Community Safety Coalition
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-lg bg-gray-800">
+                  <h3 className="!text-lg font-semibold text-white mb-2">
+                    Strategic Project Highlights
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center p-3 bg-gray-700 rounded-lg">
+                      <div className="text-sm font-medium text-blue-400">
+                        <MapPin className="inline mr-1 mb-1" size={14} />
+                        Data-Driven Mapping
+                      </div>
+                      <div className="text-xs text-gray-300">
+                        Real-time hazard reporting
+                      </div>
+                    </div>
+                    <div className="text-center p-3 bg-gray-700 rounded-lg">
+                      <div className="text-sm font-medium text-green-400">
+                        <Users className="inline mr-1 mb-1" size={14} />
+                        Community Engagement
+                      </div>
+                      <div className="text-xs text-gray-300">
+                        Built-in viral mechanics
+                      </div>
+                    </div>
+                    <div className="text-center p-3 bg-gray-700 rounded-lg">
+                      <div className="text-sm font-medium text-yellow-400">
+                        <Bell className="inline mr-1 mb-1" size={14} />
+                        Custom Alert System
+                      </div>
+                      <div className="text-xs text-gray-300">
+                        Marketing/Lead capture ready
+                      </div>
+                    </div>
+                    <div className="text-center p-3 bg-gray-700 rounded-lg">
+                      <div className="text-sm font-medium text-purple-400">
+                        <BarChart className="inline mr-1 mb-1" size={14} />
+                        Actionable Analytics
+                      </div>
+                      <div className="text-xs text-gray-300">
+                        Safety trend insights
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Enhanced CTA section: Focus on Consultation/Strategy */}
+            <div className="p-6 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 rounded-lg border border-blue-700 shadow-lg mt-6">
+              <div className="md:flex items-center justify-between">
+                <div className="md:mr-8 mb-6 md:mb-0">
+                  <h3 className="!text-2xl font-bold text-white mb-3">
+                    Ready for a Partner Who Minimizes Risk?
+                  </h3>
+                  <p className="!text-gray-200">
+                    Book a consultation to start your next strategic,
+                    future-proof project.
+                  </p>
+                </div>
+                <div className="!text-center md:text-right">
+                  <a href="/contact" className="btn btn-primary">
+                    Book Strategy Session
+                  </a>
+                  <p className="!text-sm text-gray-300 mt-2">
+                    Dedicated expertise starts here
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    {/* CTA - Simplified */}
-    <div className="text-center">
-      <a href="/contact" className="btn_link btn_link--light inline-block px-5 py-2">
-        Discuss Your Project
-      </a>
-      <p className="mt-2 text-gray-400 text-xs">
-        Let&apos;s create a website that truly represents your business potential
-      </p>
-    </div>
-  </div>
-</section>
+      <ProjectCalculator></ProjectCalculator>
 
+      <section className="py-16 bg-gray-900 text-white px-4">
+        <div className="container mx-auto max-w-6xl">
+          {/* Header: Focus on Strategic Imperative */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold gradient-title5">
+              The Choice: Boilerplate Code vs. Strategic Platform
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto mt-3">
+              Your website is a business asset. Don't risk your future on AI
+              shortcuts or cheap code that forces a costly rebuild in 12 months.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
+            {/* Left Column - Limitations (Risk) */}
+            <div className="p-6 rounded-lg border border-gray-700 bg-gray-800">
+              <h3 className="!text-xl font-bold text-white mb-4 flex items-center">
+                <span className="p-1 bg-red-900 rounded-full mr-3">
+                  <X className="w-5 h-5 text-red-400" />
+                </span>
+                The True Cost of Shortcuts (Risk)
+              </h3>
+
+              <div className="space-y-4">
+                {aiLimitations.map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <div className="mt-1 p-1 bg-red-900 rounded-full shrink-0">
+                      <item.Icon className="h-4 w-4 text-red-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-base text-gray-200">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-gray-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-gray-900 rounded-lg border border-gray-700 p-4 mt-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-red-400">71%</div>
+                  <p className="text-xs text-gray-300">
+                    of businesses report limitations with auto-generated
+                    websites that require expensive redesigns.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Advantages (Value) */}
+            <div className="p-6 rounded-lg border border-gray-700 bg-gray-800">
+              <h3 className="!text-xl font-bold text-white mb-4 flex items-center">
+                <span className="p-1 bg-blue-900 rounded-full mr-3">
+                  <Check className="w-5 h-5 text-blue-400" />
+                </span>
+                The Strategic Advantage (ROI)
+              </h3>
+
+              <div className="space-y-4">
+                {strategicAdvantages.map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <div className="mt-1 p-1 bg-blue-900 rounded-full shrink-0">
+                      <item.Icon className="h-4 w-4 text-blue-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-base text-gray-200">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-gray-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-gray-900 rounded-lg border border-gray-700 p-4 mt-6">
+                <ul className="space-y-2 text-sm">
+                  {[
+                    "Holistic solution focusing on Dev, Design, and Marketing.",
+                    "Code written for performance, maintainability, and security.",
+                    "Scalable architecture that supports long-term business growth.",
+                    "Conversion-optimized structure built to maximize ROI.",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-2 text-gray-300"
+                    >
+                      <div className="p-1 bg-blue-900 rounded-full shrink-0">
+                        <Check className="w-3 h-3 text-blue-400" />
+                      </div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA - Focus on Strategy Session */}
+          <div className="text-center pt-8">
+            <Link
+              href="/contact"
+              className="btn_link btn_link--light inline-block px-8 py-3 text-lg font-semibold border-2 border-blue-500 rounded-lg hover:bg-blue-500 transition duration-300"
+            >
+              Schedule Your Strategy Session
+            </Link>
+            <p className="mt-3 text-gray-400 text-sm">
+              Invest in a platform built for success, not a shortcut built to
+              fail.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Skills Section */}
-      <div className="container">
-      <h2 className="gradient-title5">Why Work With a Me?</h2>
-
+      <div className="container !pt-8">
+        {/* Updated Headline: Focus on why you are superior */}
+        <h2 className="gradient-title5 text-center text-4xl font-bold mb-12">
+          Why Strategic Clients Choose Expert Partnership
+        </h2>
       </div>
+
       <section
-        id=""
+        id="strategic-value-props"
         className="home_skillset"
         data-scroll-section
       >
         <div className="container">
-
-          {skills.map((skill) => (
+          {/* Mapping over the strategicValueProps data */}
+          {strategicValueProps.map((skill) => (
             <article
               key={skill.id}
               id={skill.id}
@@ -597,20 +650,30 @@ export default function HomeMain() {
                   {skill.description && (
                     <p itemProp="description">{skill.description}</p>
                   )}
-                  <ul>
+                  <ul className="space-y-2 mt-4">
                     {skill.benefits.map((benefit, index) => (
-                      <li key={index} itemProp="offers">
-                        {benefit}
+                      <li
+                        key={index}
+                        itemProp="offers"
+                        className="flex items-start"
+                      >
+                        {/* Optional: Add a checkmark icon to the list items for visual emphasis */}
+                        <Check className="w-5 h-5 text-green-400 mr-3 shrink-0 mt-1" />
+                        <span>{benefit}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
+              {/* Retain Schema Markup for SEO/Context */}
               <meta
                 itemProp="provider"
-                content="Web Development and Digital Marketing Professional"
+                content="Full-Stack Digital Strategy, Development, and Marketing Expert"
               />
-              <meta itemProp="areaServed" content="Los Angeles, California" />
+              <meta
+                itemProp="areaServed"
+                content="Global Remote and Los Angeles, California"
+              />
             </article>
           ))}
         </div>
@@ -618,12 +681,10 @@ export default function HomeMain() {
 
       {/* Featured Projects Section */}
       <header className="container">
-            <h2 className="gradient-title5">Featured Projects</h2>
-          </header>
+        <h2 className="gradient-title5">Featured Projects</h2>
+      </header>
       <section className="home_work" data-scroll-section>
-        <div className="container">
-         
-        </div>
+        <div className="container"></div>
         <div className="work-casestudy-loop pattern-1">
           <div className="container">
             <div className="row">
@@ -694,52 +755,64 @@ export default function HomeMain() {
 
       <section className="home_services" data-scroll-section>
         <div className="container">
-          <h2 className="title">Solutions for Growing Businesses</h2>
+          <h2 className="title">
+            {/* Updated Title: Focus on Strategic Outcomes */}
+            Strategic Digital Solutions Driven by Expertise
+          </h2>
           <div className="services">
+            {/* Item 1: Focus on High-Value Business Foundation */}
             <div className="item">
               <h3 className="title">
-                <span>Small Business Websites</span>
+                <span>High-Converting Digital Platforms</span>
               </h3>
               <p>
-                Affordable, mobile-optimized sites that establish credibility,
-                generate leads, and convert customers. Includes local SEO and
-                easy-to-update content management.
+                Custom, mobile-optimized sites built with a **conversion-first
+                design** to generate qualified leads and sales. Includes
+                advanced local SEO and intuitive content management systems.
               </p>
             </div>
+
+            {/* Item 2: Focus on Risk Mitigation and Strategy */}
             <div className="item">
               <h3 className="title">
-                <span>Startup MVP Development</span>
+                <span>Funding-Ready MVP & Product Strategy</span>
               </h3>
               <p>
-                Rapidly develop your concept into a functional product to
-                validate ideas and secure funding, with agile methods that adapt
-                to market feedback.
+                Rapidly develop a **scalable Minimum Viable Product** (MVP)
+                using agile methods. I ensure the technical foundation minimizes
+                debt and is ready for investment and growth.
               </p>
             </div>
+
+            {/* Item 3: Focus on Complex Solutions */}
             <div className="item">
               <h3 className="title">
-                <span>E-commerce & Apps</span>
+                <span>Custom E-commerce & Mobile App Ecosystems</span>
               </h3>
               <p>
-                Custom online stores and mobile apps that extend your reach with
-                seamless user experiences, flexible payment options, and
-                intuitive interfaces.
+                Bespoke online stores and native/cross-platform apps. Solutions
+                are built to handle complex integrations, flexible payment
+                options, and seamless user experiences across all devices.
               </p>
             </div>
+
+            {/* Item 4: Focus on Long-Term Partnership */}
             <div className="item">
               <h3 className="title">
-                <span>Maintenance & Local SEO</span>
+                <span>Performance Retainers & Growth Optimization</span>
               </h3>
               <p>
-                Ongoing technical support, security updates, and targeted
-                optimization to keep your digital assets performing at their
-                best and visible to local customers.
+                Ongoing strategic partnership for **technical support, security
+                audits, and continuous optimization**. Protect your digital
+                investment and ensure high visibility with targeted Local SEO
+                and performance tuning.
               </p>
             </div>
           </div>
           <div className="link-widget-wrap">
+            {/* CTA 1: View Strategy/Details */}
             <Link className="btn_link btn_link--light" href="/services/">
-              View Details
+              View Full Service & Strategy Details
               <span>
                 <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -749,8 +822,9 @@ export default function HomeMain() {
                 </svg>
               </span>
             </Link>
+            {/* CTA 2: Get Quote/Start Strategic Conversation */}
             <Link className="btn_link btn_link--light" href="/contact/">
-              Get Quote
+              Start Strategic Consultation
               <span>
                 <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -863,7 +937,6 @@ export default function HomeMain() {
           </div>
         </div>
       </section>
-
     </section>
   );
 }

@@ -1,179 +1,179 @@
 import Link from "next/link";
-import styles from "../app/about/about.module.scss";
+// Removing import styles from "../app/about/about.module.scss";
 import Script from "next/script";
+import { ArrowUpRight } from "lucide-react"; // Assuming you have Lucide icons available
 
 export default function About() {
+  // === Tailwind Approximations ===
+  const styles = {
+    // Replicating styles.page: Full width, padding, relative positioning
+    page: "w-full py-24 md:py-32 bg-gray-900 text-white relative",
+    // Replicating styles.container: Centered, limited width, default padding
+    container: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8",
+    // Replicating styles.title: Large, bold heading
+    title: "text-5xl md:text-6xl font-extrabold mb-4",
+    // Replicating styles.subtitle: Sub-heading text, slightly smaller
+    subtitle: "text-xl md:text-2xl text-gray-400 block mb-8",
+  };
+
+  // Replicating custom global classes for consistency
+  const global = {
+    // Replicating .title for general section H2s
+    sectionTitle: "text-3xl md:text-4xl font-bold mb-8 text-white",
+    // Replicating the h2/h3 styles within content
+    contentHeading: "text-2xl font-bold text-white mt-8 mb-4",
+    // Replicating the home_skillset structure for hover effects
+    skillItem: "border-t border-gray-700 py-8 transition duration-300 hover:bg-gray-800/50",
+    skillTitle: "text-3xl font-extrabold text-blue-400",
+    // Styling the CTA links for visibility
+    ctaLink: "text-blue-400 font-semibold hover:text-blue-300 transition duration-150",
+  };
+  
+  // Note: The 'about_data' and 'home_skillset' sections will get Tailwind classes directly.
+
   return (
     <>
+    
+      {/* 1. Hero Section: Convert SCSS module to Tailwind classes */}
       <section className={styles.page} data-scroll-section>
         <div className={styles.container}>
-          <h1 className={styles.title}>About Me</h1>
+          <h1 className={styles.title}>About Me: Your Technical Strategist</h1>
           <span className={styles.subtitle}>
-            Crafting exceptional websites and apps with a creative touch.
+            10+ Years of Expertise in Development, Design, and Marketing.
           </span>
         </div>
       </section>
 
-      <section className="about_data" data-scroll-section>
-        <div className="container">
-          <h2 className="title">
-            About Me: The Full-Stack Developer Who Rides with Passion
+      {/* 2. Main Content: Convert Custom Classes to Tailwind */}
+      <section className="about_data py-16 bg-gray-900 text-gray-300" data-scroll-section>
+        <div className="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <h2 className={global.sectionTitle}>
+            The Full-Stack Partner for Comprehensive Digital Solutions
           </h2>
-          <p>
-            Hi, I’m Nitya Hoyos, a Los Angeles-based full-stack developer with a
-            love for coding and cycling. My professional expertise spans
-            technologies like WordPress, ReactJS, Laravel, and Shopify. But when
-            I’m not crafting custom websites or building seamless digital
-            experiences, you’ll likely find me biking along the scenic routes of
-            Los Angeles.
+          <p className="mb-6 leading-relaxed">
+            Hi, I’m Nitya Hoyos. I am a Los Angeles-based **Full-Stack Digital Partner** with over **10 years of experience** spanning high-level development, strategic design, and performance-driven marketing. For established businesses and funded startups, I provide the essential **all-in-one solution** needed to build, launch, and grow complex digital platforms without the risk of hiring multiple siloed vendors.
           </p>
 
-          <h3>Cycling and Creativity: How Biking Fuels My Work</h3>
-          <p>
-            Cycling isn’t just a hobby; it’s a source of inspiration and focus.
-            The winding trails of Santa Monica or the urban paths of Marina del
-            Rey offer more than exercise—they provide clarity. Every pedal
-            stroke mirrors the precision I bring to my development projects,
-            balancing creativity and technical expertise. Just like navigating a
-            challenging route, I approach each project with persistence,
-            problem-solving, and attention to detail.
+          <h3 className={global.contentHeading}>Why Experienced Companies Choose an All-in-One Expert</h3>
+          <p className="mb-4 leading-relaxed">
+            Experienced businesses understand the cost of fragmentation: project delays, miscommunication between agencies, and technical compromises that lead to expensive rebuilds. **I eliminate that risk.** My expertise covers:
           </p>
-          <h3>Why This Matters for You</h3>
-          <p>
-            Whether you’re looking for a developer who understands the
-            intricacies of your digital needs or someone with the discipline and
-            creativity to take your ideas to the next level, I bring a unique
-            perspective. My ability to find solutions, stay adaptable, and think
-            creatively is as much a part of my work ethic as it is my cycling
-            routine.
-          </p>
-          <h3>Let’s Ride the Digital Landscape Together</h3>
-          <p>
-            If you’re ready to build something extraordinary—whether it’s a
-            dynamic website, an intuitive app, or an e-commerce platform—let’s
-            connect. With a passion for development and a cyclist’s drive, I’m
-            here to deliver solutions that move your business forward.
-          </p>
-          <div className="cycling-grid">
-            <iframe
-              height="454"
-              width="300"
-              frameBorder="0"
-              allowTransparency="true"
-              scrolling="no"
-              src="https://www.strava.com/athletes/15797336/latest-rides/594248b42a8f75c469c571310aedb6ddf1691468"
-            ></iframe>
+          <ul className="list-disc ml-6 space-y-2 mb-8">
+            <li>**Development:** Building scalable, clean platforms (ReactJS, NextJS, Laravel) that eliminate technical debt and the need for future rebuilds.</li>
+            <li>**Design:** Crafting conversion-focused UI/UX that drives business results and user trust.</li>
+            <li>**Marketing:** Integrating SEO, analytics, and lead generation from the code level up.</li>
+          </ul>
 
-            <div
-              className="strava-embed-placeholder"
-              data-embed-type="activity"
-              data-embed-id="13067637439"
-              data-style="standard"
-              data-from-embed="false"
-            ></div>
+          <h3 className={global.contentHeading}>My Professional Toolkit (10+ YOE)</h3>
+          <p className="mb-8 leading-relaxed">
+            My specialized knowledge in **Shopify Plus, Laravel, WordPress, ReactJS, and NextJS** allows me to architect the precise solution your business needs—whether it's a high-volume e-commerce platform or a bespoke enterprise application. My work is defined by precision, strategic thinking, and a commitment to continuous learning.
+          </p>
+          
+          <hr className="my-10 border-gray-700" /> 
 
-            {/* Script for Strava Embed */}
-            <Script
-              src="https://strava-embeds.com/embed.js"
-              strategy="afterInteractive"
-            />
+          {/* === CYCLING / PERSONAL SECTION: Using Tailwind Grid for Two Columns === */}
+          <div className="cycling-section-wrapper grid md:grid-cols-2 gap-8 items-start">
+            <div>
+              <h2 className={global.contentHeading}>The Drive: How Cycling Fuels My Strategic Work</h2>
+              <p className="mb-6 leading-relaxed">
+                While my work is deeply strategic, my passion for **cycling** mirrors the discipline I bring to every project. The challenging routes of Los Angeles require persistence and precise problem-solving—the same approach I take to debugging complex architectures and developing innovative solutions for your business.
+              </p>
+            </div>
+            
+            <div className="cycling-grid space-y-4">
+              <iframe
+                height="454"
+                width="100%" // Making the iframe responsive within the grid column
+                frameBorder="0"
+                allowTransparency="true"
+                scrolling="no"
+                src="https://www.strava.com/athletes/15797336/latest-rides/594248b42a8f75c469c571310aedb6ddf1691468"
+                className="rounded-lg shadow-xl"
+              ></iframe>
+
+              <div
+                className="strava-embed-placeholder bg-gray-800 p-4 rounded-lg"
+                data-embed-type="activity"
+                data-embed-id="13067637439"
+                data-style="standard"
+                data-from-embed="false"
+              ></div>
+
+              {/* Script for Strava Embed */}
+              <Script
+                src="https://strava-embeds.com/embed.js"
+                strategy="afterInteractive"
+              />
+            </div>
           </div>
-          <h3>Why Work With Me?</h3>
-          <p>
-            <strong>Comprehensive Expertise:</strong> With a robust skill set
-            spanning Shopify Plus, Laravel, WordPress, ReactJS, and NextJS, I
-            specialize in crafting modern, high-performing websites and dynamic
-            e-commerce platforms. I am well-equipped to deliver results that
-            drive growth and make a lasting impact.
-          </p>
-          <p>
-            <strong>Tailored Solutions:</strong> No two businesses are alike,
-            and I thrive on creating bespoke solutions tailored to your specific
-            goals and vision. Whether designing a site from the ground up or
-            enhancing an existing platform, I ensure your digital presence
-            stands out in a competitive landscape.
-          </p>
-          <p>
-            <strong>Commitment to Excellence:</strong> My work is defined by
-            precision, creativity, and a passion for continuous learning. I aim
-            to exceed expectations by crafting digital experiences that are
-            visually stunning, highly functional, and deliver measurable
-            results.
-          </p>
+          
+          <hr className="my-10 border-gray-700" /> 
 
-          <h2>Who I Am Outside of Work</h2>
-          <p>
-            Beyond coding and design, I embrace the vibrant outdoors of Los
-            Angeles. Whether biking along coastal trails, catching waves while
-            surfing, or hiking scenic paths, these adventures fuel my creativity
-            and energize my problem-solving approach. They remind me to approach
-            every project with a fresh perspective and an innovative mindset.
+          <h2 className={global.sectionTitle}>Ready to Eliminate Vendor Fragmentation?</h2>
+          <p className="mb-4 leading-relaxed">
+            Stop managing multiple teams and paying for fragmented results. If you are an experienced business ready to build a high-performing, **future-proof digital platform** with a single point of expert accountability, let's connect.
           </p>
           <p>
-            Are you ready to elevate your online presence? Explore my{" "}
-            <Link href="/portfolio">portfolio</Link> to see my work, and let’s
-            bring your vision to life. Feel free to{" "}
-            <Link href="/contact">get in touch</Link> today to discuss how we
-            can collaborate and create something extraordinary!
+            Explore my <Link href="/portfolio" className={global.ctaLink}>portfolio</Link> to see my work, or <Link href="/contact" className={global.ctaLink}>get in touch</Link> today to discuss your comprehensive project strategy.
           </p>
         </div>
       </section>
 
-      <section className="home_skillset" data-scroll-section>
-        <div className="container">
-          <h3>What I Can Do for You</h3>
+      {/* 4. Skills Section: Convert Custom Classes to Tailwind */}
+      <section className="home_skillset py-16 bg-gray-900" data-scroll-section>
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-3xl font-bold text-white mb-12">The Strategic Outcomes I Deliver</h3>
 
+          {/* Skill Item 1 */}
           <div
             data-scroll=""
-            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
+            className={global.skillItem}
             data-src="/images/design.jpg"
           >
-            <div className="row hover-row">
-              <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">Creative Design</h3>
+            <div className="row hover-row md:grid md:grid-cols-2 gap-8 items-center">
+              <div className="col-xl-5 col-lg-6 desc-title mb-4 md:mb-0">
+                <h3 className={global.skillTitle}>Conversion Design</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                <span>
-                  I craft user-friendly, visually striking digital experiences
-                  that reflect your brand&apos;s identity while ensuring
-                  usability and performance.
+                <span className="text-lg text-gray-300">
+                  I craft user-friendly, visually striking digital experiences with a **marketing-first focus** to ensure optimal lead capture and conversion rates.
                 </span>
               </div>
             </div>
           </div>
 
+          {/* Skill Item 2 */}
           <div
             data-scroll=""
-            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
+            className={global.skillItem}
             data-src="/images/development.jpg"
           >
-            <div className="row hover-row">
-              <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">Full-Stack Development</h3>
+            <div className="row hover-row md:grid md:grid-cols-2 gap-8 items-center">
+              <div className="col-xl-5 col-lg-6 desc-title mb-4 md:mb-0">
+                <h3 className={global.skillTitle}>Risk-Free Development</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                <span>
-                  From scalable websites to robust apps, I build solutions using
-                  the latest frameworks, including NextJS, ReactJS, and PHP CMS.
+                <span className="text-lg text-gray-300">
+                  I build highly scalable, clean codebases using NextJS/ReactJS and Laravel, guaranteeing **zero technical debt** and long-term stability for your investment.
                 </span>
               </div>
             </div>
           </div>
 
+          {/* Skill Item 3 */}
           <div
             data-scroll=""
-            className="hover-reveal-effect canvas-reveal cfadeinup is-inview"
+            className={global.skillItem}
             data-src="/images/full-package.jpg"
           >
-            <div className="row hover-row">
-              <div className="col-xl-5 col-lg-6 desc-title">
-                <h3 className="h2">Complete Solutions</h3>
+            <div className="row hover-row md:grid md:grid-cols-2 gap-8 items-center">
+              <div className="col-xl-5 col-lg-6 desc-title mb-4 md:mb-0">
+                <h3 className={global.skillTitle}>Strategic Oversight (ROI)</h3>
               </div>
               <div className="col-xl-5 col-lg-6 desc-text">
-                <span>
-                  I offer end-to-end services, from conceptualization to
-                  deployment, combining design and development to deliver
-                  impactful projects that truly stand out.
+                <span className="text-lg text-gray-300">
+                  I offer **end-to-end strategic oversight**, combining development and design expertise to deliver impactful projects that maximize your return on investment (ROI).
                 </span>
               </div>
             </div>
