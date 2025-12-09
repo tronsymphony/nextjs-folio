@@ -93,7 +93,7 @@ export default function Services() {
             </p>
             <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl mx-auto">
               Collaboration is at the heart of everything I do. From innovative apps to visually stunning websites, 
-              I offer a diverse range of services to ensure your project's success.
+              I offer a diverse range of services to ensure your project&apos;s success.
             </p>
          </div>
       </section>
@@ -108,7 +108,7 @@ export default function Services() {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               Boost Traffic, <span className="text-blue-500">Drive Revenue.</span>
             </h2>
-            <p className="text-neutral-500 text-lg uppercase tracking-widest font-bold">Let's Go Digital</p>
+            <p className="text-neutral-500 text-lg uppercase tracking-widest font-bold">Let&apos;s Go Digital</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

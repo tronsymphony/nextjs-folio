@@ -41,7 +41,7 @@ export default function ValueProps() {
             </span>
           </h2>
           <p className="text-xl text-neutral-400">
-            We move beyond "task completion" to provide the strategic foresight required for high-stakes digital platforms.
+            We move beyond &apos;task completion&apos; to provide the strategic foresight required for high-stakes digital platforms.
           </p>
         </div>
 

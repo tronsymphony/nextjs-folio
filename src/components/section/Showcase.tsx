@@ -30,7 +30,7 @@ export default function Showcase() {
           </h2>
           
           <p className="text-lg text-neutral-400 leading-relaxed mb-8">
-            The <span className="text-white font-medium">Safe Streets Map</span> isn't just code. It is an example of how 
+            The <span className="text-white font-medium">Safe Streets Map</span> isn&apos;t just code. It is an example of how 
             **holistic expertise** solves complex challenges to deliver measurable, real-world results.
           </p>
 
@@ -101,7 +101,7 @@ export default function Showcase() {
               </div>
               <div>
                 <p className="text-neutral-300 italic mb-4 text-sm leading-relaxed">
-                  "The Safe Streets Map completely transformed how our community advocates for safety improvements and data collection. It delivered results, not just features."
+                  &apos;The Safe Streets Map completely transformed how our community advocates for safety improvements and data collection. It delivered results, not just features.&apos;
                 </p>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-[1px] bg-neutral-700"></div>

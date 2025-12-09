@@ -121,7 +121,7 @@ export default function About() {
                   ))}
                 </div>
                 <p className="mt-6 text-sm text-neutral-500 leading-relaxed">
-                  I architect the precise solution your business needs—whether it's a high-volume e-commerce platform or a bespoke enterprise application.
+                  I architect the precise solution your business needs—whether it&apos;s a high-volume e-commerce platform or a bespoke enterprise application.
                 </p>
               </div>
 
