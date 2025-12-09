@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
                 "postalCode": "90292",
                 "addressCountry": "US",
               },
-              "image": "https://casa-dev.com/images/logo.webp",
+              "image": "https://casa-dev.com/images/logo2.webp",
               "openingHours": "Mo-Fr 09:00-17:00",
               "sameAs": [
                 "https://www.facebook.com/casadev",

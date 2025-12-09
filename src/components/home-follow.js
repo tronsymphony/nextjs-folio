@@ -1,34 +1,31 @@
 'use client'
 import Link from "next/link";
-import { useState } from "react";
-import Navigation from "./Navigation";
 import Image from 'next/image';
+import Navigation from "./Navigation";
 
-
-export default function HomeFollow() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+export default function Header() {
   return (
-    <>
-      <span className="page_title" data-scroll-section>
-        <div className="logo">
-          <Link href="/">
+    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+      <div className="container mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+        
+        {/* Logo */}
+        <div className="relative z-50">
+          <Link href="/" className="block">
             <Image
-              src="/images/logo.webp" // Path relative to the public folder
+              src="/images/logo2.webp"
               alt="Casa Dev"
               width={100}
               height={50}
-              priority // Optional: loads image with higher priority
+              priority
+              className="w-auto h-8 md:h-10 object-contain" // Responsive logo sizing
             />
           </Link>
         </div>
+
+        {/* Navigation */}
         <Navigation />
-      </span>
-      {/* <Link href="/contact" className="marquee" data-scroll-section>
-        <div>
-          <span>Get in Touch</span>
-          <span>Get in Touch</span>
-        </div>
-      </Link> */}
-    </>
+        
+      </div>
+    </header>
   );
 }

@@ -87,3 +87,11 @@ npm install
 npm run build
 pm2 restart all
 
+HEAT
+
+watch -n 1 "vcgencmd measure_temp; cat /sys/class/thermal/cooling_device0/cur_state"
+
+PM2_HOME=/home/nityahoyos/.pm2 pm2 save
+
+/usr/local/bin/pm2
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u nityahoyos --hp /home/nityahoyos
