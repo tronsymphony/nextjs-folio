@@ -30,7 +30,7 @@ export default function ComparisonSection() {
             The Choice: <span className="text-neutral-500 line-through decoration-red-500/50">Boilerplate</span> vs. <span className="text-blue-400">Strategic Platform</span>
           </h2>
           <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
-            Your website is a business asset. Don't risk your future on AI shortcuts that force a costly rebuild in 12 months.
+            Your website is a business asset. Don&apos;t risk your future on AI shortcuts that force a costly rebuild in 12 months.
           </p>
         </div>
 

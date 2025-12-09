@@ -50,7 +50,7 @@ export default function Services() {
             <span className="text-neutral-500">Driven by Expertise</span>
           </h2>
           <p className="text-lg text-neutral-400">
-            I don't just "build websites." I engineer digital assets designed to solve business problems and maximize ROI.
+            I don&apos;t just &apos;build websites.&apos; I engineer digital assets designed to solve business problems and maximize ROI.
           </p>
         </div>
 
