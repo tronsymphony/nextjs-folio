@@ -10,6 +10,8 @@ https://robertopozzi.medium.com/have-fun-with-your-raspberry-pi-secure-your-appl
 https://pimylifeup.com/raspberry-pi-ssl-lets-encrypt/
 
 
+https://gemini.google.com/u/1/app/25dab0b9c9a85b75?pageId=none
+
 raspberry pi image
 2024-03-12-raspios-bullseye-armhf-lite.img.xz
 192.168.1.9
@@ -80,3 +82,16 @@ sudo rm /etc/nginx/sites-enabled/default
 
 sudo apt update
 sudo apt install certbot python3-certbot-nginx -y
+
+npm install
+npm run build
+pm2 restart all
+
+HEAT
+
+watch -n 1 "vcgencmd measure_temp; cat /sys/class/thermal/cooling_device0/cur_state"
+
+PM2_HOME=/home/nityahoyos/.pm2 pm2 save
+
+/usr/local/bin/pm2
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u nityahoyos --hp /home/nityahoyos
