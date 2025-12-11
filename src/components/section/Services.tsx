@@ -1,39 +1,48 @@
 import React from 'react';
 import Link from 'next/link';
-import { MonitorSmartphone, Rocket, ShoppingCart, ShieldCheck, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-export default function Services() {
+interface ServiceItem {
+  title: string;
+  desc: string; // Note: home-main uses 'description' but previous Services used 'desc'. Will need to map or standardize.
+  // Actually, home-main uses 'description'. I should standardize to 'description' or map it.
+  // Let's use 'description' to match home-main, but Services used 'desc'.
+  // I will use 'description' in the interface and fallback if needed, but since I'm rewriting the component I can choose 'description'.
+  // However, `services` array in `home-main.jsx` uses `description`.
+  // Wait, `services` in `home-main.jsx` (lines 163-194) uses `title` and `description`.
+  // The old `Services.tsx` expected `desc`, `icon`, `color`, `bg`.
+  // The new data in `home-main.jsx` DOES NOT have `icon`, `color`, `bg`.
+  // This is a discrepancy. I need to handle the missing icons/colors.
+  // I will import a default set of icons or map them based on title if possible, or just use a generic icon if none provided?
+  // Let's look at `home-main.jsx` again.
+  // It has `platforms` (icons) but `services` (text only).
+  // I should probably map the new services to icons or accept that they might be missing.
+  // For now, I will import some default icons and cycle through them or map by index if no icon is provided.
+}
+
+// In home-main.jsx, services array items have: title, description.
+// In Services.tsx, it used: title, desc, icon, color, bg.
+
+import { MonitorSmartphone, Rocket, ShoppingCart, ShieldCheck } from 'lucide-react';
+
+const ICONS = [MonitorSmartphone, Rocket, ShoppingCart, ShieldCheck, MonitorSmartphone, Rocket]; // Fallback loop
+const COLORS = ["text-blue-400", "text-purple-400", "text-emerald-400", "text-yellow-400", "text-blue-400", "text-purple-400"];
+const BGS = ["bg-blue-500/10", "bg-purple-500/10", "bg-emerald-500/10", "bg-yellow-500/10", "bg-blue-500/10", "bg-purple-500/10"];
+
+interface ServicesProps {
+  services: any[]; // relaxed type to accept the incoming data
+}
+
+export default function Services({ services }: ServicesProps) {
   
-  const services = [
-    {
-      title: "High-Converting Digital Platforms",
-      desc: "Custom, mobile-optimized sites built with a conversion-first design to generate qualified leads. Includes advanced local SEO and intuitive CMS.",
-      icon: MonitorSmartphone,
-      color: "text-blue-400",
-      bg: "bg-blue-500/10"
-    },
-    {
-      title: "Funding-Ready MVP Strategy",
-      desc: "Rapidly develop a scalable Minimum Viable Product (MVP). I ensure the technical foundation minimizes debt and is ready for investment and growth.",
-      icon: Rocket,
-      color: "text-purple-400",
-      bg: "bg-purple-500/10"
-    },
-    {
-      title: "E-commerce & App Ecosystems",
-      desc: "Bespoke online stores and native/cross-platform apps. Built to handle complex integrations, flexible payments, and seamless user experiences.",
-      icon: ShoppingCart,
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10"
-    },
-    {
-      title: "Growth Retainers & Security",
-      desc: "Ongoing strategic partnership for technical support, security audits, and continuous optimization. Protect your digital investment.",
-      icon: ShieldCheck,
-      color: "text-yellow-400",
-      bg: "bg-yellow-500/10"
-    }
-  ];
+  const displayServices = (services || []).map((service, index) => ({
+    ...service,
+    // Map missing visual props from index if not present
+    icon: service.icon || ICONS[index % ICONS.length],
+    color: service.color || COLORS[index % COLORS.length],
+    bg: service.bg || BGS[index % BGS.length],
+    desc: service.description || service.desc // Handle both keys
+  }));
 
   return (
     <section className="relative py-24 bg-[#0a0a0a] overflow-hidden" data-scroll-section>
@@ -56,7 +65,9 @@ export default function Services() {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
-          {services.map((service, index) => (
+          {displayServices.map((service, index) => {
+             const Icon = service.icon;
+             return (
             <div 
               key={index}
               className="group relative p-8 rounded-3xl border border-neutral-800 bg-neutral-900/50 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1"
@@ -67,7 +78,7 @@ export default function Services() {
               <div className="relative z-10">
                 {/* Icon */}
                 <div className={`w-14 h-14 ${service.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className={`w-7 h-7 ${service.color}`} />
+                  <Icon className={`w-7 h-7 ${service.color}`} />
                 </div>
 
                 {/* Content */}
@@ -79,7 +90,7 @@ export default function Services() {
                 </p>
               </div>
             </div>
-          ))}
+          )})}
         </div>
 
         {/* CTA Area */}

@@ -309,14 +309,17 @@ export default function HomeMain() {
 
       <ProjectCalculator></ProjectCalculator>
 
-      <ComparisonSection></ComparisonSection>
+      <ComparisonSection 
+        aiLimitations={aiLimitations} 
+        strategicAdvantages={strategicAdvantages} 
+      />
 
-      <ValueProps></ValueProps>
+      <ValueProps strategicValueProps={strategicValueProps} />
 
       {/* Featured Projects Section */}
       <FeaturedProjects></FeaturedProjects>
 
-      <Services></Services>
+      <Services services={services} />
 
       {/* Technologies Section */}
       <section

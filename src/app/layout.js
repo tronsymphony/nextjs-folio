@@ -25,24 +25,25 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
+              "@type": "ProfessionalService", // More accurate for a dev agency/consultancy
               "name": "Casa Dev",
               "description":
-                "Casa Dev is a Los Angeles-based web development and design agency specializing in custom, hand-coded websites.",
+                "Casa Dev is a strategic digital partner specializing in custom, high-performance web development and design. We build scalable platforms that drive business growth, avoiding the technical debt of AI-generated code.",
               "url": "https://casa-dev.com",
               "telephone": "+1-424-384-9528",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Marina Del Rey Blvd",
+                "streetAddress": "123 Marina Del Rey Blvd", // Verify if this is the desired address or placeholder
                 "addressLocality": "Los Angeles",
                 "addressRegion": "CA",
                 "postalCode": "90292",
                 "addressCountry": "US",
               },
               "image": "https://casa-dev.com/images/logo2.webp",
-              "openingHours": "Mo-Fr 09:00-17:00",
+              "openingHours": "Mo-Fr 09:00-18:00",
+              "priceRange": "$$$", // Indicates premium/enterprise quality
               "sameAs": [
-                "https://www.facebook.com/casadev",
+                "https://www.facebook.com/casadev", // Ensure these are real or remove if unused
                 "https://twitter.com/casadev",
                 "https://www.linkedin.com/company/casadev",
               ],
@@ -55,19 +56,13 @@ export default function RootLayout({ children }) {
                 },
                 "geoRadius": 50,
               },
-              "offers": {
-                "@type": "Offer",
-                "url": "https://casa-dev.com/pricing",
-                "priceCurrency": "USD",
-                "price": "150",
-                "availability": "https://schema.org/InStock",
-                "validFrom": "2024-01-01",
-              },
+              // Removed specific single "Offer" of $150 as unlikely for a "Professional Service" / Agency unless it's a specific consultation
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+1-424-384-9528",
                 "contactType": "Customer Service",
                 "areaServed": "US",
+                "availableLanguage": "English"
               },
             }),
           }}

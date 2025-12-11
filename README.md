@@ -21,7 +21,6 @@ ssh nitya@192.168.1.18
 
 rm -rf node_modules package-lock.json .next
 
-
 cd ../..
 cd var/www/html
 npm install
@@ -58,9 +57,22 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 source ~/.bashrc
 nvm install --lts
 
+node -v
+
+sudo apt install git
+
+git clone https://github.com/tronsymphony/nextjs-folio.git
+pm2 start index.js --name "my-node-app" --output "logs/out.log" --error "logs/err.log"
+npm install
+
 npm install -g pm2
 
-sudo nano /etc/nginx/sites-available/casa-dev
+# sudo nano /etc/nginx/sites-available/casa-dev
+# sudo nano /etc/nginx/sites-available/casa-dev
+
+sudo apt install nginx -y
+
+# sudo nano /etc/nginx/sites-available/my-next-app
 sudo nano /etc/nginx/sites-available/casa-dev
 
 server {
@@ -81,17 +93,39 @@ sudo ln -s /etc/nginx/sites-available/casa-dev /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 
 sudo apt update
-sudo apt install certbot python3-certbot-nginx -y
+sudo apt install certbot python3-certbot-nginx -
 
-npm install
-npm run build
-pm2 restart all
+sudo certbot --nginx -d casa-dev.com
+
+# npm install
+# npm run build
+# pm2 restart all
 
 HEAT
 
-watch -n 1 "vcgencmd measure_temp; cat /sys/class/thermal/cooling_device0/cur_state"
+# watch -n 1 "vcgencmd measure_temp; cat /sys/class/thermal/cooling_device0/cur_state"
 
-PM2_HOME=/home/nityahoyos/.pm2 pm2 save
+# PM2_HOME=/home/nityahoyos/.pm2 pm2 save
 
-/usr/local/bin/pm2
-sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u nityahoyos --hp /home/nityahoyos
+# /usr/local/bin/pm2
+# sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u nityahoyos --hp /home/nityahoyos
+
+sudo nano /etc/systemd/system/nextjs.service
+
+[Unit]
+Description=Next.js App
+After=network.target
+
+[Service]
+User=nityahoyos
+WorkingDirectory=/home/nityahoyos/my-next-app
+# This new line tells Systemd where 'node' is:
+Environment=PATH=/home/nityahoyos/.nvm/versions/node/v24.12.0/bin:/usr/bin:/bin
+ExecStart=/home/nityahoyos/.nvm/versions/node/v24.12.0/bin/npm start
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+sudo journalctl -u nextjs -f

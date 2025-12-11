@@ -56,9 +56,16 @@ export const metadata = {
   // 📢 MAIN DESCRIPTION: Emphasizes full expertise and strategic value
   description:
     "I am a full-stack digital partner with 10+ years in development, design, and marketing. I build clean, high-performing platforms that minimize risk and maximize long-term business ROI. Invest in a strategic foundation.",
-  other: {
-    // 📢 KEYWORDS: New terms reflect high-value service
-    keywords:
-      "strategic web development, expert developer, anti-AI code, holistic digital partner, technical strategy, custom SaaS development, high-ROI websites, clean code, minimize technical debt",
-  },
+  // 📢 KEYWORDS: New terms reflect high-value service
+  keywords: [
+    "strategic web development",
+    "expert developer",
+    "anti-AI code",
+    "holistic digital partner",
+    "technical strategy",
+    "custom SaaS development",
+    "high-ROI websites",
+    "clean code",
+    "minimize technical debt"
+  ],
 };

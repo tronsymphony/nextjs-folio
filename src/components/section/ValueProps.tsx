@@ -1,28 +1,20 @@
 import React from 'react';
 import { Check, ArrowUpRight } from 'lucide-react';
 
-export default function ValueProps() {
-  // Mock Data (Replace with your actual import)
-  const strategicValueProps = [
-    {
-      id: "risk-reduction",
-      title: "Risk Reduction",
-      description: "We don't just write code; we anticipate failure points. By auditing security, scalability, and compliance before a single line is written, we prevent costly pivots down the road.",
-      benefits: ["Security-first architecture", "Compliance auditing", "Zero-downtime deployment strategies"]
-    },
-    {
-      id: "holistic-strategy",
-      title: "Holistic Strategy",
-      description: "Silos kill projects. By integrating Development, Design, and Marketing into a single workflow, we ensure your platform isn't just functional—it's market-ready.",
-      benefits: ["Unified design & dev workflow", "SEO-optimized codebase", "Conversion-focused UI/UX"]
-    },
-    {
-      id: "long-term-roi",
-      title: "Long-Term ROI",
-      description: "Cheap code is expensive debt. We build scalable platforms designed to grow with your business for years, effectively amortizing your investment over a longer lifespan.",
-      benefits: ["Modular component systems", "Future-proof tech stack", "Lower long-term maintenance costs"]
-    }
-  ];
+interface ValuePropItem {
+  id: string;
+  title: string;
+  description: string;
+  benefits: string[];
+}
+
+interface ValuePropsProps {
+  strategicValueProps: ValuePropItem[];
+}
+
+export default function ValueProps({ strategicValueProps }: ValuePropsProps) {
+  // Use passed data or fallback to empty array
+  const valueProps = strategicValueProps || [];
 
   return (
     <section id="strategic-value-props" className="relative py-24 bg-[#0a0a0a] overflow-hidden">
@@ -47,9 +39,9 @@ export default function ValueProps() {
 
         {/* The "Ledger" List */}
         <div className="border-t border-neutral-800">
-          {strategicValueProps.map((skill, index) => (
+          {valueProps.map((skill, index) => (
             <article
-              key={skill.id}
+              key={skill.id || index}
               id={skill.id}
               className="group relative border-b border-neutral-800 transition-colors duration-500 hover:border-neutral-600"
               itemScope
@@ -66,9 +58,9 @@ export default function ValueProps() {
                     <span className="text-xs font-mono text-neutral-600 group-hover:text-blue-400 transition-colors">
                       0{index + 1}
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-neutral-300 group-hover:text-white transition-colors" itemProp="name">
+                    <h3 className="text-3xl md:text-4xl font-bold text-neutral-300 group-hover:text-white transition-colors" itemProp="name">
                       {skill.title}
-                    </h2>
+                    </h3>
                   </div>
                   {/* Decorative Arrow on Desktop */}
                   <div className="hidden md:block mt-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
@@ -86,7 +78,7 @@ export default function ValueProps() {
                   )}
 
                   <ul className="grid sm:grid-cols-2 gap-4">
-                    {skill.benefits.map((benefit, i) => (
+                    {skill.benefits && skill.benefits.map((benefit, i) => (
                       <li
                         key={i}
                         itemProp="offers"
