@@ -1,20 +1,23 @@
 import React from 'react';
 import Link from 'next/link';
-import { X, Check, AlertTriangle, TrendingUp, ShieldAlert, Zap, Layers, Lock } from 'lucide-react';
+import { ShieldAlert, Zap, X, Check, TrendingUp } from 'lucide-react';
 
-export default function ComparisonSection() {
-  // Data for the component (You can move this outside or to a prop)
-  const aiLimitations = [
-    { title: "Generic & Unoriginal", desc: "Cookie-cutter designs that fail to differentiate your brand.", Icon: Layers },
-    { title: "Security Vulnerabilities", desc: "Generated code often misses critical security patches.", Icon: Lock },
-    { title: "Zero Strategic Insight", desc: "AI cannot understand your specific business goals or audience.", Icon: AlertTriangle },
-  ];
+interface ComparisonItem {
+  title: string;
+  desc: string;
+  Icon: any;
+}
 
-  const strategicAdvantages = [
-    { title: "Tailored Brand Strategy", desc: "Every pixel is designed to convert your specific audience.", Icon: Layers },
-    { title: "Enterprise-Grade Security", desc: "Hand-written, audited code that protects your users.", Icon: Lock },
-    { title: "Long-Term Scalability", desc: "Built to grow with your business, not require a rebuild.", Icon: TrendingUp },
-  ];
+interface ComparisonSectionProps {
+  aiLimitations: ComparisonItem[];
+  strategicAdvantages: ComparisonItem[];
+}
+
+export default function ComparisonSection({ aiLimitations, strategicAdvantages }: ComparisonSectionProps) {
+  // Check if props are provided; if not, return null or handle gracefully? 
+  // For now assuming they will be passed as per plan, but we can default to empty arrays to prevent crashes if undefined.
+  const limitations = aiLimitations || [];
+  const advantages = strategicAdvantages || [];
 
   return (
     <section className="relative py-24 px-4 sm:px-6 bg-[#0a0a0a] overflow-hidden">
@@ -57,7 +60,7 @@ export default function ComparisonSection() {
 
             {/* List */}
             <div className="space-y-6">
-              {aiLimitations.map((item, i) => (
+              {limitations.map((item, i) => (
                 <div key={i} className="flex gap-4 items-start opacity-70 group-hover:opacity-100 transition-opacity">
                   <X className="w-5 h-5 text-red-500 mt-1 shrink-0" />
                   <div>
@@ -97,7 +100,7 @@ export default function ComparisonSection() {
 
             {/* List */}
             <div className="space-y-6">
-              {strategicAdvantages.map((item, i) => (
+              {advantages.map((item, i) => (
                 <div key={i} className="flex gap-4 items-start">
                   <div className="mt-1 p-0.5 bg-blue-500 rounded-full shrink-0">
                     <Check className="w-3 h-3 text-white" />

@@ -21,7 +21,6 @@ ssh nitya@192.168.1.18
 
 rm -rf node_modules package-lock.json .next
 
-
 cd ../..
 cd var/www/html
 npm install
@@ -62,9 +61,8 @@ node -v
 
 sudo apt install git
 
-
 git clone https://github.com/tronsymphony/nextjs-folio.git
-
+pm2 start index.js --name "my-node-app" --output "logs/out.log" --error "logs/err.log"
 npm install
 
 npm install -g pm2
@@ -111,3 +109,23 @@ HEAT
 
 # /usr/local/bin/pm2
 # sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u nityahoyos --hp /home/nityahoyos
+
+sudo nano /etc/systemd/system/nextjs.service
+
+[Unit]
+Description=Next.js App
+After=network.target
+
+[Service]
+User=nityahoyos
+WorkingDirectory=/home/nityahoyos/my-next-app
+# This new line tells Systemd where 'node' is:
+Environment=PATH=/home/nityahoyos/.nvm/versions/node/v24.12.0/bin:/usr/bin:/bin
+ExecStart=/home/nityahoyos/.nvm/versions/node/v24.12.0/bin/npm start
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+sudo journalctl -u nextjs -f
