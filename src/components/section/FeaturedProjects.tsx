@@ -1,11 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
+import image from "next/image";
 
 export default function FeaturedProjects() {
   
   // Project Data
   const projects = [
+    {
+      id: "totalwarehouse",
+      client: "Total Warehouse",
+      title: "Digital Showroom",
+      url: "https://showroom.totalwarehouse.com",
+      desc: "A custom Next.js application fully integrated with Oracle NetSuite. This digital showroom streamlines inventory browsing and quote generation by syncing real-time product data directly from the ERP.",
+      image: "/images/totalwarehouse.jpg",
+      tags: ["Next.js", "Oracle NetSuite", "Real-Time Data"],
+      color: "from-purple-400 to-pink-500"
+    },
     {
       id: "godaddy",
       client: "GoDaddy",
