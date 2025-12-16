@@ -47,15 +47,32 @@ export default function RootLayout({ children }) {
                 "https://twitter.com/casadev",
                 "https://www.linkedin.com/company/casadev",
               ],
-              "areaServed": {
-                "@type": "GeoCircle",
-                "geoMidpoint": {
-                  "@type": "GeoCoordinates",
-                  "latitude": 34.052235,
-                  "longitude": -118.243683,
+              // 🌍 LOCATION STRATEGY:
+              // "Los Angeles" = Trust Signal (I am real, I am here).
+              // "US" = Reach Signal (I work everywhere).
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Los Angeles"
                 },
-                "geoRadius": 50,
-              },
+                {
+                  "@type": "Country",
+                  "name": "US"
+                }
+              ],
+              // 🤖 AI SEARCH OPTIMIZATION (GEO): Detailed Skills Graph
+              "knowsAbout": [
+                "NetSuite ERP Development",
+                "Oracle NetSuite Integration",
+                "Next.js & React Architecture",
+                "Angular Development",
+                "WordPress Development",
+                "PostHog & Mixpanel Analytics",
+                "Technical SEO",
+                "UI/UX Design Systems",
+                "Enterprise Resource Planning",
+                "SaaS Product Strategy"
+              ],
               // Removed specific single "Offer" of $150 as unlikely for a "Professional Service" / Agency unless it's a specific consultation
               "contactPoint": {
                 "@type": "ContactPoint",
