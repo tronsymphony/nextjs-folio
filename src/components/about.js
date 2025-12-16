@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Script from "next/script";
-import { 
-  Code, Layers, LineChart, MapPin, 
-  Bike, Check, ArrowRight, Terminal 
+import {
+  Code, Layers, LineChart, MapPin,
+  Bike, Check, ArrowRight, Terminal
 } from "lucide-react";
 
 export default function About() {
-  
+
   // Tech Stack Data
   const techStack = [
     { name: "React / Next.js", icon: Code },
@@ -42,7 +42,7 @@ export default function About() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-800 text-blue-400 text-xs font-bold mb-6 tracking-wide uppercase">
             <MapPin size={12} /> Los Angeles Based
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase leading-[1.1]">
             Your Technical <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
@@ -62,14 +62,14 @@ export default function About() {
 
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
-            
+
             {/* LEFT: Main Bio (Span 7) */}
             <div className="lg:col-span-7">
               <h2 className="text-3xl font-bold text-white mb-6">
                 The Full-Stack Partner for <br />
                 <span className="text-blue-500">Comprehensive Solutions</span>
               </h2>
-              
+
               <div className="prose prose-invert max-w-none text-neutral-400 leading-relaxed text-lg space-y-6">
                 <p>
                   Hi, I’m <strong className="text-white">Nitya Hoyos</strong>. I am a Los Angeles-based Full-Stack Digital Partner with over 10 years of experience spanning high-level development, strategic design, and performance-driven marketing.
@@ -77,8 +77,8 @@ export default function About() {
                 <p>
                   For established businesses and funded startups, I provide the essential <strong className="text-white">all-in-one solution</strong> needed to build, launch, and grow complex digital platforms without the risk of hiring multiple siloed vendors.
                 </p>
-                
-                
+
+
 
                 <div className="p-6 bg-neutral-900/50 border border-neutral-800 rounded-2xl mt-8">
                   <h3 className="text-white font-bold mb-4 flex items-center gap-2">
@@ -106,7 +106,7 @@ export default function About() {
 
             {/* RIGHT: Toolkit & Stats (Span 5) */}
             <div className="lg:col-span-5 space-y-8">
-              
+
               {/* Tech Stack Card */}
               <div className="p-8 rounded-3xl bg-neutral-900/30 border border-neutral-800">
                 <h3 className="text-xl font-bold text-white mb-6">Professional Toolkit (10+ YOE)</h3>
@@ -134,7 +134,7 @@ export default function About() {
       <section className="py-20 bg-[#050505] border-y border-neutral-900 overflow-hidden">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            
+
             {/* Text Content */}
             <div>
               <div className="inline-flex items-center gap-2 mb-6">
@@ -147,7 +147,7 @@ export default function About() {
                 How Cycling Fuels <br /> My Strategic Work
               </h2>
               <p className="text-neutral-400 text-lg leading-relaxed mb-6">
-                While my work is deeply strategic, my passion for cycling mirrors the discipline I bring to every project. 
+                While my work is deeply strategic, my passion for cycling mirrors the discipline I bring to every project.
               </p>
               <p className="text-neutral-400 text-lg leading-relaxed">
                 The challenging routes of Los Angeles require persistence and precise problem-solving—the same approach I take to debugging complex architectures and developing innovative solutions for your business.
@@ -158,26 +158,26 @@ export default function About() {
             <div className="relative">
               {/* Decorative Ring */}
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50 -z-10"></div>
-              
+
               <div className="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl">
-                 {/* Iframe */}
-                 <div className="relative w-full h-[454px]">
-                    <iframe
-                      height="454"
-                      width="100%"
-                      frameBorder="0"
-                      allowTransparency="true"
-                      scrolling="no"
-                      src="https://www.strava.com/athletes/15797336/latest-rides/594248b42a8f75c469c571310aedb6ddf1691468"
-                      className="w-full h-full"
-                    ></iframe>
-                 </div>
-                 
-                 {/* Optional: Load Script if Strava requires it for interactivity outside iframe */}
-                 <Script
-                    src="https://strava-embeds.com/embed.js"
-                    strategy="lazyOnload"
-                  />
+                {/* Iframe */}
+                <div className="relative w-full h-[454px]">
+                  <iframe
+                    height="454"
+                    width="100%"
+                    frameBorder="0"
+                    allowTransparency="true"
+                    scrolling="no"
+                    src="https://www.strava.com/athletes/15797336/latest-rides/594248b42a8f75c469c571310aedb6ddf1691468"
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+
+                {/* Optional: Load Script if Strava requires it for interactivity outside iframe */}
+                <Script
+                  src="https://strava-embeds.com/embed.js"
+                  strategy="lazyOnload"
+                />
               </div>
             </div>
 
@@ -194,7 +194,7 @@ export default function About() {
 
           <div className="flex flex-col border-t border-neutral-800">
             {outcomes.map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="group flex flex-col md:flex-row items-start md:items-center py-10 border-b border-neutral-800 hover:border-neutral-600 transition-colors duration-300"
               >
@@ -216,11 +216,11 @@ export default function About() {
                     {item.desc}
                   </p>
                 </div>
-                
-                 {/* Arrow */}
-                 <div className="hidden md:flex flex-1 justify-end opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                    <ArrowRight className="text-blue-400" />
-                 </div>
+
+                {/* Arrow */}
+                <div className="hidden md:flex flex-1 justify-end opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="text-blue-400" />
+                </div>
               </div>
             ))}
           </div>
@@ -229,12 +229,12 @@ export default function About() {
           <div className="mt-20 text-center">
             <h3 className="text-2xl font-bold text-white mb-6">Ready to Eliminate Vendor Fragmentation?</h3>
             <div className="flex justify-center gap-6">
-               <Link href="/portfolio" className="text-neutral-400 hover:text-white underline underline-offset-4 decoration-neutral-700 hover:decoration-white transition-all">
-                  View Portfolio
-               </Link>
-               <Link href="/contact" className="text-blue-400 hover:text-blue-300 font-bold underline underline-offset-4 decoration-blue-500/30 hover:decoration-blue-400 transition-all">
-                  Get in Touch
-               </Link>
+              <Link href="/portfolio" className="text-neutral-400 hover:text-white underline underline-offset-4 decoration-neutral-700 hover:decoration-white transition-all">
+                View Portfolio
+              </Link>
+              <Link href="/contact" className="text-blue-400 hover:text-blue-300 font-bold underline underline-offset-4 decoration-blue-500/30 hover:decoration-blue-400 transition-all">
+                Get in Touch
+              </Link>
             </div>
           </div>
 
