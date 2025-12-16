@@ -305,19 +305,19 @@ export default function HomeMain() {
                         <div className="w-full">
                            <div className="text-purple-400">const <span className="text-yellow-400">YourGrowth</span> = <span className="text-blue-400">{'{'}</span></div>
                            <div className="pl-4">
-                              <span className="text-sky-400">strategy</span>: <span className="text-green-400">'Data-Driven UX'</span>,
+                              <span className="text-sky-400">strategy</span>: <span className="text-green-400">&rsquo;Data-Driven UX&rsquo;</span>,
                            </div>
                            <div className="pl-4">
-                              <span className="text-sky-400">design</span>: <span className="text-green-400">'Modern & Conversional'</span>,
+                              <span className="text-sky-400">design</span>: <span className="text-green-400">&rsquo;Modern & Conversional&rsquo;</span>,
                            </div>
                            <div className="pl-4">
-                              <span className="text-sky-400">techStack</span>: [<span className="text-green-400">'Next.js'</span>, <span className="text-green-400">'NetSuite'</span>, <span className="text-green-400">'Wordpress'</span>, <span className="text-green-400">'Angular'</span>],
+                              <span className="text-sky-400">techStack</span>: [<span className="text-green-400">&rsquo;Next.js&rsquo;</span>, <span className="text-green-400">&rsquo;NetSuite&rsquo;</span>, <span className="text-green-400">&rsquo;Wordpress&rsquo;</span>, <span className="text-green-400">&rsquo;Angular&rsquo;</span>],
                            </div>
                            <div className="pl-4">
-                              <span className="text-sky-400">marketing</span>: <span className="text-green-400">'SEO & Analytics'</span>,
+                              <span className="text-sky-400">marketing</span>: <span className="text-green-400">&rsquo;SEO & Analytics&rsquo;</span>,
                            </div>
                            <div className="pl-4 py-2">
-                              <span className="text-gray-500">// Result:</span>
+                              <span className="text-gray-500">\/\/ Result:</span>
                            </div>
                            <div className="pl-4">
                               <span className="text-purple-400">return</span> <span className="text-yellow-400">MaximumROI</span><span className="text-blue-400">()</span>;
