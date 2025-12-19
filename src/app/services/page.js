@@ -20,17 +20,17 @@ export const metadata = {
     },
   },
   // 📢 UPDATED TITLE: Focus on Strategic Solutions and Risk Mitigation
-  title: "Services | Strategic Web Development & Risk Mitigation | Full-Stack Partner",
-  
-  // 📢 UPDATED DESCRIPTION: Emphasizes expertise, holistic skills, and the anti-AI stance.
-  description: "Explore strategic, hand-crafted digital solutions by a Full-Stack Partner with 10+ years in Dev, Design, and Marketing. I build clean, scalable platforms (React, Laravel, WordPress) that minimize technical debt and maximize long-term ROI. Stop relying on AI boilerplate—invest in a strategic foundation.",
-  
+  title: "Services | Strategic Web Development & AI Integration | Full-Stack Partner",
+
+  // 📢 UPDATED DESCRIPTION: Emphasizes expertise, holistic skills, and strategic AI integration.
+  description: "Explore strategic, hand-crafted digital solutions by a Full-Stack Partner with 10+ years in Dev, Design, and Marketing. I specialize in high-performance web development and strategic AI integration that minimizes technical debt and maximizes ROI. Invest in a foundation built for growth.",
+
   // You might want to update the openGraph data here as well, mirroring the Title/Description:
   openGraph: {
-      title: "Services | Strategic Web Development & Risk Mitigation | Full-Stack Partner",
-      description: "Explore strategic, hand-crafted digital solutions by a Full-Stack Partner with 10+ years in Dev, Design, and Marketing. I build clean, scalable platforms (React, Laravel, WordPress) that minimize technical debt and maximize long-term ROI. Stop relying on AI boilerplate—invest in a strategic foundation.",
-      url: 'https://casa-dev.com/services',
-      siteName: 'Casa Dev',
-      // ... other openGraph fields
+    title: "Services | Strategic Web Development & AI Integration | Full-Stack Partner",
+    description: "Explore strategic, hand-crafted digital solutions by a Full-Stack Partner with 10+ years in Dev, Design, and Marketing. I specialize in high-performance web development and strategic AI integration that minimizes technical debt and maximizes ROI.",
+    url: 'https://casa-dev.com/services',
+    siteName: 'Casa Dev',
+    // ... other openGraph fields
   }
 };

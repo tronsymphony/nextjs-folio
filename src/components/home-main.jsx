@@ -224,6 +224,16 @@ export default function HomeMain() {
         "Agile project scopes that adapt to evolving market demands and opportunities.",
       ],
     },
+    {
+      id: "vibe-coder-rescue",
+      title: "Vibe Coder Rescue: Finishing the Final 20%",
+      description:
+        "Stuck on the last 20% of your AI-assisted build? I help founders and 'vibe coders' turn prototypes into secure, scalable, production-ready platforms.",
+      benefits: [
+        "**Production Hardening:** Implementation of secure auth, complex logic, and custom integrations.",
+        "**Scalable Architecture:** Refactoring AI boilerplate into a foundation that lasts years, not months.",
+      ],
+    },
   ];
 
   return (
@@ -461,6 +471,96 @@ export default function HomeMain() {
                   Let&rsquo;s discuss your technology options
                 </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Posts Section */}
+      <section className="py-24 bg-[#050505] px-4 sm:px-6 border-t border-white/5" data-scroll-section>
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div className="max-w-xl">
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter uppercase">
+                Latest <span className="text-blue-500">Insights.</span>
+              </h2>
+              <p className="text-gray-400 text-lg">
+                Stay updated with the latest trends in AI integration and strategic web development.
+              </p>
+            </div>
+            <Link 
+              href="/blog" 
+              className="group flex items-center gap-2 text-white font-bold hover:text-blue-400 transition-colors uppercase tracking-widest text-sm"
+            >
+              View All Posts <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300">
+               <div className="p-8">
+                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest rounded-full mb-6 inline-block">
+                     AI Strategy
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                     <Link href="/blog/how-ai-can-transform-your-small-business">
+                        Maximizing ROI: How AI Can Transform Your Small Business in 2025
+                     </Link>
+                  </h3>
+                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
+                     Learn how artificial intelligence can streamline operations, enhance customer service, and drive growth for small businesses.
+                  </p>
+                  <Link 
+                    href="/blog/how-ai-can-transform-your-small-business"
+                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
+                  >
+                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+               </div>
+            </div>
+
+            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300">
+               <div className="p-8">
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-widest rounded-full mb-6 inline-block">
+                     Web Development
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
+                     <Link href="/blog/integrating-ai-to-supercharge-your-website">
+                        The Future of Web Development: Integrating AI to Supercharge Your Website
+                     </Link>
+                  </h3>
+                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
+                     Explore how AI-driven features like intelligent search and personalized recommendations can elevate your website.
+                  </p>
+                  <Link 
+                    href="/blog/integrating-ai-to-supercharge-your-website"
+                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
+                  >
+                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+               </div>
+            </div>
+
+            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300">
+               <div className="p-8">
+                  <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest rounded-full mb-6 inline-block">
+                     Rescue
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
+                     <Link href="/blog/from-vibe-coding-to-production-ready">
+                        From &apos;Vibe Coding&apos; to Production-Ready: Finishing Your Project
+                     </Link>
+                  </h3>
+                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
+                     Built a great prototype with AI but stuck on the last 20%? Here is how to turn those vibes into a production-ready application.
+                  </p>
+                  <Link 
+                    href="/blog/from-vibe-coding-to-production-ready"
+                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
+                  >
+                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+               </div>
             </div>
           </div>
         </div>
