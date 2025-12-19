@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 // Helper function to render rich text
 const renderRichText = (node) => {
@@ -41,24 +42,27 @@ const renderRichText = (node) => {
       case "wysiwyg":
         return (
           <div
-            dangerouslySetInnerHTML={{ __html: block.content }}
+            key={index}
+            dangerouslySetInnerHTML={{ __html: child.fields.content }}
           />
         );
       case "html-embed":
         return (
           <div
-            dangerouslySetInnerHTML={{ __html: block.htmlCode }}
+            key={index}
+            dangerouslySetInnerHTML={{ __html: child.fields.htmlCode }}
           />
         );
       case "image":
         return (
-          <figure>
-            <img
-              src={block.image.url}
-              alt={block.alt || ""}
-              style={{ maxWidth: "100%", height: "auto" }}
+          <figure className="relative w-full aspect-video my-8">
+            <Image
+              src={child.fields.image.url}
+              alt={child.fields.alt || ""}
+              fill
+              className="object-cover rounded-xl"
             />
-            {block.caption && <figcaption>{block.caption}</figcaption>}
+            {child.fields.caption && <figcaption className="text-center text-sm text-gray-500 mt-2">{child.fields.caption}</figcaption>}
           </figure>
         );
       default:

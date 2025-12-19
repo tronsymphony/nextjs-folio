@@ -3,8 +3,42 @@ import HomeFollow from "../../../components/home-follow";
 import LocationPageContent from "../../../components/LocationPageContent";
 
 export default function PortlandSEO() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Casa Dev - Portland",
+    "image": "https://casa-dev.com/images/logo2.webp",
+    "@id": "https://casa-dev.com/about/portland",
+    "url": "https://casa-dev.com/about/portland",
+    "telephone": "",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Portland",
+      "addressRegion": "OR",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.5152,
+      "longitude": -122.6784
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://github.com/tronsymphony"
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HomeFollow />
       <LocationPageContent 
         city="Portland"

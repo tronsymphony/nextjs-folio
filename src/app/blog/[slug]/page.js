@@ -32,6 +32,31 @@ export default async function BlogPost({ params }) {
 
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BlogPosting",
+                        "headline": post.title,
+                        "description": post.description,
+                        "image": `https://casa-dev.com${post.image}`,
+                        "datePublished": post.date,
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Casa Dev"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Casa Dev",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://casa-dev.com/images/logo2.webp"
+                            }
+                        }
+                    })
+                }}
+            />
             <HomeFollow />
             <article className="pt-32 pb-20 bg-[#050505] min-h-screen text-gray-300">
                 <div className="container mx-auto px-4 sm:px-6">

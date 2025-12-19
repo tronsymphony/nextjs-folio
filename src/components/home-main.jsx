@@ -406,20 +406,10 @@ export default function HomeMain() {
                   key={index}
                   className="client-block d-flex justify-content-center align-items-center flex-column"
                 >
-                  <span className="img-wrapper">
-                    <Image
-                      loading="lazy"
-                      height="80"
-                      width="62"
-                      style={{ width: "62px", height: "80px" }}
-                      aria-hidden="true"
-                      alt=""
-                      className="lazyloaded"
-                      decoding="async"
-                      src={platform.icon}
-                    />
+                  <span className="img-wrapper flex items-center justify-center bg-white/5 rounded-xl p-4">
+                    <Zap className="w-12 h-12 text-blue-400" />
                   </span>
-                  <span className="d-block">{platform.name}</span>
+                  <span className="d-block mt-2">{platform.name}</span>
                 </div>
               ))}
             </div>
@@ -440,19 +430,10 @@ export default function HomeMain() {
                   key={index}
                   className="client-block d-flex justify-content-center align-items-center flex-column"
                 >
-                  <span className="img-wrapper">
-                    <Image
-                      height="80"
-                      width="62"
-                      style={{ width: "62px", height: "80px" }}
-                      aria-hidden="true"
-                      alt=""
-                      className="lazyloaded"
-                      decoding="async"
-                      src={platform.icon}
-                    />
+                  <span className="img-wrapper flex items-center justify-center bg-white/5 rounded-xl p-4">
+                    <Code className="w-12 h-12 text-purple-400" />
                   </span>
-                  <span className="d-block">{platform.name}</span>
+                  <span className="d-block mt-2">{platform.name}</span>
                 </div>
               ))}
             </div>

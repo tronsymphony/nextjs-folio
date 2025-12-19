@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 // Assuming you are using Lucide-React, if not, replace with your icon set
 import { 
   Award, Star, ArrowUpRight, Code, Check, 
@@ -48,10 +49,12 @@ export default function Showcase() {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
             
             {/* Image */}
-            <img
-              src="./images/map.webp"
+            <Image
+              src="/images/map.webp"
               alt="Safe Streets Map Interface"
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              fill
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              priority
             />
 
             {/* Floating UI Elements */}
