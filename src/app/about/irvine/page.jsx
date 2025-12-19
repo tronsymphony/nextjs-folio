@@ -3,8 +3,42 @@ import HomeFollow from "../../../components/home-follow";
 import LocationPageContent from "../../../components/LocationPageContent";
 
 export default function IrvineSEO() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Casa Dev - Irvine",
+    "image": "https://casa-dev.com/images/logo2.webp",
+    "@id": "https://casa-dev.com/about/irvine",
+    "url": "https://casa-dev.com/about/irvine",
+    "telephone": "",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Irvine",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 33.6846,
+      "longitude": -117.8265
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://github.com/tronsymphony"
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HomeFollow />
       <LocationPageContent 
         city="Irvine"
