@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { 
-  Accessibility, Zap, Palette, Code, 
-  Database, RefreshCw, Wrench, Search, 
-  ArrowRight, Check 
+import {
+  Accessibility, Zap, Palette, Code,
+  Database, RefreshCw, Wrench, Search,
+  ArrowRight, Check
 } from "lucide-react";
 
 export default function Services() {
-  
+
   // Data for Services Grid
   const servicesList = [
     {
@@ -59,6 +59,13 @@ export default function Services() {
       bg: "bg-red-500/10"
     },
     {
+      title: "AI Integration",
+      description: "Harness artificial intelligence to automate business processes, personalize user experiences, and drive smarter decision-making.",
+      icon: Zap, // Or a better icon if I have one
+      color: "text-blue-500",
+      bg: "bg-blue-500/10"
+    },
+    {
       title: "SEO Strategy",
       description: "Boost visibility with expert SEO. I optimize content, structure, and off-page elements to drive organic traffic.",
       icon: Search,
@@ -81,21 +88,21 @@ export default function Services() {
     <>
       {/* ------------------- 1. HERO HEADER ------------------- */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 bg-[#0a0a0a] overflow-hidden" data-scroll-section>
-         {/* Background Glow */}
-         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
+        {/* Background Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
 
-         <div className="container mx-auto max-w-4xl text-center">
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase">
-              Services
-            </h1>
-            <p className="text-xl md:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
-              Crafting Next-Level Digital Experiences
-            </p>
-            <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl mx-auto">
-              Collaboration is at the heart of everything I do. From innovative apps to visually stunning websites, 
-              I offer a diverse range of services to ensure your project&apos;s success.
-            </p>
-         </div>
+        <div className="container mx-auto max-w-4xl text-center">
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase">
+            Services
+          </h1>
+          <p className="text-xl md:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
+            Crafting Next-Level Digital Experiences
+          </p>
+          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+            Collaboration is at the heart of everything I do. From innovative apps to visually stunning websites,
+            I offer a diverse range of services to ensure your project&apos;s success.
+          </p>
+        </div>
       </section>
 
       {/* ------------------- 2. SERVICES GRID ------------------- */}
@@ -113,7 +120,7 @@ export default function Services() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {servicesList.map((service, index) => (
-              <div 
+              <div
                 key={index}
                 className="group relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/80 hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1"
               >
@@ -121,7 +128,7 @@ export default function Services() {
                 <div className={`w-12 h-12 ${service.bg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                   <service.icon className={`w-6 h-6 ${service.color}`} />
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">{service.description}</p>
               </div>
@@ -130,15 +137,15 @@ export default function Services() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link 
-              href="/contact/" 
+            <Link
+              href="/contact/"
               className="group inline-flex items-center justify-center gap-2 px-8 py-3 bg-white !text-black font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
             >
               Talk to Me
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link 
-              href="/contact/" 
+            <Link
+              href="/contact/"
               className="group inline-flex items-center justify-center gap-2 px-8 py-3 border border-neutral-700 !text-white font-medium rounded-full hover:bg-neutral-800 transition-all"
             >
               More Services
@@ -157,7 +164,7 @@ export default function Services() {
 
           <div className="flex flex-col border-t border-neutral-800">
             {whyMeList.map((skill, index) => (
-              <div 
+              <div
                 key={index}
                 className="group flex flex-col md:flex-row items-start md:items-center py-8 border-b border-neutral-800 hover:border-neutral-600 transition-colors duration-300"
               >
