@@ -17,7 +17,7 @@ export default function ValueProps({ strategicValueProps }: ValuePropsProps) {
   const valueProps = strategicValueProps || [];
 
   return (
-    <section id="strategic-value-props" className="relative py-24 bg-[#0a0a0a] overflow-hidden">
+    <section id="strategic-value-props" className="relative py-16 bg-[#0a0a0a] overflow-hidden">
       
       {/* Background Texture */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
@@ -25,14 +25,14 @@ export default function ValueProps({ strategicValueProps }: ValuePropsProps) {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
         
         {/* Section Header */}
-        <div className="mb-20 max-w-4xl">
-           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <div className="mb-12 max-w-4xl">
+           <h2 className="text-2xl md:text-4xl font-bold text-white mb-6 leading-tight">
             Why Strategic Clients Choose <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
               Expert Partnership
             </span>
           </h2>
-          <p className="text-xl text-neutral-400">
+          <p className="text-lg text-neutral-400">
             We move beyond &apos;task completion&apos; to provide the strategic foresight required for high-stakes digital platforms.
           </p>
         </div>
@@ -50,15 +50,15 @@ export default function ValueProps({ strategicValueProps }: ValuePropsProps) {
               {/* Hover Background Glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-900/0 via-blue-900/5 to-blue-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="grid md:grid-cols-12 gap-8 py-12 md:py-16 items-start relative z-10">
+              <div className="grid md:grid-cols-12 gap-8 py-8 md:py-10 items-start relative z-10">
                 
                 {/* 1. Title Column */}
                 <div className="md:col-span-5 lg:col-span-5 flex flex-col justify-between h-full">
-                  <div className="flex items-center gap-4">
+                   <div className="flex items-center gap-4">
                     <span className="text-xs font-mono text-neutral-600 group-hover:text-blue-400 transition-colors">
                       0{index + 1}
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-bold text-neutral-300 group-hover:text-white transition-colors" itemProp="name">
+                    <h3 className="text-xl md:text-2xl font-bold text-neutral-300 group-hover:text-white transition-colors" itemProp="name">
                       {skill.title}
                     </h3>
                   </div>
@@ -71,8 +71,8 @@ export default function ValueProps({ strategicValueProps }: ValuePropsProps) {
                 {/* 2. Description & Benefits Column */}
                 <div className="md:col-span-7 lg:col-span-6 md:pl-8 border-l border-neutral-800/0 md:border-neutral-800/50 md:group-hover:border-neutral-700 transition-colors">
                   
-                  {skill.description && (
-                    <p className="text-lg text-neutral-400 mb-8 leading-relaxed group-hover:text-neutral-300 transition-colors" itemProp="description">
+                   {skill.description && (
+                    <p className="text-base text-neutral-400 mb-8 leading-relaxed group-hover:text-neutral-300 transition-colors" itemProp="description">
                       {skill.description}
                     </p>
                   )}
@@ -84,7 +84,7 @@ export default function ValueProps({ strategicValueProps }: ValuePropsProps) {
                         itemProp="offers"
                         className="flex items-start group/item"
                       >
-                        <div className="mt-1 mr-3 shrink-0 rounded-full bg-emerald-500/10 p-1 group-hover/item:bg-emerald-500/20 transition-colors">
+                        <div className="mt-1 mr-3 shrink-0 rounded-md bg-emerald-500/10 p-1 group-hover/item:bg-emerald-500/20 transition-colors">
                            <Check className="w-3 h-3 text-emerald-400" />
                         </div>
                         <span className="text-neutral-400 text-sm font-medium group-hover/item:text-white transition-colors">

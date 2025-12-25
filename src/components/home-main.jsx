@@ -243,7 +243,7 @@ export default function HomeMain() {
       {/* </section> */}
 
       {/* Hero Section - Split Screen Redesign */}
-      <section className="relative w-full min-h-[92vh] flex items-center bg-[#050505] overflow-hidden px-4 sm:px-6 py-12 lg:py-0">
+      <section className="relative w-full min-h-[75vh] flex items-center bg-[#050505] overflow-hidden px-4 sm:px-6 py-12 lg:py-8">
         
         {/* Background Elements */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
@@ -262,7 +262,7 @@ export default function HomeMain() {
                  </span>
               </div>
 
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-8 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards] opacity-0">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter mb-6 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards] opacity-0">
                 DESIGN. <br/>
                 DEVELOP. <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
@@ -270,21 +270,21 @@ export default function HomeMain() {
                 </span>
               </h1>
 
-              <p className="text-lg text-gray-400 font-medium leading-relaxed max-w-xl mb-10 animate-[fadeInUp_0.8s_ease-out_0.4s_forwards] opacity-0">
+               <p className="text-base text-gray-400 font-medium leading-relaxed max-w-xl mb-8 animate-[fadeInUp_0.8s_ease-out_0.4s_forwards] opacity-0">
                 Scale your business without the agency overhead. I integrate premium <span className="text-white font-bold">UI/UX Design</span>, 
                 <span className="text-blue-400"> Enterprise Development</span>, and <span className="text-purple-400">Marketing Strategy</span> into one cohesive solution for growth.
               </p>
 
-              <div className="flex flex-wrap gap-4 animate-[fadeInUp_0.8s_ease-out_0.6s_forwards] opacity-0">
+               <div className="flex flex-wrap gap-3 animate-[fadeInUp_0.8s_ease-out_0.6s_forwards] opacity-0">
                 <Link
                   href="/contact"
-                  className="px-8 py-4 bg-white !text-black font-bold text-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
+                  className="px-6 py-3 bg-white !text-black font-bold text-base hover:bg-gray-200 transition-colors flex items-center gap-2 rounded-lg"
                 >
                   Start Your Project <ArrowRight className="w-5 h-5"/>
                 </Link>
                 <Link
                   href=""
-                  className="px-8 py-4 border border-white/20 text-white font-bold text-lg hover:bg-white/10 transition-colors"
+                  className="px-6 py-3 border border-white/20 text-white font-bold text-base hover:bg-white/10 transition-colors rounded-lg"
                 >
                   View Case Studies
                 </Link>
@@ -294,7 +294,7 @@ export default function HomeMain() {
             {/* Right Column: 3D Visual */}
             <div className="relative hidden lg:block perspective-[2000px] animate-[fadeInLeft_1s_ease-out_0.6s_forwards] opacity-0">
                {/* The tilted card container */}
-               <div className="relative w-full aspect-[4/3] bg-[#0F0F0F] rounded-xl border border-white/10 shadow-2xl transform transition-transform duration-700 hover:rotate-y-[-5deg] hover:rotate-x-[5deg] [transform:rotateY(-12deg)_rotateX(6deg)_rotateZ(-2deg)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden group">
+               <div className="relative w-full aspect-[4/3] bg-[#0F0F0F] rounded-lg border border-white/10 shadow-2xl transform transition-transform duration-700 hover:rotate-y-[-5deg] hover:rotate-x-[5deg] [transform:rotateY(-12deg)_rotateX(6deg)_rotateZ(-2deg)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden group">
                   
                   {/* Window Controls */}
                   <div className="h-10 border-b border-white/5 bg-[#141414] flex items-center px-4 gap-2">
@@ -377,95 +377,96 @@ export default function HomeMain() {
       <Services services={services} />
 
       {/* Technologies Section */}
-      <section
-        className="hp-client-wrap client-wrap technologies-logos nitro-offscreen nitro-lazy-render pt-8"
-        data-scroll-section=""
-      >
-        <div className="client-title">
-          <div className="container">
-            <h2
-              data-scroll=""
-              className="cfadeinup-inner-hero h1 gradient-title9"
-            >
-              Enterprise-grade technology at small business prices.
-            </h2>
-          </div>
+      <section className="py-16 bg-[#050505] overflow-hidden" data-scroll-section>
+        <div className="container mx-auto px-4 mb-12">
+          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase max-w-4xl">
+            Enterprise-grade technology <br />
+            <span className="text-blue-500">at small business prices.</span>
+          </h2>
         </div>
 
-        {/* First Row of Technology Icons */}
-        <div className="client-section client-label">
-          <div className="client-slider">
-            <div
-              className="d-flex client-slide"
-              data-scroll=""
-              data-scroll-direction="horizontal"
-              data-scroll-speed="3"
-            >
-              {platforms.firstRow.map((platform, index) => (
-                <div
-                  key={index}
-                  className="client-block d-flex justify-content-center align-items-center flex-column"
-                >
-                  <span className="img-wrapper flex items-center justify-center bg-white/5 rounded-xl p-4">
-                    <Zap className="w-12 h-12 text-blue-400" />
-                  </span>
-                  <span className="d-block mt-2">{platform.name}</span>
+        {/* Rolling Logos - Custom Marquee Implementation */}
+        <div className="flex flex-col gap-6">
+          {/* First Row */}
+          <div className="flex overflow-hidden group select-none relative">
+             {/* Fade Gradients */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+
+            <div className="flex gap-6 animate-marquee whitespace-nowrap">
+              {[...platforms.firstRow, ...platforms.firstRow].map((platform, index) => (
+                <div key={index} className="flex flex-col items-center justify-center p-4 bg-neutral-900/50 border border-white/5 rounded-lg min-w-[160px] hover:border-blue-500/50 transition-colors">
+                  <div className="w-12 h-12 flex items-center justify-center mb-3">
+                    <Zap className="w-8 h-8 text-blue-400" />
+                  </div>
+                  <span className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{platform.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Second Row */}
+          <div className="flex overflow-hidden group select-none relative">
+            {/* Fade Gradients */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+
+            <div className="flex gap-6 animate-marquee-reverse whitespace-nowrap">
+              {[...platforms.secondRow, ...platforms.secondRow].map((platform, index) => (
+                <div key={index} className="flex flex-col items-center justify-center p-4 bg-neutral-900/50 border border-white/5 rounded-lg min-w-[160px] hover:border-purple-500/50 transition-colors">
+                  <div className="w-12 h-12 flex items-center justify-center mb-3">
+                    <Code className="w-8 h-8 text-purple-400" />
+                  </div>
+                  <span className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{platform.name}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Second Row of Technology Icons */}
-        <div className="client-section dark-bg client-label">
-          <div className="client-slider">
-            <div
-              className="d-flex client-slide"
-              data-scroll=""
-              data-scroll-direction="horizontal"
-              data-scroll-speed="-3"
+        <div className="container mx-auto px-4 mt-16">
+          <div className="max-w-xl">
+            <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
+              I select the right technology for your specific business needs
+              and budget - <span className="text-white font-bold">not the most expensive option.</span>
+            </p>
+            <Link 
+              href="/contact/" 
+              className="group inline-flex items-center gap-2 text-white font-bold border-b border-white/20 hover:border-blue-500 hover:text-blue-400 pb-1 transition-all"
             >
-              {platforms.secondRow.map((platform, index) => (
-                <div
-                  key={index}
-                  className="client-block d-flex justify-content-center align-items-center flex-column"
-                >
-                  <span className="img-wrapper flex items-center justify-center bg-white/5 rounded-xl p-4">
-                    <Code className="w-12 h-12 text-purple-400" />
-                  </span>
-                  <span className="d-block mt-2">{platform.name}</span>
-                </div>
-              ))}
-            </div>
+              Let&rsquo;s discuss your technology options
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
 
-        <div className="client-title client-content-btm">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-10 col-xl-6 client-wrap-heading">
-                <p>
-                  I select the right technology for your specific business needs
-                  and budget - not the most expensive option.
-                </p>
-                <Link href="/contact/" className="btn-link btn-link-white">
-                  Let&rsquo;s discuss your technology options
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <style jsx>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          @keyframes marquee-reverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+          }
+          .animate-marquee {
+            animation: marquee 40s linear infinite;
+          }
+          .animate-marquee-reverse {
+            animation: marquee-reverse 40s linear infinite;
+          }
+        `}</style>
       </section>
 
-      {/* Latest Blog Posts Section */}
-      <section className="py-24 bg-[#050505] px-4 sm:px-6 border-t border-white/5" data-scroll-section>
+       {/* Latest Blog Posts Section */}
+      <section className="py-16 bg-[#050505] px-4 sm:px-6 border-t border-white/5" data-scroll-section>
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
             <div className="max-w-xl">
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter uppercase">
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tighter uppercase">
                 Latest <span className="text-blue-500">Insights.</span>
               </h2>
-              <p className="text-gray-400 text-lg">
+              <p className="text-gray-400 text-base">
                 Stay updated with the latest trends in AI integration and strategic web development.
               </p>
             </div>
@@ -478,9 +479,9 @@ export default function HomeMain() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300">
+            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
                <div className="p-8">
-                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest rounded-full mb-6 inline-block">
+                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
                      AI Strategy
                   </span>
                   <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
@@ -500,9 +501,9 @@ export default function HomeMain() {
                </div>
             </div>
 
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300">
+            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
                <div className="p-8">
-                  <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-widest rounded-full mb-6 inline-block">
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
                      Web Development
                   </span>
                   <h3 className="text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
@@ -522,9 +523,9 @@ export default function HomeMain() {
                </div>
             </div>
 
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300">
+            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
                <div className="p-8">
-                  <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest rounded-full mb-6 inline-block">
+                  <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
                      Rescue
                   </span>
                   <h3 className="text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">

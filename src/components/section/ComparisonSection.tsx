@@ -20,7 +20,7 @@ export default function ComparisonSection({ aiLimitations, strategicAdvantages }
   const advantages = strategicAdvantages || [];
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 bg-[#0a0a0a] overflow-hidden">
+    <section className="relative py-16 px-4 sm:px-6 bg-[#0a0a0a] overflow-hidden">
       
       {/* Background Texture (Consistent with Hero) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
@@ -28,11 +28,11 @@ export default function ComparisonSection({ aiLimitations, strategicAdvantages }
       <div className="container mx-auto max-w-6xl relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-4xl font-bold mb-6 text-white">
             The Choice: <span className="text-neutral-500 line-through decoration-red-500/50">Boilerplate</span> vs. <span className="text-blue-400">Strategic Platform</span>
           </h2>
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-base text-neutral-400 max-w-2xl mx-auto">
             Your website is a business asset. Don&apos;t risk your future on AI shortcuts that force a costly rebuild in 12 months.
           </p>
         </div>
@@ -41,12 +41,12 @@ export default function ComparisonSection({ aiLimitations, strategicAdvantages }
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 relative">
           
           {/* CENTER VS BADGE (Hidden on Mobile) */}
-          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-[#0a0a0a] border border-neutral-800 rounded-full items-center justify-center shadow-2xl">
+          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-[#0a0a0a] border border-neutral-800 rounded-lg items-center justify-center shadow-2xl">
             <span className="font-black text-neutral-500 italic text-xl">VS</span>
           </div>
 
           {/* LEFT COLUMN: The Risk (Instability) */}
-          <div className="group relative p-8 rounded-3xl border-2 border-dashed border-neutral-800 bg-neutral-900/30 hover:border-red-900/50 transition-colors duration-300">
+          <div className="group relative p-8 rounded-xl border-2 border-dashed border-neutral-800 bg-neutral-900/30 hover:border-red-900/50 transition-colors duration-300">
             {/* Header */}
             <div className="flex items-center gap-3 mb-8">
               <div className="p-3 bg-red-500/10 rounded-xl">
@@ -83,7 +83,7 @@ export default function ComparisonSection({ aiLimitations, strategicAdvantages }
           </div>
 
           {/* RIGHT COLUMN: The Strategic Advantage (Stability) */}
-          <div className="relative p-8 rounded-3xl border border-blue-500/30 bg-gradient-to-b from-blue-900/10 to-transparent shadow-[0_0_50px_rgba(59,130,246,0.05)]">
+          <div className="relative p-8 rounded-xl border border-blue-500/30 bg-gradient-to-b from-blue-900/10 to-transparent shadow-[0_0_50px_rgba(59,130,246,0.05)]">
             {/* Glow Effect */}
             <div className="absolute top-0 right-0 w-full h-full bg-blue-500/5 rounded-3xl blur-xl -z-10"></div>
 
@@ -133,10 +133,10 @@ export default function ComparisonSection({ aiLimitations, strategicAdvantages }
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
+        <div className="mt-10 text-center">
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-white !text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-white !text-black font-bold text-lg rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
             Schedule Strategy Session
             <TrendingUp className="w-5 h-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />

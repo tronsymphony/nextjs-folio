@@ -196,262 +196,266 @@ const ProjectCalculator = () => {
   };
 
   return (
-    <div className={styles.calculatorContainer}>
-      <h3 className={styles.calculatorTitleSub}>Project Estimator:</h3>
-      <h2 className={styles.calculatorTitle}> Transparent Pricing Without The Guesswork</h2>
-      <p className={styles.calculatorDescription}>
-        This calculator provides realistic estimates based on my standard pricing structure. Select project type, features, design level, and timeline preferences to generate a customized quote. While final pricing may vary based on specific project requirements, this tool offers a transparent starting point for budget planning. Questions about pricing? Contact me after exploring your options.
-      </p>
-
-      {/* Project Type Selection */}
-      <div className={styles.section}>
-        <h3>1. What type of project do you need?</h3>
-        <div className={styles.projectTypeGrid}>
-          {projectTypes.map((type) => (
-            <div
-              key={type.id}
-              className={`${styles.projectTypeCard} ${projectType === type.id ? styles.selected : ''}`}
-              onClick={() => setProjectType(type.id)}
-            >
-              <h4>{type.name}</h4>
-              <p>Starting at ${type.baseCost.toLocaleString()}</p>
-            </div>
-          ))}
+    <div className="bg-black">
+      <div className={styles.calculatorContainer}>
+        <div className={styles.calculatorHeader}>
+          <h3 className={styles.calculatorTitleSub}>Project Estimator</h3>
+          <h2 className={styles.calculatorTitle}>Transparent Pricing <br /> <span className={styles.highlight}>Without The Guesswork</span></h2>
+          <p className={styles.calculatorDescription}>
+            Realistic estimates based on standard pricing structures. Select your project type, features, and design level to generate a customized quote instantly.
+          </p>
         </div>
-      </div>
 
-      {projectType && (
-        <>
-          {/* Design Package Selection */}
-          <div className={styles.section}>
-            <h3>2. Choose a Design Package</h3>
-            <div className={styles.designPackageGrid}>
-              {designPackages.map((design) => (
-                <div
-                  key={design.id}
-                  className={`${styles.designPackageCard} ${designPackage === design.id ? styles.selected : ''}`}
-                  onClick={() => setDesignPackage(design.id)}
-                >
-                  <h4>{design.name}</h4>
-                  <p className={styles.designPackagePrice}>
-                    {design.cost > 0 ? `$${design.cost.toLocaleString()}` : 'Included'}
-                  </p>
-                  {design.description && (
-                    <p className={styles.designPackageDescription}>{design.description}</p>
-                  )}
-                </div>
-              ))}
-            </div>
+        {/* Project Type Selection */}
+        <div className={styles.section}>
+          <h3>1. What type of project do you need?</h3>
+          <div className={styles.projectTypeGrid}>
+            {projectTypes.map((type) => (
+              <div
+                key={type.id}
+                className={`${styles.projectTypeCard} ${projectType === type.id ? styles.selected : ''}`}
+                onClick={() => setProjectType(type.id)}
+              >
+                <h4>{type.name}</h4>
+                <p>Starting at ${type.baseCost.toLocaleString()}</p>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Features Selection */}
-          <div className={styles.section}>
-            <h3>3. Select additional features</h3>
-            <div className={styles.featuresGrid}>
-              {availableFeatures[projectType].map((feature) => (
+        {projectType && (
+          <>
+            {/* Design Package Selection */}
+            <div className={styles.section}>
+              <h3>2. Choose a Design Package</h3>
+              <div className={styles.designPackageGrid}>
+                {designPackages.map((design) => (
+                  <div
+                    key={design.id}
+                    className={`${styles.designPackageCard} ${designPackage === design.id ? styles.selected : ''}`}
+                    onClick={() => setDesignPackage(design.id)}
+                  >
+                    <h4>{design.name}</h4>
+                    <p className={styles.designPackagePrice}>
+                      {design.cost > 0 ? `$${design.cost.toLocaleString()}` : 'Included'}
+                    </p>
+                    {design.description && (
+                      <p className={styles.designPackageDescription}>{design.description}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Features Selection */}
+            <div className={styles.section}>
+              <h3>3. Select additional features</h3>
+              <div className={styles.featuresGrid}>
+                {availableFeatures[projectType].map((feature) => (
+                  <div
+                    key={feature.id}
+                    className={`${styles.featureCard} ${features.includes(feature.id) ? styles.selected : ''}`}
+                    onClick={() => handleFeatureToggle(feature.id)}
+                  >
+                    <div className={styles.featureCheckbox}>
+                      <span className={styles.checkbox}>
+                        <input
+                          type="checkbox"
+                          checked={features.includes(feature.id)}
+                          onChange={() => { }} // Handled by the div click
+                          id={`feature-${feature.id}`}
+                        />
+                      </span>
+                      <label htmlFor={`feature-${feature.id}`}>{feature.name}</label>
+                    </div>
+                    <p>${feature.cost.toLocaleString()}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Timeframe Selection */}
+            <div className={styles.section}>
+              <h3>4. When do you need this completed?</h3>
+              <div className={styles.timeframeOptions}>
                 <div
-                  key={feature.id}
-                  className={`${styles.featureCard} ${features.includes(feature.id) ? styles.selected : ''}`}
-                  onClick={() => handleFeatureToggle(feature.id)}
+                  className={`${styles.timeframeCard} ${timeframe === 'urgent' ? styles.selected : ''}`}
+                  onClick={() => setTimeframe('urgent')}
                 >
-                  <div className={styles.featureCheckbox}>
+                  <h4>Urgent</h4>
+                  <p>As soon as possible (+50% rush fee)</p>
+                </div>
+                <div
+                  className={`${styles.timeframeCard} ${timeframe === 'normal' ? styles.selected : ''}`}
+                  onClick={() => setTimeframe('normal')}
+                >
+                  <h4>Standard</h4>
+                  <p>Regular timeline (standard rate)</p>
+                </div>
+                <div
+                  className={`${styles.timeframeCard} ${timeframe === 'relaxed' ? styles.selected : ''}`}
+                  onClick={() => setTimeframe('relaxed')}
+                >
+                  <h4>Flexible</h4>
+                  <p>No rush (10% discount)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Maintenance Option */}
+            <div className={styles.section}>
+              <h3>5. Do you need ongoing maintenance?</h3>
+              <div className={styles.maintenanceOption}>
+                <div
+                  className={`${styles.maintenanceCard} ${maintenance ? styles.selected : ''}`}
+                  onClick={() => setMaintenance(!maintenance)}
+                >
+                  <div className={styles.maintenanceCheckbox}>
                     <span className={styles.checkbox}>
                       <input
                         type="checkbox"
-                        checked={features.includes(feature.id)}
+                        checked={maintenance}
                         onChange={() => { }} // Handled by the div click
-                        id={`feature-${feature.id}`}
+                        id="maintenance-option"
                       />
                     </span>
-                    <label htmlFor={`feature-${feature.id}`}>{feature.name}</label>
+                    <label htmlFor="maintenance-option">
+                      Monthly Maintenance & Support
+                    </label>
                   </div>
-                  <p>${feature.cost.toLocaleString()}</p>
+                  <p>${maintenanceOptions[projectType]}/month</p>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Timeframe Selection */}
-          <div className={styles.section}>
-            <h3>4. When do you need this completed?</h3>
-            <div className={styles.timeframeOptions}>
-              <div
-                className={`${styles.timeframeCard} ${timeframe === 'urgent' ? styles.selected : ''}`}
-                onClick={() => setTimeframe('urgent')}
-              >
-                <h4>Urgent</h4>
-                <p>As soon as possible (+50% rush fee)</p>
-              </div>
-              <div
-                className={`${styles.timeframeCard} ${timeframe === 'normal' ? styles.selected : ''}`}
-                onClick={() => setTimeframe('normal')}
-              >
-                <h4>Standard</h4>
-                <p>Regular timeline (standard rate)</p>
-              </div>
-              <div
-                className={`${styles.timeframeCard} ${timeframe === 'relaxed' ? styles.selected : ''}`}
-                onClick={() => setTimeframe('relaxed')}
-              >
-                <h4>Flexible</h4>
-                <p>No rush (10% discount)</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Maintenance Option */}
-          <div className={styles.section}>
-            <h3>5. Do you need ongoing maintenance?</h3>
-            <div className={styles.maintenanceOption}>
-              <div
-                className={`${styles.maintenanceCard} ${maintenance ? styles.selected : ''}`}
-                onClick={() => setMaintenance(!maintenance)}
-              >
-                <div className={styles.maintenanceCheckbox}>
-                  <span className={styles.checkbox}>
-                    <input
-                      type="checkbox"
-                      checked={maintenance}
-                      onChange={() => { }} // Handled by the div click
-                      id="maintenance-option"
-                    />
-                  </span>
-                  <label htmlFor="maintenance-option">
-                    Monthly Maintenance & Support
-                  </label>
+                <div className={styles.maintenanceDetails}>
+                  <p>Includes: security updates, bug fixes, small content changes, and monthly performance report</p>
                 </div>
-                <p>${maintenanceOptions[projectType]}/month</p>
-              </div>
-              <div className={styles.maintenanceDetails}>
-                <p>Includes: security updates, bug fixes, small content changes, and monthly performance report</p>
               </div>
             </div>
-          </div>
 
-          {/* Cost Estimate */}
-          <div className={styles.costEstimate}>
-            <h3>Project Estimate</h3>
-            <div className={styles.costBreakdown}>
-              <div className={styles.costItem}>
-                <span>Base Cost:</span>
-                <span>${costBreakdown.baseCost?.toLocaleString() || 0}</span>
-              </div>
-              <div className={styles.costItem}>
-                <span>Design Package:</span>
-                <span>${costBreakdown.designCost?.toLocaleString() || 0}</span>
-              </div>
-              <div className={styles.costItem}>
-                <span>Feature Additions:</span>
-                <span>${costBreakdown.featureCost?.toLocaleString() || 0}</span>
-              </div>
-              <div className={styles.costItem}>
-                <span>Timeframe Adjustment:</span>
-                <span>× {costBreakdown.timeframeFactor || 1}</span>
-              </div>
-              <div className={`${styles.costItem} ${styles.totalCost}`}>
-                <span>Rough Estimatet Of Total One-Time Cost:</span>
-                <span>${totalCost.toLocaleString()}</span>
-              </div>
-              {maintenance && (
+            {/* Cost Estimate */}
+            <div className={styles.costEstimate}>
+              <h3>Project Estimate</h3>
+              <div className={styles.costBreakdown}>
                 <div className={styles.costItem}>
-                  <span>Monthly Maintenance:</span>
-                  <span>${costBreakdown.monthlyMaintenance?.toLocaleString() || 0}/mo</span>
+                  <span>Base Cost:</span>
+                  <span>${costBreakdown.baseCost?.toLocaleString() || 0}</span>
+                </div>
+                <div className={styles.costItem}>
+                  <span>Design Package:</span>
+                  <span>${costBreakdown.designCost?.toLocaleString() || 0}</span>
+                </div>
+                <div className={styles.costItem}>
+                  <span>Feature Additions:</span>
+                  <span>${costBreakdown.featureCost?.toLocaleString() || 0}</span>
+                </div>
+                <div className={styles.costItem}>
+                  <span>Timeframe Adjustment:</span>
+                  <span>× {costBreakdown.timeframeFactor || 1}</span>
+                </div>
+                <div className={`${styles.costItem} ${styles.totalCost}`}>
+                  <span>Estimated One-Time Total:</span>
+                  <span>${totalCost.toLocaleString()}</span>
+                </div>
+                {maintenance && (
+                  <div className={styles.costItem}>
+                    <span>Monthly Maintenance:</span>
+                    <span>${costBreakdown.monthlyMaintenance?.toLocaleString() || 0}/mo</span>
+                  </div>
+                )}
+              </div>
+
+              <button
+                className={styles.getQuoteButton}
+                onClick={() => setFormVisible(true)}
+                disabled={totalCost === 0}
+              >
+                Get Detailed Quote
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* Contact Form */}
+        {formVisible && !formSubmitted && (
+          <div className={styles.contactFormContainer}>
+            <h3>Request Your Detailed Quote</h3>
+            <form onSubmit={handleSubmit} className={styles.contactForm}>
+              <div className={styles.formGroup}>
+                <label htmlFor="name">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className={`${styles.formGroup} ${styles.formGroupspan2}`} >
+
+                <label htmlFor="message">Additional Details</label>
+                <textarea
+                  id="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Tell me more about your project needs..."
+                  rows={4}
+                />
+              </div>
+              <div className={styles.formSummary}>
+                <h4>Your Project Summary</h4>
+                <p><strong>Type:</strong> {projectTypes.find(p => p.id === projectType)?.name}</p>
+                <p><strong>Design Package:</strong> {designPackages.find(d => d.id === designPackage)?.name || 'None'}</p>
+                <p><strong>Features:</strong> {features.length > 0 ?
+                  features.map(f => availableFeatures[projectType].find(feat => feat.id === f)?.name).join(', ') :
+                  'No additional features'}</p>
+                <p><strong>Timeframe:</strong> {timeframe.charAt(0).toUpperCase() + timeframe.slice(1)}</p>
+                <p><strong>Maintenance:</strong> {maintenance ? 'Yes' : 'No'}</p>
+                <p><strong>Estimated Cost:</strong> ${totalCost.toLocaleString()}</p>
+                {maintenance && <p><strong>Monthly Maintenance:</strong> ${maintenanceOptions[projectType]}/month</p>}
+              </div>
+              {submitError && (
+                <div className={styles.errorMessage}>
+                  {submitError}
                 </div>
               )}
-            </div>
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Request'}
+              </button>
+            </form>
+          </div>
+        )}
 
+        {/* Thank You Message */}
+        {formSubmitted && (
+          <div className={styles.thankYouMessage}>
+            <h3>Thank You!</h3>
+            <p>I&apos;ve received your project details and will contact you within 1 business day with a detailed quote and next steps.</p>
+            <p>A confirmation email has been sent to your inbox.</p>
             <button
-              className={styles.getQuoteButton}
-              onClick={() => setFormVisible(true)}
-              disabled={totalCost === 0}
+              onClick={() => {
+                setFormSubmitted(false);
+                setFormVisible(false);
+              }}
+              className={styles.backButton}
             >
-              Get Detailed Quote
+              Create Another Estimate
             </button>
           </div>
-        </>
-      )}
-
-      {/* Contact Form */}
-      {formVisible && !formSubmitted && (
-        <div className={styles.contactFormContainer}>
-          <h3>Request Your Detailed Quote</h3>
-          <form onSubmit={handleSubmit} className={styles.contactForm}>
-            <div className={styles.formGroup}>
-              <label htmlFor="name">Your Name</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className={`${styles.formGroup} ${styles.formGroupspan2}`} >
-
-              <label htmlFor="message">Additional Details</label>
-              <textarea
-                id="message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Tell me more about your project needs..."
-                rows={4}
-              />
-            </div>
-            <div className={styles.formSummary}>
-              <h4>Your Project Summary</h4>
-              <p><strong>Type:</strong> {projectTypes.find(p => p.id === projectType)?.name}</p>
-              <p><strong>Design Package:</strong> {designPackages.find(d => d.id === designPackage)?.name || 'None'}</p>
-              <p><strong>Features:</strong> {features.length > 0 ?
-                features.map(f => availableFeatures[projectType].find(feat => feat.id === f)?.name).join(', ') :
-                'No additional features'}</p>
-              <p><strong>Timeframe:</strong> {timeframe.charAt(0).toUpperCase() + timeframe.slice(1)}</p>
-              <p><strong>Maintenance:</strong> {maintenance ? 'Yes' : 'No'}</p>
-              <p><strong>Estimated Cost:</strong> ${totalCost.toLocaleString()}</p>
-              {maintenance && <p><strong>Monthly Maintenance:</strong> ${maintenanceOptions[projectType]}/month</p>}
-            </div>
-            {submitError && (
-              <div className={styles.errorMessage}>
-                {submitError}
-              </div>
-            )}
-            <button
-              type="submit"
-              className={styles.submitButton}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Sending...' : 'Send Request'}
-            </button>
-          </form>
-        </div>
-      )}
-
-      {/* Thank You Message */}
-      {formSubmitted && (
-        <div className={styles.thankYouMessage}>
-          <h3>Thank You!</h3>
-          <p>I&apos;ve received your project details and will contact you within 1 business day with a detailed quote and next steps.</p>
-          <p>A confirmation email has been sent to your inbox.</p>
-          <button
-            onClick={() => {
-              setFormSubmitted(false);
-              setFormVisible(false);
-            }}
-            className={styles.backButton}
-          >
-            Create Another Estimate
-          </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
