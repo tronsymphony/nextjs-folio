@@ -59,7 +59,7 @@ const Navigation = () => {
         </li>
 
         <li>
-          <Link href="/contact" className="px-5 py-2.5 bg-white !text-black text-sm font-bold rounded-full hover:bg-neutral-200 transition-colors">
+          <Link href="/contact" className="px-5 py-2.5 bg-white !text-black text-sm font-bold rounded-lg hover:bg-neutral-200 transition-colors">
             Start Project
           </Link>
         </li>

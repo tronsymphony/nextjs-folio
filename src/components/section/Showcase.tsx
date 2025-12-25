@@ -9,7 +9,7 @@ import {
 
 export default function Showcase() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 overflow-hidden bg-[#0a0a0a]">
+    <section className="relative py-16 px-4 sm:px-6 overflow-hidden bg-[#0a0a0a]">
       
       {/* 1. Background Texture (Matches Hero) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
@@ -17,20 +17,20 @@ export default function Showcase() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* 2. Header Section */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-800 text-blue-400 text-xs font-bold mb-6 tracking-wide uppercase">
+        <div className="text-center mb-10 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-900/30 border border-blue-800 text-blue-400 text-xs font-bold mb-6 tracking-wide uppercase">
             <Star size={12} className="fill-blue-400" />
             Strategic Partnership Showcase
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
+          <h2 className="text-2xl md:text-4xl font-bold mb-6 text-white leading-tight">
             From Complex Problem to <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
               Scalable Digital Platform
             </span>
           </h2>
           
-          <p className="text-lg text-neutral-400 leading-relaxed mb-8">
+          <p className="text-base text-neutral-400 leading-relaxed mb-8">
             The <span className="text-white font-medium">Safe Streets Map</span> isn&apos;t just code. It is an example of how 
             **holistic expertise** solves complex challenges to deliver measurable, real-world results.
           </p>
@@ -45,7 +45,7 @@ export default function Showcase() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
           {/* A. Main Project Card (Spans 8 columns) */}
-          <div className="md:col-span-12 lg:col-span-8 group relative rounded-3xl border border-neutral-800 bg-neutral-900/50 overflow-hidden hover:border-neutral-700 transition-colors duration-300">
+          <div className="md:col-span-12 lg:col-span-8 group relative rounded-xl border border-neutral-800 bg-neutral-900/50 overflow-hidden hover:border-neutral-700 transition-colors duration-300">
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
             
             {/* Image */}
@@ -59,7 +59,7 @@ export default function Showcase() {
 
             {/* Floating UI Elements */}
             <div className="absolute top-6 right-6 z-20">
-              <a href="https://safestreetsmap.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-semibold rounded-full hover:bg-white/20 transition-all">
+              <a href="https://safestreetsmap.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-all">
                 Visit Live Site <ArrowUpRight size={14} />
               </a>
             </div>
@@ -67,7 +67,7 @@ export default function Showcase() {
             {/* Tech Stack (Glassmorphism) */}
             <div className="absolute bottom-6 left-6 right-6 z-20 flex flex-wrap gap-2">
               {['React', 'Node.js', 'MongoDB', 'Mapbox API', 'Tailwind'].map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/10 text-xs font-medium text-neutral-300 rounded-full">
+                <span key={tech} className="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/10 text-xs font-medium text-neutral-300 rounded-md">
                   {tech}
                 </span>
               ))}
@@ -75,7 +75,7 @@ export default function Showcase() {
           </div>
 
           {/* B. Strategy Details (Spans 4 columns) */}
-          <div className="md:col-span-6 lg:col-span-4 p-8 rounded-3xl border border-neutral-800 bg-neutral-900/50 flex flex-col justify-center relative overflow-hidden group hover:border-neutral-700 transition-colors">
+          <div className="md:col-span-6 lg:col-span-4 p-8 rounded-xl border border-neutral-800 bg-neutral-900/50 flex flex-col justify-center relative overflow-hidden group hover:border-neutral-700 transition-colors">
             {/* Background Glow */}
             <div className="absolute top-0 right-0 -mr-10 -mt-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all"></div>
 
@@ -97,7 +97,7 @@ export default function Showcase() {
           </div>
 
           {/* C. Testimonial (Spans 6 columns) */}
-          <div className="md:col-span-6 lg:col-span-5 p-8 rounded-3xl border border-neutral-800 bg-neutral-900/50 relative">
+          <div className="md:col-span-6 lg:col-span-5 p-8 rounded-xl border border-neutral-800 bg-neutral-900/50 relative">
             <div className="flex items-start gap-4">
               <div className="min-w-[40px] h-[40px] bg-emerald-500/10 rounded-full flex items-center justify-center">
                  <Users className="text-emerald-400" size={20} />
@@ -115,7 +115,7 @@ export default function Showcase() {
           </div>
 
           {/* D. Highlights Grid (Spans 7 columns) */}
-          <div className="md:col-span-12 lg:col-span-7 p-8 rounded-3xl border border-neutral-800 bg-neutral-900/50">
+          <div className="md:col-span-12 lg:col-span-7 p-8 rounded-xl border border-neutral-800 bg-neutral-900/50">
              <h3 className="text-sm font-bold text-neutral-500 uppercase tracking-wider mb-6">Project Highlights</h3>
              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <HighlightBox icon={MapPin} title="Data Mapping" sub="Real-time Reports" color="text-blue-400" />
@@ -128,8 +128,8 @@ export default function Showcase() {
         </div>
 
         {/* 4. Bottom CTA (Full Width) */}
-        <div className="mt-6 rounded-3xl p-[1px] bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
-          <div className="rounded-[23px] bg-[#0a0a0a] p-8 md:px-12 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div className="mt-6 rounded-xl p-[1px] bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
+          <div className="rounded-[11px] bg-[#0a0a0a] p-6 md:px-10 md:py-8 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
              {/* Glow effect */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[200px] bg-blue-500/20 blur-[100px] pointer-events-none"></div>
              
@@ -139,7 +139,7 @@ export default function Showcase() {
              </div>
 
              <div className="relative z-10">
-                <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 text-sm font-bold !text-black transition-all bg-white rounded-full hover:bg-neutral-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 text-sm font-bold !text-black transition-all bg-white rounded-lg hover:bg-neutral-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                   Book Strategy Session
                 </Link>
              </div>
@@ -155,7 +155,7 @@ export default function Showcase() {
 
 function Badge({ icon: Icon, text, color }) {
   return (
-    <div className="inline-flex items-center px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-full">
+    <div className="inline-flex items-center px-4 py-2 bg-neutral-900 border border-neutral-800 rounded-md">
       <Icon className={`${color} mr-2`} size={16} />
       <span className="text-neutral-300 text-sm font-medium">{text}</span>
     </div>

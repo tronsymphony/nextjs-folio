@@ -45,7 +45,7 @@ export default function LocationPageContent({ city, region, introText, specificC
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
         
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-800/50 text-blue-400 text-xs font-bold mb-8 tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-900/30 border border-blue-800/50 text-blue-400 text-xs font-bold mb-8 tracking-widest uppercase">
             <MapPin size={12} /> Digital Partner in {city}
           </div>
           
@@ -86,7 +86,7 @@ export default function LocationPageContent({ city, region, introText, specificC
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {services.map((service, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-white/10 transition-all group">
+                <div key={i} className="p-6 rounded-lg bg-[#0a0a0a] border border-white/5 hover:border-white/10 transition-all group">
                   <div className={`w-12 h-12 ${service.bg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                     <service.icon className={`w-6 h-6 ${service.color}`} />
                   </div>
@@ -126,7 +126,7 @@ export default function LocationPageContent({ city, region, introText, specificC
               }
             ].map((item, i) => (
               <div key={i} className="text-center flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6">
                   <item.icon className="w-8 h-8 text-blue-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
@@ -149,7 +149,7 @@ export default function LocationPageContent({ city, region, introText, specificC
           </p>
           <Link 
             href="/contact"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-white !text-black font-black text-xl hover:bg-gray-200 transition-all rounded-full"
+            className="inline-flex items-center gap-2 px-10 py-5 bg-white !text-black font-black text-xl hover:bg-gray-200 transition-all rounded-lg"
           >
             Start Your Project <ArrowRight className="w-6 h-6" />
           </Link>

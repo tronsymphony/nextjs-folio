@@ -45,7 +45,7 @@ export default function Services({ services }: ServicesProps) {
   }));
 
   return (
-    <section className="relative py-24 bg-[#0a0a0a] overflow-hidden" data-scroll-section>
+    <section className="relative py-16 bg-[#0a0a0a] overflow-hidden" data-scroll-section>
       
       {/* Background Texture */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
@@ -53,39 +53,39 @@ export default function Services({ services }: ServicesProps) {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
         
         {/* Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+        <div className="mb-8 text-center max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Strategic Digital Solutions <br />
             <span className="text-neutral-500">Driven by Expertise</span>
           </h2>
-          <p className="text-lg text-neutral-400">
+          <p className="text-base text-neutral-400">
             I don&apos;t just &apos;build websites.&apos; I engineer digital assets designed to solve business problems and maximize ROI.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-6 mb-10">
           {displayServices.map((service, index) => {
              const Icon = service.icon;
              return (
             <div 
               key={index}
-              className="group relative p-8 rounded-3xl border border-neutral-800 bg-neutral-900/50 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1"
+              className="group relative p-6 rounded-lg border border-neutral-800 bg-neutral-900/50 hover:border-neutral-600 transition-all duration-300 hover:-translate-y-1"
             >
               {/* Hover Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-3xl" />
 
               <div className="relative z-10">
                 {/* Icon */}
-                <div className={`w-14 h-14 ${service.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className={`w-7 h-7 ${service.color}`} />
+                <div className={`w-12 h-12 ${service.bg} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className={`w-6 h-6 ${service.color}`} />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-lg font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-neutral-400 leading-relaxed text-lg">
+                <p className="text-neutral-400 leading-relaxed text-base">
                   {service.desc}
                 </p>
               </div>
@@ -99,7 +99,7 @@ export default function Services({ services }: ServicesProps) {
           {/* Primary CTA: Consultation */}
           <Link 
             href="/contact/" 
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white !text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+            className="group relative inline-flex items-center gap-3 px-6 py-3 bg-white !text-black font-bold text-base rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
             Start Strategic Consultation
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -108,7 +108,7 @@ export default function Services({ services }: ServicesProps) {
           {/* Secondary CTA: View Details */}
           <Link 
             href="/services/" 
-            className="group inline-flex items-center gap-2 px-8 py-4 !text-neutral-400 font-medium hover:text-white transition-colors"
+            className="group inline-flex items-center gap-2 px-6 py-3 !text-neutral-400 font-medium hover:text-white transition-colors"
           >
             View Full Service Details
             <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />

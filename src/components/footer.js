@@ -21,7 +21,7 @@ export default function Footer() {
   const pathname = usePathname()
 
   console.log(pathname);
-  
+
 
   const closeModal = () => {
     setShowModal(false);
@@ -29,51 +29,43 @@ export default function Footer() {
 
   return (
     <>
-      
+
 
       {pathname !== '/contact/' && (
-        <section className="in-touch" data-scroll-section>
-        <div className="bg-text">
-          <span>nitya</span>
-          <span>nitya</span>
-          <span>nitya</span>
-          <span>nitya</span>
-          <span>nitya</span>
-        </div>
-
-        <div className="container">
-          <div className="Footer_content__8dWV_">
-            <h2 className="h2">
-              <b>Reach Out</b>
-            </h2>
-            <p>
-              Im always on the lookout for <span>great clients</span> who are{" "}
-              <span>passionate</span>
-              about their <span>business and customers</span>. Get in touch
-            </p>
-            <Link href="/contact" className="btn_link btn_link--light">
-              Reach Out
-              <span>
-                <svg width="8" height="12" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M.293 1.707 1.707.293 7.414 6l-5.707 5.707-1.414-1.414L4.585 6z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </span>
-            </Link>
+        <section className="relative py-16 bg-[#0a0a0a] overflow-hidden border-t border-white/5" data-scroll-section>
+          <div className="absolute inset-0 flex items-center justify-around opacity-[0.02] pointer-events-none select-none">
+            <span className="text-[20vw] font-black uppercase tracking-tighter">nitya</span>
           </div>
-        </div>
-      </section>
-      )}
-      
 
-       <footer className="bg-[#050505] border-t border-neutral-900 pt-16 pb-8" data-scroll-section>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tighter">
+                Reach <span className="text-blue-500">Out.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                I am always on the lookout for <span className="text-white font-bold text-base">great clients</span> who are{" "}
+                <span className="text-blue-400 font-bold text-base">passionate</span>
+                about their <span className="text-white font-bold text-base">business and customers</span>. Let&rsquo;s build something exceptional.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 px-10 py-4 bg-white !text-black font-black text-lg rounded-lg hover:bg-neutral-200 transition-all hover:scale-105"
+              >
+                Start Your Project
+                <ArrowUpRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+
+      <footer className="bg-[#050505] border-t border-neutral-900 pt-16 pb-8" data-scroll-section>
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          
+
           <div className="flex flex-col items-center text-center mb-16">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Find Me On</h2>
-            
+
             {/* Social Icons */}
             <div className="flex items-center gap-6">
               <SocialLink href="https://www.linkedin.com/in/nityananda-h-b5a65080/" icon={Linkedin} label="LinkedIn" />
@@ -117,7 +109,7 @@ function SocialLink({ href, icon: Icon, label }) {
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="w-12 h-12 flex items-center justify-center rounded-full bg-neutral-900 text-neutral-400 hover:bg-white hover:text-black hover:-translate-y-1 transition-all duration-300"
+      className="w-12 h-12 flex items-center justify-center rounded-xl bg-neutral-900 text-neutral-400 hover:bg-white hover:text-black hover:-translate-y-1 transition-all duration-300"
     >
       <Icon size={20} />
     </Link>

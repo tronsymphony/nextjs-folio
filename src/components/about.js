@@ -39,7 +39,7 @@ export default function About() {
         <div className="absolute top-0 right-1/2 translate-x-1/2 w-[600px] h-[400px] bg-blue-600/10 blur-[120px] -z-10 rounded-full pointer-events-none" />
 
         <div className="container mx-auto max-w-4xl text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/30 border border-blue-800 text-blue-400 text-xs font-bold mb-6 tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-900/30 border border-blue-800 text-blue-400 text-xs font-bold mb-6 tracking-wide uppercase">
             <MapPin size={12} /> Los Angeles Based
           </div>
 
@@ -80,7 +80,7 @@ export default function About() {
 
 
 
-                <div className="p-6 bg-neutral-900/50 border border-neutral-800 rounded-2xl mt-8">
+                <div className="p-6 bg-neutral-900/50 border border-neutral-800 rounded-lg mt-8">
                   <h3 className="text-white font-bold mb-4 flex items-center gap-2">
                     <Layers className="text-emerald-400" size={20} />
                     Why Companies Choose an Expert
@@ -108,7 +108,7 @@ export default function About() {
             <div className="lg:col-span-5 space-y-8">
 
               {/* Tech Stack Card */}
-              <div className="p-8 rounded-3xl bg-neutral-900/30 border border-neutral-800">
+              <div className="p-8 rounded-lg bg-neutral-900/30 border border-neutral-800">
                 <h3 className="text-xl font-bold text-white mb-6">Professional Toolkit (10+ YOE)</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {techStack.map((tech, idx) => (
@@ -159,7 +159,7 @@ export default function About() {
               {/* Decorative Ring */}
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-purple-500/20 rounded-3xl blur-2xl opacity-50 -z-10"></div>
 
-              <div className="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="bg-neutral-900 border border-neutral-800 rounded-lg overflow-hidden shadow-2xl">
                 {/* Iframe */}
                 <div className="relative w-full h-[454px]">
                   <iframe
