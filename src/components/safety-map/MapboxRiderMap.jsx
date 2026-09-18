@@ -34,7 +34,8 @@ export default function MapboxRiderMap({
   showSafetyRegions = true,
   showBikeLanes = true,
   onSelectIncident = null,
-  onCityChange = null
+  onCityChange = null,
+  focusedCoords = null,
 }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
@@ -58,7 +59,7 @@ export default function MapboxRiderMap({
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/dark-v11',
+      style: 'mapbox://styles/mapbox/light-v11',
       center: [city.center[1], city.center[0]], // [lng, lat]
       zoom: city.zoom || 11,
       pitch: is3DMode ? 52 : 0,
@@ -114,6 +115,18 @@ export default function MapboxRiderMap({
       essential: true,
     });
   }, [city, mapLoaded, is3DMode]);
+
+  // FlyTo focused hotspot coordinates when selected from safety digest
+  useEffect(() => {
+    if (!mapRef.current || !mapLoaded || !focusedCoords) return;
+    mapRef.current.flyTo({
+      center: [focusedCoords[1], focusedCoords[0]],
+      zoom: 13.5,
+      pitch: is3DMode ? 48 : 0,
+      duration: 1600,
+      essential: true,
+    });
+  }, [focusedCoords, mapLoaded, is3DMode]);
 
   // Filter incidents based on all active UI filters (Mode, Road Type, Severity, Time, Year)
   const filteredIncidents = React.useMemo(() => {
@@ -213,11 +226,11 @@ export default function MapboxRiderMap({
         },
         paint: {
           'fill-color': ['get', 'fillColor'],
-          'fill-opacity': 0.85,
+          'fill-opacity': 0.28,
         },
       });
 
-      // Safety Region Border
+      // Safety Region Border (Subtle hairline for clean readability)
       map.addLayer({
         id: 'safety-regions-line',
         type: 'line',
@@ -227,8 +240,8 @@ export default function MapboxRiderMap({
         },
         paint: {
           'line-color': ['get', 'borderColor'],
-          'line-width': 1.2,
-          'line-opacity': 0.7,
+          'line-width': 0.75,
+          'line-opacity': 0.35,
         },
       });
 
@@ -335,9 +348,9 @@ export default function MapboxRiderMap({
           new mapboxgl.Popup({ closeButton: true, className: 'dark-popup' })
             .setLngLat(e.lngLat)
             .setHTML(`
-              <div style="padding: 6px; font-family: system-ui, -apple-system, sans-serif;">
-                <div style="font-weight: 700; color: #34d399; font-size: 12px; margin-bottom: 3px;">🚴 ${name}</div>
-                <div style="color: #a3a3a3; font-size: 11px;">Designated Cycling Infrastructure (${type})</div>
+              <div style="padding: 6px; font-family: system-ui, -apple-system, sans-serif; color: #0f172a;">
+                <div style="font-weight: 700; color: #059669; font-size: 12px; margin-bottom: 3px;">🚴 ${name}</div>
+                <div style="color: #64748b; font-size: 11px;">Designated Cycling Infrastructure (${type})</div>
               </div>
             `)
             .addTo(map);
@@ -352,7 +365,7 @@ export default function MapboxRiderMap({
         data: geojsonData,
         cluster: true,
         clusterMaxZoom: 14,
-        clusterRadius: 22, // Tighter clustering radius: points only merge if very close
+        clusterRadius: 46, // Digestible regional cluster groupings
       });
 
       // Clusters layer - Sleeker, smaller badges to reveal road curvature & intersections
@@ -365,25 +378,25 @@ export default function MapboxRiderMap({
           'circle-color': [
             'step',
             ['get', 'point_count'],
-            '#06b6d4', // < 15: cyan
-            15,
-            '#f59e0b', // 15-50: amber
-            50,
-            '#ef4444', // > 50: red
+            '#0284c7', // < 20: vibrant sky blue
+            20,
+            '#d97706', // 20-100: deep amber
+            100,
+            '#dc2626', // > 100: bold red
           ],
           'circle-radius': [
             'step',
             ['get', 'point_count'],
-            8.5, // Small cluster (<15): 8.5px radius (17px diameter)
-            15,
-            11,  // Medium cluster (15-50): 11px radius (22px diameter)
-            50,
-            14,  // Dense cluster (>50): 14px radius (28px diameter)
+            12, // Small cluster
+            20,
+            16, // Medium cluster
+            100,
+            20, // Large cluster
           ],
-          'circle-opacity': 0.9,
-          'circle-stroke-width': 1.5,
+          'circle-opacity': 0.95,
+          'circle-stroke-width': 2.5,
           'circle-stroke-color': '#ffffff',
-          'circle-stroke-opacity': 0.85,
+          'circle-stroke-opacity': 0.95,
         },
       });
 
@@ -396,10 +409,10 @@ export default function MapboxRiderMap({
         layout: {
           'text-field': '{point_count_abbreviated}',
           'text-font': ['DIN Offc Pro Bold', 'Arial Unicode MS Bold'],
-          'text-size': 9.5,
+          'text-size': 11,
         },
         paint: {
-          'text-color': '#07090e',
+          'text-color': '#ffffff',
         },
       });
 
@@ -644,7 +657,7 @@ export default function MapboxRiderMap({
   };
 
   return (
-    <div className="relative w-full h-full min-h-[640px] bg-[#07090e] select-none">
+    <div className="relative w-full h-full min-h-[640px] bg-slate-100 select-none">
       {/* Mapbox Canvas Container */}
       <div ref={mapContainerRef} className="w-full h-full" />
 
@@ -653,21 +666,21 @@ export default function MapboxRiderMap({
         {/* Quick Corridor / Street Search */}
         <form 
           onSubmit={handleSearch}
-          className="pointer-events-auto flex items-center bg-[#090d16]/90 backdrop-blur-md border border-neutral-700/80 rounded-xl px-3 py-1.5 shadow-xl max-w-sm w-full transition-all focus-within:border-cyan-500"
+          className="pointer-events-auto flex items-center bg-white/95 backdrop-blur-md rounded-xl px-3.5 py-2 max-w-sm w-full transition-all"
         >
-          <Search className="w-4 h-4 text-neutral-400 mr-2 shrink-0" />
+          <Search className="w-4 h-4 text-slate-400 mr-2 shrink-0" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search street or city (e.g. Culver City, Venice, PCH)..."
-            className="bg-transparent border-none outline-none text-xs text-neutral-100 placeholder-neutral-500 w-full"
+            className="bg-transparent border-none outline-none text-xs text-slate-800 placeholder-slate-400 w-full"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="text-neutral-500 hover:text-neutral-300 text-xs px-1"
+              className="text-slate-400 hover:text-slate-700 text-xs px-1 font-bold"
             >
               ✕
             </button>
@@ -678,41 +691,41 @@ export default function MapboxRiderMap({
         <div className="pointer-events-auto flex items-center gap-2">
           <button
             onClick={toggleRideTracking}
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all shadow-xl backdrop-blur-md border ${
+            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all backdrop-blur-md ${
               isRideTracking
-                ? 'bg-cyan-500 text-neutral-950 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)] animate-pulse'
-                : 'bg-neutral-900/90 text-neutral-200 hover:text-white border-neutral-700 hover:border-cyan-500'
+                ? 'bg-sky-600 text-white animate-pulse'
+                : 'bg-white/95 text-slate-700 hover:text-slate-900 hover:bg-white'
             }`}
           >
-            <Radio className={`w-4 h-4 ${isRideTracking ? 'animate-spin' : 'text-cyan-400'}`} />
+            <Radio className={`w-4 h-4 ${isRideTracking ? 'animate-spin text-white' : 'text-sky-600'}`} />
             <span>{isRideTracking ? 'Live Ride GPS Active' : 'Track My Ride GPS'}</span>
           </button>
         </div>
       </div>
 
-      {/* MAP LEGEND: GREEN SAFE, YELLOW CAUTION, RED DANGER (Bottom Left) */}
-      <div className="absolute bottom-4 left-4 z-10 p-3 rounded-xl bg-neutral-950/90 backdrop-blur-md border border-neutral-800 shadow-2xl max-w-xs text-xs pointer-events-auto">
-        <div className="font-bold text-white mb-2 flex items-center gap-1.5 text-[11px]">
-          <Shield className="w-3.5 h-3.5 text-cyan-400" />
+      {/* MAP LEGEND: (Bottom Left) */}
+      <div className="absolute bottom-4 left-4 z-10 p-3 rounded-xl bg-white/95 backdrop-blur-md max-w-xs text-xs pointer-events-auto">
+        <div className="font-bold text-slate-900 mb-2 flex items-center gap-1.5 text-[11px]">
+          <Shield className="w-3.5 h-3.5 text-sky-600" />
           <span>Rider Safety Radar (CCRS)</span>
         </div>
         <div className="space-y-1.5 text-[11px]">
           <div className="flex items-center gap-2">
-            <span className="w-3.5 h-3.5 rounded bg-amber-500/25 border border-amber-400 shrink-0"></span>
-            <span className="text-amber-300 font-semibold">Yellow Zone (1–5 Collisions)</span>
+            <span className="w-3 h-3 rounded bg-amber-500/30 shrink-0"></span>
+            <span className="text-slate-700 font-medium">Caution Zone (Dense Collisions)</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-3.5 h-3.5 rounded bg-red-500/30 border border-red-400 shrink-0"></span>
-            <span className="text-red-300 font-semibold">Red Danger Zone (6+ / Fatal)</span>
+            <span className="w-3 h-3 rounded bg-rose-500/30 shrink-0"></span>
+            <span className="text-slate-700 font-medium">Critical Hazard Zone (Fatal / Severe)</span>
           </div>
-          <div className="flex items-center gap-2 pt-1 border-t border-neutral-800/80">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shrink-0 shadow-[0_0_6px_rgba(6,182,212,0.8)]"></span>
-            <span className="text-neutral-300 text-[10px]">Pinpoint CCRS Incident Cluster</span>
+          <div className="flex items-center gap-2 pt-1">
+            <span className="w-2.5 h-2.5 rounded-full bg-sky-600 shrink-0"></span>
+            <span className="text-slate-600 text-[10px]">Pinpoint Incident Cluster</span>
           </div>
           {showBikeLanes && (
-            <div className="flex items-center gap-2 pt-1 border-t border-neutral-800/80">
-              <span className="w-3.5 h-1 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_6px_rgba(52,211,153,0.8)]"></span>
-              <span className="text-emerald-300 font-semibold text-[10px]">Protected Bike Lane / Cycleway</span>
+            <div className="flex items-center gap-2 pt-1">
+              <span className="w-3.5 h-1 rounded-full bg-emerald-600 shrink-0"></span>
+              <span className="text-emerald-800 font-medium text-[10px]">Protected Bike Lane / Cycleway</span>
             </div>
           )}
         </div>
@@ -720,53 +733,53 @@ export default function MapboxRiderMap({
 
       {/* MAPBOX POWERED BADGE (Bottom Center) */}
       <div className="absolute bottom-2 inset-x-0 flex justify-center pointer-events-none z-10">
-        <div className="px-3 py-1 rounded-full bg-neutral-950/80 border border-neutral-800/60 text-[10px] text-neutral-400 flex items-center gap-1.5 backdrop-blur-sm pointer-events-auto">
+        <div className="px-3 py-1 rounded-full bg-white/90 text-[10px] text-slate-500 flex items-center gap-1.5 backdrop-blur-sm pointer-events-auto">
           <span>WebGL Hardware Accelerated • Powered by</span>
-          <strong className="text-white">Mapbox GL JS</strong>
+          <strong className="text-slate-800">Mapbox GL JS</strong>
           <span>&</span>
           <a
             href="https://data.ca.gov/dataset/ccrs"
             target="_blank"
             rel="noreferrer"
-            className="text-cyan-400 hover:underline font-bold"
+            className="text-sky-600 hover:underline font-bold"
           >
             data.ca.gov/dataset/ccrs
           </a>
         </div>
       </div>
 
-      {/* FLOATING SAFETY REGION INSPECTOR (When clicking on a Green, Yellow, or Red Zone) */}
+      {/* FLOATING SAFETY REGION INSPECTOR */}
       {activeRegionData && !activePopupData && (
-        <div className="absolute bottom-4 right-4 z-20 max-w-sm w-full bg-[#090d16]/95 backdrop-blur-xl border border-neutral-700/80 rounded-2xl p-4 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-300 pointer-events-auto">
-          <div className="flex items-start justify-between gap-2 mb-2.5 pb-2 border-b border-neutral-800">
+        <div className="absolute bottom-4 right-4 z-20 max-w-sm w-full bg-white/95 backdrop-blur-md rounded-2xl p-4 animate-in fade-in duration-200 pointer-events-auto text-slate-800">
+          <div className="flex items-start justify-between gap-2 mb-2.5 pb-2">
             <div className="flex items-center gap-2">
               <span
                 className={`px-2.5 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 ${
                   activeRegionData.level === 'safe'
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                    ? 'bg-emerald-50 text-emerald-800'
                     : activeRegionData.level === 'caution'
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                    : 'bg-red-500/20 text-red-300 border border-red-500/40'
+                    ? 'bg-amber-50 text-amber-800'
+                    : 'bg-rose-50 text-rose-800'
                 }`}
               >
                 <span>{activeRegionData.level === 'safe' ? '🟢' : activeRegionData.level === 'caution' ? '🟡' : '🔴'}</span>
                 <span>{activeRegionData.title}</span>
               </span>
 
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-black bg-neutral-800 text-cyan-300">
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-sky-700">
                 Score: {activeRegionData.score}/100
               </span>
             </div>
 
             <button
               onClick={() => setActiveRegionData(null)}
-              className="text-neutral-400 hover:text-white p-1 rounded-lg hover:bg-neutral-800 text-xs font-bold transition-colors"
+              className="text-slate-400 hover:text-slate-800 p-1 rounded-lg hover:bg-slate-100 text-xs font-bold transition-colors"
             >
               ✕
             </button>
           </div>
 
-          <h3 className="text-sm font-black text-white mb-2">
+          <h3 className="text-sm font-bold text-slate-900 mb-2">
             {activeRegionData.level === 'safe'
               ? 'Safe Flow Riding Sector'
               : activeRegionData.level === 'caution'
@@ -775,61 +788,58 @@ export default function MapboxRiderMap({
           </h3>
 
           <div className="grid grid-cols-3 gap-2 mb-3 text-center">
-            <div className="p-2 rounded-xl bg-neutral-900/90 border border-neutral-800">
-              <span className="text-[10px] text-neutral-400 block uppercase font-bold">Crashes</span>
-              <span className={`text-base font-black ${activeRegionData.crashes === 0 ? 'text-emerald-400' : 'text-amber-400'}`}>
+            <div className="p-2 rounded-xl bg-slate-50">
+              <span className="text-[10px] text-slate-500 block uppercase font-bold">Crashes</span>
+              <span className={`text-base font-black ${activeRegionData.crashes === 0 ? 'text-emerald-600' : 'text-amber-700'}`}>
                 {activeRegionData.crashes}
               </span>
             </div>
-            <div className="p-2 rounded-xl bg-neutral-900/90 border border-neutral-800">
-              <span className="text-[10px] text-neutral-400 block uppercase font-bold">Severe</span>
-              <span className="text-base font-black text-orange-400">
+            <div className="p-2 rounded-xl bg-slate-50">
+              <span className="text-[10px] text-slate-500 block uppercase font-bold">Severe</span>
+              <span className="text-base font-black text-orange-600">
                 {activeRegionData.severe || 0}
               </span>
             </div>
-            <div className="p-2 rounded-xl bg-neutral-900/90 border border-neutral-800">
-              <span className="text-[10px] text-neutral-400 block uppercase font-bold">Fatal</span>
-              <span className={`text-base font-black ${activeRegionData.fatalities > 0 ? 'text-red-400' : 'text-neutral-400'}`}>
+            <div className="p-2 rounded-xl bg-slate-50">
+              <span className="text-[10px] text-slate-500 block uppercase font-bold">Fatal</span>
+              <span className={`text-base font-black ${activeRegionData.fatalities > 0 ? 'text-rose-600' : 'text-slate-400'}`}>
                 {activeRegionData.fatalities || 0}
               </span>
             </div>
           </div>
 
-          <p className="text-xs text-neutral-300 leading-relaxed bg-neutral-900/60 p-2.5 rounded-xl border border-neutral-800 mb-2.5">
+          <p className="text-xs text-slate-600 leading-relaxed bg-slate-50 p-2.5 rounded-xl mb-2.5">
             {activeRegionData.description}
           </p>
 
-          <div className="text-[10px] text-neutral-500 flex items-center justify-between pt-2 border-t border-neutral-800">
+          <div className="text-[10px] text-slate-400 flex items-center justify-between pt-2">
             <span>Derived from official CHP CCRS records</span>
-            <span className="text-cyan-400 font-semibold">Live Sector Analysis</span>
+            <span className="text-sky-700 font-semibold">Live Sector Analysis</span>
           </div>
         </div>
       )}
 
       {/* FLOATING INCIDENT INSPECTOR (Bottom Right Card) */}
       {activePopupData && (
-        <div className="absolute bottom-4 right-4 z-20 max-w-sm w-full bg-[#090d16]/95 backdrop-blur-xl border border-neutral-700/80 rounded-2xl p-4 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-300 pointer-events-auto max-h-[85vh] overflow-y-auto">
-          <div className="flex items-start justify-between gap-2 mb-2 pb-2 border-b border-neutral-800">
+        <div className="absolute bottom-4 right-4 z-20 max-w-sm w-full bg-white/95 backdrop-blur-md rounded-2xl p-4 animate-in fade-in duration-200 pointer-events-auto max-h-[85vh] overflow-y-auto text-slate-800">
+          <div className="flex items-start justify-between gap-2 mb-2 pb-1">
             <div className="flex items-center gap-2">
               <span
                 className={`px-2 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider flex items-center gap-1 ${
                   activePopupData.isFatal || activePopupData.severity === 'fatal'
-                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                    : 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                    ? 'bg-rose-50 text-rose-700'
+                    : 'bg-amber-50 text-amber-800'
                 }`}
               >
-                {activePopupData.isFatal || activePopupData.severity === 'fatal' ? (
-                  <>
-                    <AlertTriangle className="w-3 h-3" /> Fatal Incident
-                  </>
-                ) : (
-                  <>
-                    <AlertTriangle className="w-3 h-3" /> Severe Collision
-                  </>
-                )}
+                <AlertTriangle className="w-3 h-3" />
+                <span>
+                  {activePopupData.isFatal || activePopupData.severity === 'fatal'
+                    ? 'Fatal Incident'
+                    : 'Severe Collision'}
+                </span>
               </span>
 
-              <span className="px-2 py-0.5 rounded-md text-[11px] bg-neutral-800 text-neutral-300 font-medium capitalize">
+              <span className="px-2 py-0.5 rounded-md text-[11px] bg-slate-100 text-slate-700 font-medium capitalize">
                 {activePopupData.mode === 'bicycle'
                   ? '🚲 Bicycle'
                   : activePopupData.mode === 'motorcycle'
@@ -842,49 +852,49 @@ export default function MapboxRiderMap({
 
             <button
               onClick={() => setActivePopupData(null)}
-              className="text-neutral-400 hover:text-white p-1 rounded-lg hover:bg-neutral-800 text-xs font-bold transition-colors"
+              className="text-slate-400 hover:text-slate-800 p-1 rounded-lg hover:bg-slate-100 text-xs font-bold transition-colors"
             >
               ✕
             </button>
           </div>
 
-          <h3 className="text-sm font-black text-white mb-1.5 leading-snug">
+          <h3 className="text-sm font-bold text-slate-900 mb-1.5 leading-snug">
             {activePopupData.street}
           </h3>
 
-          <div className="flex flex-wrap items-center gap-2.5 text-[11px] text-neutral-400 mb-2.5">
+          <div className="flex flex-wrap items-center gap-2.5 text-[11px] text-slate-500 mb-2.5">
             <span className="flex items-center gap-1">
-              <Calendar className="w-3 h-3 text-neutral-500" />
+              <Calendar className="w-3 h-3 text-slate-400" />
               {activePopupData.date}
             </span>
             <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3 text-neutral-500" />
+              <Clock className="w-3 h-3 text-slate-400" />
               {activePopupData.time}
             </span>
             {activePopupData.caseId && (
-              <span className="font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30 text-[10px] font-bold">
-                {activePopupData.caseId}
+              <span className="font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-semibold">
+                #{activePopupData.caseId}
               </span>
             )}
           </div>
 
           {/* Crash Mechanism Details */}
-          <div className="bg-neutral-900/90 rounded-xl p-3 border border-neutral-800 mb-2.5 text-xs text-neutral-300 space-y-1.5 leading-relaxed">
-            <div className="font-bold text-rose-400 flex items-center gap-1">
-              <AlertTriangle className="w-3.5 h-3.5" /> Collision: {activePopupData.collisionType}
+          <div className="bg-slate-50 rounded-xl p-3 mb-2.5 text-xs text-slate-700 space-y-1.5 leading-relaxed">
+            <div className="font-bold text-slate-900 flex items-center gap-1">
+              <AlertTriangle className="w-3.5 h-3.5 text-rose-500" /> Collision: {activePopupData.collisionType}
             </div>
             {activePopupData.movement && (
-              <div className="text-[11px] text-cyan-300 font-semibold">
-                🏍️ Movement: <span className="text-white font-mono">{activePopupData.movement}</span>
+              <div className="text-[11px] text-slate-700 font-medium">
+                🏍️ Movement: <span className="text-slate-900 font-mono font-semibold">{activePopupData.movement}</span>
               </div>
             )}
             {activePopupData.pcfViolation && (
-              <div className="text-[11px] text-amber-300 font-semibold">
-                ⚖️ Factor: <span className="text-neutral-200">{activePopupData.pcfViolation}</span>
+              <div className="text-[11px] text-slate-700 font-medium">
+                ⚖️ Factor: <span className="text-slate-900">{activePopupData.pcfViolation}</span>
               </div>
             )}
             {activePopupData.summary && (
-              <p className="text-[11px] text-neutral-400 pt-1 border-t border-neutral-800">
+              <p className="text-[11px] text-slate-600 pt-1">
                 {activePopupData.summary}
               </p>
             )}
@@ -892,9 +902,9 @@ export default function MapboxRiderMap({
 
           {/* Defensive Advisory */}
           {(activePopupData.safetyTakeaway || activePopupData.safetyRecommendation) && (
-            <div className="bg-emerald-950/40 border border-emerald-800/60 rounded-xl p-2.5 text-xs text-emerald-200 leading-relaxed">
-              <div className="font-bold text-emerald-400 mb-0.5 flex items-center gap-1 text-[11px]">
-                <Shield className="w-3 h-3" /> Defensive Riding Advisory:
+            <div className="bg-emerald-50 rounded-xl p-2.5 text-xs text-emerald-900 leading-relaxed">
+              <div className="font-bold text-emerald-800 mb-0.5 flex items-center gap-1 text-[11px]">
+                <Shield className="w-3 h-3 text-emerald-600" /> Defensive Riding Advisory:
               </div>
               <p className="text-[11px]">
                 {activePopupData.safetyTakeaway || activePopupData.safetyRecommendation}
@@ -902,13 +912,13 @@ export default function MapboxRiderMap({
             </div>
           )}
 
-          <div className="mt-2.5 pt-2 border-t border-neutral-800/80 flex items-center justify-between text-[10px] text-neutral-500">
+          <div className="mt-2.5 pt-2 flex items-center justify-between text-[10px] text-slate-400">
             <span>Verified State Record</span>
             <a
               href="https://data.ca.gov/dataset/ccrs"
               target="_blank"
               rel="noreferrer"
-              className="text-cyan-400 hover:underline flex items-center gap-0.5"
+              className="text-sky-600 hover:underline flex items-center gap-0.5 font-medium"
             >
               <span>data.ca.gov</span>
               <ExternalLink className="w-2.5 h-2.5" />

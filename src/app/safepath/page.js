@@ -16,7 +16,11 @@ import {
   Info,
   Calendar,
   Layers,
-  Box
+  Box,
+  MapPin,
+  AlertTriangle,
+  Radio,
+  CheckCircle2
 } from 'lucide-react';
 import '../globals.css';
 import MapboxFilterBar from '../../components/safety-map/MapboxFilterBar';
@@ -30,18 +34,92 @@ const MapboxRiderMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full min-h-[640px] rounded-2xl bg-[#07090e] border border-neutral-800 flex flex-col items-center justify-center gap-3 text-neutral-400">
-        <div className="w-8 h-8 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin"></div>
-        <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
-          Initializing Mapbox GL Vector Canvas...
+      <div className="w-full h-full min-h-[640px] rounded-2xl bg-slate-100 flex flex-col items-center justify-center gap-3 text-slate-500">
+        <div className="w-8 h-8 rounded-full border-2 border-slate-400 border-t-transparent animate-spin"></div>
+        <span className="text-xs font-medium uppercase tracking-wider text-slate-500">
+          Loading Map Canvas...
         </span>
       </div>
     ),
   }
 );
 
+// Curated regional safety profiles & key hotspots
+const REGIONAL_PROFILES = {
+  'angeles-forest': {
+    name: 'Angeles National Forest & San Gabriel Canyons',
+    emoji: '🌲',
+    tag: 'Extreme Hazard • Blind Apexes',
+    riskLevel: 'Critical Canyon Pass',
+    riskColor: 'bg-rose-50 text-rose-700',
+    primaryMechanism: '84% of fatalities are single-rider loss of traction & entry speed panic on blind sweepers',
+    keyCorridors: 'SR-2 (Angeles Crest), SR-39, Glendora Mountain Rd (GMR), and Big Tujunga Canyon',
+    hotspots: [
+      { name: 'Angeles Crest (SR-2)', coords: [34.2580, -118.0950] },
+      { name: 'Glendora Mountain Rd', coords: [34.1800, -117.7800] },
+      { name: 'Upper Big Tujunga', coords: [34.2950, -118.1150] },
+      { name: 'San Gabriel Canyon (SR-39)', coords: [34.2150, -117.8750] },
+    ],
+  },
+  'malibu-canyons': {
+    name: 'Malibu & Santa Monica Mountain Canyons',
+    emoji: '🌊',
+    tag: 'High Hazard • Coastal & Ridge Passes',
+    riskLevel: 'Severe Mountain / Coastal',
+    riskColor: 'bg-amber-50 text-amber-800',
+    primaryMechanism: 'Blind crest driveways, gravel turnouts, and weekend sports car / motorcycle speed disparity',
+    keyCorridors: 'Pacific Coast Hwy (SR-1), Mulholland Hwy (The Snake), Decker Canyon (SR-23), Latigo & Kanan',
+    hotspots: [
+      { name: 'PCH at Topanga / Malibu', coords: [34.0350, -118.6920] },
+      { name: 'Mulholland Hwy', coords: [34.0980, -118.7950] },
+      { name: 'Latigo Canyon Pass', coords: [34.0620, -118.7620] },
+      { name: 'Kanan Dume Road', coords: [34.0450, -118.8050] },
+    ],
+  },
+  'orange-county': {
+    name: 'Orange County Canyon Passes & Arterials',
+    emoji: '🍊',
+    tag: 'Elevated Caution • Arterial & Pass',
+    riskLevel: 'Moderate to High Risk',
+    riskColor: 'bg-orange-50 text-orange-800',
+    primaryMechanism: 'Blind turnouts and weekend group clustering on two-lane mountain passes',
+    keyCorridors: 'Ortega Highway (SR-74), Santiago Canyon Road (Cook\'s Corner), and Coastal PCH',
+    hotspots: [
+      { name: 'Ortega Hwy (SR-74)', coords: [33.5600, -117.5250] },
+      { name: 'Cook\'s Corner / Santiago', coords: [33.7020, -117.6520] },
+      { name: 'Carbon Canyon Pass', coords: [33.9180, -117.8100] },
+      { name: 'Laguna Canyon Rd (SR-133)', coords: [33.5850, -117.7650] },
+    ],
+  },
+  'los-angeles': {
+    name: 'Los Angeles Metro, Culver City & Hollywood Arterials',
+    emoji: '🏙️',
+    tag: 'High Urban Conflict • Intersection SMIDSY',
+    riskLevel: 'Heavy Transit Arterial',
+    riskColor: 'bg-sky-50 text-sky-800',
+    primaryMechanism: 'CVC 21801 Left-Turn failures (SMIDSY) and high-speed arterial right hooks',
+    keyCorridors: 'Culver Blvd, Venice Blvd, Hollywood Blvd, Sunset Blvd, and DTLA arterials',
+    hotspots: [
+      { name: 'Culver & Venice Blvd', coords: [34.0211, -118.3965] },
+      { name: 'Hollywood & Highland', coords: [34.1016, -118.3387] },
+      { name: 'Sunset Strip Arterials', coords: [34.0950, -118.3800] },
+      { name: 'DTLA Figueroa Transit Corridor', coords: [34.0450, -118.2600] },
+    ],
+  },
+};
+
 export default function SafePathPage() {
-  // California Regional Hubs (Angeles Forest, Malibu Canyons, Orange County, Los Angeles Metro)
+  // Synchronize document body background
+  useEffect(() => {
+    document.body.style.backgroundColor = '#fafafa';
+    document.body.style.color = '#0f172a';
+    return () => {
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
+    };
+  }, []);
+
+  // California Regional Hubs
   const californiaCities = useMemo(() => {
     return CITIES.filter((c) => 
       c.id === 'angeles-forest' || 
@@ -52,14 +130,15 @@ export default function SafePathPage() {
   }, []);
 
   const [selectedCityId, setSelectedCityId] = useState('angeles-forest');
-  const [selectedMode, setSelectedMode] = useState('all'); // 'all' | 'motorcycle' | 'bicycle' | 'ebike'
-  const [severityFilter, setSeverityFilter] = useState('all'); // 'all' | 'fatal' | 'severe'
+  const [selectedMode, setSelectedMode] = useState('all'); // 'all' | 'motorcycle' | 'bicycle' | 'ebike' | 'car'
+  const [severityFilter, setSeverityFilter] = useState('severe'); // Default to 'severe' (Fatal & Severe only) to prevent overwhelming clutter!
   const [timeFilter, setTimeFilter] = useState('all'); // 'all' | 'night' | 'commute'
   const [selectedYear, setSelectedYear] = useState('all'); // 'all' | '2026' ... '2016'
   const [is3DMode, setIs3DMode] = useState(false);
   const [showSafetyRegions, setShowSafetyRegions] = useState(true);
   const [selectedRoadType, setSelectedRoadType] = useState('all'); // 'all' | 'surface' | 'freeway'
   const [showBikeLanes, setShowBikeLanes] = useState(true);
+  const [focusedCoords, setFocusedCoords] = useState(null);
 
   // Auto-enable bike lanes when bicycle or e-bike mode is selected
   useEffect(() => {
@@ -89,7 +168,7 @@ export default function SafePathPage() {
   // ACTIVE INCIDENT INSPECTION
   const [selectedIncidentId, setSelectedIncidentId] = useState(null);
 
-  // Fetch complete Angeles National Forest dataset (from public/data/ or /api/angeles-forest/)
+  // Fetch Angeles National Forest dataset
   const fetchAngelesForestData = useCallback(async (scope = forestScope) => {
     setIsLoadingForest(true);
     try {
@@ -194,16 +273,18 @@ export default function SafePathPage() {
     };
   }, [activeIncidents, selectedYear, selectedMode, severityFilter, timeFilter, selectedRoadType]);
 
+  const activeProfile = REGIONAL_PROFILES[selectedCityId] || REGIONAL_PROFILES['angeles-forest'];
+
   return (
-    <div className="min-h-screen bg-[#07090e] text-neutral-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-[#fafafa] text-slate-900 flex flex-col font-sans selection:bg-slate-200">
       {/* HEADER */}
-      <header className="sticky top-0 z-30 bg-[#07090e]/95 backdrop-blur-xl border-b border-neutral-800/80 px-4 py-3 md:px-8">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-100 px-4 py-2.5 md:px-8">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
           {/* Brand & Title */}
           <div className="flex items-center gap-3">
             <Link 
               href="/"
-              className="p-2 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 transition-all flex items-center gap-1 text-xs font-semibold"
+              className="p-2 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-1 text-xs font-semibold"
               title="Return to Home"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -211,43 +292,40 @@ export default function SafePathPage() {
             </Link>
 
             <div className="flex items-center gap-2.5">
-              <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.25)]">
-                <ShieldAlert className="w-5 h-5 text-cyan-400" />
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#07090e] animate-pulse"></span>
+              <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-slate-100 text-slate-800">
+                <ShieldAlert className="w-4 h-4 text-sky-600" />
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="text-base md:text-lg font-black tracking-tight text-white flex items-center gap-1.5">
-                    California Crash Radar <span className="text-xs font-bold uppercase tracking-widest px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">Mapbox GL</span>
-                  </h1>
-                </div>
-                <p className="text-[11px] text-neutral-400 hidden sm:block">
-                  100% Official California Highway Patrol CCRS records from data.ca.gov (2016–2026)
+                <h1 className="text-sm md:text-base font-bold tracking-tight text-slate-900 flex items-center gap-1.5">
+                  California Crash Radar <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Official CCRS</span>
+                </h1>
+                <p className="text-[11px] text-slate-500 hidden sm:block">
+                  Curated safety digests & tactical hazard mapping from official CHP state records
                 </p>
               </div>
             </div>
           </div>
 
-          {/* ACTIONS: ANNUAL CSV IMPORTER & PORTAL LINK */}
+          {/* ACTIONS */}
           <div className="flex items-center gap-2 text-xs">
             <a
               href="https://data.ca.gov/dataset/ccrs"
               target="_blank"
               rel="noreferrer"
-              className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900/90 border border-neutral-800 text-neutral-300 hover:text-white hover:border-cyan-500/50 transition-colors"
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 transition-colors text-[11px] font-medium"
             >
-              <span>data.ca.gov/dataset/ccrs</span>
-              <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+              <span>data.ca.gov</span>
+              <ExternalLink className="w-3 h-3 text-slate-400" />
             </a>
 
             <button
               onClick={() => setShowImporterModal(true)}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 hover:text-white transition-all shadow-[0_0_15px_rgba(6,182,212,0.2)]"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 transition-colors"
             >
-              <UploadCloud className="w-4 h-4 text-cyan-400" />
-              <span>Download & Import CSVs</span>
+              <UploadCloud className="w-3.5 h-3.5 text-sky-600" />
+              <span>Import CSV</span>
               {customImportedRecords.length > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full bg-cyan-400 text-neutral-950 text-[10px] font-black">
+                <span className="px-1.5 py-0.2 rounded-full bg-sky-600 text-white text-[10px] font-bold">
                   +{customImportedRecords.length}
                 </span>
               )}
@@ -259,152 +337,107 @@ export default function SafePathPage() {
       {/* ANNUAL CSV IMPORTER MODAL */}
       {showImporterModal && (
         <SwitrsImporter
-          onImportSuccess={(records) => {
-            setCustomImportedRecords((prev) => [...records, ...prev]);
-          }}
           onClose={() => setShowImporterModal(false)}
+          onImportRecords={(records) => {
+            setCustomImportedRecords((prev) => [...records, ...prev]);
+            setShowImporterModal(false);
+          }}
         />
       )}
 
-      {/* MAIN CONTENT AREA */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-3 md:p-6 flex flex-col gap-4">
-        {/* BANNER: ANGELES NATIONAL FOREST CORRIDORS */}
-        {selectedCityId === 'angeles-forest' && (
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-emerald-950/50 via-neutral-900 to-neutral-950 border border-emerald-500/40 text-xs shadow-xl">
+      {/* MAIN WORKSPACE */}
+      <main className="max-w-7xl mx-auto w-full p-4 md:p-6 flex flex-col gap-3">
+        {/* UNIFIED REGIONAL SAFETY DIGEST CARD */}
+        <div className="p-4 rounded-2xl bg-white flex flex-col gap-2.5 text-slate-800">
+          <div className="flex flex-wrap items-center justify-between gap-2.5">
             <div className="flex items-center gap-2.5">
-              <span className="text-2xl">🌲</span>
+              <span className="text-xl">{activeProfile.emoji}</span>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-black text-white text-sm">Angeles National Forest Canyon Safety Radar</span>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold">
-                    5,103 Total Crashes • 1,211 Motorcycles • 130 Fatalities
+                  <h2 className="text-sm md:text-base font-bold text-slate-900">
+                    {activeProfile.name}
+                  </h2>
+                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider ${activeProfile.riskColor}`}>
+                    {activeProfile.riskLevel}
                   </span>
                 </div>
-                <p className="text-neutral-400 text-[11px] mt-0.5">
-                  Extracted from official CHP CCRS records covering SR-2 (Angeles Crest), SR-39 (San Gabriel Canyon), Glendora Mountain Rd (GMR), and Big Tujunga.
+                <p className="text-slate-500 text-[11px] mt-0.5 hidden sm:block">
+                  {activeProfile.keyCorridors}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => {
-                  setForestScope('riders');
-                  fetchAngelesForestData('riders');
-                }}
-                className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all ${
-                  forestScope === 'riders'
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/60 shadow-[0_0_12px_rgba(245,158,11,0.3)]'
-                    : 'bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800'
-                }`}
-              >
-                🏍️ Rider & Fatal (1,333)
-              </button>
-              <button
-                onClick={() => {
-                  setForestScope('all');
-                  fetchAngelesForestData('all');
-                }}
-                className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all ${
-                  forestScope === 'all'
-                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/60 shadow-[0_0_12px_rgba(6,182,212,0.3)]'
-                    : 'bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800'
-                }`}
-              >
-                🚗 All 5,103 Canyon Crashes
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* BANNER: MALIBU & SANTA MONICA CANYONS */}
-        {selectedCityId === 'malibu-canyons' && (
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-teal-950/50 via-neutral-900 to-neutral-950 border border-teal-500/40 text-xs shadow-xl">
-            <div className="flex items-center gap-2.5">
-              <span className="text-2xl">🌊</span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-black text-white text-sm">Malibu & Santa Monica Canyons Safety Radar</span>
-                  <span className="px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 text-[10px] font-bold">
-                    896 Official CCRS Incidents • PCH & Canyon Passes
-                  </span>
-                </div>
-                <p className="text-neutral-400 text-[11px] mt-0.5">
-                  100% official California Crash Reporting System (CCRS) records across Pacific Coast Hwy (SR-1), Mulholland Hwy (The Snake), Decker Canyon (SR-23), Latigo Canyon, and Kanan Dume.
-                </p>
+            {/* If Angeles Forest, show the dataset scope toggle */}
+            {selectedCityId === 'angeles-forest' && (
+              <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl">
+                <button
+                  onClick={() => {
+                    setForestScope('riders');
+                    fetchAngelesForestData('riders');
+                  }}
+                  className={`px-2.5 py-1 rounded-lg font-bold text-[11px] transition-all ${
+                    forestScope === 'riders'
+                      ? 'bg-white text-slate-900 shadow-xs'
+                      : 'text-slate-500 hover:text-slate-800'
+                  }`}
+                  title="Filter to high-fatality motorcycle & rider canyon crashes"
+                >
+                  🏍️ Rider Focus (1,333)
+                </button>
+                <button
+                  onClick={() => {
+                    setForestScope('all');
+                    fetchAngelesForestData('all');
+                  }}
+                  className={`px-2.5 py-1 rounded-lg font-bold text-[11px] transition-all ${
+                    forestScope === 'all'
+                      ? 'bg-white text-slate-900 shadow-xs'
+                      : 'text-slate-500 hover:text-slate-800'
+                  }`}
+                  title="Load complete historical canyon crash catalog"
+                >
+                  🚗 All Crashes (5,103)
+                </button>
               </div>
-            </div>
-            <a
-              href="https://data.ca.gov/dataset/ccrs"
-              target="_blank"
-              rel="noreferrer"
-              className="text-cyan-400 hover:underline font-semibold flex items-center gap-1 text-[11px]"
-            >
-              <span>data.ca.gov/dataset/ccrs</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+            )}
           </div>
-        )}
 
-        {/* BANNER: ORANGE COUNTY (OC) */}
-        {selectedCityId === 'orange-county' && (
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-orange-950/50 via-neutral-900 to-neutral-950 border border-orange-500/40 text-xs shadow-xl">
-            <div className="flex items-center gap-2.5">
-              <span className="text-2xl">🍊</span>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-black text-white text-sm">Orange County (OC) Rider Safety Radar</span>
-                  <span className="px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/30 text-[10px] font-bold">
-                    1,094 Official CCRS Records • Ortega & Santiago Canyons
-                  </span>
-                </div>
-                <p className="text-neutral-400 text-[11px] mt-0.5">
-                  Statewide CHP CCRS records for County 30: Ortega Highway (SR-74), Santiago Canyon Road (Cook's Corner), coastal Pacific Coast Highway (Laguna/Newport/HB), and Carbon Canyon.
-                </p>
-              </div>
+          {/* Quick Safety Pulse & Hotspots */}
+          <div className="flex flex-wrap items-center justify-between gap-2.5 pt-1 text-xs">
+            <div className="flex items-center gap-2 text-slate-700 text-[11px] bg-amber-50/70 px-3 py-1.5 rounded-xl">
+              <span className="font-bold text-amber-800 flex items-center gap-1">
+                <AlertTriangle className="w-3.5 h-3.5 text-amber-600" /> Primary Hazard:
+              </span>
+              <span className="text-slate-700">{activeProfile.primaryMechanism}</span>
             </div>
-            <a
-              href="https://data.ca.gov/dataset/ccrs"
-              target="_blank"
-              rel="noreferrer"
-              className="text-orange-400 hover:underline font-semibold flex items-center gap-1 text-[11px]"
-            >
-              <span>data.ca.gov/dataset/ccrs</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
-        )}
 
-        {/* BANNER: LOS ANGELES METRO COUNTY */}
-        {selectedCityId === 'los-angeles' && (
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-blue-950/50 via-neutral-900 to-neutral-950 border border-blue-500/40 text-xs shadow-xl">
-            <div className="flex items-center gap-2.5">
-              <span className="text-xl">🏙️</span>
-              <div>
-                <span className="font-bold text-white block">Los Angeles Metro, Culver City & Hollywood Arterials</span>
-                <span className="text-neutral-400 text-[11px]">
-                  {totalCount.toLocaleString()} verified CHP CCRS collision records covering Culver City, Hollywood, DTLA, Venice Blvd, Washington Blvd, and Sunset Blvd.
-                </span>
-              </div>
+            {/* Clickable Hotspot Quick Navigation */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+              <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] shrink-0 flex items-center gap-1">
+                <MapPin className="w-3 h-3 text-sky-600" /> Fly To:
+              </span>
+              {activeProfile.hotspots.map((spot, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setFocusedCoords(spot.coords)}
+                  className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-[11px] font-medium transition-colors shrink-0 flex items-center gap-1"
+                  title={`Center map on ${spot.name}`}
+                >
+                  <span>📍</span>
+                  <span>{spot.name}</span>
+                </button>
+              ))}
             </div>
-            <a
-              href="https://data.ca.gov/dataset/ccrs"
-              target="_blank"
-              rel="noreferrer"
-              className="text-cyan-400 hover:underline font-semibold flex items-center gap-1 text-[11px]"
-            >
-              <span>data.ca.gov/dataset/ccrs</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
           </div>
-        )}
+        </div>
 
-        {/* MAPBOX INTERACTIVE CONTROLS */}
+        {/* MAPBOX STREAMLINED FILTER BAR */}
         <MapboxFilterBar
           currentCity={currentCity}
           onSelectCity={(id) => {
             setSelectedCityId(id);
             setSelectedIncidentId(null);
+            setFocusedCoords(null);
           }}
           selectedMode={selectedMode}
           onSelectMode={setSelectedMode}
@@ -428,7 +461,7 @@ export default function SafePathPage() {
         />
 
         {/* MAPBOX GL WORKSPACE */}
-        <div className="w-full h-[700px] rounded-2xl overflow-hidden shadow-2xl relative">
+        <div className="w-full h-[700px] rounded-2xl overflow-hidden relative bg-slate-100">
           <MapboxRiderMap
             city={currentCity}
             incidents={activeIncidents}
@@ -442,38 +475,39 @@ export default function SafePathPage() {
             showBikeLanes={showBikeLanes}
             onSelectIncident={(id) => setSelectedIncidentId(id)}
             onCityChange={(cityId) => setSelectedCityId(cityId)}
+            focusedCoords={focusedCoords}
           />
         </div>
 
-        {/* CANYON & STREET DEFENSE BRIEFING */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <div className="p-4 rounded-2xl bg-neutral-950/80 border border-neutral-800">
-            <div className="flex items-center gap-2 font-bold text-white mb-2">
-              <span className="text-base">🏍️</span>
+        {/* DEFENSIVE BRIEFING CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div className="p-4 rounded-2xl bg-white text-slate-600">
+            <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
+              <span className="text-sm">🏍️</span>
               <span>Canyon Cornering Protocols</span>
             </div>
-            <p className="text-neutral-400 leading-relaxed">
+            <p className="text-[11px] leading-relaxed">
               On SR-2 and GMR, 80%+ of single-rider fatalities occur from entry-speed panic and looking at the guardrail. Always look through the blind turn to where you want the vehicle to go, maintain light trail-braking, and never cross the double-yellow.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-neutral-950/80 border border-neutral-800">
-            <div className="flex items-center gap-2 font-bold text-white mb-2">
-              <span className="text-base">⚠️</span>
+          <div className="p-4 rounded-2xl bg-white text-slate-600">
+            <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
+              <span className="text-sm">⚠️</span>
               <span>SMIDSY / Left-Turn Failure</span>
             </div>
-            <p className="text-neutral-400 leading-relaxed">
+            <p className="text-[11px] leading-relaxed">
               California Vehicle Code 21801 violations are the leading cause of urban multi-vehicle rider fatalities. Approaching oncoming vehicles misjudge single-headlight closing speeds. Perform a subtle lane weave (SMIDSY maneuver) to generate optical motion contrast.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-neutral-950/80 border border-neutral-800">
-            <div className="flex items-center gap-2 font-bold text-white mb-2">
-              <span className="text-base">📊</span>
+          <div className="p-4 rounded-2xl bg-white text-slate-600">
+            <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
+              <span className="text-sm">📊</span>
               <span>100% State Data Integrity</span>
             </div>
-            <p className="text-neutral-400 leading-relaxed">
-              All coordinates, CVC violation numbers, and crash mechanisms are parsed directly from official California Crash Reporting System (CCRS) and CHP SWITRS annual datasets published on <a href="https://data.ca.gov/dataset/ccrs" target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline">data.ca.gov</a>.
+            <p className="text-[11px] leading-relaxed">
+              All coordinates, CVC violation numbers, and crash mechanisms are parsed directly from official California Crash Reporting System (CCRS) and CHP SWITRS annual datasets published on <a href="https://data.ca.gov/dataset/ccrs" target="_blank" rel="noreferrer" className="text-sky-600 hover:underline font-semibold">data.ca.gov</a>.
             </p>
           </div>
         </div>

@@ -83,36 +83,41 @@ export function generateSafetyRegions(incidents = [], city = null) {
     }
   }
 
-  // 3. Build GeoJSON features ONLY for actual collision cells (Yellow & Red)
-  // Zero green boxes: Safe areas (0 collisions) remain completely clear dark map!
+  // 3. Build GeoJSON features ONLY for statistically meaningful hazard zones
+  // Filter out single-isolated incidents to keep the map clean and digestible
   const features = [];
   for (const [key, cell] of cellMap.entries()) {
-    if (!cell || cell.crashes === 0) continue;
+    if (!cell) continue;
+
+    const isDanger = cell.fatalities > 0 || cell.severe >= 2 || cell.crashes >= 6;
+    const isCaution = !isDanger && (cell.severe > 0 || cell.crashes >= 3);
+
+    // Skip low-incident noise (1-2 minor incidents without injury) to avoid visual checkerboard
+    if (!isDanger && !isCaution) continue;
 
     const cellMinLat = baseLat + cell.r * CELL_SIZE_LAT;
     const cellMaxLat = cellMinLat + CELL_SIZE_LAT;
     const cellMinLng = baseLng + cell.c * CELL_SIZE_LNG;
     const cellMaxLng = cellMinLng + CELL_SIZE_LNG;
 
-    const isDanger = cell.fatalities > 0 || cell.crashes >= 6;
     const level = isDanger ? 'danger' : 'caution';
     const title = cell.fatalities > 0 
       ? 'Critical Fatal Hazard Zone' 
       : isDanger 
       ? 'High Crash Density Zone' 
-      : 'Moderate Caution Zone';
+      : 'Frequent Collision Caution Zone';
 
     const score = isDanger 
       ? Math.max(12, 45 - cell.fatalities * 12 - cell.crashes)
       : Math.max(55, 85 - cell.crashes * 5);
 
     const fillColor = isDanger 
-      ? 'rgba(239, 68, 68, 0.28)' 
-      : 'rgba(234, 179, 8, 0.22)';
+      ? 'rgba(239, 68, 68, 0.16)' 
+      : 'rgba(245, 158, 11, 0.12)';
 
     const borderColor = isDanger 
-      ? 'rgba(248, 113, 113, 0.65)' 
-      : 'rgba(250, 204, 21, 0.55)';
+      ? 'rgba(239, 68, 68, 0.35)' 
+      : 'rgba(245, 158, 11, 0.30)';
 
     const description = isDanger
       ? `${cell.crashes} collisions (${cell.fatalities} fatal, ${cell.severe} severe). High kinetic conflict probability; observe lane discipline and speed margins.`

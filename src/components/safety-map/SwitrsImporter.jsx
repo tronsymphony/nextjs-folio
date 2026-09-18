@@ -260,46 +260,46 @@ export default function SwitrsImporter({ onImportSuccess, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-[#090d16] border border-neutral-800 rounded-3xl max-w-xl w-full p-6 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200 my-auto">
+    <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-white rounded-3xl max-w-xl w-full p-6 relative animate-in fade-in zoom-in-95 duration-200 my-auto text-slate-800">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-neutral-400 hover:text-white p-1 rounded-lg hover:bg-neutral-800 transition-colors"
+          className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Title */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+          <div className="w-10 h-10 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600">
             <Database className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               California Crash Reporting System (CCRS)
             </h3>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs text-slate-500">
               Official California Highway Patrol Annual Datasets (2016–2026)
             </p>
           </div>
         </div>
 
-        <p className="text-xs text-neutral-300 leading-relaxed mb-3">
-          Download annual CSV files directly from the State of California at <a href="https://data.ca.gov/dataset/ccrs" target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline font-bold">data.ca.gov/dataset/ccrs</a>, or drop any exported CSV file to render all verified coordinates directly on your map.
+        <p className="text-xs text-slate-600 leading-relaxed mb-3">
+          Download annual CSV files directly from the State of California at <a href="https://data.ca.gov/dataset/ccrs" target="_blank" rel="noreferrer" className="text-sky-600 hover:underline font-bold">data.ca.gov/dataset/ccrs</a>, or drop any exported CSV file to render all verified coordinates directly on your map.
         </p>
 
         {/* Annual CSV Download Grid */}
-        <div className="mb-4 p-3.5 rounded-2xl bg-neutral-900/90 border border-neutral-800">
+        <div className="mb-4 p-3.5 rounded-2xl bg-slate-50">
           <div className="flex items-center justify-between gap-2 mb-2.5">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-white">
-              <Download className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900">
+              <Download className="w-3.5 h-3.5 text-sky-600" />
               <span>Download Annual Crashes CSV (State Portal)</span>
             </div>
             <a
               href="https://data.ca.gov/dataset/ccrs"
               target="_blank"
               rel="noreferrer"
-              className="text-[11px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-semibold"
+              className="text-[11px] text-sky-600 hover:text-cyan-300 flex items-center gap-1 font-semibold"
             >
               <span>View CCRS Portal</span>
               <ExternalLink className="w-3 h-3" />
@@ -314,17 +314,17 @@ export default function SwitrsImporter({ onImportSuccess, onClose }) {
                 target="_blank"
                 rel="noreferrer"
                 download={item.name}
-                className="px-2 py-1.5 rounded-lg bg-neutral-800/80 hover:bg-cyan-500/20 border border-neutral-700/80 hover:border-cyan-500/50 text-neutral-200 hover:text-cyan-300 flex flex-col items-center justify-center transition-all group"
+                className="px-2 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 flex flex-col items-center justify-center transition-all group"
                 title={`Download ${item.name} from data.ca.gov`}
               >
                 <span className="font-bold text-[11px] group-hover:scale-105 transition-transform">{item.label}</span>
-                <span className="text-[9px] text-neutral-400 group-hover:text-cyan-400 flex items-center gap-0.5">
+                <span className="text-[9px] text-slate-500 group-hover:text-sky-600 flex items-center gap-0.5">
                   CSV <Download className="w-2.5 h-2.5" />
                 </span>
               </a>
             ))}
           </div>
-          <p className="text-[10px] text-neutral-500 mt-2">
+          <p className="text-[10px] text-slate-400 mt-2">
             💡 Click any year above to download the raw state CSV, then drop it below. Or use Instant 1-Click Live Query below.
           </p>
         </div>
@@ -336,10 +336,10 @@ export default function SwitrsImporter({ onImportSuccess, onClose }) {
           onDragLeave={handleDrag}
           onDrop={handleDrop}
           onClick={() => fileInputRef.current?.click()}
-          className={`border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center gap-2.5 cursor-pointer transition-all ${
+          className={`rounded-2xl p-6 flex flex-col items-center justify-center gap-2.5 cursor-pointer transition-all ${
             dragActive
-              ? 'border-cyan-400 bg-cyan-950/20'
-              : 'border-neutral-800 bg-neutral-900/50 hover:border-neutral-700 hover:bg-neutral-900/80'
+              ? 'bg-sky-50'
+              : 'bg-slate-50 hover:bg-slate-100'
           }`}
         >
           <input
@@ -352,45 +352,45 @@ export default function SwitrsImporter({ onImportSuccess, onClose }) {
             }}
           />
 
-          <div className="w-10 h-10 rounded-full bg-neutral-800/80 flex items-center justify-center text-neutral-400">
+          <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
             {parsing ? (
               <div className="w-5 h-5 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
             ) : (
-              <Upload className="w-5 h-5 text-cyan-400" />
+              <Upload className="w-5 h-5 text-sky-600" />
             )}
           </div>
 
           <div className="text-center">
-            <span className="text-xs font-bold text-white block">
+            <span className="text-xs font-bold text-slate-800 block">
               {parsing ? 'Parsing CCRS Collision Records...' : 'Drop Downloaded Crashes_YYYY.csv Here'}
             </span>
-            <span className="text-[11px] text-neutral-500 mt-0.5 block">
+            <span className="text-[11px] text-slate-500 mt-0.5 block">
               Directly parses official columns from data.ca.gov/dataset/ccrs
             </span>
           </div>
         </div>
 
         {errorMsg && (
-          <div className="mt-3.5 p-3 rounded-xl bg-red-950/40 border border-red-800/60 text-xs text-red-300 flex items-start gap-2">
-            <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+          <div className="mt-3.5 p-3 rounded-xl bg-rose-50 text-xs text-rose-700 flex items-start gap-2">
+            <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
             <span>{errorMsg}</span>
           </div>
         )}
 
         {importStats && (
-          <div className="mt-3.5 p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-800/60 text-xs text-emerald-200 flex flex-col gap-1">
-            <div className="flex items-center gap-1.5 font-bold text-emerald-400">
+          <div className="mt-3.5 p-3.5 rounded-xl bg-emerald-50 text-xs text-emerald-800 flex flex-col gap-1">
+            <div className="flex items-center gap-1.5 font-bold text-emerald-700">
               <CheckCircle2 className="w-4 h-4" /> Successfully Imported {importStats.count} Collision Records
             </div>
-            <div className="text-[11px] text-neutral-300">
+            <div className="text-[11px] text-slate-600">
               Found <strong>{importStats.fatalCount} fatal incidents</strong>. All coordinates rendered directly onto the map!
             </div>
           </div>
         )}
 
         {/* Quick Instant Live Query */}
-        <div className="mt-4 pt-4 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-1.5 text-neutral-400">
+        <div className="mt-4 pt-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-1.5 text-slate-500">
             <Zap className="w-3.5 h-3.5 text-amber-400" />
             <span>Or load directly without downloading:</span>
           </div>
@@ -401,7 +401,7 @@ export default function SwitrsImporter({ onImportSuccess, onClose }) {
                 key={yr}
                 onClick={() => handleInstantLiveQuery(yr)}
                 disabled={loadingLiveYear !== null}
-                className="px-2.5 py-1 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white font-semibold text-[11px] border border-neutral-700 transition-colors disabled:opacity-50 flex items-center gap-1"
+                className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 font-semibold text-[11px] transition-colors disabled:opacity-50 flex items-center gap-1"
               >
                 {loadingLiveYear === yr ? (
                   <span className="w-2.5 h-2.5 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></span>
@@ -417,7 +417,7 @@ export default function SwitrsImporter({ onImportSuccess, onClose }) {
         <div className="mt-5 flex items-center justify-between">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-xs font-medium text-neutral-400 hover:text-white transition-colors"
+            className="px-4 py-2 rounded-xl text-xs font-medium text-slate-500 hover:text-slate-800 transition-colors"
           >
             Close
           </button>
@@ -425,7 +425,7 @@ export default function SwitrsImporter({ onImportSuccess, onClose }) {
           {importStats && (
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 text-neutral-950 hover:bg-cyan-400 transition-colors shadow-lg"
+              className="px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white hover:bg-sky-500 transition-colors"
             >
               View on Map
             </button>
