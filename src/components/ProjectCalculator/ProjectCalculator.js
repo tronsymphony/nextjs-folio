@@ -1,6 +1,82 @@
 import { useState, useEffect } from 'react';
 import styles from './ProjectCalculator.module.scss';
 
+// Project types with base costs
+const projectTypes = [
+  { id: 'small-business', name: 'Small Business Website', baseCost: 2500 },
+  { id: 'e-commerce', name: 'E-commerce Store', baseCost: 5000 },
+  { id: 'web-app', name: 'Web Application', baseCost: 8000 },
+  { id: 'mobile-app', name: 'Mobile App', baseCost: 10000 },
+  { id: 'industrial-b2b', name: 'B2B & Industrial Portal / ERP', baseCost: 12000 },
+];
+
+// Available features with costs
+const availableFeatures = {
+  'small-business': [
+    { id: 'content-management', name: 'Content Management System', cost: 800 },
+    { id: 'contact-form', name: 'Custom Contact Form', cost: 300 },
+    { id: 'blog', name: 'Blog Section', cost: 600 },
+    { id: 'seo', name: 'SEO Optimization Package', cost: 750 },
+    { id: 'analytics', name: 'Analytics Integration', cost: 400 },
+  ],
+  'e-commerce': [
+    { id: 'product-management', name: 'Product Management System', cost: 1200 },
+    { id: 'payment-gateway', name: 'Payment Gateway Integration', cost: 800 },
+    { id: 'inventory', name: 'Inventory Management', cost: 1500 },
+    { id: 'shipping-integration', name: 'Shipping Integration', cost: 900 },
+    { id: 'customer-accounts', name: 'Customer Accounts', cost: 700 },
+    { id: 'product-reviews', name: 'Product Reviews', cost: 600 },
+  ],
+  'web-app': [
+    { id: 'user-auth', name: 'User Authentication', cost: 1200 },
+    { id: 'data-integration', name: 'Third-party Data Integration', cost: 1800 },
+    { id: 'dashboard', name: 'Custom Dashboard', cost: 2500 },
+    { id: 'notifications', name: 'Notification System', cost: 900 },
+    { id: 'file-uploads', name: 'File Upload System', cost: 800 },
+    { id: 'api-development', name: 'API Development', cost: 2000 },
+  ],
+  'mobile-app': [
+    { id: 'ios', name: 'iOS Development', cost: 4000 },
+    { id: 'android', name: 'Android Development', cost: 4000 },
+    { id: 'push-notifications', name: 'Push Notifications', cost: 800 },
+    { id: 'offline-mode', name: 'Offline Mode', cost: 1500 },
+    { id: 'location-services', name: 'Location Services', cost: 1200 },
+    { id: 'in-app-purchases', name: 'In-App Purchases', cost: 1800 },
+  ],
+  'industrial-b2b': [
+    { id: 'erp-integration', name: 'NetSuite / ERP Sync & Integration', cost: 3500 },
+    { id: 'rfq-builder', name: 'Interactive RFQ & Custom Quote Engine', cost: 1800 },
+    { id: 'equipment-portal', name: 'Fleet & Equipment Rental Management', cost: 2400 },
+    { id: 'multi-warehouse', name: 'Multi-Warehouse Inventory Tracking', cost: 2200 },
+    { id: 'costar-lead-automation', name: 'CoStar / CRE Lead Automation Pipeline', cost: 2800 },
+    { id: 'client-portal', name: 'Self-Service B2B Customer Portal', cost: 2000 },
+  ],
+};
+
+// Design package options
+const designPackages = [
+  { id: 'no-design', name: 'No Design (Use Existing Design/Template)', cost: 0 },
+  { id: 'basic-design', name: 'Basic Design Package', cost: 1200, description: 'Simple, clean design with basic branding elements and standard layouts.' },
+  { id: 'premium-design', name: 'Premium Design Package', cost: 2500, description: 'Custom professional design with unique branding, advanced layouts, and visual elements.' },
+  { id: 'elite-design', name: 'Elite Design Package', cost: 4500, description: 'Bespoke high-end design with complete brand identity, custom illustrations, animations, and unique visual effects.' },
+];
+
+// Timeframe multipliers
+const timeframeMultipliers = {
+  urgent: 1.5,  // 50% rush fee
+  normal: 1,    // standard timeframe
+  relaxed: 0.9  // 10% discount for flexible timeline
+};
+
+// Monthly maintenance options
+const maintenanceOptions = {
+  'small-business': 150,
+  'e-commerce': 350,
+  'web-app': 500,
+  'mobile-app': 650,
+  'industrial-b2b': 850,
+};
+
 const ProjectCalculator = () => {
   // State for all form selections
   const [projectType, setProjectType] = useState('');
@@ -19,72 +95,6 @@ const ProjectCalculator = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
-
-  // Project types with base costs
-  const projectTypes = [
-    { id: 'small-business', name: 'Small Business Website', baseCost: 2500 },
-    { id: 'e-commerce', name: 'E-commerce Store', baseCost: 5000 },
-    { id: 'web-app', name: 'Web Application', baseCost: 8000 },
-    { id: 'mobile-app', name: 'Mobile App', baseCost: 10000 },
-  ];
-
-  // Available features with costs
-  const availableFeatures = {
-    'small-business': [
-      { id: 'content-management', name: 'Content Management System', cost: 800 },
-      { id: 'contact-form', name: 'Custom Contact Form', cost: 300 },
-      { id: 'blog', name: 'Blog Section', cost: 600 },
-      { id: 'seo', name: 'SEO Optimization Package', cost: 750 },
-      { id: 'analytics', name: 'Analytics Integration', cost: 400 },
-    ],
-    'e-commerce': [
-      { id: 'product-management', name: 'Product Management System', cost: 1200 },
-      { id: 'payment-gateway', name: 'Payment Gateway Integration', cost: 800 },
-      { id: 'inventory', name: 'Inventory Management', cost: 1500 },
-      { id: 'shipping-integration', name: 'Shipping Integration', cost: 900 },
-      { id: 'customer-accounts', name: 'Customer Accounts', cost: 700 },
-      { id: 'product-reviews', name: 'Product Reviews', cost: 600 },
-    ],
-    'web-app': [
-      { id: 'user-auth', name: 'User Authentication', cost: 1200 },
-      { id: 'data-integration', name: 'Third-party Data Integration', cost: 1800 },
-      { id: 'dashboard', name: 'Custom Dashboard', cost: 2500 },
-      { id: 'notifications', name: 'Notification System', cost: 900 },
-      { id: 'file-uploads', name: 'File Upload System', cost: 800 },
-      { id: 'api-development', name: 'API Development', cost: 2000 },
-    ],
-    'mobile-app': [
-      { id: 'ios', name: 'iOS Development', cost: 4000 },
-      { id: 'android', name: 'Android Development', cost: 4000 },
-      { id: 'push-notifications', name: 'Push Notifications', cost: 800 },
-      { id: 'offline-mode', name: 'Offline Mode', cost: 1500 },
-      { id: 'location-services', name: 'Location Services', cost: 1200 },
-      { id: 'in-app-purchases', name: 'In-App Purchases', cost: 1800 },
-    ],
-  };
-
-  // Design package options
-  const designPackages = [
-    { id: 'no-design', name: 'No Design (Use Existing Design/Template)', cost: 0 },
-    { id: 'basic-design', name: 'Basic Design Package', cost: 1200, description: 'Simple, clean design with basic branding elements and standard layouts.' },
-    { id: 'premium-design', name: 'Premium Design Package', cost: 2500, description: 'Custom professional design with unique branding, advanced layouts, and visual elements.' },
-    { id: 'elite-design', name: 'Elite Design Package', cost: 4500, description: 'Bespoke high-end design with complete brand identity, custom illustrations, animations, and unique visual effects.' },
-  ];
-
-  // Timeframe multipliers
-  const timeframeMultipliers = {
-    urgent: 1.5,  // 50% rush fee
-    normal: 1,    // standard timeframe
-    relaxed: 0.9  // 10% discount for flexible timeline
-  };
-
-  // Monthly maintenance options
-  const maintenanceOptions = {
-    'small-business': 150,
-    'e-commerce': 350,
-    'web-app': 500,
-    'mobile-app': 650
-  };
 
   // Reset features when project type changes
   useEffect(() => {

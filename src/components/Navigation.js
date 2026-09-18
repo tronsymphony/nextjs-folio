@@ -26,14 +26,32 @@ const Navigation = () => {
     <nav>
       {/* ------------------- DESKTOP MENU ------------------- */}
       <ul className="hidden md:flex items-center gap-8">
-        <li>
-          <Link href="/services" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+        {/* Services Dropdown */}
+        <li className="group relative py-4">
+          <Link href="/services" className="flex items-center gap-1 text-sm font-medium text-neutral-400 group-hover:text-white transition-colors">
             Services
+            <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
           </Link>
+
+          <div className="absolute top-full -left-4 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <div className="bg-[#0a0a0a] border border-neutral-800 rounded-xl p-2 min-w-[220px] shadow-2xl">
+              <DropdownLink href="/services">All Services</DropdownLink>
+              <DropdownLink href="/services/industrial-logistics">
+                Industrial & Logistics ERP
+              </DropdownLink>
+            </div>
+          </div>
         </li>
+
         <li>
           <Link href="/portfolio" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
             Portfolio
+          </Link>
+        </li>
+        <li>
+          <Link href="/safepath" className="flex items-center gap-1.5 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Rider Safety
           </Link>
         </li>
         <li>
@@ -73,7 +91,7 @@ const Navigation = () => {
         onClick={toggleMobileMenu}
         aria-label="Toggle Menu"
       >
-        {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
       {/* ------------------- MOBILE OVERLAY ------------------- */}
@@ -85,7 +103,22 @@ const Navigation = () => {
       >
         <ul className="space-y-6">
           <MobileLink href="/services" onClick={toggleMobileMenu}>Services</MobileLink>
+          <li>
+            <Link
+              href="/services/industrial-logistics"
+              onClick={toggleMobileMenu}
+              className="text-xl font-medium text-blue-400 block hover:text-blue-300 transition-colors pl-4 border-l-2 border-blue-500/40"
+            >
+              Industrial & Logistics ERP
+            </Link>
+          </li>
           <MobileLink href="/portfolio" onClick={toggleMobileMenu}>Portfolio</MobileLink>
+          <MobileLink href="/safepath" onClick={toggleMobileMenu}>
+            <span className="text-emerald-400 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse inline-block"></span>
+              Rider Safety Map
+            </span>
+          </MobileLink>
           <MobileLink href="/blog" onClick={toggleMobileMenu}>Blog</MobileLink>
 
           {/* Mobile Accordion */}

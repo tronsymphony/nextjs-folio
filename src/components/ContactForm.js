@@ -31,7 +31,7 @@ export default function ContactForm({ onSubmitSuccess }) {
     setError(null);
     
     try {
-      const response = await fetch('/api/route', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

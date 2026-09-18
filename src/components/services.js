@@ -118,6 +118,27 @@ export default function Services() {
             <p className="text-neutral-500 text-lg uppercase tracking-widest font-bold">Let&apos;s Go Digital</p>
           </div>
 
+          {/* Featured Industrial / Logistics Banner */}
+          <div className="mb-12 p-8 rounded-3xl bg-gradient-to-r from-blue-950/40 via-neutral-900 to-emerald-950/40 border border-blue-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
+                Enterprise & Industrial
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                Material Handling & Logistics Platforms
+              </h3>
+              <p className="text-neutral-300 text-sm leading-relaxed">
+                NetSuite ERP integrations, automated CoStar commercial lease pipeline ingestion, and custom B2B equipment rental engines.
+              </p>
+            </div>
+            <Link
+              href="/services/industrial-logistics"
+              className="whitespace-nowrap px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-sm transition-all flex items-center gap-2"
+            >
+              Explore Logistics Solutions <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {servicesList.map((service, index) => (
               <div
