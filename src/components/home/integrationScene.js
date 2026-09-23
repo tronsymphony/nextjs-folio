@@ -56,6 +56,7 @@ function makeLabel(CSS2DObject, text, isCore) {
 export function createIntegrationScene({ THREE, CSS2DRenderer, CSS2DObject, mount, onFirstFrame }) {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isSmall = () => mount.clientWidth < 1024;
+  let lowPower = false;
 
   // --- Renderers -----------------------------------------------------------
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
@@ -196,7 +197,7 @@ export function createIntegrationScene({ THREE, CSS2DRenderer, CSS2DObject, moun
     const w = mount.clientWidth;
     const h = mount.clientHeight;
     if (!w || !h) return;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isSmall() ? 1.5 : 2));
+    renderer.setPixelRatio(lowPower ? 1 : Math.min(window.devicePixelRatio, isSmall() ? 1.5 : 2));
     renderer.setSize(w, h, false);
     renderer.domElement.style.width = `${w}px`;
     renderer.domElement.style.height = `${h}px`;
@@ -280,9 +281,24 @@ export function createIntegrationScene({ THREE, CSS2DRenderer, CSS2DObject, moun
   let inView = true;
   let running = false;
   let firstFrame = true;
+  // Adaptive quality: machines without a real GPU (blocklisted drivers,
+  // remote desktops) drop to 1x pixel density if the first frames are slow.
+  const probe = { frames: 0, time: 0, done: false };
 
   function tick() {
-    update(Math.min(clock.getDelta(), 0.05));
+    const dt = clock.getDelta();
+    if (!probe.done) {
+      probe.frames++;
+      probe.time += dt;
+      if (probe.frames === 90) {
+        probe.done = true;
+        if (probe.time / probe.frames > 1 / 30 && renderer.getPixelRatio() > 1) {
+          lowPower = true;
+          layout();
+        }
+      }
+    }
+    update(Math.min(dt, 0.05));
     render();
     if (firstFrame) {
       firstFrame = false;
