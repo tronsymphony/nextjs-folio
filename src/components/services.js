@@ -1,222 +1,78 @@
-import Link from "next/link";
-import {
-  Accessibility, Zap, Palette, Code,
-  Database, RefreshCw, Wrench, Search,
-  ArrowRight, Check
-} from "lucide-react";
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { CtaPair, Eyebrow } from './ui/Cta';
+import { offers } from '../data/netsuiteOffers';
+
+// Work I still take on, mostly for existing clients. Deliberately a compact
+// list rather than equal-weight cards: NetSuite is the headline offer.
+const alsoAvailable = [
+  ['Custom web applications', 'React, Next.js, and Angular applications, including migrations off legacy front ends.'],
+  ['Headless commerce', 'Shopify and other commerce back ends behind a custom, fast front end.'],
+  ['Production hardening for AI-built apps', 'Taking a prototype built with AI tools to secure, maintainable production code.'],
+  ['Performance', 'Core Web Vitals, bundle size, caching, and image pipelines.'],
+  ['Accessibility (WCAG)', 'Audits and remediation to WCAG 2.2 AA.'],
+  ['Analytics implementation', 'PostHog, Mixpanel, and GA4 event design that answers real product questions.'],
+  ['Technical SEO', 'Crawlability, structured data, rendering strategy, and site architecture.'],
+  ['Maintenance', 'Dependency upgrades, security patches, and monitoring for sites I built or inherit.'],
+];
 
 export default function Services() {
-
-  // Data for Services Grid
-  const servicesList = [
-    {
-      title: "WCAG Compliance",
-      description: "From creative designs to ADA audits, I specialize in accessible, user-friendly experiences meeting ADA standards.",
-      icon: Accessibility,
-      color: "text-blue-400",
-      bg: "bg-blue-500/10"
-    },
-    {
-      title: "Speed Optimization",
-      description: "Optimize for speed and performance. Faster load times mean better SEO rankings and enhanced user experience.",
-      icon: Zap,
-      color: "text-yellow-400",
-      bg: "bg-yellow-500/10"
-    },
-    {
-      title: "Website Design",
-      description: "Combining creativity and technical expertise to craft visually appealing, user-focused websites that engage and convert.",
-      icon: Palette,
-      color: "text-purple-400",
-      bg: "bg-purple-500/10"
-    },
-    {
-      title: "Website Development",
-      description: "Responsive, scalable, and secure platforms. From static pages to complex web apps, I deliver robust code.",
-      icon: Code,
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10"
-    },
-    {
-      title: "Enterprise CMS",
-      description: "Streamline content management with advanced solutions. Perfect for large organizations needing efficiency.",
-      icon: Database,
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10"
-    },
-    {
-      title: "Website Redesign",
-      description: "Revamp your site with a modern design. Improve navigation, aesthetics, and functionality to stay competitive.",
-      icon: RefreshCw,
-      color: "text-orange-400",
-      bg: "bg-orange-500/10"
-    },
-    {
-      title: "Maintenance",
-      description: "Ensure your site is secure, updated, and performing at its best. Reliable maintenance for peace of mind.",
-      icon: Wrench,
-      color: "text-red-400",
-      bg: "bg-red-500/10"
-    },
-    {
-      title: "AI Integration",
-      description: "Harness artificial intelligence to automate business processes, personalize user experiences, and drive smarter decision-making.",
-      icon: Zap, // Or a better icon if I have one
-      color: "text-blue-500",
-      bg: "bg-blue-500/10"
-    },
-    {
-      title: "SEO Strategy",
-      description: "Boost visibility with expert SEO. I optimize content, structure, and off-page elements to drive organic traffic.",
-      icon: Search,
-      color: "text-pink-400",
-      bg: "bg-pink-500/10"
-    },
-  ];
-
-  // Data for "Why Me" Section
-  const whyMeList = [
-    { title: "Longevity", desc: "Serving the community for nearly a decade with exceptional web development." },
-    { title: "Dev & Design Focus", desc: "Expert development meets creative design to make your brand stand out." },
-    { title: "Breathtaking Design", desc: "Flexible, responsive, and industry-standard compliant designs." },
-    { title: "On-Brand Experiences", desc: "Design elements that reflect your identity while driving results." },
-    { title: "One-of-a-Kind Solutions", desc: "Custom, comprehensive solutions tailored to your specific needs." },
-    { title: "Partnership", desc: "Prioritizing clear communication and ongoing support for continued success." },
-  ];
-
   return (
-    <>
-      {/* ------------------- 1. HERO HEADER ------------------- */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 bg-[#0a0a0a] overflow-hidden" data-scroll-section>
-        {/* Background Glow */}
+    <div className="bg-[#0a0a0a] text-white">
+      <section className="relative pt-36 pb-16 px-4 sm:px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
-
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase">
-            Services
-          </h1>
-          <p className="text-xl md:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
-            Crafting Next-Level Digital Experiences
-          </p>
-          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl mx-auto">
-            Collaboration is at the heart of everything I do. From innovative apps to visually stunning websites,
-            I offer a diverse range of services to ensure your project&apos;s success.
+        <div className="container mx-auto max-w-4xl">
+          <Eyebrow>Capabilities</Eyebrow>
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6 mb-6">What I work on.</h1>
+          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl">
+            My focus is Oracle NetSuite: integrations, portals, and the front ends that sit on top of it. Fifteen years
+            of broader engineering work sits behind that, and I still take on the projects below.
           </p>
         </div>
       </section>
 
-      {/* ------------------- 2. SERVICES GRID ------------------- */}
-      <section className="py-20 bg-[#0a0a0a] px-4 sm:px-6 relative" data-scroll-section>
-        {/* Background Texture */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
-
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Boost Traffic, <span className="text-blue-500">Drive Revenue.</span>
-            </h2>
-            <p className="text-neutral-500 text-lg uppercase tracking-widest font-bold">Let&apos;s Go Digital</p>
-          </div>
-
-          {/* Featured Industrial / Logistics Banner */}
-          <div className="mb-12 p-8 rounded-3xl bg-gradient-to-r from-blue-950/40 via-neutral-900 to-emerald-950/40 border border-blue-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
-                Enterprise & Industrial
-              </span>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                Material Handling & Logistics Platforms
-              </h3>
-              <p className="text-neutral-300 text-sm leading-relaxed">
-                NetSuite ERP integrations, automated CoStar commercial lease pipeline ingestion, and custom B2B equipment rental engines.
-              </p>
-            </div>
-            <Link
-              href="/services/industrial-logistics"
-              className="whitespace-nowrap px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-sm transition-all flex items-center gap-2"
-            >
-              Explore Logistics Solutions <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {servicesList.map((service, index) => (
-              <div
-                key={index}
-                className="group relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/80 hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1"
-              >
-                {/* Icon */}
-                <div className={`w-12 h-12 ${service.bg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <service.icon className={`w-6 h-6 ${service.color}`} />
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">{service.description}</p>
+      <section className="pb-20 px-4 sm:px-6">
+        <div className="container mx-auto max-w-6xl p-8 rounded-2xl border border-blue-500/30 bg-blue-500/5">
+          <p className="text-xs font-bold uppercase tracking-wider text-blue-400 mb-3">Primary focus</p>
+          <h2 className="text-3xl font-bold mb-8">Oracle NetSuite integration &amp; front-end engineering</h2>
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {offers.map(({ icon: Icon, title, body }) => (
+              <div key={title}>
+                <Icon className="w-6 h-6 text-blue-400 mb-3" />
+                <h3 className="font-semibold mb-2">{title}</h3>
+                <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link
-              href="/contact/"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-3 bg-white !text-black font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-            >
-              Talk to Me
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          <div className="flex flex-wrap gap-x-8 gap-y-3 font-semibold">
+            <Link href="/netsuite/" className="inline-flex items-center gap-2 hover:text-blue-400">
+              NetSuite overview <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link
-              href="/contact/"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-3 border border-neutral-700 !text-white font-medium rounded-full hover:bg-neutral-800 transition-all"
-            >
-              More Services
-              <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+            <Link href="/netsuite/material-handling/" className="inline-flex items-center gap-2 hover:text-blue-400">
+              Material handling &amp; logistics <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link href="/netsuite-audit/" className="inline-flex items-center gap-2 hover:text-blue-400">
+              The integration audit <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ------------------- 3. WHY ME (List Style) ------------------- */}
-      <section className="py-24 bg-[#0a0a0a] px-4 sm:px-6 border-t border-neutral-900" data-scroll-section>
-        <div className="container mx-auto max-w-5xl">
-          <h4 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center max-w-3xl mx-auto">
-            What Makes Me the <span className="text-emerald-400">Best Developer</span> for Your Next Project?
-          </h4>
-
-          <div className="flex flex-col border-t border-neutral-800">
-            {whyMeList.map((skill, index) => (
-              <div
-                key={index}
-                className="group flex flex-col md:flex-row items-start md:items-center py-8 border-b border-neutral-800 hover:border-neutral-600 transition-colors duration-300"
-              >
-                {/* Number */}
-                <span className="hidden md:block w-16 text-neutral-600 font-mono text-sm group-hover:text-emerald-400 transition-colors">
-                  0{index + 1}
-                </span>
-
-                {/* Title */}
-                <div className="md:w-1/3 mb-4 md:mb-0">
-                  <h3 className="text-xl font-bold text-neutral-200 group-hover:text-white transition-colors">
-                    {skill.title}
-                  </h3>
-                </div>
-
-                {/* Description */}
-                <div className="md:w-1/2 md:pl-8">
-                  <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
-                    {skill.desc}
-                  </p>
-                </div>
-
-                {/* Arrow Icon (Desktop Only) */}
-                <div className="hidden md:flex flex-1 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Check className="text-emerald-500" />
-                </div>
+      <section className="pb-24 px-4 sm:px-6">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-2xl font-bold mb-2">Also available</h2>
+          <p className="text-neutral-500 mb-8">Usually for existing clients, or alongside NetSuite work.</p>
+          <dl className="grid md:grid-cols-2 border-t border-neutral-800">
+            {alsoAvailable.map(([title, body]) => (
+              <div key={title} className="py-5 pr-8 border-b border-neutral-800">
+                <dt className="font-semibold mb-1">{title}</dt>
+                <dd className="text-sm text-neutral-400">{body}</dd>
               </div>
             ))}
-          </div>
+          </dl>
+          <CtaPair className="mt-12" />
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -39,7 +39,7 @@ export default function LocationPageContent({ city, region, introText, specificC
   ];
 
   return (
-    <main className="bg-[#050505] min-h-screen text-gray-300">
+    <div className="bg-[#050505] min-h-screen text-gray-300">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
@@ -111,7 +111,7 @@ export default function LocationPageContent({ city, region, introText, specificC
             {[
               { 
                 title: "Holistic Expertise", 
-                desc: "10+ years combining development, design, and marketing into one cohesive strategy.",
+                desc: "15 years of engineering, now focused on NetSuite integrations and the front ends built on them.",
                 icon: Target
               },
               { 
@@ -148,13 +148,13 @@ export default function LocationPageContent({ city, region, introText, specificC
             Stop competing for table scraps. Let&apos;s build a digital presence that dominates your local industry.
           </p>
           <Link 
-            href="/contact"
+            href="/netsuite-audit/"
             className="inline-flex items-center gap-2 px-10 py-5 bg-white !text-black font-black text-xl hover:bg-gray-200 transition-all rounded-lg"
           >
-            Start Your Project <ArrowRight className="w-6 h-6" />
+            Book a NetSuite Audit <ArrowRight className="w-6 h-6" />
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

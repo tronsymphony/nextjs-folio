@@ -44,13 +44,13 @@ export default function About() {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase leading-[1.1]">
-            Your Technical <br />
+            NetSuite, meet <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-              Strategist.
+              the front end.
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-neutral-400 font-medium">
-            10+ Years of Expertise in Development, Design, and Marketing.
+            15 years of software engineering, focused on Oracle NetSuite and the applications built on it.
           </p>
         </div>
       </section>
@@ -66,16 +66,16 @@ export default function About() {
             {/* LEFT: Main Bio (Span 7) */}
             <div className="lg:col-span-7">
               <h2 className="text-3xl font-bold text-white mb-6">
-                The Full-Stack Partner for <br />
-                <span className="text-blue-500">Comprehensive Solutions</span>
+                One engineer, from <br />
+                <span className="text-blue-500">first call to launch</span>
               </h2>
 
               <div className="prose prose-invert max-w-none text-neutral-400 leading-relaxed text-lg space-y-6">
                 <p>
-                  Hi, I’m <strong className="text-white">Nitya Hoyos</strong>. I am a Los Angeles-based Full-Stack Digital Partner with over 10 years of experience spanning high-level development, strategic design, and performance-driven marketing.
+                  Hi, I’m <strong className="text-white">Nitya Hoyos</strong>, a Los Angeles-based software engineer with 15 years of experience. Today I focus on Oracle NetSuite: connecting it to storefronts, 3PLs, and CRMs, and building the customer portals and showrooms that run on its data.
                 </p>
                 <p>
-                  For established businesses and funded startups, I provide the essential <strong className="text-white">all-in-one solution</strong> needed to build, launch, and grow complex digital platforms without the risk of hiring multiple siloed vendors.
+                  I work directly with operations, IT, and sales leaders at companies that run on NetSuite, usually <strong className="text-white">alongside their NetSuite partner</strong>: they own configuration inside the ERP, I own the integrations and the applications outside it.
                 </p>
 
 
@@ -109,7 +109,7 @@ export default function About() {
 
               {/* Tech Stack Card */}
               <div className="p-8 rounded-lg bg-neutral-900/30 border border-neutral-800">
-                <h3 className="text-xl font-bold text-white mb-6">Professional Toolkit (10+ YOE)</h3>
+                <h3 className="text-xl font-bold text-white mb-6">Professional Toolkit</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {techStack.map((tech, idx) => (
                     <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-blue-500/50 transition-colors">
@@ -229,7 +229,7 @@ export default function About() {
           <div className="mt-20 text-center">
             <h3 className="text-2xl font-bold text-white mb-6">Ready to Eliminate Vendor Fragmentation?</h3>
             <div className="flex justify-center gap-6">
-              <Link href="/portfolio" className="text-neutral-400 hover:text-white underline underline-offset-4 decoration-neutral-700 hover:decoration-white transition-all">
+              <Link href="/work/" className="text-neutral-400 hover:text-white underline underline-offset-4 decoration-neutral-700 hover:decoration-white transition-all">
                 View Portfolio
               </Link>
               <Link href="/contact" className="text-blue-400 hover:text-blue-300 font-bold underline underline-offset-4 decoration-blue-500/30 hover:decoration-blue-400 transition-all">

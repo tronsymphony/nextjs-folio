@@ -100,10 +100,10 @@ export default function IndustrialLogisticsService() {
               Schedule an Industrial Tech Consult <ArrowRight className="w-4 h-4" />
             </a>
             <Link
-              href="/pricing"
+              href="/tools/netsuite-integration-estimator/"
               className="w-full sm:w-auto px-8 py-4 bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 font-semibold rounded-xl transition-all duration-200"
             >
-              Calculate Project Scope
+              Estimate Integration Scope
             </Link>
           </div>
         </div>
