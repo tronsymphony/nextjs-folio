@@ -1,37 +1,20 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
 import { Linkedin, Github, Instagram, Mail, ArrowUpRight } from 'lucide-react';
 import BackToTopButton from '../components/BackToTopButton';
 
+// Pages that already end in a booking or contact form don't need the CTA band.
+const HIDE_CTA_ON = ['/contact/', '/call/', '/netsuite-audit/'];
+
 export default function Footer() {
-  const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    const modalShown = sessionStorage.getItem("modalShown");
-    if (!modalShown) {
-      const timer = setTimeout(() => {
-        setShowModal(true);
-        sessionStorage.setItem('modalShown', 'true');
-      }, 30000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-  const pathname = usePathname()
-
-  console.log(pathname);
-
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  const pathname = usePathname();
 
   return (
     <>
 
 
-      {pathname !== '/contact/' && (
+      {!HIDE_CTA_ON.includes(pathname) && (
         <section className="relative py-16 bg-[#0a0a0a] overflow-hidden border-t border-white/5" data-scroll-section>
           <div className="absolute inset-0 flex items-center justify-around opacity-[0.02] pointer-events-none select-none">
             <span className="text-[20vw] font-black uppercase tracking-tighter">nitya</span>
@@ -40,20 +23,26 @@ export default function Footer() {
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tighter">
-                Reach <span className="text-blue-500">Out.</span>
+                Is NetSuite <span className="text-blue-500">holding you back?</span>
               </h2>
               <p className="text-lg md:text-xl text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                I am always on the lookout for <span className="text-white font-bold text-base">great clients</span> who are{" "}
-                <span className="text-blue-400 font-bold text-base">passionate</span>
-                about their <span className="text-white font-bold text-base">business and customers</span>. Let&rsquo;s build something exceptional.
+                Start with a fixed-price integration audit: a written plan showing what&rsquo;s broken, what will break next, and what to fix first.
               </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-4 bg-white !text-black font-black text-lg rounded-lg hover:bg-neutral-200 transition-all hover:scale-105"
-              >
-                Start Your Project
-                <ArrowUpRight className="w-5 h-5" />
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  href="/netsuite-audit/"
+                  className="inline-flex items-center gap-3 px-10 py-4 bg-white !text-black font-black text-lg rounded-lg hover:bg-neutral-200 transition-all hover:scale-105"
+                >
+                  Book a NetSuite Audit
+                  <ArrowUpRight className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="/call/"
+                  className="inline-flex items-center gap-2 px-8 py-4 border border-neutral-700 text-white font-bold text-lg rounded-lg hover:bg-white/5 transition-colors"
+                >
+                  20-min fit call
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -1,44 +1,21 @@
 import Footer from "../../../components/footer";
 import HomeFollow from "../../../components/home-follow";
 import LocationPageContent from "../../../components/LocationPageContent";
+import JsonLd from "../../../components/JsonLd";
+import { ORG_ID, graph, url } from "../../../lib/schema";
 
 export default function LosAngelesSEO() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Casa Dev - Los Angeles",
-    "image": "https://casa-dev.com/images/logo2.webp",
-    "@id": "https://casa-dev.com/about/los-angeles",
-    "url": "https://casa-dev.com/about/los-angeles",
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Los Angeles",
-      "addressRegion": "CA",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 34.0522,
-      "longitude": -118.2437
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    "sameAs": [
-      "https://github.com/tronsymphony"
-    ]
-  };
+  const jsonLd = graph({
+    '@type': 'Service',
+    name: 'NetSuite integration and custom front-end engineering in Los Angeles',
+    provider: { '@id': ORG_ID },
+    areaServed: { '@type': 'City', name: 'Los Angeles', containedInPlace: { '@type': 'State', name: 'CA' } },
+    url: url('/about/los-angeles/'),
+  });
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <HomeFollow />
       <LocationPageContent 
         city="Los Angeles"
@@ -52,14 +29,10 @@ export default function LosAngelesSEO() {
 }
 
 export const metadata = {
-  metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: "/about/los-angeles",
-    languages: {
-      "en-US": "/en-US",
-    },
+    canonical: "/about/los-angeles/",
   },
-  title: "Strategic Web Development & SEO Los Angeles | Casa Dev",
+  title: "NetSuite Integration & Front-End Engineering in Los Angeles",
   description:
     "Partner with a senior Full-Stack expert in Los Angeles for strategic web development, custom AI integration, and technical SEO that delivers high-intent leads and measurable growth.",
   keywords:

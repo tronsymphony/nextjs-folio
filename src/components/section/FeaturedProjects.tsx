@@ -1,43 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
-import image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { featuredCaseStudies } from "../../data/caseStudies";
 
 export default function FeaturedProjects() {
   
-  // Project Data
-  const projects = [
-    {
-      id: "totalwarehouse",
-      client: "Total Warehouse",
-      title: "Digital Showroom",
-      url: "https://showroom.totalwarehouse.com",
-      desc: "A custom Next.js application fully integrated with Oracle NetSuite. This digital showroom streamlines inventory browsing and quote generation by syncing real-time product data directly from the ERP.",
-      image: "/images/totalwarehouse.jpg",
-      tags: ["Next.js", "Oracle NetSuite", "Real-Time Data"],
-      color: "from-purple-400 to-pink-500"
-    },
-    {
-      id: "godaddy",
-      client: "GoDaddy",
-      title: "Venture Forward",
-      url: "https://godaddy.com/ventureforward",
-      desc: "Creating a better online presence. I engineered a data-heavy platform processing millions of micro-business data points to visualize economic impact.",
-      image: "/images/god.jpg", // Ensure this path matches your public folder
-      tags: ["React", "Data Visualization", "Next.js"],
-      color: "from-cyan-400 to-blue-500"
-    },
-    {
-      id: "bulletproof",
-      client: "Bulletproof",
-      title: "E-Commerce Experience",
-      url: "https://bulletproof.com",
-      desc: "Lighting up an internet presence. A headless Shopify implementation designed for speed, SEO domination, and high-conversion user flows.",
-      image: "/images/bulletproof.jpg",
-      tags: ["Headless Shopify", "Performance", "Vue.js"],
-      color: "from-orange-400 to-amber-500"
-    }
-  ];
+  const projects = featuredCaseStudies();
 
   return (
     <section className="relative py-16 bg-[#0a0a0a] overflow-hidden">
@@ -61,7 +29,7 @@ export default function FeaturedProjects() {
         {/* 3. Projects Loop */}
         <div className="flex flex-col gap-16 md:gap-24">
           {projects.map((project, index) => (
-            <div key={project.id} className="group grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div key={project.slug} className="group grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
               
               {/* TEXT COLUMN */}
               {/* Logic: Sticky position + Alternating Order */}
@@ -80,12 +48,12 @@ export default function FeaturedProjects() {
 
                 {/* Description */}
                 <p className="text-base text-neutral-400 leading-relaxed mb-6">
-                  {project.desc}
+                  {project.summary}
                 </p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-3 mb-10">
-                  {project.tags.map((tag) => (
+                  {[...project.integrations, ...project.stack].map((tag) => (
                     <span key={tag} className="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-xs font-medium text-neutral-300">
                       {tag}
                     </span>
@@ -94,12 +62,11 @@ export default function FeaturedProjects() {
 
                 {/* Link */}
                 <Link 
-                  href={project.url}
-                  target="_blank"
+                  href={`/work/${project.slug}/`}
                   className="inline-flex items-center gap-2 text-white font-bold hover:text-blue-400 transition-colors border-b border-white/20 hover:border-blue-400 pb-1 w-fit"
                 >
-                  Visit Live Site
-                  <ArrowUpRight size={18} />
+                  Read the case study
+                  <ArrowRight size={18} />
                 </Link>
               </div>
 
@@ -120,7 +87,7 @@ export default function FeaturedProjects() {
                   {/* Image Wrapper */}
                   <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#dde5ef]">
                     <Image
-                      src={project.image}
+                      src={project.heroImage}
                       alt={`${project.client} Project`}
                       fill
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-105"

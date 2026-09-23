@@ -3,6 +3,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
+const NETSUITE_LINKS = [
+  ['/netsuite/', 'NetSuite overview'],
+  ['/netsuite/material-handling/', 'Material handling & logistics'],
+  ['/netsuite-audit/', 'Integration audit'],
+  ['/tools/netsuite-integration-estimator/', 'Integration cost estimator'],
+];
+
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(false);
@@ -26,14 +33,32 @@ const Navigation = () => {
     <nav>
       {/* ------------------- DESKTOP MENU ------------------- */}
       <ul className="hidden md:flex items-center gap-8">
+        {/* NetSuite Dropdown */}
+        <li className="group relative py-4">
+          <Link href="/netsuite/" className="flex items-center gap-1 text-sm font-medium text-neutral-400 group-hover:text-white transition-colors">
+            NetSuite
+            <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+          </Link>
+
+          <div className="absolute top-full -left-4 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <div className="bg-[#0a0a0a] border border-neutral-800 rounded-xl p-2 min-w-[240px] shadow-2xl">
+              {NETSUITE_LINKS.map(([href, label]) => (
+                <DropdownLink key={href} href={href}>{label}</DropdownLink>
+              ))}
+              <div className="my-1 border-t border-neutral-800" />
+              <DropdownLink href="/services/">All capabilities</DropdownLink>
+            </div>
+          </div>
+        </li>
+
         <li>
-          <Link href="/services" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-            Services
+          <Link href="/work/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+            Work
           </Link>
         </li>
         <li>
-          <Link href="/portfolio" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
-            Portfolio
+          <Link href="/pricing/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
+            Pricing
           </Link>
         </li>
         <li>
@@ -59,8 +84,8 @@ const Navigation = () => {
         </li>
 
         <li>
-          <Link href="/contact" className="px-5 py-2.5 bg-white !text-black text-sm font-bold rounded-lg hover:bg-neutral-200 transition-colors">
-            Start Project
+          <Link href="/netsuite-audit/" className="px-5 py-2.5 bg-white !text-black text-sm font-bold rounded-lg hover:bg-neutral-200 transition-colors">
+            Book an Audit
           </Link>
         </li>
       </ul>
@@ -73,7 +98,7 @@ const Navigation = () => {
         onClick={toggleMobileMenu}
         aria-label="Toggle Menu"
       >
-        {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
       {/* ------------------- MOBILE OVERLAY ------------------- */}
@@ -84,8 +109,16 @@ const Navigation = () => {
         style={{ height: '100dvh' }}
       >
         <ul className="space-y-6">
-          <MobileLink href="/services" onClick={toggleMobileMenu}>Services</MobileLink>
-          <MobileLink href="/portfolio" onClick={toggleMobileMenu}>Portfolio</MobileLink>
+          <MobileLink href="/netsuite/" onClick={toggleMobileMenu}>NetSuite</MobileLink>
+          <li className="flex flex-col gap-3 pl-4 border-l-2 border-blue-500/40">
+            {NETSUITE_LINKS.slice(1).map(([href, label]) => (
+              <Link key={href} href={href} onClick={toggleMobileMenu} className="text-lg font-medium text-blue-400 hover:text-blue-300 transition-colors">
+                {label}
+              </Link>
+            ))}
+          </li>
+          <MobileLink href="/work/" onClick={toggleMobileMenu}>Work</MobileLink>
+          <MobileLink href="/pricing/" onClick={toggleMobileMenu}>Pricing</MobileLink>
           <MobileLink href="/blog" onClick={toggleMobileMenu}>Blog</MobileLink>
 
           {/* Mobile Accordion */}
@@ -107,7 +140,8 @@ const Navigation = () => {
             </div>
           </li>
 
-          <MobileLink href="/contact" onClick={toggleMobileMenu}>Contact</MobileLink>
+          <MobileLink href="/netsuite-audit/" onClick={toggleMobileMenu}>Book an Audit</MobileLink>
+          <MobileLink href="/contact/" onClick={toggleMobileMenu}>Contact</MobileLink>
         </ul>
       </div>
     </nav>

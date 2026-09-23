@@ -1,550 +1,207 @@
-"use client";
-import Image from "next/image";
 import Link from "next/link";
-import ComparisonSection from "./section/ComparisonSection";
-import ContactForm from "./ContactForm";
-import ProjectCalculator from "./ProjectCalculator/ProjectCalculator";
-import Showcase from "./section/Showcase";
-import ValueProps from "./section/ValueProps";
-import Services from "./section/Services";
-import {
-  Shield,
-  Zap,
-  Clock,
-  ArrowRight,
-  ArrowUpRight,
-  MapPin,
-  Users,
-  Code,
-  Bell,
-  BarChart,
-  Check,
-  Star,
-  Award,
-} from "lucide-react";
-
-import { X, TrendingUp } from "lucide-react"; // Importing Lucide Icons
-import { useState } from "react";
+import { ArrowRight, Calculator, Check, ClipboardCheck, X } from "lucide-react";
 import FeaturedProjects from "./section/FeaturedProjects";
+import HeroScene from "./home/HeroScene";
+import LeadMagnetCTA from "./LeadMagnetCTA";
+import { Eyebrow, PrimaryCta, SecondaryCta } from "./ui/Cta";
+import { offers } from "../data/netsuiteOffers";
+import { OFFERS, PERSON, formatUSD } from "../lib/site";
+
+const symptoms = [
+  "Customers email or call to ask about stock, pricing, and order status that NetSuite already knows.",
+  "Your storefront or portal shows inventory that doesn't match the ERP.",
+  "An integration someone built years ago breaks, and nobody wants to touch it.",
+  "Sales reps rebuild quotes by hand from saved searches and spreadsheets.",
+];
+
+const ladder = [
+  {
+    step: "01",
+    title: "Audit",
+    body: `A fixed-price, ${OFFERS.audit.durationDays}-day review of everything connected to NetSuite. You get a written plan you own.`,
+    detail: OFFERS.audit.price ? `${formatUSD(OFFERS.audit.price)} flat` : "Fixed fee",
+  },
+  {
+    step: "02",
+    title: "Build",
+    body: "Fixed-scope implementation of what the audit found: integrations, portals, storefronts.",
+    detail: OFFERS.implementationFrom ? `From ${formatUSD(OFFERS.implementationFrom)}` : "Fixed scope",
+  },
+  {
+    step: "03",
+    title: "Retain",
+    body: "An engineer who already knows your account, on call for fixes and the next integration.",
+    detail: OFFERS.retainerFrom ? `From ${formatUSD(OFFERS.retainerFrom)}/mo` : "Monthly",
+  },
+];
 
 export default function HomeMain() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isCtaHovered, setIsCtaHovered] = useState(false);
-
-  // Note: Replaced raw SVG paths with Lucide components for cleaner JSX and better maintainability.
-  // Assuming these Lucide icons map to the original SVG intent:
-  // X (for Limitation marker)
-  // Check (for Advantage marker)
-  // Limitation Icons: Code (for Templates/Customization), Zap (for Performance)
-  // Advantage Icons: Award (for Experience), Shield (for Security), TrendingUp (for Strategic Growth)
-
-  const aiLimitations = [
-    {
-      title: "Boilerplate Risk & Technical Debt",
-      desc: "AI-generated or cheap code bases quickly become unmaintainable and insecure.",
-      Icon: Code,
-    },
-    {
-      title: "Performance Compromise",
-      desc: "Bloated code and unnecessary dependencies kill load times, SEO, and user experience.",
-      Icon: Zap,
-    },
-    {
-      title: "Marketing & Design Blind Spots",
-      desc: "Limited customization prevents the integration of strategic design or complex marketing funnels.",
-      Icon: X, // Using X for generic "problem"
-    },
-  ];
-
-  const strategicAdvantages = [
-    {
-      title: "Holistic Expertise (Dev, Design, Marketing)",
-      desc: "10+ years of problem-solving expertise aligned with your business goals, not just code functions.",
-      Icon: Award,
-    },
-    {
-      title: "Minimizing Risk & Technical Debt",
-      desc: "Clean, hand-crafted code ensures high security, optimal performance, and long-term scalability.",
-      Icon: Shield,
-    },
-    {
-      title: "Strategic Growth Foundation",
-      desc: "Building a platform designed to evolve and scale with your business's future requirements.",
-      Icon: TrendingUp,
-    },
-  ];
-
-  const skills = [
-    {
-      id: "development-expertise",
-      title: "Custom Solutions Without Agency Overhead",
-      description:
-        "Working directly with a skilled solo developer means personalized attention and faster results:",
-      benefits: [
-        "Direct communication with the person building your solution - no account managers or miscommunication",
-        "Flexible timelines and project scopes that adapt to your evolving business needs",
-      ],
-    },
-    {
-      id: "responsive-design",
-      title: "From Concept to Launch - All In One Place",
-      description:
-        "As your single point of contact for design and development, I streamline the entire process:",
-      benefits: [
-        "Unified vision across both design and technical implementation",
-        "Faster turnaround times without multiple team handoffs",
-        "Cost-effective approach that maximizes your investment",
-      ],
-    },
-    {
-      id: "marketing",
-      title: "Results-Driven Digital Strategy",
-      description:
-        "Your digital presence should work as hard as you do to grow your business:",
-      benefits: [
-        "SEO-optimized websites that help local customers find your business",
-        "Lead generation systems that convert visitors into paying customers",
-        "Analytics implementation to measure ROI and continuously improve",
-      ],
-    },
-    {
-      id: "value-proposition",
-      title: "Why Small Businesses & Startups Choose Me",
-      benefits: [
-        "Enterprise-quality solutions at prices accessible to growing businesses",
-        "Ongoing support and maintenance to protect your digital investment",
-        "Technical partnership that scales with your business growth",
-      ],
-    },
-  ];
-
-  // Client types specifically targeted
-  const clientTypes = [
-    {
-      title: "For Small Businesses",
-      description:
-        "Affordable custom websites and apps that generate real leads and sales without the enterprise price tag.",
-      icon: "/images/small-business-icon.svg",
-    },
-    {
-      title: "For Startups",
-      description:
-        "Quick-to-market MVPs and iterative development that helps you validate ideas, attract investors, and grow.",
-      icon: "/images/startup-icon.svg",
-    },
-    {
-      title: "For Professional Services",
-      description:
-        "Polished digital presence for consultants, lawyers, realtors and healthcare providers that converts prospects to clients.",
-      icon: "/images/professional-icon.svg",
-    },
-  ];
-
-  // Platform data for technology sections
-  // Platform data for technology sections
-  const platforms = {
-    firstRow: [
-      { name: "NetSuite", icon: "/images/netsuite.svg" },
-      { name: "Angular", icon: "/images/angular.svg" },
-      { name: "React JS", icon: "/images/icon-react.svg" },
-      { name: "Wordpress", icon: "/images/icon-wordpress.svg" },
-      { name: "PostHog", icon: "/images/posthog.svg" },
-      { name: "Mixpanel", icon: "/images/mixpanel.svg" },
-    ],
-    secondRow: [
-      { name: "NextJs", icon: "/images/nextjs.svg" },
-      { name: "VueJS", icon: "/images/vue-js.svg" },
-      { name: "Shopify", icon: "/images/icon-shopify.svg" },
-      { name: "Google Analytics", icon: "/images/ga4.svg" },
-      { name: "Laravel", icon: "/images/laravel.svg" },
-    ],
-  };
-
-  // Services data
-  const services = [
-    {
-      title: "Enterprise ERP & NetSuite Solutions",
-      description:
-        "Specialized development for NetSuite and ERP integrations. I automate workflows, build custom SuiteCommerce experiences, and optimize your operational data flow to maximize efficiency and ROI.",
-    },
-    {
-      title: "Advanced Analytics & UX Strategy",
-      description:
-        "Stop guessing. I implement deep tracking with PostHog, Mixpanel, and GA4 to visualize user behavior. I use this data to refine UI/UX designs, reduce churn, and increase conversion rates scientifically.",
-    },
-    {
-      title: "Small Business & Startup Development",
-      description:
-        "From high-converting WordPress sites to scalable React/Next.js web apps. I build cost-effective, custom solutions that establish credibility and generate leads without the enterprise price tag.",
-    },
-    {
-      title: "Custom React & Angular Apps",
-      description:
-        "Building complex, interactive single-page applications (SPAs) that feel like native software. Whether migrating legacy code or starting fresh, I ensure clean, maintainable architecture.",
-    },
-    {
-      title: "E-commerce & Shopify Growth",
-      description:
-        "Custom online stores optimized for sales. I handle everything from theme customization to complex inventory integrations, ensuring a seamless checkout experience for your customers.",
-    },
-    {
-      title: "Maintenance & Technical Partnership",
-      description:
-        "Ongoing support to keep your digital investment secure. I provide regular updates, security monitoring, and strategic advice as your business technology needs evolve.",
-    },
-  ];
-  const strategicValueProps = [
-    {
-      id: "holistic-expertise",
-      title: "Holistic Expertise: Dev + Design + Marketing",
-      description:
-        "My 10+ years of cross-disciplinary experience means you hire a partner, not just a programmer, eliminating costly communication gaps and maximizing results.",
-      benefits: [
-        "**Unified Vision:** Flawless execution where design supports conversion, and code supports SEO.",
-        "**Faster Velocity:** No delays waiting for handoffs between external design or marketing agencies.",
-      ],
-    },
-    {
-      id: "risk-mitigation",
-      title: "Future-Proof Platforms & Risk Mitigation",
-      description:
-        "Unlike AI boilerplate or cheap outsourcing that leads to technical debt, I hand-craft a scalable foundation.",
-      benefits: [
-        "**Minimized Rebuild Risk:** Clean, documented code that grows with your business needs.",
-        "Enterprise-level security and performance built from the ground up, not patched on later.",
-      ],
-    },
-    {
-      id: "strategic-partnership",
-      title: "Strategic Partnership, Not Freelance Task-Taker",
-      description:
-        "I integrate into your team, advising on the right technical strategy to meet specific business objectives (lead generation, conversion, scaling).",
-      benefits: [
-        "Direct communication with a decision-making expert—no account managers or middlemen.",
-        "Agile project scopes that adapt to evolving market demands and opportunities.",
-      ],
-    },
-    {
-      id: "vibe-coder-rescue",
-      title: "Vibe Coder Rescue: Finishing the Final 20%",
-      description:
-        "Stuck on the last 20% of your AI-assisted build? I help founders and 'vibe coders' turn prototypes into secure, scalable, production-ready platforms.",
-      benefits: [
-        "**Production Hardening:** Implementation of secure auth, complex logic, and custom integrations.",
-        "**Scalable Architecture:** Refactoring AI boilerplate into a foundation that lasts years, not months.",
-      ],
-    },
-  ];
-
   return (
     <section className="pt-20">
-      {/* <section className="threedot" data-scroll-section> */}
-      {/* <HomeDot /> */}
-      {/* </section> */}
-
-      {/* Hero Section - Split Screen Redesign */}
+      {/* Hero */}
       <section className="relative w-full min-h-[75vh] flex items-center bg-[#050505] overflow-hidden px-4 sm:px-6 py-12 lg:py-8">
-        
-        {/* Background Elements */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black_70%,transparent_100%)]"></div>
 
+        {/* Live integration graph (three.js), loaded after hydration */}
+        <div className="absolute inset-0 opacity-70 lg:opacity-100">
+          <HeroScene className="absolute inset-0" />
+        </div>
+        {/* Keeps the headline legible over the scene */}
+        <div className="absolute inset-0 pointer-events-none bg-[#050505]/45 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#050505] lg:via-[#050505]/40 lg:to-transparent lg:w-3/5"></div>
+
         <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
-            {/* Left Column: Typography */}
+          <div className="max-w-2xl">
             <div className="flex flex-col text-left">
               <div className="inline-flex items-center gap-2 mb-6 animate-[fadeInUp_0.8s_ease-out_forwards]">
-                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                 <span className="text-emerald-400 font-mono text-sm uppercase tracking-[0.2em] font-bold">
-                    Full-Stack Digital Partner
-                 </span>
+                <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                <span className="text-emerald-400 font-mono text-sm uppercase tracking-[0.2em] font-bold">
+                  Oracle NetSuite + Custom Front-End Engineering
+                </span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter mb-6 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards] opacity-0">
-                DESIGN. <br/>
-                DEVELOP. <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  GROW.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1] tracking-tighter mb-6 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards] opacity-0">
+                NetSuite, connected to the front ends your{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400">
+                  customers actually use.
                 </span>
               </h1>
 
-               <p className="text-base text-gray-400 font-medium leading-relaxed max-w-xl mb-8 animate-[fadeInUp_0.8s_ease-out_0.4s_forwards] opacity-0">
-                Scale your business without the agency overhead. I integrate premium <span className="text-white font-bold">UI/UX Design</span>, 
-                <span className="text-blue-400"> Enterprise Development</span>, and <span className="text-purple-400">Marketing Strategy</span> into one cohesive solution for growth.
+              <p className="text-lg text-gray-400 leading-relaxed max-w-xl mb-8 animate-[fadeInUp_0.8s_ease-out_0.4s_forwards] opacity-0">
+                I build NetSuite integrations, customer portals, and ERP-connected storefronts in Next.js, React, and
+                Angular. {PERSON.yearsExperience} years of engineering; you work with me directly, from the first
+                call to launch.
               </p>
 
-               <div className="flex flex-wrap gap-3 animate-[fadeInUp_0.8s_ease-out_0.6s_forwards] opacity-0">
-                <Link
-                  href="/contact"
-                  className="px-6 py-3 bg-white !text-black font-bold text-base hover:bg-gray-200 transition-colors flex items-center gap-2 rounded-lg"
-                >
-                  Start Your Project <ArrowRight className="w-5 h-5"/>
-                </Link>
-                <Link
-                  href=""
-                  className="px-6 py-3 border border-white/20 text-white font-bold text-base hover:bg-white/10 transition-colors rounded-lg"
-                >
-                  View Case Studies
-                </Link>
+              <div className="flex flex-wrap gap-3 animate-[fadeInUp_0.8s_ease-out_0.6s_forwards] opacity-0">
+                <PrimaryCta />
+                <SecondaryCta href="/work/">See the work</SecondaryCta>
               </div>
             </div>
-
-            {/* Right Column: 3D Visual */}
-            <div className="relative hidden lg:block perspective-[2000px] animate-[fadeInLeft_1s_ease-out_0.6s_forwards] opacity-0">
-               {/* The tilted card container */}
-               <div className="relative w-full aspect-[4/3] bg-[#0F0F0F] rounded-lg border border-white/10 shadow-2xl transform transition-transform duration-700 hover:rotate-y-[-5deg] hover:rotate-x-[5deg] [transform:rotateY(-12deg)_rotateX(6deg)_rotateZ(-2deg)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden group">
-                  
-                  {/* Window Controls */}
-                  <div className="h-10 border-b border-white/5 bg-[#141414] flex items-center px-4 gap-2">
-                     <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                     <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                     <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                     <div className="ml-4 px-3 py-1 bg-black/50 rounded-md text-[10px] font-mono text-gray-500">
-                        BusinessLogic.ts
-                     </div>
-                  </div>
-
-                  {/* Code Content */}
-                  <div className="p-6 font-mono text-sm leading-relaxed text-gray-400">
-                     <div className="flex gap-4">
-                        <div className="text-gray-700 select-none text-right">
-                           {Array.from({length: 12}).map((_, i) => <div key={i}>{i+1}</div>)}
-                        </div>
-                        <div className="w-full">
-                           <div className="text-purple-400">const <span className="text-yellow-400">YourGrowth</span> = <span className="text-blue-400">{'{'}</span></div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">strategy</span>: <span className="text-green-400">&rsquo;Data-Driven UX&rsquo;</span>,
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">design</span>: <span className="text-green-400">&rsquo;Modern & Conversional&rsquo;</span>,
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">techStack</span>: [<span className="text-green-400">&rsquo;Next.js&rsquo;</span>, <span className="text-green-400">&rsquo;NetSuite&rsquo;</span>, <span className="text-green-400">&rsquo;Wordpress&rsquo;</span>, <span className="text-green-400">&rsquo;Angular&rsquo;</span>],
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">marketing</span>: <span className="text-green-400">&rsquo;SEO & Analytics&rsquo;</span>,
-                           </div>
-                           <div className="pl-4 py-2">
-                              <span className="text-gray-500">\/\/ Result:</span>
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-purple-400">return</span> <span className="text-yellow-400">MaximumROI</span><span className="text-blue-400">()</span>;
-                           </div>
-                           <div><span className="text-blue-400">{'}'}</span>;</div>
-                        </div>
-                     </div>
-                  </div>
-                  
-                  {/* Glow effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-transparent to-transparent pointer-events-none"></div>
-               </div>
-
-               {/* Back Decoration Card */}
-               <div className="absolute -inset-4 -z-10 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl blur-xl transform [transform:rotateY(-12deg)_rotateX(6deg)_translateZ(-50px)] opacity-50"></div>
-            </div>
-
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(40px); }
-            to { opacity: 1; transform: translateX(0); }
-          }
-        `}</style>
       </section>
 
-      <Showcase></Showcase>
-
-      <ProjectCalculator></ProjectCalculator>
-
-      <ComparisonSection 
-        aiLimitations={aiLimitations} 
-        strategicAdvantages={strategicAdvantages} 
-      />
-
-      <ValueProps strategicValueProps={strategicValueProps} />
-
-      {/* Featured Projects Section */}
-      <FeaturedProjects></FeaturedProjects>
-
-      <Services services={services} />
-
-      {/* Technologies Section */}
-      <section className="py-16 bg-[#050505] overflow-hidden" data-scroll-section>
-        <div className="container mx-auto px-4 mb-12">
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase max-w-4xl">
-            Enterprise-grade technology <br />
-            <span className="text-blue-500">at small business prices.</span>
-          </h2>
-        </div>
-
-        {/* Rolling Logos - Custom Marquee Implementation */}
-        <div className="flex flex-col gap-6">
-          {/* First Row */}
-          <div className="flex overflow-hidden group select-none relative">
-             {/* Fade Gradients */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
-
-            <div className="flex gap-6 animate-marquee whitespace-nowrap">
-              {[...platforms.firstRow, ...platforms.firstRow].map((platform, index) => (
-                <div key={index} className="flex flex-col items-center justify-center p-4 bg-neutral-900/50 border border-white/5 rounded-lg min-w-[160px] hover:border-blue-500/50 transition-colors">
-                  <div className="w-12 h-12 flex items-center justify-center mb-3">
-                    <Zap className="w-8 h-8 text-blue-400" />
-                  </div>
-                  <span className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{platform.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Second Row */}
-          <div className="flex overflow-hidden group select-none relative">
-            {/* Fade Gradients */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
-
-            <div className="flex gap-6 animate-marquee-reverse whitespace-nowrap">
-              {[...platforms.secondRow, ...platforms.secondRow].map((platform, index) => (
-                <div key={index} className="flex flex-col items-center justify-center p-4 bg-neutral-900/50 border border-white/5 rounded-lg min-w-[160px] hover:border-purple-500/50 transition-colors">
-                  <div className="w-12 h-12 flex items-center justify-center mb-3">
-                    <Code className="w-8 h-8 text-purple-400" />
-                  </div>
-                  <span className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{platform.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 mt-16">
-          <div className="max-w-xl">
-            <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
-              I select the right technology for your specific business needs
-              and budget - <span className="text-white font-bold">not the most expensive option.</span>
+      {/* The problem */}
+      <section className="py-20 px-4 sm:px-6 bg-[#0a0a0a] border-t border-white/5">
+        <div className="container mx-auto max-w-5xl grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <Eyebrow>The problem</Eyebrow>
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mt-6 mb-4">
+              NetSuite is your system of record. For your customers, it&rsquo;s a dead end.
+            </h2>
+            <p className="text-neutral-400 leading-relaxed">
+              NetSuite knows your inventory, pricing, and order history better than anything else in the business.
+              But the customer-facing tools it ships with rarely fit how your customers actually buy, so that
+              knowledge gets retyped, emailed, and copied into systems that drift out of sync.
             </p>
-            <Link 
-              href="/contact/" 
-              className="group inline-flex items-center gap-2 text-white font-bold border-b border-white/20 hover:border-blue-500 hover:text-blue-400 pb-1 transition-all"
-            >
-              Let&rsquo;s discuss your technology options
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
           </div>
+          <ul className="space-y-4">
+            {symptoms.map((s) => (
+              <li key={s} className="flex gap-3 p-4 rounded-lg border border-neutral-800 bg-neutral-900/40 text-neutral-300">
+                <X className="w-5 h-5 text-red-400 shrink-0 mt-0.5" /> {s}
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <style jsx>{`
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          @keyframes marquee-reverse {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-          }
-          .animate-marquee {
-            animation: marquee 40s linear infinite;
-          }
-          .animate-marquee-reverse {
-            animation: marquee-reverse 40s linear infinite;
-          }
-        `}</style>
       </section>
 
-       {/* Latest Blog Posts Section */}
-      <section className="py-16 bg-[#050505] px-4 sm:px-6 border-t border-white/5" data-scroll-section>
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
-            <div className="max-w-xl">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tighter uppercase">
-                Latest <span className="text-blue-500">Insights.</span>
-              </h2>
-              <p className="text-gray-400 text-base">
-                Stay updated with the latest trends in AI integration and strategic web development.
-              </p>
-            </div>
-            <Link 
-              href="/blog" 
-              className="group flex items-center gap-2 text-white font-bold hover:text-blue-400 transition-colors uppercase tracking-widest text-sm"
-            >
-              View All Posts <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+      {/* What I build */}
+      <section className="py-20 px-4 sm:px-6 bg-[#050505] border-t border-white/5">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-10">What I build</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {offers.map(({ icon: Icon, title, body }) => (
+              <div key={title} className="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
+                <Icon className="w-6 h-6 text-blue-400 mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-3">{title}</h3>
+                <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
+              </div>
+            ))}
           </div>
+          <Link href="/netsuite/" className="inline-flex items-center gap-2 mt-8 font-semibold text-white hover:text-blue-400">
+            More on NetSuite work <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
-               <div className="p-8">
-                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
-                     AI Strategy
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
-                     <Link href="/blog/how-ai-can-transform-your-small-business">
-                        Maximizing ROI: How AI Can Transform Your Small Business in 2025
-                     </Link>
-                  </h3>
-                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
-                     Learn how artificial intelligence can streamline operations, enhance customer service, and drive growth for small businesses.
-                  </p>
-                  <Link 
-                    href="/blog/how-ai-can-transform-your-small-business"
-                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
-                  >
-                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-               </div>
-            </div>
+      {/* Proof */}
+      <FeaturedProjects />
 
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
-               <div className="p-8">
-                  <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
-                     Web Development
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
-                     <Link href="/blog/integrating-ai-to-supercharge-your-website">
-                        The Future of Web Development: Integrating AI to Supercharge Your Website
-                     </Link>
-                  </h3>
-                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
-                     Explore how AI-driven features like intelligent search and personalized recommendations can elevate your website.
-                  </p>
-                  <Link 
-                    href="/blog/integrating-ai-to-supercharge-your-website"
-                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
-                  >
-                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-               </div>
-            </div>
+      {/* How engagements work */}
+      <section className="py-20 px-4 sm:px-6 bg-[#0a0a0a] border-t border-white/5">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-3">How we&rsquo;d work together</h2>
+          <p className="text-neutral-400 mb-10 max-w-2xl">
+            Every engagement starts small and fixed-price, so you can judge the work before committing to more.
+          </p>
+          <ol className="grid md:grid-cols-3 gap-6">
+            {ladder.map((s) => (
+              <li key={s.step} className="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
+                <p className="font-mono text-xs text-blue-400 mb-3">STEP {s.step}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-neutral-400 leading-relaxed mb-4">{s.body}</p>
+                <p className="text-sm font-semibold text-neutral-200">{s.detail}</p>
+              </li>
+            ))}
+          </ol>
+          <Link href="/pricing/" className="inline-flex items-center gap-2 mt-8 font-semibold text-white hover:text-blue-400">
+            See pricing <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
 
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
-               <div className="p-8">
-                  <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
-                     Rescue
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
-                     <Link href="/blog/from-vibe-coding-to-production-ready">
-                        From &apos;Vibe Coding&apos; to Production-Ready: Finishing Your Project
-                     </Link>
-                  </h3>
-                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
-                     Built a great prototype with AI but stuck on the last 20%? Here is how to turn those vibes into a production-ready application.
-                  </p>
-                  <Link 
-                    href="/blog/from-vibe-coding-to-production-ready"
-                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
-                  >
-                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-               </div>
-            </div>
+      {/* Free resources */}
+      <section className="py-20 px-4 sm:px-6 bg-[#050505] border-t border-white/5">
+        <div className="container mx-auto max-w-6xl grid lg:grid-cols-5 gap-6">
+          <div className="lg:col-span-3">
+            <LeadMagnetCTA className="h-full" />
           </div>
+          <Link
+            href="/tools/netsuite-integration-estimator/"
+            className="lg:col-span-2 group p-8 rounded-2xl border border-neutral-800 hover:border-neutral-700 bg-neutral-900/40 transition-colors flex flex-col"
+          >
+            <Calculator className="w-8 h-8 text-emerald-400 mb-4" />
+            <h2 className="text-2xl font-bold text-white mb-2">NetSuite integration estimator</h2>
+            <p className="text-neutral-400 mb-6">
+              Describe the systems you need connected and get a scope outline, the risks to watch, and a realistic cost
+              range. No email required.
+            </p>
+            <span className="mt-auto inline-flex items-center gap-2 font-semibold text-white group-hover:text-emerald-400">
+              Estimate your integration <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* Who you'll work with */}
+      <section className="py-20 px-4 sm:px-6 bg-[#0a0a0a] border-t border-white/5">
+        <div className="container mx-auto max-w-4xl">
+          <Eyebrow tone="emerald">Who you&rsquo;ll work with</Eyebrow>
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mt-6 mb-4">
+            {PERSON.name}, senior engineer. No account managers, no handoffs.
+          </h2>
+          <p className="text-neutral-400 leading-relaxed mb-8">
+            {PERSON.yearsExperience} years building software, from enterprise front ends in Angular and React to
+            Next.js applications running on live NetSuite data. The person on your first call is the person writing
+            your code.
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-3 text-neutral-300">
+            {[
+              "Oracle NetSuite: SuiteTalk REST, RESTlets, SuiteQL, SuiteScript",
+              "Next.js, React, and Angular front ends",
+              "Integrations with commerce platforms, 3PLs, and CRMs",
+              "Written plans and documentation you keep",
+            ].map((item) => (
+              <li key={item} className="flex gap-2">
+                <Check className="w-5 h-5 text-emerald-400 shrink-0" /> {item}
+              </li>
+            ))}
+          </ul>
+          <Link href="/about/" className="inline-flex items-center gap-2 mt-8 font-semibold text-white hover:text-blue-400">
+            <ClipboardCheck className="w-4 h-4" /> More about me
+          </Link>
         </div>
       </section>
     </section>

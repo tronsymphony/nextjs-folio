@@ -1,25 +1,20 @@
-import Footer from "../../components/footer";
-import HomeFollow from "../../components/home-follow";
-import Pricing from "../../components/pricing"
-export default function Home() {
- 
-  return (  
-      <>
-        <HomeFollow></HomeFollow>
-        <Pricing></Pricing>
-        <Footer></Footer>
-      </>
-  );
-}
+import Footer from '../../components/footer';
+import HomeFollow from '../../components/home-follow';
+import Pricing from '../../components/pricing';
 
 export const metadata = {
-  metadataBase: new URL("https://casa-dev.com"),
-  alternates: {
-    canonical: '/pricing',
-    languages: {
-      'en-US': '/en-US',
-    },
-  },
-  title: "Pricing | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
+  title: 'Pricing: Audit, Implementation, Retainer',
+  description:
+    'How NetSuite integration engagements work: a fixed-price integration audit, fixed-scope implementation projects, and monthly retainers for ongoing ERP and front-end work.',
+  alternates: { canonical: '/pricing/' },
 };
+
+export default function PricingPage() {
+  return (
+    <>
+      <HomeFollow />
+      <Pricing />
+      <Footer />
+    </>
+  );
+}

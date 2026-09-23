@@ -1,1 +1,36 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@source "..";
+
+/* Base styles */
+html,
+body {
+  background-color: #1b1c1e;
+  color: #ededed;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Entrance animations used by the homepage hero. */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*="animate-[fade"] { animation: none !important; opacity: 1 !important; }
+}

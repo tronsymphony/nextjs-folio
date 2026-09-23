@@ -1,21 +1,28 @@
 'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Honeypot from './Honeypot';
+import { submitLead } from '../lib/submitLead';
 
-export default function ContactForm({ onSubmitSuccess }) {
-  const router = useRouter();
+const EMPTY_FORM = {
+  name: '',
+  email: '',
+  company: '',
+  projectType: 'netsuite-integration',
+  message: '',
+  budget: '',
+  timeframe: ''
+};
+
+export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    projectType: 'website',
-    message: '',
-    budget: '',
-    timeframe: ''
-  });
+  const [renderedAt, setRenderedAt] = useState(0);
+  const [honeypot, setHoneypot] = useState('');
+  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState(EMPTY_FORM);
+
+  useEffect(() => setRenderedAt(Date.now()), []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,34 +38,20 @@ export default function ContactForm({ onSubmitSuccess }) {
     setError(null);
     
     try {
-      const response = await fetch('/api/route', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const { name, email, company, message, projectType, budget, timeframe } = formData;
+      await submitLead({
+        source,
+        renderedAt,
+        honeypot,
+        name,
+        email,
+        company,
+        message,
+        payload: { 'Project type': projectType, Budget: budget, Timeframe: timeframe },
       });
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          projectType: 'website',
-          message: '',
-          budget: '',
-          timeframe: ''
-        });
-        
-        // Trigger success callback if provided
-        if (onSubmitSuccess) {
-          onSubmitSuccess();
-        }
-      } else {
-        throw new Error(data.error || 'Failed to send message');
-      }
+      setFormData(EMPTY_FORM);
+      if (onSubmitSuccess) onSubmitSuccess();
+      else setSent(true);
     } catch (err) {
       console.error('Error sending form:', err);
       setError(err.message || 'Something went wrong. Please try again.');
@@ -67,8 +60,18 @@ export default function ContactForm({ onSubmitSuccess }) {
     }
   };
 
+  if (sent) {
+    return (
+      <div className="bg-gray-900 rounded-lg border border-gray-700 p-8 text-center" role="status">
+        <h3 className="text-2xl font-bold text-white mb-2">Message received.</h3>
+        <p className="text-gray-400">I&rsquo;ll reply personally within one business day. A confirmation is on its way to your inbox.</p>
+      </div>
+    );
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-900 rounded-lg border border-gray-700 p-6 shadow-lg">
+    <form onSubmit={handleSubmit} className="relative bg-gray-900 rounded-lg border border-gray-700 p-6 shadow-lg">
+      <Honeypot value={honeypot} onChange={setHoneypot} />
       {error && (
         <div className="mb-6 p-4 bg-red-900 bg-opacity-30 border border-red-700 rounded-lg text-red-200">
           <p className="flex items-center">
@@ -114,6 +117,21 @@ export default function ContactForm({ onSubmitSuccess }) {
               placeholder="your.email@example.com"
             />
           </div>
+
+          <div>
+            <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">
+              Company
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              placeholder="Company name"
+            />
+          </div>
           
           <div>
             <label htmlFor="projectType" className="block text-sm font-medium text-gray-300 mb-1">
@@ -126,12 +144,12 @@ export default function ContactForm({ onSubmitSuccess }) {
               onChange={handleChange}
               className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
             >
-              <option value="website">Website Development</option>
-              <option value="webapp">Web Application</option>
-              <option value="mobile">Mobile App</option>
-              <option value="ecommerce">E-commerce Site</option>
-              <option value="consultation">Technical Consultation</option>
-              <option value="other">Other</option>
+              <option value="netsuite-integration">NetSuite integration</option>
+              <option value="customer-portal">Customer / dealer portal on NetSuite</option>
+              <option value="commerce">E-commerce connected to an ERP</option>
+              <option value="audit">NetSuite integration audit</option>
+              <option value="web-app">Custom web application</option>
+              <option value="other">Something else</option>
             </select>
           </div>
           
@@ -148,10 +166,11 @@ export default function ContactForm({ onSubmitSuccess }) {
                 className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
               >
                 <option value="">Select range</option>
-                <option value="< $5k">Under $5,000</option>
-                <option value="$5k - $10k">$5,000 - $10,000</option>
+                <option value="Under $10k">Under $10,000</option>
                 <option value="$10k - $25k">$10,000 - $25,000</option>
-                <option value="$25k+">$25,000+</option>
+                <option value="$25k - $50k">$25,000 - $50,000</option>
+                <option value="$50k+">$50,000+</option>
+                <option value="Monthly retainer">Ongoing monthly retainer</option>
                 <option value="Not sure">Not sure yet</option>
               </select>
             </div>
@@ -191,7 +210,7 @@ export default function ContactForm({ onSubmitSuccess }) {
             onChange={handleChange}
             rows="8"
             className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white resize-none"
-            placeholder="Tell me about your project, goals, and specific requirements..."
+            placeholder="Which systems are involved (NetSuite, Shopify, a 3PL...), what's broken or missing, and what a good outcome looks like."
           ></textarea>
           <p className="mt-2 text-xs text-gray-400">
             Please include any relevant details that would help me understand your project better.

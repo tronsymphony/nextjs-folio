@@ -4,6 +4,14 @@ import Footer from '../../../components/footer';
 import { Calendar, Tag, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import JsonLd from '../../../components/JsonLd';
+import { ORG_ID, PERSON_ID, breadcrumbNode, graph, url } from '../../../lib/schema';
+
+export function generateStaticParams() {
+    return posts.map(({ slug }) => ({ slug }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
@@ -11,8 +19,9 @@ export async function generateMetadata({ params }) {
     if (!post) return {};
 
     return {
-        title: `${post.title} | Casa Dev`,
+        title: post.title,
         description: post.description,
+        alternates: { canonical: `/blog/${post.slug}/` },
         openGraph: {
             title: post.title,
             description: post.description,
@@ -32,30 +41,20 @@ export default async function BlogPost({ params }) {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "BlogPosting",
-                        "headline": post.title,
-                        "description": post.description,
-                        "image": `https://casa-dev.com${post.image}`,
-                        "datePublished": post.date,
-                        "author": {
-                            "@type": "Organization",
-                            "name": "Casa Dev"
-                        },
-                        "publisher": {
-                            "@type": "Organization",
-                            "name": "Casa Dev",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "https://casa-dev.com/images/logo2.webp"
-                            }
-                        }
-                    })
-                }}
+            <JsonLd
+                data={graph(
+                    {
+                        '@type': 'BlogPosting',
+                        headline: post.title,
+                        description: post.description,
+                        url: url(`/blog/${post.slug}/`),
+                        image: url(`/blog/${post.slug}/opengraph-image`),
+                        datePublished: post.date,
+                        author: { '@id': PERSON_ID },
+                        publisher: { '@id': ORG_ID },
+                    },
+                    breadcrumbNode([['Home', '/'], ['Blog', '/blog/'], [post.title, `/blog/${post.slug}/`]])
+                )}
             />
             <HomeFollow />
             <article className="pt-32 pb-20 bg-[#050505] min-h-screen text-gray-300">
@@ -93,7 +92,7 @@ export default async function BlogPost({ params }) {
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500" />
                                     <div>
-                                        <div className="text-white font-bold text-sm">Case Dev Editorial</div>
+                                        <div className="text-white font-bold text-sm">Nitya Hoyos</div>
                                         <div className="text-gray-500 text-xs text-uppercase tracking-wider">Strategic Partner</div>
                                     </div>
                                 </div>
@@ -121,15 +120,15 @@ export default async function BlogPost({ params }) {
 
                         {/* Footer / CTA */}
                         <footer className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-white/10 text-center">
-                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Ready to integrate AI into your business?</h3>
+                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Running on NetSuite?</h3>
                             <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-                                Let&apos;s discuss how we can build a strategic, AI-powered solution for your unique business needs.
+                                A fixed-price integration audit shows where your ERP, storefront, and portals are leaking data, and exactly what to fix first.
                             </p>
                             <Link
-                                href="/contact"
+                                href="/netsuite-audit/"
                                 className="inline-flex px-8 py-4 bg-white !text-black font-bold text-lg hover:bg-gray-200 transition-colors"
                             >
-                                Work with Casa Dev
+                                See the NetSuite audit
                             </Link>
                         </footer>
                     </div>
