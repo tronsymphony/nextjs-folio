@@ -22,7 +22,7 @@ import {
   Radio,
   CheckCircle2
 } from 'lucide-react';
-import '../globals.css';
+import '../globals.scss';
 import MapboxFilterBar from '../../components/safety-map/MapboxFilterBar';
 import SwitrsImporter from '../../components/safety-map/SwitrsImporter';
 import { CITIES } from '../../data/incidentsData';
@@ -129,8 +129,8 @@ export default function SafePathPage() {
     );
   }, []);
 
-  const [selectedCityId, setSelectedCityId] = useState('angeles-forest');
-  const [selectedMode, setSelectedMode] = useState('all'); // 'all' | 'motorcycle' | 'bicycle' | 'ebike' | 'car'
+  const [selectedCityId, setSelectedCityId] = useState('los-angeles');
+  const [selectedMode, setSelectedMode] = useState('bicycle'); // 'all' | 'motorcycle' | 'bicycle' | 'ebike' | 'car'
   const [severityFilter, setSeverityFilter] = useState('severe'); // Default to 'severe' (Fatal & Severe only) to prevent overwhelming clutter!
   const [timeFilter, setTimeFilter] = useState('all'); // 'all' | 'night' | 'commute'
   const [selectedYear, setSelectedYear] = useState('all'); // 'all' | '2026' ... '2016'
@@ -138,6 +138,8 @@ export default function SafePathPage() {
   const [showSafetyRegions, setShowSafetyRegions] = useState(true);
   const [selectedRoadType, setSelectedRoadType] = useState('all'); // 'all' | 'surface' | 'freeway'
   const [showBikeLanes, setShowBikeLanes] = useState(true);
+  const [showDangerousRoads, setShowDangerousRoads] = useState(true);
+  const [showCollisionPins, setShowCollisionPins] = useState(true);
   const [focusedCoords, setFocusedCoords] = useState(null);
 
   // Auto-enable bike lanes when bicycle or e-bike mode is selected
@@ -165,6 +167,34 @@ export default function SafePathPage() {
   const [customImportedRecords, setCustomImportedRecords] = useState([]);
   const [showImporterModal, setShowImporterModal] = useState(false);
 
+  // Auto-detect user area via geolocation (defaults to Los Angeles)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          let closest = 'los-angeles';
+          let minDist = Infinity;
+          californiaCities.forEach((c) => {
+            const d = Math.hypot(latitude - c.center[0], longitude - c.center[1]);
+            if (d < minDist) {
+              minDist = d;
+              closest = c.id;
+            }
+          });
+          // If within ~150 miles of Southern California, auto-center on user's nearest area
+          if (minDist < 2.5) {
+            setSelectedCityId(closest);
+          }
+        },
+        () => {
+          // Gracefully fallback to Los Angeles default
+        },
+        { timeout: 3500 }
+      );
+    }
+  }, [californiaCities]);
+
   // ACTIVE INCIDENT INSPECTION
   const [selectedIncidentId, setSelectedIncidentId] = useState(null);
 
@@ -172,7 +202,7 @@ export default function SafePathPage() {
   const fetchAngelesForestData = useCallback(async (scope = forestScope) => {
     setIsLoadingForest(true);
     try {
-      const res = await fetch(`/api/angeles-forest/?scope=${scope}&limit=5500`);
+      const res = await fetch(`/api/angeles-forest?scope=${scope}&limit=5500`);
       const data = await res.json();
       if (data.success && Array.isArray(data.data)) {
         setAngelesForestIncidents(data.data);
@@ -248,13 +278,28 @@ export default function SafePathPage() {
     return pool;
   }, [selectedCityId, angelesForestIncidents, malibuIncidents, orangeCountyIncidents, laCountyIncidents, customImportedRecords]);
 
-  // Filtered counts for status badges
-  const { totalCount, fatalCount } = useMemo(() => {
+  // Filtered counts for status badges, differentiating Bicycles (1st), Motorcycles (2nd), and Cars (Last)
+  const { totalCount, fatalCount, bikeCount, motoCount, carCount } = useMemo(() => {
+    let bike = 0;
+    let moto = 0;
+    let car = 0;
+    let fatal = 0;
+
     const list = activeIncidents.filter((item) => {
       if (selectedYear !== 'all' && item.year && item.year !== parseInt(selectedYear, 10)) return false;
       if (selectedMode !== 'all') {
-        if (selectedMode === 'car' && item.mode !== 'car' && item.mode !== 'vehicle') return false;
-        if (selectedMode !== 'car' && item.mode !== selectedMode) return false;
+        if (selectedMode === 'bicycle') {
+          // STRICTLY cycling accidents (bicycles & e-bikes)
+          if (item.mode !== 'bicycle' && item.mode !== 'ebike') return false;
+        } else if (selectedMode === 'motorcycle') {
+          // STRICTLY motorcycle accidents
+          if (item.mode !== 'motorcycle') return false;
+        } else if (selectedMode === 'car') {
+          // STRICTLY car accidents
+          if (item.mode !== 'car' && item.mode !== 'vehicle') return false;
+        } else if (item.mode !== selectedMode) {
+          return false;
+        }
       }
       if (severityFilter === 'fatal' && item.severity !== 'fatal') return false;
       if (severityFilter === 'severe' && item.severity !== 'severe_injury' && item.severity !== 'fatal') return false;
@@ -264,12 +309,22 @@ export default function SafePathPage() {
         if (selectedRoadType === 'surface' && (item.roadType === 'freeway' || item.isFreeway)) return false;
         if (selectedRoadType === 'freeway' && item.roadType !== 'freeway' && !item.isFreeway) return false;
       }
+
+      if (item.mode === 'bicycle' || item.mode === 'ebike') bike++;
+      else if (item.mode === 'motorcycle') moto++;
+      else if (item.mode === 'car' || item.mode === 'vehicle') car++;
+
+      if (item.severity === 'fatal' || item.isFatal || item.killed > 0) fatal++;
+
       return true;
     });
 
     return {
       totalCount: list.length,
-      fatalCount: list.filter((i) => i.severity === 'fatal').length,
+      fatalCount: fatal,
+      bikeCount: bike,
+      motoCount: moto,
+      carCount: car,
     };
   }, [activeIncidents, selectedYear, selectedMode, severityFilter, timeFilter, selectedRoadType]);
 
@@ -296,11 +351,36 @@ export default function SafePathPage() {
                 <ShieldAlert className="w-4 h-4 text-sky-600" />
               </div>
               <div>
-                <h1 className="text-sm md:text-base font-bold tracking-tight text-slate-900 flex items-center gap-1.5">
-                  California Crash Radar <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Official CCRS</span>
-                </h1>
-                <p className="text-[11px] text-slate-500 hidden sm:block">
-                  Curated safety digests & tactical hazard mapping from official CHP state records
+                <div className="flex items-center gap-2">
+                  <h1 className="text-sm md:text-base font-bold tracking-tight text-slate-900">
+                    California Crash Radar
+                  </h1>
+                  {selectedMode === 'bicycle' ? (
+                    <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-full border border-emerald-300 uppercase tracking-wider flex items-center gap-1">
+                      <span>🚲</span> Cycling Mode Active
+                    </span>
+                  ) : selectedMode === 'motorcycle' ? (
+                    <span className="text-[10px] font-bold text-purple-800 bg-purple-100/80 px-2 py-0.5 rounded-full border border-purple-300 uppercase tracking-wider flex items-center gap-1">
+                      <span>🏍️</span> Motorcycle Mode Active
+                    </span>
+                  ) : selectedMode === 'car' ? (
+                    <span className="text-[10px] font-bold text-rose-800 bg-rose-100/80 px-2 py-0.5 rounded-full border border-rose-300 uppercase tracking-wider flex items-center gap-1">
+                      <span>🚗</span> Reckless Motorist Mode
+                    </span>
+                  ) : (
+                    <span className="text-[10px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200 uppercase tracking-wider">
+                      All Modes Combined
+                    </span>
+                  )}
+                </div>
+                <p className="text-[11px] text-slate-500 hidden sm:block mt-0.5">
+                  {selectedMode === 'bicycle' 
+                    ? 'Exclusively mapping verified bicycle & e-bike casualties alongside designated cycling infrastructure from official CHP records'
+                    : selectedMode === 'motorcycle'
+                    ? 'Tactical rider hazard mapping • Curve entry speeds, SMIDSY conflicts, and canyon passes'
+                    : selectedMode === 'car'
+                    ? 'Reckless motorist collision hotspots • Highlighting where drivers speed, run red lights, and collide'
+                    : 'Tactical hazard mapping for vulnerable road users and motorist conflict corridors'}
                 </p>
               </div>
             </div>
@@ -453,11 +533,18 @@ export default function SafePathPage() {
           onToggleSafetyRegions={() => setShowSafetyRegions((prev) => !prev)}
           totalCount={totalCount}
           fatalCount={fatalCount}
+          bikeCount={bikeCount}
+          motoCount={motoCount}
+          carCount={carCount}
           cities={californiaCities}
           selectedRoadType={selectedRoadType}
           onSelectRoadType={setSelectedRoadType}
           showBikeLanes={showBikeLanes}
           onToggleBikeLanes={() => setShowBikeLanes((prev) => !prev)}
+          showDangerousRoads={showDangerousRoads}
+          onToggleDangerousRoads={() => setShowDangerousRoads((prev) => !prev)}
+          showCollisionPins={showCollisionPins}
+          onToggleCollisionPins={() => setShowCollisionPins((prev) => !prev)}
         />
 
         {/* MAPBOX GL WORKSPACE */}
@@ -473,6 +560,8 @@ export default function SafePathPage() {
             is3DMode={is3DMode}
             showSafetyRegions={showSafetyRegions}
             showBikeLanes={showBikeLanes}
+            showDangerousRoads={showDangerousRoads}
+            showCollisionPins={showCollisionPins}
             onSelectIncident={(id) => setSelectedIncidentId(id)}
             onCityChange={(cityId) => setSelectedCityId(cityId)}
             focusedCoords={focusedCoords}
@@ -483,31 +572,31 @@ export default function SafePathPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           <div className="p-4 rounded-2xl bg-white text-slate-600">
             <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
+              <span className="text-sm">🚲</span>
+              <span>Cycling Corridor Protocols</span>
+            </div>
+            <p className="text-[11px] leading-relaxed">
+              On urban arterials like Venice, Sunset, and Culver Blvd, over 70% of bicycle casualties occur at intersections and door-zones (CVC 22517). Maintain a 3-foot buffer from parked cars, anticipate right-turning vehicles across bike lanes, and stay alert at mid-block curb cuts.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-white text-slate-600">
+            <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
               <span className="text-sm">🏍️</span>
-              <span>Canyon Cornering Protocols</span>
+              <span>Motorcycle SMIDSY & Apex Safety</span>
             </div>
             <p className="text-[11px] leading-relaxed">
-              On SR-2 and GMR, 80%+ of single-rider fatalities occur from entry-speed panic and looking at the guardrail. Always look through the blind turn to where you want the vehicle to go, maintain light trail-braking, and never cross the double-yellow.
+              California Vehicle Code 21801 left-turn violations remain the primary fatal mechanism for riders. In canyon passes (SR-2, Mulholland, Ortega), entry-speed panic on blind sweepers causes 80%+ of single-rider crashes. Look through the turn, trail-brake smoothly, and hold your lane.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-white text-slate-600">
             <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
-              <span className="text-sm">⚠️</span>
-              <span>SMIDSY / Left-Turn Failure</span>
+              <span className="text-sm">🚗</span>
+              <span>Reckless Driver Intelligence</span>
             </div>
             <p className="text-[11px] leading-relaxed">
-              California Vehicle Code 21801 violations are the leading cause of urban multi-vehicle rider fatalities. Approaching oncoming vehicles misjudge single-headlight closing speeds. Perform a subtle lane weave (SMIDSY maneuver) to generate optical motion contrast.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-white text-slate-600">
-            <div className="flex items-center gap-2 font-bold text-slate-900 mb-1">
-              <span className="text-sm">📊</span>
-              <span>100% State Data Integrity</span>
-            </div>
-            <p className="text-[11px] leading-relaxed">
-              All coordinates, CVC violation numbers, and crash mechanisms are parsed directly from official California Crash Reporting System (CCRS) and CHP SWITRS annual datasets published on <a href="https://data.ca.gov/dataset/ccrs" target="_blank" rel="noreferrer" className="text-sky-600 hover:underline font-semibold">data.ca.gov</a>.
+              Car collision records pinpoint corridors where motorists speed, run red lights, and drive recklessly. For cyclists and motorcyclists, surface car crash density reveals the highest-conflict corridors to avoid or navigate with maximum defensive alertness.
             </p>
           </div>
         </div>
