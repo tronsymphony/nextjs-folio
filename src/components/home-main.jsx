@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Calculator, Check, ClipboardCheck, X } from "lucide-react";
 import FeaturedProjects from "./section/FeaturedProjects";
+import HeroScene from "./home/HeroScene";
 import LeadMagnetCTA from "./LeadMagnetCTA";
 import { Eyebrow, PrimaryCta, SecondaryCta } from "./ui/Cta";
 import { offers } from "../data/netsuiteOffers";
@@ -43,8 +44,15 @@ export default function HomeMain() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black_70%,transparent_100%)]"></div>
 
+        {/* Live integration graph (three.js), loaded after hydration */}
+        <div className="absolute inset-0 opacity-70 lg:opacity-100">
+          <HeroScene className="absolute inset-0" />
+        </div>
+        {/* Keeps the headline legible over the scene */}
+        <div className="absolute inset-0 pointer-events-none bg-[#050505]/45 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#050505] lg:via-[#050505]/40 lg:to-transparent lg:w-3/5"></div>
+
         <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="max-w-2xl">
             <div className="flex flex-col text-left">
               <div className="inline-flex items-center gap-2 mb-6 animate-[fadeInUp_0.8s_ease-out_forwards]">
                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
@@ -70,35 +78,6 @@ export default function HomeMain() {
                 <PrimaryCta />
                 <SecondaryCta href="/work/">See the work</SecondaryCta>
               </div>
-            </div>
-
-            {/* Code card: a small, real-looking taste of the work */}
-            <div className="relative hidden lg:block perspective-[2000px] animate-[fadeInLeft_1s_ease-out_0.6s_forwards] opacity-0" aria-hidden="true">
-              <div className="relative w-full aspect-[4/3] bg-[#0F0F0F] rounded-lg border border-white/10 [transform:rotateY(-12deg)_rotateX(6deg)_rotateZ(-2deg)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden">
-                <div className="h-10 border-b border-white/5 bg-[#141414] flex items-center px-4 gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <div className="ml-4 px-3 py-1 bg-black/50 rounded-md text-[10px] font-mono text-gray-500">catalog.ts</div>
-                </div>
-                <pre className="p-6 font-mono text-sm leading-relaxed text-gray-400 whitespace-pre-wrap">
-                  <span className="text-gray-500">{"// Catalog served from NetSuite, not a copy of it"}</span>
-                  {"\n"}
-                  <span className="text-purple-400">export async function</span> <span className="text-yellow-400">getCatalog</span>() {"{"}
-                  {"\n  "}
-                  <span className="text-purple-400">const</span> items = <span className="text-purple-400">await</span> <span className="text-sky-400">suiteql</span>(
-                  {"\n    "}
-                  <span className="text-green-400">{"`SELECT id, itemid, displayname"}</span>
-                  {"\n     "}
-                  <span className="text-green-400">{"FROM item WHERE isinactive = 'F'`"}</span>
-                  {"\n  "});
-                  {"\n  "}
-                  <span className="text-purple-400">return</span> items.<span className="text-sky-400">map</span>(toProduct);
-                  {"\n}"}
-                </pre>
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-transparent pointer-events-none"></div>
-              </div>
-              <div className="absolute -inset-4 -z-10 bg-gradient-to-br from-blue-600/20 to-emerald-600/20 rounded-xl blur-xl opacity-50"></div>
             </div>
           </div>
         </div>
