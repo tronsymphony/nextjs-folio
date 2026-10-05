@@ -22,6 +22,7 @@ export async function generateMetadata({ params }) {
         title: post.title,
         description: post.description,
         alternates: { canonical: `/blog/${post.slug}/` },
+        robots: { index: false, follow: true },
         openGraph: {
             title: post.title,
             description: post.description,
@@ -57,7 +58,7 @@ export default async function BlogPost({ params }) {
                 )}
             />
             <HomeFollow />
-            <article className="pt-32 pb-20 bg-[#050505] min-h-screen text-gray-300">
+            <article className="pt-32 pb-20 bg-ink min-h-screen text-gray-300">
                 <div className="container mx-auto px-4 sm:px-6">
                     <div className="max-w-3xl mx-auto">
                         {/* Back to Blog */}
@@ -72,7 +73,7 @@ export default async function BlogPost({ params }) {
                         {/* Header */}
                         <header className="mb-12">
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest rounded-full">
+                                <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full">
                                     {post.category}
                                 </span>
                                 <span className="flex items-center gap-2 text-gray-500 text-sm">
@@ -84,13 +85,13 @@ export default async function BlogPost({ params }) {
                                     })}
                                 </span>
                             </div>
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-8 tracking-tighter leading-[1.1]">
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-8 tracking-tighter leading-[1.1]">
                                 {post.title}
                             </h1>
 
                             <div className="flex items-center justify-between border-y border-white/5 py-4">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500" />
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-accent" />
                                     <div>
                                         <div className="text-white font-bold text-sm">Nitya Hoyos</div>
                                         <div className="text-gray-500 text-xs text-uppercase tracking-wider">Strategic Partner</div>
@@ -104,7 +105,7 @@ export default async function BlogPost({ params }) {
 
                         {/* Featured Image Placeholder */}
                         <div className="aspect-[21/9] bg-neutral-900 rounded-2xl mb-12 overflow-hidden relative">
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10" />
                         </div>
 
                         {/* Content */}
@@ -119,18 +120,41 @@ export default async function BlogPost({ params }) {
                         />
 
                         {/* Footer / CTA */}
-                        <footer className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-white/10 text-center">
-                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Running on NetSuite?</h3>
-                            <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-                                A fixed-price integration audit shows where your ERP, storefront, and portals are leaking data, and exactly what to fix first.
-                            </p>
-                            <Link
-                                href="/netsuite-audit/"
-                                className="inline-flex px-8 py-4 bg-white !text-black font-bold text-lg hover:bg-gray-200 transition-colors"
-                            >
-                                See the NetSuite audit
-                            </Link>
-                        </footer>
+                        {post.cta === 'appAudit' ? (
+                            <footer className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/20 border border-white/10 text-center">
+                                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Built your app with AI?</h3>
+                                <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+                                    Check logins, permissions, exposed keys and payments before launch. Start with the free checklist, or have it reviewed.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <Link
+                                        href="/ai-app-audit/ai-built-app-launch-checklist/"
+                                        className="inline-flex justify-center px-8 py-4 bg-white !text-black font-bold text-lg hover:bg-gray-200 transition-colors"
+                                    >
+                                        Read the launch checklist
+                                    </Link>
+                                    <Link
+                                        href="/ai-app-audit/"
+                                        className="inline-flex justify-center px-8 py-4 border border-white/20 text-white font-bold text-lg hover:bg-white/5 transition-colors"
+                                    >
+                                        See the app audit
+                                    </Link>
+                                </div>
+                            </footer>
+                        ) : (
+                            <footer className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/20 border border-white/10 text-center">
+                                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Running on NetSuite?</h3>
+                                <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+                                    A fixed-price integration audit shows where your ERP, storefront, and portals are leaking data, and exactly what to fix first.
+                                </p>
+                                <Link
+                                    href="/netsuite-audit/"
+                                    className="inline-flex px-8 py-4 bg-white !text-black font-bold text-lg hover:bg-gray-200 transition-colors"
+                                >
+                                    See the NetSuite audit
+                                </Link>
+                            </footer>
+                        )}
                     </div>
                 </div>
             </article>

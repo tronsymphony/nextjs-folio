@@ -36,13 +36,13 @@ export default function ChecklistPage() {
           ])
         )}
       />
-      <article className="bg-[#0a0a0a] text-white print:bg-white print:text-black">
+      <article className="bg-ink text-white print:bg-white print:text-black">
         <header className="pt-36 pb-12 px-4 sm:px-6 print:pt-0">
           <div className="container mx-auto max-w-3xl">
             <div className="print:hidden">
               <Eyebrow>Free checklist · {checklistCount} checks</Eyebrow>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mt-6 mb-6">The NetSuite Integration Readiness Checklist</h1>
+            <h1 className="text-4xl sm:text-5xl font-medium tracking-[-0.04em] mt-6 mb-6">The NetSuite Integration Readiness Checklist</h1>
             <p className="text-lg text-neutral-300 print:text-black leading-relaxed">
               Most NetSuite integrations that fail were never going to work: two systems both believed they owned the
               same data, nobody planned for errors, or the design ignored the account&rsquo;s API limits. Run these

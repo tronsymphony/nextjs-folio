@@ -40,6 +40,13 @@ export const OFFERS = {
     stripePaymentLink: null, // e.g. 'https://buy.stripe.com/...'
     creditedOnProceed: true, // audit fee credited toward implementation
   },
+  appAudit: {
+    name: 'AI-Built App Audit',
+    price: 750, // TODO(owner): confirm. Test price for the first few audits.
+    durationDays: 5,
+    stripePaymentLink: null, // e.g. 'https://buy.stripe.com/...'
+    creditedOnProceed: true, // audit fee credited toward the fixes
+  },
   implementationFrom: null, // e.g. 15000 (USD), "typical engagements start at"
   retainerFrom: null, // e.g. 3000 (USD / month)
 };

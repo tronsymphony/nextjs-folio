@@ -23,18 +23,18 @@ export default function CallPage() {
   return (
     <>
       <HomeFollow />
-      <div className="bg-[#0a0a0a] text-white min-h-screen">
+      <div className="bg-ink text-white min-h-screen">
         <section className="pt-36 pb-12 px-4 sm:px-6">
           <div className="container mx-auto max-w-5xl">
             <Eyebrow>20 minutes · Free · Video call</Eyebrow>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6 mb-6">Book a NetSuite fit call.</h1>
+            <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">Book a NetSuite fit call.</h1>
             <p className="text-lg text-neutral-400 max-w-2xl">
               You&rsquo;ll talk to me directly, {PERSON.name}, not a sales rep. {PERSON.yearsExperience} years of
               engineering, focused on connecting Oracle NetSuite to the front ends customers and staff actually use.
             </p>
             <dl className="grid md:grid-cols-3 gap-6 mt-12">
               {agenda.map(([title, body]) => (
-                <div key={title} className="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
+                <div key={title} className="p-6 rounded-xl border border-line bg-ink-2">
                   <dt className="font-semibold text-white mb-2">{title}</dt>
                   <dd className="text-sm text-neutral-400 leading-relaxed">{body}</dd>
                 </div>
@@ -47,12 +47,12 @@ export default function CallPage() {
           <div className="container mx-auto max-w-5xl">
             {CAL_LINK ? (
               <>
-                <div className="rounded-xl border border-neutral-800 overflow-hidden bg-neutral-950">
+                <div className="rounded-xl border border-line overflow-hidden bg-neutral-950">
                   <BookCall calLink={CAL_LINK} />
                 </div>
                 <p className="mt-4 text-sm text-neutral-500">
                   Calendar not loading?{' '}
-                  <a href={`https://cal.com/${CAL_LINK}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">
+                  <a href={`https://cal.com/${CAL_LINK}`} target="_blank" rel="noopener noreferrer" className="text-accent underline">
                     Open the booking page directly
                   </a>
                   .
@@ -68,7 +68,7 @@ export default function CallPage() {
             )}
             <p className="mt-8 text-sm text-neutral-500">
               Already know you want a written assessment?{' '}
-              <Link href="/netsuite-audit/" className="text-blue-400 underline">
+              <Link href="/netsuite-audit/" className="text-accent underline">
                 See the NetSuite Integration Audit
               </Link>
               .

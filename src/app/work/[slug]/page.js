@@ -43,7 +43,7 @@ export default async function CaseStudyPage({ params }) {
           breadcrumbNode([['Home', '/'], ['Work', '/work/'], [cs.client, `/work/${cs.slug}/`]])
         )}
       />
-      <article className="bg-[#0a0a0a] text-white">
+      <article className="bg-ink text-white">
         <header className="pt-36 pb-12 px-4 sm:px-6">
           <div className="container mx-auto max-w-4xl">
             <Link href="/work/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white mb-8">
@@ -52,10 +52,10 @@ export default async function CaseStudyPage({ params }) {
             <div>
               <Eyebrow>{cs.client} · {cs.industry}</Eyebrow>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mt-6 mb-6 leading-tight">{cs.title}</h1>
+            <h1 className="text-4xl sm:text-5xl font-medium tracking-[-0.04em] mt-6 mb-6 leading-tight">{cs.title}</h1>
             <p className="text-xl text-neutral-300 leading-relaxed">{cs.summary}</p>
 
-            <dl className="mt-10 grid sm:grid-cols-3 gap-6 text-sm border-t border-neutral-800 pt-6">
+            <dl className="mt-10 grid sm:grid-cols-3 gap-6 text-sm border-t border-line pt-6">
               {cs.role && (
                 <div>
                   <dt className="text-neutral-500 mb-1">Role</dt>
@@ -77,7 +77,7 @@ export default async function CaseStudyPage({ params }) {
         </header>
 
         <div className="px-4 sm:px-6">
-          <div className="container mx-auto max-w-5xl relative aspect-[16/9] rounded-xl overflow-hidden border border-neutral-800">
+          <div className="container mx-auto max-w-5xl relative aspect-[16/9] rounded-xl overflow-hidden border border-line">
             <Image src={cs.heroImage} alt={`${cs.client} screenshot`} fill priority className="object-cover object-top" sizes="(max-width: 1024px) 100vw, 1024px" />
           </div>
         </div>
@@ -86,8 +86,8 @@ export default async function CaseStudyPage({ params }) {
           <section className="px-4 sm:px-6 pt-16">
             <div className="container mx-auto max-w-4xl grid sm:grid-cols-3 gap-6">
               {cs.metrics.map((m) => (
-                <div key={m.label} className="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
-                  <p className="text-3xl font-extrabold text-white">{m.value}</p>
+                <div key={m.label} className="p-6 rounded-xl border border-line bg-ink-2">
+                  <p className="text-3xl font-medium text-white">{m.value}</p>
                   <p className="text-sm text-neutral-300 mt-1">{m.label}</p>
                   {m.note && <p className="text-xs text-neutral-500 mt-2">{m.note}</p>}
                 </div>
@@ -105,7 +105,7 @@ export default async function CaseStudyPage({ params }) {
             <ol className="space-y-8 mb-12">
               {cs.approach.map((step, i) => (
                 <li key={step.heading} className="grid grid-cols-[2.5rem_1fr]">
-                  <span className="font-mono text-sm text-blue-400 pt-1">0{i + 1}</span>
+                  <span className="font-mono text-sm text-accent pt-1">0{i + 1}</span>
                   <div>
                     <h3 className="text-lg font-semibold mb-2">{step.heading}</h3>
                     <p className="text-neutral-400 leading-relaxed">{step.body}</p>
@@ -115,7 +115,7 @@ export default async function CaseStudyPage({ params }) {
             </ol>
 
             {cs.quote && (
-              <figure className="border-l-2 border-blue-500 pl-6 my-12">
+              <figure className="border-l-2 border-accent pl-6 my-12">
                 <blockquote className="text-xl text-white leading-relaxed">&ldquo;{cs.quote.text}&rdquo;</blockquote>
                 <figcaption className="mt-4 text-sm text-neutral-400">
                   {cs.quote.author}, {cs.quote.title}
@@ -127,7 +127,7 @@ export default async function CaseStudyPage({ params }) {
               <a
                 href={cs.liveUrl}
                 {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
-                className="inline-flex items-center gap-2 font-bold text-white hover:text-blue-400 transition-colors"
+                className="inline-flex items-center gap-2 font-bold text-white hover:text-accent transition-colors"
               >
                 See it live <ArrowUpRight className="w-4 h-4" />
               </a>

@@ -77,12 +77,12 @@ export default function NetSuiteHubPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-[#0a0a0a] text-white">
-        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-neutral-900 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-blue-600/10 blur-[130px] -z-10 rounded-full pointer-events-none" />
+      <div className="bg-ink text-white">
+        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-line overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-accent/[0.04] blur-[130px] -z-10 rounded-full pointer-events-none" />
           <div className="container mx-auto max-w-4xl">
             <Eyebrow>Oracle NetSuite · Integrations · Front ends</Eyebrow>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6 mb-6">
+            <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">
               NetSuite is your system of record. It shouldn&rsquo;t be a dead end.
             </h1>
             <p className="text-xl text-neutral-300 leading-relaxed">
@@ -94,13 +94,13 @@ export default function NetSuiteHubPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900">
+        <section className="py-20 px-4 sm:px-6 border-b border-line">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-3xl font-bold tracking-tight mb-10">What I build</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {offers.map(({ icon: Icon, title, body }) => (
-                <div key={title} className="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
-                  <Icon className="w-6 h-6 text-blue-400 mb-4" />
+                <div key={title} className="p-6 rounded-xl border border-line bg-ink-2">
+                  <Icon className="w-6 h-6 text-accent mb-4" />
                   <h3 className="text-lg font-semibold mb-3">{title}</h3>
                   <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
                 </div>
@@ -109,7 +109,7 @@ export default function NetSuiteHubPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900 bg-[#0f0f10]">
+        <section className="py-20 px-4 sm:px-6 border-b border-line bg-ink-2">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-3xl font-bold tracking-tight mb-3">Connector, middleware, or custom?</h2>
             <p className="text-neutral-400 mb-10 max-w-3xl">
@@ -118,7 +118,7 @@ export default function NetSuiteHubPage() {
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-left text-sm">
                 <thead>
-                  <tr className="border-b border-neutral-800 text-neutral-500">
+                  <tr className="border-b border-line text-neutral-500">
                     <th className="py-3 pr-6 font-medium">Approach</th>
                     <th className="py-3 pr-6 font-medium">Choose it when</th>
                     <th className="py-3 font-medium">Watch out for</th>
@@ -126,7 +126,7 @@ export default function NetSuiteHubPage() {
                 </thead>
                 <tbody>
                   {patterns.map((p) => (
-                    <tr key={p.name} className="border-b border-neutral-900 align-top">
+                    <tr key={p.name} className="border-b border-line align-top">
                       <td className="py-4 pr-6 font-semibold text-white">{p.name}</td>
                       <td className="py-4 pr-6 text-neutral-300">{p.when}</td>
                       <td className="py-4 text-neutral-400">{p.watch}</td>
@@ -138,29 +138,29 @@ export default function NetSuiteHubPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900">
+        <section className="py-20 px-4 sm:px-6 border-b border-line">
           <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-6">
             <Link
               href="/netsuite/material-handling/"
-              className="group p-8 rounded-xl border border-neutral-800 hover:border-neutral-700 bg-neutral-900/40 transition-colors"
+              className="group p-8 rounded-xl border border-line hover:border-neutral-700 bg-ink-2 transition-colors"
             >
-              <Truck className="w-6 h-6 text-blue-400 mb-4" />
+              <Truck className="w-6 h-6 text-accent mb-4" />
               <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Industry</p>
               <h3 className="text-2xl font-bold mb-3">Material handling, logistics &amp; industrial distribution</h3>
               <p className="text-neutral-400 mb-4">Equipment catalogs, rental and RFQ engines, and multi-branch portals on NetSuite.</p>
-              <span className="inline-flex items-center gap-2 font-semibold group-hover:text-blue-400">
+              <span className="inline-flex items-center gap-2 font-semibold group-hover:text-accent">
                 See the details <ArrowRight className="w-4 h-4" />
               </span>
             </Link>
             {proof && (
               <Link
                 href={`/work/${proof.slug}/`}
-                className="group p-8 rounded-xl border border-neutral-800 hover:border-neutral-700 bg-neutral-900/40 transition-colors"
+                className="group p-8 rounded-xl border border-line hover:border-neutral-700 bg-ink-2 transition-colors"
               >
                 <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Case study · {proof.client}</p>
                 <h3 className="text-2xl font-bold mb-3">{proof.title}</h3>
                 <p className="text-neutral-400 mb-4">{proof.summary}</p>
-                <span className="inline-flex items-center gap-2 font-semibold group-hover:text-blue-400">
+                <span className="inline-flex items-center gap-2 font-semibold group-hover:text-accent">
                   Read the case study <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
@@ -169,7 +169,7 @@ export default function NetSuiteHubPage() {
         </section>
 
         {topics.length > 0 && (
-          <section className="py-20 px-4 sm:px-6 border-b border-neutral-900">
+          <section className="py-20 px-4 sm:px-6 border-b border-line">
             <div className="container mx-auto max-w-6xl">
               <h2 className="text-3xl font-bold tracking-tight mb-10">NetSuite integration guides</h2>
               <div className="grid md:grid-cols-2 gap-4">
@@ -177,9 +177,9 @@ export default function NetSuiteHubPage() {
                   <Link
                     key={t.slug}
                     href={`/netsuite/${t.slug}/`}
-                    className="group p-6 rounded-xl border border-neutral-800 hover:border-neutral-700 transition-colors"
+                    className="group p-6 rounded-xl border border-line hover:border-neutral-700 transition-colors"
                   >
-                    <h3 className="font-semibold mb-2 group-hover:text-blue-400">{t.h1}</h3>
+                    <h3 className="font-semibold mb-2 group-hover:text-accent">{t.h1}</h3>
                     <p className="text-sm text-neutral-400">{t.lede}</p>
                   </Link>
                 ))}

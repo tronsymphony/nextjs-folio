@@ -18,12 +18,12 @@ const alsoAvailable = [
 
 export default function Services() {
   return (
-    <div className="bg-[#0a0a0a] text-white">
+    <div className="bg-ink text-white">
       <section className="relative pt-36 pb-16 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent/[0.04] blur-[100px] -z-10 rounded-full pointer-events-none" />
         <div className="container mx-auto max-w-4xl">
           <Eyebrow>Capabilities</Eyebrow>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6 mb-6">What I work on.</h1>
+          <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">What I work on.</h1>
           <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl">
             My focus is Oracle NetSuite: integrations, portals, and the front ends that sit on top of it. Fifteen years
             of broader engineering work sits behind that, and I still take on the projects below.
@@ -32,26 +32,26 @@ export default function Services() {
       </section>
 
       <section className="pb-20 px-4 sm:px-6">
-        <div className="container mx-auto max-w-6xl p-8 rounded-2xl border border-blue-500/30 bg-blue-500/5">
-          <p className="text-xs font-bold uppercase tracking-wider text-blue-400 mb-3">Primary focus</p>
+        <div className="container mx-auto max-w-6xl p-8 rounded-2xl border border-accent/30 bg-accent/5">
+          <p className="text-xs font-bold uppercase tracking-wider text-accent mb-3">Primary focus</p>
           <h2 className="text-3xl font-bold mb-8">Oracle NetSuite integration &amp; front-end engineering</h2>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {offers.map(({ icon: Icon, title, body }) => (
               <div key={title}>
-                <Icon className="w-6 h-6 text-blue-400 mb-3" />
+                <Icon className="w-6 h-6 text-accent mb-3" />
                 <h3 className="font-semibold mb-2">{title}</h3>
                 <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-3 font-semibold">
-            <Link href="/netsuite/" className="inline-flex items-center gap-2 hover:text-blue-400">
+            <Link href="/netsuite/" className="inline-flex items-center gap-2 hover:text-accent">
               NetSuite overview <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/netsuite/material-handling/" className="inline-flex items-center gap-2 hover:text-blue-400">
+            <Link href="/netsuite/material-handling/" className="inline-flex items-center gap-2 hover:text-accent">
               Material handling &amp; logistics <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/netsuite-audit/" className="inline-flex items-center gap-2 hover:text-blue-400">
+            <Link href="/netsuite-audit/" className="inline-flex items-center gap-2 hover:text-accent">
               The integration audit <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -62,9 +62,9 @@ export default function Services() {
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl font-bold mb-2">Also available</h2>
           <p className="text-neutral-500 mb-8">Usually for existing clients, or alongside NetSuite work.</p>
-          <dl className="grid md:grid-cols-2 border-t border-neutral-800">
+          <dl className="grid md:grid-cols-2 border-t border-line">
             {alsoAvailable.map(([title, body]) => (
-              <div key={title} className="py-5 pr-8 border-b border-neutral-800">
+              <div key={title} className="py-5 pr-8 border-b border-line">
                 <dt className="font-semibold mb-1">{title}</dt>
                 <dd className="text-sm text-neutral-400">{body}</dd>
               </div>

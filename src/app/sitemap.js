@@ -1,4 +1,4 @@
-import { posts } from '../data/posts';
+import { publishedGuides } from '../data/appAuditGuides';
 import { publishedCaseStudies } from '../data/caseStudies';
 import { publishedTopics } from '../data/netsuiteTopics';
 import { SITE_URL } from '../lib/site';
@@ -9,6 +9,7 @@ const STATIC_ROUTES = [
   ['/', 1],
   ['/netsuite/', 0.9],
   ['/netsuite-audit/', 0.9],
+  ['/ai-app-audit/', 0.8],
   ['/netsuite/material-handling/', 0.8],
   ['/netsuite/integration-readiness-checklist/', 0.8],
   ['/tools/netsuite-integration-estimator/', 0.8],
@@ -20,7 +21,6 @@ const STATIC_ROUTES = [
   ['/about/los-angeles/', 0.4],
   ['/about/portland/', 0.4],
   ['/about/irvine/', 0.4],
-  ['/blog/', 0.6],
   ['/contact/', 0.5],
   ['/privacy-policy/', 0.1],
 ];
@@ -40,11 +40,12 @@ export default function sitemap() {
     priority: 0.7,
   }));
 
-  const blog = posts.map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}/`,
-    lastModified: post.date,
-    priority: 0.5,
+  const guides = publishedGuides().map((g) => ({
+    url: `${SITE_URL}/ai-app-audit/${g.slug}/`,
+    lastModified: g.updatedAt,
+    priority: 0.7,
   }));
 
-  return [...staticEntries, ...caseStudies, ...topics, ...blog];
+  // The blog posts are noindexed (see posts.js), so they stay out of the sitemap.
+  return [...staticEntries, ...caseStudies, ...topics, ...guides];
 }

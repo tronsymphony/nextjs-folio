@@ -97,7 +97,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white"
               placeholder="Your name"
             />
           </div>
@@ -113,7 +113,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white"
               placeholder="your.email@example.com"
             />
           </div>
@@ -128,7 +128,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white"
               placeholder="Company name"
             />
           </div>
@@ -142,7 +142,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               name="projectType"
               value={formData.projectType}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white"
             >
               <option value="netsuite-integration">NetSuite integration</option>
               <option value="customer-portal">Customer / dealer portal on NetSuite</option>
@@ -163,7 +163,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white"
               >
                 <option value="">Select range</option>
                 <option value="Under $10k">Under $10,000</option>
@@ -184,7 +184,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
                 name="timeframe"
                 value={formData.timeframe}
                 onChange={handleChange}
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white"
               >
                 <option value="">Select timeframe</option>
                 <option value="ASAP">ASAP</option>
@@ -209,7 +209,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
             value={formData.message}
             onChange={handleChange}
             rows="8"
-            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white resize-none"
+            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-white resize-none"
             placeholder="Which systems are involved (NetSuite, Shopify, a 3PL...), what's broken or missing, and what a good outcome looks like."
           ></textarea>
           <p className="mt-2 text-xs text-gray-400">
@@ -225,7 +225,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
           className={`w-full py-3 px-6 rounded-lg text-white font-medium transition-all duration-300 ${
             isSubmitting 
               ? 'bg-gray-600 cursor-not-allowed' 
-              : 'bg-blue-600 hover:bg-blue-700'
+              : 'bg-accent hover:bg-accent'
           }`}
         >
           {isSubmitting ? (

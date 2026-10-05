@@ -1,13 +1,16 @@
 import './globals.css';
 
-import { Inter } from 'next/font/google';
+import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { PostHogProvider } from '../providers/providers';
 import JsonLd from '../components/JsonLd';
+import RevealObserver from '../components/ui/RevealObserver';
 import { SITE_NAME, SITE_URL } from '../lib/site';
 import { graph, organizationNode, personNode } from '../lib/schema';
 
-const inter = Inter({ subsets: ['latin'] });
+const display = Inter_Tight({ subsets: ['latin'], variable: '--font-display' });
+const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-serif-accent' });
+const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-label' });
 
 export const viewport = {
   width: 'device-width',
@@ -39,8 +42,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+      <body className="font-sans bg-ink text-paper">
+        <RevealObserver />
         <JsonLd data={graph(organizationNode(), personNode())} />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />

@@ -84,12 +84,12 @@ export default function NetSuiteAuditPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-[#0a0a0a] text-white min-h-screen">
-        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-neutral-900 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-blue-600/10 blur-[130px] -z-10 rounded-full pointer-events-none" />
+      <div className="bg-ink text-white min-h-screen">
+        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-line overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-accent/[0.04] blur-[130px] -z-10 rounded-full pointer-events-none" />
           <div className="container mx-auto max-w-4xl">
             <Eyebrow>Fixed scope · Fixed price · {audit.durationDays} business days</Eyebrow>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6 mb-6">The NetSuite Integration Audit.</h1>
+            <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">The NetSuite Integration Audit.</h1>
             <p className="text-xl text-neutral-300 leading-relaxed max-w-3xl">
               A NetSuite integration audit is a fixed-scope review of every system that reads from or writes to your
               ERP. In {audit.durationDays} business days you get a written report showing where data is leaking, what
@@ -117,7 +117,7 @@ export default function NetSuiteAuditPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900">
+        <section className="py-20 px-4 sm:px-6 border-b border-line">
           <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-3xl font-bold tracking-tight mb-4">Who it&rsquo;s for</h2>
@@ -129,7 +129,7 @@ export default function NetSuiteAuditPage() {
                   'You’re choosing between the native connector, middleware, and custom work.',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
-                    <Check className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" /> {item}
+                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" /> {item}
                   </li>
                 ))}
               </ul>
@@ -139,7 +139,7 @@ export default function NetSuiteAuditPage() {
               <ul className="space-y-3 text-neutral-300">
                 {deliverables.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" /> {item}
+                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" /> {item}
                   </li>
                 ))}
               </ul>
@@ -147,13 +147,13 @@ export default function NetSuiteAuditPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900 bg-[#0f0f10]">
+        <section className="py-20 px-4 sm:px-6 border-b border-line bg-ink-2">
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold tracking-tight mb-10">What gets reviewed</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {reviewed.map(({ title, body }, i) => (
-                <div key={title} className="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
-                  <p className="text-xs font-mono text-blue-400 mb-2">0{i + 1}</p>
+                <div key={title} className="p-6 rounded-xl border border-line bg-ink-2">
+                  <p className="text-xs font-mono text-accent mb-2">0{i + 1}</p>
                   <h3 className="text-lg font-semibold mb-2">{title}</h3>
                   <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
                 </div>
@@ -162,13 +162,13 @@ export default function NetSuiteAuditPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900">
+        <section className="py-20 px-4 sm:px-6 border-b border-line">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-3xl font-bold tracking-tight mb-10">How it runs</h2>
             <ol className="space-y-6">
               {steps.map(([when, what]) => (
                 <li key={when} className="grid sm:grid-cols-[140px_1fr] gap-2 sm:gap-6">
-                  <span className="font-mono text-sm text-blue-400">{when}</span>
+                  <span className="font-mono text-sm text-accent">{when}</span>
                   <span className="text-neutral-300">{what}</span>
                 </li>
               ))}

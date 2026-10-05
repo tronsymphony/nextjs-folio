@@ -54,27 +54,31 @@ export const caseStudies = [
     role: 'Founder and sole engineer',
     title: 'Turning California crash records into an interactive safety map',
     summary:
-      'An interactive map of California collision data built from public CHP/SWITRS and CCRS records, with filtering, 3D views, and a data importer.',
+      'Free maps and more than 1,500 statically built pages of California crash data for people walking, cycling and riding motorcycles, built from the state’s CCRS records, federal FARS data and OpenStreetMap.',
     problem:
       'California publishes detailed collision records, but as bulk datasets that are practically unusable for a rider or driver who just wants to know which roads are dangerous. The data needed to be cleaned, joined, and put on a map someone could actually read.',
     approach: [
       {
         heading: 'Data pipeline from public records',
-        body: 'Collision records from the CHP SWITRS and CCRS datasets are imported, normalized, and served through purpose-built API routes.',
+        body: 'Node build scripts turn CCRS crash records and FARS fatal-crash data into compact JSON files, and flag cities whose police reports mostly lack map locations, so undercounted places are labelled rather than shown as quiet.',
       },
       {
         heading: 'A map people can use',
-        body: 'A Mapbox front end with filters, city views, and a 3D mode turns large public collision datasets into patterns a person can see at a glance.',
+        body: 'Mapbox GL maps for walking, cycling and motorcycling, with crash hotspots, filters, custom vector tilesets, and live weather and road-closure layers from NWS and Caltrans.',
+      },
+      {
+        heading: 'Pages that answer searches',
+        body: 'Every city, busy street and car-crash statistic gets its own static page, built at build time from the same data, so the numbers are in the HTML that search engines and AI assistants read. Sitemap, structured data and llms.txt are generated from those files too.',
       },
     ],
-    stack: ['Next.js', 'React', 'Mapbox GL', 'Tailwind CSS'],
-    integrations: ['CHP SWITRS', 'CCRS'],
+    stack: ['Next.js', 'React', 'Mapbox GL', 'Postgres', 'Tailwind CSS'],
+    integrations: ['CCRS (data.ca.gov)', 'NHTSA FARS', 'OpenStreetMap', 'National Weather Service', 'Caltrans'],
     metrics: [],
     quote: null,
     heroImage: '/images/map.webp',
-    liveUrl: null,
+    liveUrl: 'https://www.safestreetsmap.com/',
     publishedAt: '2026-09-22',
-    updatedAt: '2026-09-22',
+    updatedAt: '2026-10-05',
     featured: true,
     order: 2,
     relatedTopics: [],

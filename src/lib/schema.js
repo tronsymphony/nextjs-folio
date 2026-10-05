@@ -62,6 +62,29 @@ export function auditServiceNode() {
   return node;
 }
 
+export function appAuditServiceNode() {
+  const { appAudit } = OFFERS;
+  const node = {
+    '@type': 'Service',
+    '@id': url('/ai-app-audit/#service'),
+    name: appAudit.name,
+    serviceType: 'Security and production-readiness review',
+    provider: { '@id': ORG_ID },
+    url: url('/ai-app-audit/'),
+    description: `A fixed-scope, ${appAudit.durationDays}-business-day security and production-readiness review of an app built with AI coding tools, delivered as a written findings report with a prioritized fix plan.`,
+  };
+  if (appAudit.price) {
+    node.offers = {
+      '@type': 'Offer',
+      price: appAudit.price,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: url('/ai-app-audit/'),
+    };
+  }
+  return node;
+}
+
 export function breadcrumbNode(items) {
   return {
     '@type': 'BreadcrumbList',

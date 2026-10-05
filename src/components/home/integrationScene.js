@@ -5,13 +5,13 @@
 // Returns a cleanup function that stops the loop and frees all GPU resources.
 
 const COLORS = {
-  core: 0x60a5fa, // blue-400
-  coreFill: 0x1d4ed8, // blue-700
-  node: 0x67e8f9, // cyan-300
-  outbound: 0x60a5fa, // NetSuite -> system
-  inbound: 0x34d399, // system -> NetSuite (emerald-400)
-  line: 0x3b82f6,
-  dust: 0x94a3b8,
+  core: 0xff5a1f, // accent
+  coreFill: 0x7a2a0e,
+  node: 0xf2f0eb, // paper
+  outbound: 0xff5a1f, // NetSuite -> system
+  inbound: 0xf2f0eb, // system -> NetSuite
+  line: 0x9a978f,
+  dust: 0x5f5d57,
 };
 
 const SYSTEMS = ['Storefront', '3PL / WMS', 'CRM', 'EDI', 'Customer portal', 'Reporting'];
@@ -39,14 +39,14 @@ function makeLabel(CSS2DObject, text, isCore) {
   const el = document.createElement('div');
   el.textContent = text;
   Object.assign(el.style, {
-    font: `${isCore ? 600 : 500} ${isCore ? 11 : 10}px/1 ui-monospace, SFMono-Regular, Menlo, monospace`,
+    font: `${isCore ? 600 : 500} ${isCore ? 11 : 10}px/1 var(--font-label), ui-monospace, monospace`,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: isCore ? 'rgba(191,219,254,0.95)' : 'rgba(203,213,225,0.8)',
+    color: isCore ? 'rgba(242,240,235,0.95)' : 'rgba(154,151,143,0.85)',
     padding: '4px 7px',
-    border: `1px solid ${isCore ? 'rgba(96,165,250,0.45)' : 'rgba(96,165,250,0.2)'}`,
-    background: 'rgba(5,5,5,0.65)',
-    borderRadius: '4px',
+    border: `1px solid ${isCore ? 'rgba(255,90,31,0.55)' : 'rgba(242,240,235,0.14)'}`,
+    background: 'rgba(11,11,10,0.7)',
+    borderRadius: '999px',
     whiteSpace: 'nowrap',
     transition: 'opacity 0.2s linear',
   });

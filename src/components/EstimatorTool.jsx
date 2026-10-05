@@ -17,7 +17,7 @@ function Choice({ name, options, value, onChange }) {
         <label
           key={id}
           className={`cursor-pointer px-4 py-2 rounded-lg border text-sm transition-colors ${
-            value === id ? 'border-blue-500 bg-blue-500/10 text-white' : 'border-neutral-800 text-neutral-400 hover:border-neutral-600'
+            value === id ? 'border-accent bg-accent/10 text-white' : 'border-line text-neutral-400 hover:border-neutral-600'
           }`}
         >
           <input type="radio" name={name} value={id} checked={value === id} onChange={() => onChange(id)} className="sr-only" />
@@ -35,10 +35,10 @@ function Checks({ options, values, onToggle }) {
         <label
           key={id}
           className={`cursor-pointer flex items-center gap-3 px-4 py-2.5 rounded-lg border text-sm transition-colors ${
-            values.includes(id) ? 'border-blue-500 bg-blue-500/10 text-white' : 'border-neutral-800 text-neutral-400 hover:border-neutral-600'
+            values.includes(id) ? 'border-accent bg-accent/10 text-white' : 'border-line text-neutral-400 hover:border-neutral-600'
           }`}
         >
-          <input type="checkbox" checked={values.includes(id)} onChange={() => onToggle(id)} className="accent-blue-500" />
+          <input type="checkbox" checked={values.includes(id)} onChange={() => onToggle(id)} className="accent-[#ff5a1f]" />
           {label}
         </label>
       ))}
@@ -60,6 +60,12 @@ function Question({ title, hint, children }) {
 export default function EstimatorTool() {
   const [answers, setAnswers] = useState(DEFAULT_ANSWERS);
   const result = useMemo(() => estimate(answers), [answers]);
+
+  // Integration guides link here with ?system=<id> to start from that system.
+  useEffect(() => {
+    const system = new URLSearchParams(window.location.search).get('system');
+    if (SYSTEMS.some((s) => s.id === system)) setAnswers((a) => ({ ...a, systems: [system] }));
+  }, []);
 
   const set = (key) => (value) => setAnswers((a) => ({ ...a, [key]: value }));
   const toggle = (key) => (id) =>
@@ -107,12 +113,12 @@ export default function EstimatorTool() {
       {!result.empty && (
         <a
           href="#scope-outline"
-          className="lg:hidden print:hidden fixed bottom-0 inset-x-0 z-40 flex items-center justify-between gap-4 px-4 py-3 bg-neutral-950/95 backdrop-blur border-t border-neutral-800"
+          className="lg:hidden print:hidden fixed bottom-0 inset-x-0 z-40 flex items-center justify-between gap-4 px-4 py-3 bg-neutral-950/95 backdrop-blur border-t border-line"
         >
           <span className="font-bold text-white">
             {usd(result.cost[0])} – {usd(result.cost[1])}
           </span>
-          <span className="text-sm text-emerald-400">See full outline ↓</span>
+          <span className="text-sm text-accent">See full outline ↓</span>
         </a>
       )}
     </div>
@@ -122,15 +128,15 @@ export default function EstimatorTool() {
 function ScopeBrief({ result, answers }) {
   if (result.empty) {
     return (
-      <div className="p-8 rounded-2xl border border-neutral-800 bg-neutral-900/40 text-neutral-400">
+      <div className="p-8 rounded-2xl border border-line bg-ink-2 text-neutral-400">
         Choose at least one system, or a customer portal, to see a scope outline.
       </div>
     );
   }
   return (
-    <div className="p-8 rounded-2xl border border-neutral-800 bg-neutral-900/60 print:border-black print:bg-white print:text-black">
-      <p className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-3">Your scope outline</p>
-      <p className="text-3xl font-extrabold text-white print:text-black">
+    <div className="p-8 rounded-2xl border border-line bg-neutral-900/60 print:border-black print:bg-white print:text-black">
+      <p className="text-xs font-bold uppercase tracking-wider text-accent mb-3">Your scope outline</p>
+      <p className="text-3xl font-medium text-white print:text-black">
         {usd(result.cost[0])} – {usd(result.cost[1])}
       </p>
       <p className="text-sm text-neutral-400 mt-1 mb-6">
@@ -169,7 +175,7 @@ function ScopeBrief({ result, answers }) {
         </>
       )}
 
-      <p className="text-sm text-neutral-400 print:text-black border-t border-neutral-800 pt-4 mb-6">{result.recommendation}</p>
+      <p className="text-sm text-neutral-400 print:text-black border-t border-line pt-4 mb-6">{result.recommendation}</p>
 
       <div className="flex flex-col gap-3 print:hidden">
         <Link
@@ -229,7 +235,7 @@ function EmailBrief({ result, answers }) {
   };
 
   if (state === 'sent') {
-    return <p className="text-sm text-emerald-400" role="status">Sent. I&rsquo;ll follow up personally with a few thoughts on your setup.</p>;
+    return <p className="text-sm text-accent" role="status">Sent. I&rsquo;ll follow up personally with a few thoughts on your setup.</p>;
   }
   return (
     <form onSubmit={send} className="relative flex gap-2">

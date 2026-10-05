@@ -1,5 +1,6 @@
 import { publishedCaseStudies } from '../../data/caseStudies';
 import { publishedTopics } from '../../data/netsuiteTopics';
+import { publishedGuides } from '../../data/appAuditGuides';
 import { OFFERS, PERSON, SITE_NAME, SITE_URL, formatUSD } from '../../lib/site';
 
 // A plain-text summary for LLM crawlers (llmstxt.org), generated from the same
@@ -7,7 +8,7 @@ import { OFFERS, PERSON, SITE_NAME, SITE_URL, formatUSD } from '../../lib/site';
 export const dynamic = 'force-static';
 
 export function GET() {
-  const { audit, implementationFrom, retainerFrom } = OFFERS;
+  const { audit, appAudit, implementationFrom, retainerFrom } = OFFERS;
   const price = (n, suffix = '') => (n ? `${formatUSD(n)}${suffix}` : 'quoted on request');
 
   const lines = [
@@ -18,6 +19,7 @@ export function GET() {
     '## Services',
     '',
     `- [${audit.name}](${SITE_URL}/netsuite-audit/): fixed-scope, ${audit.durationDays}-business-day review of every system connected to NetSuite, delivered as a written findings report and prioritized remediation plan. Price: ${price(audit.price)}.`,
+    `- [${appAudit.name}](${SITE_URL}/ai-app-audit/): fixed-scope, ${appAudit.durationDays}-business-day security and production-readiness review of an app built with AI coding tools (Lovable, Bolt, Cursor, Replit, v0, Claude Code). Price: ${price(appAudit.price)}.`,
     `- [Implementation](${SITE_URL}/pricing/): fixed-scope NetSuite integration and front-end projects. From: ${price(implementationFrom)}.`,
     `- [Retainer](${SITE_URL}/pricing/): ongoing monthly engineering for NetSuite integrations and applications. From: ${price(retainerFrom, ' per month')}.`,
     `- [NetSuite overview](${SITE_URL}/netsuite/): integrations, portals, storefronts, and how to choose between connectors, middleware, and custom code.`,
@@ -32,6 +34,7 @@ export function GET() {
     `- [NetSuite Integration Cost Estimator](${SITE_URL}/tools/netsuite-integration-estimator/): scope outline, risks, and cost range for a NetSuite integration.`,
     `- [NetSuite Integration Readiness Checklist](${SITE_URL}/netsuite/integration-readiness-checklist/): checks to run before connecting any system to NetSuite.`,
     ...publishedTopics().map((t) => `- [${t.h1}](${SITE_URL}/netsuite/${t.slug}/): ${t.lede}`),
+    ...publishedGuides().map((g) => `- [${g.h1}](${SITE_URL}/ai-app-audit/${g.slug}/): ${g.lede}`),
     '',
     '## Contact',
     '',
