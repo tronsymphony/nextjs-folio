@@ -1,9 +1,9 @@
 import HomeFollow from '../../components/home-follow';
 import Footer from '../../components/footer';
 import JsonLd from '../../components/JsonLd';
-import { Eyebrow, SecondaryCta } from '../../components/ui/Cta';
-import Link from 'next/link';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { Accent, SecondaryCta } from '../../components/ui/Cta';
+import { Block, ClosingCta, FaqList, LinkRows, NumberedList, PageHero } from '../../components/ui/Page';
 import { publishedGuides } from '../../data/appAuditGuides';
 import { OFFERS, formatUSD } from '../../lib/site';
 import { appAuditServiceNode, breadcrumbNode, faqNode, graph } from '../../lib/schema';
@@ -90,133 +90,88 @@ export default function AiAppAuditPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-ink text-white min-h-screen">
-        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-line overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-accent/[0.04] blur-[130px] -z-10 rounded-full pointer-events-none" />
-          <div className="container mx-auto max-w-4xl">
-            <Eyebrow>Fixed scope · Fixed price · {audit.durationDays} business days</Eyebrow>
-            <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">Built it with AI? Check it before users find the holes.</h1>
-            <p className="text-xl text-neutral-300 leading-relaxed max-w-3xl">
-              AI coding tools get an app working fast, but they often leave gaps in logins, permissions, payments, and
-              exposed keys. In {audit.durationDays} business days, a senior engineer with 15 years of experience reviews
-              your code and staging app and gives you a written report of what to fix first, with the file and line for
-              each issue.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6">
-              <a
-                href={buyHref}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white !text-black font-bold rounded-xl hover:bg-neutral-200 transition-colors"
-              >
-                {audit.stripePaymentLink ? 'Book the audit' : 'Request the audit'} <ArrowRight className="w-4 h-4" />
-              </a>
-              <SecondaryCta href="/contact/">Ask a question first</SecondaryCta>
-            </div>
-            <p className="mt-6 text-neutral-400">
-              {audit.price ? (
-                <>
-                  <span className="text-2xl font-bold text-white">{formatUSD(audit.price)}</span> flat.
-                </>
-              ) : (
-                'Flat fee, quoted on a 20-minute call.'
-              )}{' '}
-              {audit.creditedOnProceed && 'Credited in full if you hire me to make the fixes.'}
-            </p>
-          </div>
-        </section>
+      <div className="bg-ink">
+        <PageHero
+          back={['/', 'Home']}
+          eyebrow={`Fixed scope · Fixed price · ${audit.durationDays} business days`}
+          title={<>Built it with AI? Check it before <Accent>users find the holes.</Accent></>}
+          lede={`AI coding tools get an app working fast, but they often leave gaps in logins, permissions, payments, and exposed keys. In ${audit.durationDays} business days, a senior engineer with 15 years of experience reviews your code and staging app and gives you a written report of what to fix first, with the file and line for each issue.`}
+          facts={[
+            ['Price', audit.price ? `${formatUSD(audit.price)} flat` : 'Flat fee, quoted on a call'],
+            ['Turnaround', `${audit.durationDays} business days`],
+            ['Stacks', 'React, Next.js, Supabase, Firebase, Node'],
+            ['If you proceed', audit.creditedOnProceed ? 'Fee credited toward the fixes' : 'Fix it yourself or with me'],
+          ]}
+        >
+          <a
+            href={buyHref}
+            className="group inline-flex items-center justify-center gap-2 pl-6 pr-5 py-3.5 rounded-full bg-paper !text-ink font-medium tracking-tight hover:bg-accent transition-colors duration-300"
+          >
+            {audit.stripePaymentLink ? 'Book the audit' : 'Request the audit'}
+            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+          <SecondaryCta href="/contact/">Ask a question first</SecondaryCta>
+        </PageHero>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-line">
-          <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-4">Who it&rsquo;s for</h2>
-              <ul className="space-y-3 text-neutral-300">
-                {[
-                  'You built your app with an AI tool and are about to launch or take payments.',
-                  'You have real users now and aren’t sure who can see whose data.',
-                  'The AI keeps “fixing” one bug by creating another, and you need a clear list of what’s actually wrong.',
-                  'You’re buying a small software business and want to know what you’re inheriting.',
-                ].map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-4">What you get in writing</h2>
-              <ul className="space-y-3 text-neutral-300">
-                {deliverables.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
+        <Block index="01" label="Who it's for">
+          <NumberedList
+            items={[
+              'You built your app with an AI tool and are about to launch or take payments.',
+              'You have real users now and aren’t sure who can see whose data.',
+              'The AI keeps “fixing” one bug by creating another, and you need a clear list of what’s actually wrong.',
+              'You’re buying a small software business and want to know what you’re inheriting.',
+            ]}
+          />
+        </Block>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-line bg-ink-2">
-          <div className="container mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-10">What gets reviewed</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {reviewed.map(({ title, body }, i) => (
-                <div key={title} className="p-6 rounded-xl border border-line bg-ink-2">
-                  <p className="text-xs font-mono text-accent mb-2">0{i + 1}</p>
-                  <h3 className="text-lg font-semibold mb-2">{title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Block index="02" label="What gets reviewed" title="Five places AI-built apps break">
+          <ol className="grid sm:grid-cols-2 gap-x-10 border-t border-line">
+            {reviewed.map(({ title, body }, i) => (
+              <li key={title} className="py-8 border-b border-line">
+                <p className="font-mono text-xs text-accent mb-4">0{i + 1}</p>
+                <h3 className="text-2xl font-medium tracking-[-0.03em] mb-3">{title}</h3>
+                <p className="text-muted leading-relaxed">{body}</p>
+              </li>
+            ))}
+          </ol>
+        </Block>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-line">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-10">How it runs</h2>
-            <ol className="space-y-6">
-              {steps.map(([when, what]) => (
-                <li key={when} className="grid sm:grid-cols-[140px_1fr] gap-2 sm:gap-6">
-                  <span className="font-mono text-sm text-accent">{when}</span>
-                  <span className="text-neutral-300">{what}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        <Block index="03" label="What you get in writing">
+          <NumberedList items={deliverables} tone="accent" />
+        </Block>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-line">
-          <div className="container mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-3">Check it yourself first</h2>
-            <p className="text-neutral-400 mb-10 max-w-3xl">Free guides to the checks the audit starts with.</p>
-            <div className="grid md:grid-cols-3 gap-4">
-              {publishedGuides().map((g) => (
-                <Link
-                  key={g.slug}
-                  href={`/ai-app-audit/${g.slug}/`}
-                  className="group p-6 rounded-xl border border-line hover:border-neutral-700 transition-colors"
-                >
-                  <h3 className="font-semibold mb-2 group-hover:text-accent">{g.h1}</h3>
-                  <span className="inline-flex items-center gap-2 text-sm text-neutral-400">
-                    {g.checks.length} checks <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Block index="04" label="How it runs">
+          <ol className="border-t border-line">
+            {steps.map(([when, what]) => (
+              <li key={when} className="grid md:grid-cols-8 gap-3 md:gap-8 py-7 border-b border-line">
+                <span className="md:col-span-2 text-2xl font-medium tracking-[-0.03em]">{when}</span>
+                <span className="md:col-span-6 text-lg text-muted leading-relaxed">{what}</span>
+              </li>
+            ))}
+          </ol>
+        </Block>
 
-        <section className="py-20 px-4 sm:px-6">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-10">Questions</h2>
-            <dl className="space-y-8">
-              {faqs.map(({ q, a }) => (
-                <div key={q}>
-                  <dt className="text-lg font-semibold mb-2">{q}</dt>
-                  <dd className="text-neutral-400 leading-relaxed">{a}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
+        <Block index="05" label="Check it yourself first" title="Free guides to the checks the audit starts with">
+          <LinkRows
+            items={publishedGuides().map((g) => ({
+              href: `/ai-app-audit/${g.slug}/`,
+              title: g.h1,
+              tag: `${g.checks.length} checks`,
+            }))}
+          />
+        </Block>
+
+        <Block index="06" label="Questions">
+          <FaqList faqs={faqs} />
+        </Block>
+
+        <ClosingCta
+          title={<>Launch knowing <Accent>what&rsquo;s exposed.</Accent></>}
+          body={`A written report in ${audit.durationDays} business days, with the file and line for every issue.`}
+          href={buyHref}
+          cta={audit.stripePaymentLink ? 'Book the audit' : 'Request the audit'}
+          secondary={['/contact/', 'Ask a question first']}
+        />
       </div>
       <Footer />
     </>

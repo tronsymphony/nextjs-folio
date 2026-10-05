@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import FeaturedProjects from "./section/FeaturedProjects";
-import HeroScene from "./home/HeroScene";
+import HeroField from "./home/HeroField";
 import LeadMagnetCTA from "./LeadMagnetCTA";
 import { Accent, ArrowLink, PrimaryCta, SecondaryCta, SectionHead } from "./ui/Cta";
 import { offers } from "../data/netsuiteOffers";
 import { publishedTopics } from "../data/netsuiteTopics";
 import { publishedGuides } from "../data/appAuditGuides";
 import { OFFERS, PERSON, formatUSD } from "../lib/site";
+import { expertise } from "../data/expertise";
 
 const symptoms = [
   "Customers email or call to ask about stock, pricing, and order status that NetSuite already knows.",
@@ -25,6 +26,11 @@ const services = [
     title: "Audits for apps built with AI",
     body: `A ${OFFERS.appAudit.durationDays}-day security and production-readiness review of apps built with Lovable, Bolt, Cursor or Claude Code: permissions, exposed keys, payments, and what to fix first.`,
     href: "/ai-app-audit/",
+  },
+  {
+    title: "SEO and search marketing",
+    body: "Technical SEO, content and pages planned from Search Console and Semrush, and lead capture that turns visits into inquiries. I fix the site and build the pages, not just write a report.",
+    href: "/seo/",
   },
 ];
 
@@ -57,14 +63,35 @@ const heroFacts = [
 
 const SYSTEMS = ["Shopify", "Salesforce", "HubSpot", "BigCommerce", "EDI", "3PL", "SuiteQL", "RESTlets", "Next.js", "React", "Angular", "Supabase"];
 
-const capabilities = [
-  "Oracle NetSuite: SuiteTalk REST, RESTlets, SuiteQL, SuiteScript",
-  "Next.js, React, and Angular front ends",
-  "Integrations with commerce platforms, 3PLs, and CRMs",
-  "Written plans and documentation you keep",
-];
+// "Area: first item" for each expertise group, as a compact list.
+const capabilities = expertise.map(({ area, items }) => [area, items[0]]);
 
 const WRAP = "mx-auto max-w-[1440px] px-4 sm:px-8";
+
+// Headline words slide up from behind a mask, one after another. Pure CSS, so
+// the text is in the HTML and fully visible if animations are off.
+function RevealWords({ segments, delay = 150, step = 55 }) {
+  let i = 0;
+  return segments.map(([text, accent], s) =>
+    text.split(" ").map((word) => {
+      const n = i++;
+      const inner = (
+        <span
+          className="inline-block animate-[wordUp_1.1s_cubic-bezier(0.2,0.7,0.2,1)_both]"
+          style={{ animationDelay: `${delay + n * step}ms` }}
+        >
+          {accent ? <Accent>{word}</Accent> : word}
+        </span>
+      );
+      return (
+        <span key={`${s}-${n}`}>
+          {n > 0 && " "}
+          <span className="inline-block overflow-hidden align-bottom pb-[0.1em] -mb-[0.1em] pr-[0.04em]">{inner}</span>
+        </span>
+      );
+    })
+  );
+}
 
 export default function HomeMain() {
   const guides = [
@@ -75,27 +102,30 @@ export default function HomeMain() {
   return (
     <div className="bg-ink">
       {/* Hero */}
-      <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
-        <div className="absolute inset-0 lg:left-[35%] opacity-60 lg:opacity-90">
-          <HeroScene className="absolute inset-0" />
+      <section className="grain relative min-h-[100svh] flex flex-col overflow-hidden">
+        {/* Everything in the hero is sized by viewport height as well as width, so the fold fits on short laptop screens. */}
+        {/* Contour field across the whole hero; faded behind the headline and into the page below. */}
+        <div className="absolute inset-0">
+          <HeroField />
         </div>
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-ink via-ink/30 to-ink/60 lg:bg-gradient-to-r lg:from-ink lg:via-ink/50 lg:to-transparent" />
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none bg-gradient-to-t from-ink to-transparent" />
 
-        <div className={`${WRAP} relative z-10 flex-1 flex flex-col justify-end w-full pt-36 pb-10`}>
-          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-8 animate-[fadeInUp_0.9s_ease-out_forwards]">
+        <div className={`${WRAP} relative z-10 flex-1 flex flex-col justify-end w-full pt-[max(6rem,13vh)] pb-[clamp(1.25rem,4vh,2.5rem)]`}>
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-[clamp(1rem,3vh,2rem)] animate-[fadeInUp_0.9s_ease-out_forwards]">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
             Oracle NetSuite + custom front-end engineering
             <span className="text-faint">/</span>
             {PERSON.location}
           </p>
 
-          <h1 className="max-w-[14ch] text-[clamp(3rem,8.4vw,8.75rem)] font-medium leading-[0.9] tracking-[-0.055em] opacity-0 animate-[fadeInUp_1s_ease-out_0.1s_forwards]">
-            NetSuite, connected to the front ends your customers <Accent>actually use.</Accent>
+          <h1 className="max-w-[17ch] text-[clamp(2.6rem,min(7.4vw,11.5vh),8.25rem)] font-medium leading-[0.92] tracking-[-0.055em]">
+            <RevealWords segments={[["NetSuite, connected to the front ends your customers"], ["actually use.", true]]} />
           </h1>
 
-          <div className="mt-14 md:mt-20 grid lg:grid-cols-12 gap-10 items-end opacity-0 animate-[fadeInUp_1s_ease-out_0.35s_forwards]">
+          <div className="mt-[clamp(1.5rem,6vh,4.5rem)] grid lg:grid-cols-12 gap-6 lg:gap-10 items-end opacity-0 animate-[fadeInUp_1s_ease-out_0.35s_forwards]">
             <div className="lg:col-span-5">
-              <p className="text-lg text-muted leading-relaxed mb-8 max-w-md">
+              <p className="text-base md:text-lg text-muted leading-relaxed mb-[clamp(1rem,3vh,2rem)] max-w-md">
                 I build NetSuite integrations, customer portals, and ERP-connected storefronts in Next.js, React, and
                 Angular. You work with me directly, from the first call to launch.
               </p>
@@ -106,9 +136,9 @@ export default function HomeMain() {
             </div>
             <dl className="lg:col-span-6 lg:col-start-7 grid grid-cols-3 border-t border-line">
               {heroFacts.map(([value, label]) => (
-                <div key={label} className="pt-5 pr-4">
+                <div key={label} className="pt-4 pr-4">
                   <dt className="sr-only">{label}</dt>
-                  <dd className="text-2xl md:text-3xl font-medium tracking-[-0.03em]">{value}</dd>
+                  <dd className="text-xl md:text-[clamp(1.5rem,3.4vh,1.875rem)] font-medium tracking-[-0.03em]">{value}</dd>
                   <dd className="mt-1 text-[13px] text-muted leading-snug">{label}</dd>
                 </div>
               ))}
@@ -153,7 +183,7 @@ export default function HomeMain() {
 
       {/* 02 Services */}
       <section className={`${WRAP} pt-28 md:pt-40`}>
-        <SectionHead index="02" label="What I build" title={<>Four things, <Accent>done properly.</Accent></>} />
+        <SectionHead index="02" label="What I build" title={<>Five things, <Accent>done properly.</Accent></>} />
         <ul className="border-t border-line">
           {services.map((s, i) => (
             <li key={s.title} data-reveal style={{ "--reveal-delay": `${i * 80}ms` }}>
@@ -251,14 +281,15 @@ export default function HomeMain() {
           </p>
           <div className="lg:col-span-4 lg:pt-3" data-reveal>
             <ul className="border-t border-line">
-              {capabilities.map((c) => (
-                <li key={c} className="py-4 border-b border-line text-[15px] text-muted">
-                  {c}
+              {capabilities.map(([area, first]) => (
+                <li key={area} className="py-4 border-b border-line text-[15px] text-muted">
+                  <span className="text-paper">{area}</span> · {first}
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
               <ArrowLink href="/about/">More about me</ArrowLink>
+              <ArrowLink href="/services/">All skills</ArrowLink>
             </div>
           </div>
         </div>

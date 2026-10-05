@@ -1,10 +1,9 @@
-import Link from 'next/link';
-import { ArrowRight, Truck } from 'lucide-react';
 import HomeFollow from '../../components/home-follow';
 import Footer from '../../components/footer';
 import JsonLd from '../../components/JsonLd';
 import LeadMagnetCTA from '../../components/LeadMagnetCTA';
-import { CtaPair, Eyebrow } from '../../components/ui/Cta';
+import { Accent, PrimaryCta, SecondaryCta } from '../../components/ui/Cta';
+import { Block, DataTable, FaqList, LinkRows, PageHero } from '../../components/ui/Page';
 import { featuredCaseStudies } from '../../data/caseStudies';
 import { offers } from '../../data/netsuiteOffers';
 import { publishedTopics } from '../../data/netsuiteTopics';
@@ -58,6 +57,8 @@ const faqs = [
 export default function NetSuiteHubPage() {
   const topics = publishedTopics();
   const proof = featuredCaseStudies().find((c) => c.integrations.includes('Oracle NetSuite'));
+  const integrationGuides = topics.filter((t) => t.estimate);
+  const technicalGuides = topics.filter((t) => !t.estimate);
 
   return (
     <>
@@ -77,131 +78,77 @@ export default function NetSuiteHubPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-ink text-white">
-        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-line overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-accent/[0.04] blur-[130px] -z-10 rounded-full pointer-events-none" />
-          <div className="container mx-auto max-w-4xl">
-            <Eyebrow>Oracle NetSuite · Integrations · Front ends</Eyebrow>
-            <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">
-              NetSuite is your system of record. It shouldn&rsquo;t be a dead end.
-            </h1>
-            <p className="text-xl text-neutral-300 leading-relaxed">
-              I connect Oracle NetSuite to the storefronts, portals, and tools your customers and staff actually use,
-              and build those front ends in Next.js, React, or Angular. {PERSON.yearsExperience} years of software
-              engineering, working directly with you, not through an account manager.
-            </p>
-            <CtaPair className="mt-10" />
-          </div>
-        </section>
+      <div className="bg-ink">
+        <PageHero
+          back={['/', 'Home']}
+          eyebrow="Oracle NetSuite · Integrations · Front ends"
+          title={<>NetSuite is your system of record. It shouldn&rsquo;t be a <Accent>dead end.</Accent></>}
+          lede={`I connect Oracle NetSuite to the storefronts, portals, and tools your customers and staff actually use, and build those front ends in Next.js, React, or Angular. ${PERSON.yearsExperience} years of software engineering, working directly with you, not through an account manager.`}
+        >
+          <PrimaryCta />
+          <SecondaryCta />
+        </PageHero>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-line">
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-10">What I build</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {offers.map(({ icon: Icon, title, body }) => (
-                <div key={title} className="p-6 rounded-xl border border-line bg-ink-2">
-                  <Icon className="w-6 h-6 text-accent mb-4" />
-                  <h3 className="text-lg font-semibold mb-3">{title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Block index="01" label="What I build">
+          <ol className="border-t border-line">
+            {offers.map(({ title, body }, i) => (
+              <li key={title} className="grid md:grid-cols-8 gap-4 md:gap-8 py-8 border-b border-line">
+                <h3 className="md:col-span-3 flex gap-4 text-2xl md:text-3xl font-medium tracking-[-0.03em] leading-[1.08]">
+                  <span className="font-mono text-xs text-faint pt-2">0{i + 1}</span>
+                  {title}
+                </h3>
+                <p className="md:col-span-5 text-muted leading-relaxed">{body}</p>
+              </li>
+            ))}
+          </ol>
+        </Block>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-line bg-ink-2">
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-3">Connector, middleware, or custom?</h2>
-            <p className="text-neutral-400 mb-10 max-w-3xl">
-              Most NetSuite integration problems start with the wrong choice here. Each option is right somewhere.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[640px] text-left text-sm">
-                <thead>
-                  <tr className="border-b border-line text-neutral-500">
-                    <th className="py-3 pr-6 font-medium">Approach</th>
-                    <th className="py-3 pr-6 font-medium">Choose it when</th>
-                    <th className="py-3 font-medium">Watch out for</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {patterns.map((p) => (
-                    <tr key={p.name} className="border-b border-line align-top">
-                      <td className="py-4 pr-6 font-semibold text-white">{p.name}</td>
-                      <td className="py-4 pr-6 text-neutral-300">{p.when}</td>
-                      <td className="py-4 text-neutral-400">{p.watch}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
+        <Block index="02" label="Choosing an approach" title="Connector, middleware, or custom?">
+          <p className="text-lg text-muted leading-relaxed max-w-2xl mb-10">
+            Most NetSuite integration problems start with the wrong choice here. Each option is right somewhere.
+          </p>
+          <DataTable columns={['Approach', 'Choose it when', 'Watch out for']} rows={patterns.map((p) => [p.name, p.when, p.watch])} />
+        </Block>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-line">
-          <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-6">
-            <Link
-              href="/netsuite/material-handling/"
-              className="group p-8 rounded-xl border border-line hover:border-neutral-700 bg-ink-2 transition-colors"
-            >
-              <Truck className="w-6 h-6 text-accent mb-4" />
-              <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Industry</p>
-              <h3 className="text-2xl font-bold mb-3">Material handling, logistics &amp; industrial distribution</h3>
-              <p className="text-neutral-400 mb-4">Equipment catalogs, rental and RFQ engines, and multi-branch portals on NetSuite.</p>
-              <span className="inline-flex items-center gap-2 font-semibold group-hover:text-accent">
-                See the details <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-            {proof && (
-              <Link
-                href={`/work/${proof.slug}/`}
-                className="group p-8 rounded-xl border border-line hover:border-neutral-700 bg-ink-2 transition-colors"
-              >
-                <p className="text-xs uppercase tracking-wider text-neutral-500 mb-2">Case study · {proof.client}</p>
-                <h3 className="text-2xl font-bold mb-3">{proof.title}</h3>
-                <p className="text-neutral-400 mb-4">{proof.summary}</p>
-                <span className="inline-flex items-center gap-2 font-semibold group-hover:text-accent">
-                  Read the case study <ArrowRight className="w-4 h-4" />
-                </span>
-              </Link>
-            )}
-          </div>
-        </section>
-
-        {topics.length > 0 && (
-          <section className="py-20 px-4 sm:px-6 border-b border-line">
-            <div className="container mx-auto max-w-6xl">
-              <h2 className="text-3xl font-bold tracking-tight mb-10">NetSuite integration guides</h2>
-              <div className="grid md:grid-cols-2 gap-4">
-                {topics.map((t) => (
-                  <Link
-                    key={t.slug}
-                    href={`/netsuite/${t.slug}/`}
-                    className="group p-6 rounded-xl border border-line hover:border-neutral-700 transition-colors"
-                  >
-                    <h3 className="font-semibold mb-2 group-hover:text-accent">{t.h1}</h3>
-                    <p className="text-sm text-neutral-400">{t.lede}</p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
+        {integrationGuides.length > 0 && (
+          <Block index="03" label="Integration guides" title="Cost, timeline and approach, by system">
+            <LinkRows items={integrationGuides.map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1, body: t.lede }))} />
+          </Block>
         )}
 
-        <section className="py-20 px-4 sm:px-6">
-          <div className="container mx-auto max-w-4xl">
-            <LeadMagnetCTA className="mb-20" />
-            <h2 className="text-3xl font-bold tracking-tight mb-10">Questions</h2>
-            <dl className="space-y-8">
-              {faqs.map(({ q, a }) => (
-                <div key={q}>
-                  <dt className="text-lg font-semibold mb-2">{q}</dt>
-                  <dd className="text-neutral-400 leading-relaxed">{a}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
+        {technicalGuides.length > 0 && (
+          <Block index="04" label="Technical guides" title="APIs, queries and portals">
+            <LinkRows items={technicalGuides.map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1, body: t.lede }))} />
+          </Block>
+        )}
+
+        <Block index="05" label="Industry & proof">
+          <LinkRows
+            items={[
+              {
+                href: '/netsuite/material-handling/',
+                tag: 'Industry',
+                title: 'Material handling, logistics & industrial distribution',
+                body: 'Equipment catalogs, rental and RFQ engines, and multi-branch portals on NetSuite.',
+              },
+              ...(proof ? [{ href: `/work/${proof.slug}/`, tag: `Case study · ${proof.client}`, title: proof.title, body: proof.summary }] : []),
+              {
+                href: '/tools/netsuite-integration-estimator/',
+                tag: 'Tool',
+                title: 'NetSuite integration cost estimator',
+                body: 'Scope outline, risks, and a cost range for your integration. No email required.',
+              },
+            ]}
+          />
+        </Block>
+
+        <Block index="06" label="Free checklist">
+          <LeadMagnetCTA />
+        </Block>
+
+        <Block index="07" label="Questions">
+          <FaqList faqs={faqs} />
+        </Block>
       </div>
       <Footer />
     </>

@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import { PERSON } from "../lib/site";
 
 // Pages that already end in a booking or contact form don't need the CTA band.
-const HIDE_CTA_ON = ["/contact/", "/call/", "/netsuite-audit/"];
+const HIDE_CTA_ON = ["/contact/", "/call/", "/netsuite-audit/", "/seo/"];
 // The app-audit guides end in their own audit CTA; the NetSuite band would be off-topic there.
 const hideCta = (pathname) => HIDE_CTA_ON.includes(pathname) || pathname?.startsWith("/ai-app-audit/");
 
@@ -18,6 +18,7 @@ const COLUMNS = [
       ["/netsuite-audit/", "NetSuite integration audit"],
       ["/ai-app-audit/", "AI-built app audit"],
       ["/netsuite/", "NetSuite integrations"],
+      ["/seo/", "SEO & search marketing"],
       ["/pricing/", "Pricing"],
     ],
   },

@@ -10,6 +10,7 @@ const STATIC_ROUTES = [
   ['/netsuite/', 0.9],
   ['/netsuite-audit/', 0.9],
   ['/ai-app-audit/', 0.8],
+  ['/seo/', 0.8],
   ['/netsuite/material-handling/', 0.8],
   ['/netsuite/integration-readiness-checklist/', 0.8],
   ['/tools/netsuite-integration-estimator/', 0.8],

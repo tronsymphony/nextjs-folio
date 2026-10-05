@@ -67,11 +67,15 @@ export const caseStudies = [
         body: 'Mapbox GL maps for walking, cycling and motorcycling, with crash hotspots, filters, custom vector tilesets, and live weather and road-closure layers from NWS and Caltrans.',
       },
       {
+        heading: 'A product, built and run end to end',
+        body: 'Designed, built and run as my own product: walking, cycling and motorcycling maps, a ride planner with weather and road conditions, a tool that checks a GPX or FIT ride against crash records entirely in the browser, admin tools for reviewing community rides, and a physics-based 3D riding simulator.',
+      },
+      {
         heading: 'Pages that answer searches',
         body: 'Every city, busy street and car-crash statistic gets its own static page, built at build time from the same data, so the numbers are in the HTML that search engines and AI assistants read. Sitemap, structured data and llms.txt are generated from those files too.',
       },
     ],
-    stack: ['Next.js', 'React', 'Mapbox GL', 'Postgres', 'Tailwind CSS'],
+    stack: ['Next.js', 'React', 'Mapbox GL', 'Three.js', 'Postgres', 'Tailwind CSS'],
     integrations: ['CCRS (data.ca.gov)', 'NHTSA FARS', 'OpenStreetMap', 'National Weather Service', 'Caltrans'],
     metrics: [],
     quote: null,

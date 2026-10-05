@@ -1,11 +1,10 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import HomeFollow from '../../../components/home-follow';
 import Footer from '../../../components/footer';
 import JsonLd from '../../../components/JsonLd';
-import { Eyebrow } from '../../../components/ui/Cta';
+import { Block, LinkRows, NumberedList, PageHero, Prose, WRAP } from '../../../components/ui/Page';
 import { getCaseStudy, publishedCaseStudies } from '../../../data/caseStudies';
 import { breadcrumbNode, caseStudyNode, graph } from '../../../lib/schema';
 
@@ -33,6 +32,11 @@ export default async function CaseStudyPage({ params }) {
   if (!cs) notFound();
 
   const isExternal = cs.liveUrl?.startsWith('http');
+  const all = publishedCaseStudies();
+  const nextCase = all[(all.findIndex((c) => c.slug === cs.slug) + 1) % all.length];
+
+  let n = 0;
+  const next = () => String(++n).padStart(2, '0');
 
   return (
     <>
@@ -43,97 +47,86 @@ export default async function CaseStudyPage({ params }) {
           breadcrumbNode([['Home', '/'], ['Work', '/work/'], [cs.client, `/work/${cs.slug}/`]])
         )}
       />
-      <article className="bg-ink text-white">
-        <header className="pt-36 pb-12 px-4 sm:px-6">
-          <div className="container mx-auto max-w-4xl">
-            <Link href="/work/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white mb-8">
-              <ArrowLeft className="w-4 h-4" /> All work
-            </Link>
-            <div>
-              <Eyebrow>{cs.client} · {cs.industry}</Eyebrow>
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-medium tracking-[-0.04em] mt-6 mb-6 leading-tight">{cs.title}</h1>
-            <p className="text-xl text-neutral-300 leading-relaxed">{cs.summary}</p>
+      <article className="bg-ink">
+        <PageHero
+          back={['/work/', 'All work']}
+          eyebrow={cs.industry}
+          size="md"
+          title={cs.title}
+          lede={cs.summary}
+          facts={[
+            ['Client', cs.client],
+            ...(cs.role ? [['Role', cs.role]] : []),
+            ['Built with', cs.stack.join(', ')],
+            ...(cs.integrations.length > 0 ? [['Integrations', cs.integrations.join(', ')]] : []),
+          ]}
+        >
+          {cs.liveUrl && (
+            <a
+              href={cs.liveUrl}
+              {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
+              className="group inline-flex items-center gap-2 pl-6 pr-5 py-3.5 rounded-full border border-line font-medium hover:border-paper transition-colors duration-300"
+            >
+              See it live
+              <ArrowUpRight className="w-4 h-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+          )}
+        </PageHero>
 
-            <dl className="mt-10 grid sm:grid-cols-3 gap-6 text-sm border-t border-line pt-6">
-              {cs.role && (
-                <div>
-                  <dt className="text-neutral-500 mb-1">Role</dt>
-                  <dd>{cs.role}</dd>
-                </div>
-              )}
-              <div>
-                <dt className="text-neutral-500 mb-1">Built with</dt>
-                <dd>{cs.stack.join(', ')}</dd>
-              </div>
-              {cs.integrations.length > 0 && (
-                <div>
-                  <dt className="text-neutral-500 mb-1">Integrations</dt>
-                  <dd>{cs.integrations.join(', ')}</dd>
-                </div>
-              )}
-            </dl>
-          </div>
-        </header>
-
-        <div className="px-4 sm:px-6">
-          <div className="container mx-auto max-w-5xl relative aspect-[16/9] rounded-xl overflow-hidden border border-line">
-            <Image src={cs.heroImage} alt={`${cs.client} screenshot`} fill priority className="object-cover object-top" sizes="(max-width: 1024px) 100vw, 1024px" />
+        <div className={`${WRAP} pb-20 md:pb-28`}>
+          <div className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-ink-3" data-reveal>
+            <Image src={cs.heroImage} alt={`${cs.client} screenshot`} fill priority className="object-cover object-top" sizes="(max-width: 1440px) 100vw, 1440px" />
           </div>
         </div>
 
         {cs.metrics.length > 0 && (
-          <section className="px-4 sm:px-6 pt-16">
-            <div className="container mx-auto max-w-4xl grid sm:grid-cols-3 gap-6">
-              {cs.metrics.map((m) => (
-                <div key={m.label} className="p-6 rounded-xl border border-line bg-ink-2">
-                  <p className="text-3xl font-medium text-white">{m.value}</p>
-                  <p className="text-sm text-neutral-300 mt-1">{m.label}</p>
-                  {m.note && <p className="text-xs text-neutral-500 mt-2">{m.note}</p>}
+          <Block index={next()} label="Results">
+            <dl className="grid sm:grid-cols-3 border-t border-line">
+              {cs.metrics.map((m, i) => (
+                <div key={m.label} className={`pt-6 pb-8 sm:px-6 sm:first:pl-0 ${i > 0 ? 'sm:border-l border-line' : ''}`}>
+                  <dd className="text-4xl md:text-5xl font-medium tracking-[-0.04em]">{m.value}</dd>
+                  <dt className="mt-3 text-muted">{m.label}</dt>
+                  {m.note && <p className="mt-2 text-sm text-faint">{m.note}</p>}
                 </div>
               ))}
-            </div>
-          </section>
+            </dl>
+          </Block>
         )}
 
-        <div className="px-4 sm:px-6 py-16">
-          <div className="container mx-auto max-w-3xl">
-            <h2 className="text-2xl font-bold mb-4">The problem</h2>
-            <p className="text-lg text-neutral-300 leading-relaxed mb-12">{cs.problem}</p>
+        <Block index={next()} label="The problem">
+          <Prose paragraphs={[cs.problem]} />
+        </Block>
 
-            <h2 className="text-2xl font-bold mb-6">The approach</h2>
-            <ol className="space-y-8 mb-12">
-              {cs.approach.map((step, i) => (
-                <li key={step.heading} className="grid grid-cols-[2.5rem_1fr]">
-                  <span className="font-mono text-sm text-accent pt-1">0{i + 1}</span>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">{step.heading}</h3>
-                    <p className="text-neutral-400 leading-relaxed">{step.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+        <Block index={next()} label="The approach">
+          <NumberedList
+            tone="accent"
+            items={cs.approach.map((step) => (
+              <>
+                <h3 className="text-2xl font-medium tracking-[-0.03em] text-paper mb-3">{step.heading}</h3>
+                <p className="text-muted leading-relaxed">{step.body}</p>
+              </>
+            ))}
+          />
+        </Block>
 
-            {cs.quote && (
-              <figure className="border-l-2 border-accent pl-6 my-12">
-                <blockquote className="text-xl text-white leading-relaxed">&ldquo;{cs.quote.text}&rdquo;</blockquote>
-                <figcaption className="mt-4 text-sm text-neutral-400">
-                  {cs.quote.author}, {cs.quote.title}
-                </figcaption>
-              </figure>
-            )}
+        {cs.quote && (
+          <Block index={next()} label="In their words">
+            <figure>
+              <blockquote className="text-[clamp(1.5rem,3vw,2.5rem)] font-medium leading-[1.2] tracking-[-0.03em]">
+                &ldquo;{cs.quote.text}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                {cs.quote.author}, {cs.quote.title}
+              </figcaption>
+            </figure>
+          </Block>
+        )}
 
-            {cs.liveUrl && (
-              <a
-                href={cs.liveUrl}
-                {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
-                className="inline-flex items-center gap-2 font-bold text-white hover:text-accent transition-colors"
-              >
-                See it live <ArrowUpRight className="w-4 h-4" />
-              </a>
-            )}
-          </div>
-        </div>
+        {nextCase && nextCase.slug !== cs.slug && (
+          <Block label="Next case study">
+            <LinkRows items={[{ href: `/work/${nextCase.slug}/`, title: nextCase.title, tag: nextCase.client, body: nextCase.summary }]} />
+          </Block>
+        )}
       </article>
       <Footer />
     </>

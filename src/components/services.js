@@ -1,78 +1,54 @@
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { CtaPair, Eyebrow } from './ui/Cta';
+import Expertise from './Expertise';
+import { Accent, PrimaryCta, SecondaryCta } from './ui/Cta';
+import { Block, DataTable, LinkRows, PageHero } from './ui/Page';
 import { offers } from '../data/netsuiteOffers';
 
-// Work I still take on, mostly for existing clients. Deliberately a compact
-// list rather than equal-weight cards: NetSuite is the headline offer.
+// The services people hire me for, with links to each page that sells them.
+const services = [
+  { href: '/netsuite/', tag: 'Primary focus', title: 'Oracle NetSuite integrations, portals and storefronts', body: offers.map((o) => o.title).join(' · ') },
+  { href: '/netsuite-audit/', tag: 'Fixed price', title: 'NetSuite integration audit', body: 'A written review of everything connected to NetSuite, with a prioritized plan.' },
+  { href: '/ai-app-audit/', tag: 'Fixed price', title: 'AI-built app audit', body: 'Security and production-readiness review of apps built with Lovable, Bolt, Cursor or Claude Code.' },
+  { href: '/seo/', tag: 'Ongoing', title: 'SEO & search marketing', body: 'Technical SEO, pages built from your data, and content planned from Search Console and Semrush.' },
+];
+
+// Work I still take on, mostly for existing clients or alongside the services above.
 const alsoAvailable = [
-  ['Custom web applications', 'React, Next.js, and Angular applications, including migrations off legacy front ends.'],
-  ['Headless commerce', 'Shopify and other commerce back ends behind a custom, fast front end.'],
-  ['Production hardening for AI-built apps', 'Taking a prototype built with AI tools to secure, maintainable production code.'],
-  ['Performance', 'Core Web Vitals, bundle size, caching, and image pipelines.'],
-  ['Accessibility (WCAG)', 'Audits and remediation to WCAG 2.2 AA.'],
-  ['Analytics implementation', 'PostHog, Mixpanel, and GA4 event design that answers real product questions.'],
-  ['Technical SEO', 'Crawlability, structured data, rendering strategy, and site architecture.'],
-  ['Maintenance', 'Dependency upgrades, security patches, and monitoring for sites I built or inherit.'],
+  ['Product development', 'Taking a new product from idea to launch: scoping, prototype, build, analytics, and the admin tools to run it.'],
+  ['Custom web applications', 'React, Next.js and Angular applications, including migrations off legacy front ends.'],
+  ['Shopify & headless commerce', 'Shopify and Shopify Plus stores, or Shopify behind a custom, fast front end.'],
+  ['WordPress', 'Sites, custom themes and plugins, performance and security fixes.'],
+  ['Accessibility (ADA / WCAG)', 'Audits and fixes to WCAG 2.2 AA, the standard ADA website claims are usually measured against.'],
+  ['Maps & data products', 'Interactive maps, custom tilesets and pipelines that turn public or internal data into something people can use.'],
+  ['Offline-capable apps', 'IndexedDB storage and sync for apps used on job sites, warehouses and other places with poor signal.'],
+  ['Performance', 'Core Web Vitals, bundle size, caching and image pipelines.'],
+  ['Analytics implementation', 'PostHog and GA4 event design that answers real product questions.'],
+  ['Maintenance', 'Dependency upgrades, security patches and monitoring for sites I built or inherit.'],
 ];
 
 export default function Services() {
   return (
-    <div className="bg-ink text-white">
-      <section className="relative pt-36 pb-16 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent/[0.04] blur-[100px] -z-10 rounded-full pointer-events-none" />
-        <div className="container mx-auto max-w-4xl">
-          <Eyebrow>Capabilities</Eyebrow>
-          <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">What I work on.</h1>
-          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl">
-            My focus is Oracle NetSuite: integrations, portals, and the front ends that sit on top of it. Fifteen years
-            of broader engineering work sits behind that, and I still take on the projects below.
-          </p>
-        </div>
-      </section>
+    <div className="bg-ink">
+      <PageHero
+        back={['/', 'Home']}
+        eyebrow="Capabilities"
+        title={<>What I work on, and <Accent>what I&rsquo;ve built.</Accent></>}
+        lede="My focus is Oracle NetSuite: integrations, portals and the front ends that sit on top of it. Behind that sit fifteen years of engineering and a product I build and run myself, and I still take on the work below."
+      >
+        <PrimaryCta />
+        <SecondaryCta />
+      </PageHero>
 
-      <section className="pb-20 px-4 sm:px-6">
-        <div className="container mx-auto max-w-6xl p-8 rounded-2xl border border-accent/30 bg-accent/5">
-          <p className="text-xs font-bold uppercase tracking-wider text-accent mb-3">Primary focus</p>
-          <h2 className="text-3xl font-bold mb-8">Oracle NetSuite integration &amp; front-end engineering</h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {offers.map(({ icon: Icon, title, body }) => (
-              <div key={title}>
-                <Icon className="w-6 h-6 text-accent mb-3" />
-                <h3 className="font-semibold mb-2">{title}</h3>
-                <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-x-8 gap-y-3 font-semibold">
-            <Link href="/netsuite/" className="inline-flex items-center gap-2 hover:text-accent">
-              NetSuite overview <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/netsuite/material-handling/" className="inline-flex items-center gap-2 hover:text-accent">
-              Material handling &amp; logistics <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/netsuite-audit/" className="inline-flex items-center gap-2 hover:text-accent">
-              The integration audit <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Block index="01" label="Services">
+        <LinkRows items={services} />
+      </Block>
 
-      <section className="pb-24 px-4 sm:px-6">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl font-bold mb-2">Also available</h2>
-          <p className="text-neutral-500 mb-8">Usually for existing clients, or alongside NetSuite work.</p>
-          <dl className="grid md:grid-cols-2 border-t border-line">
-            {alsoAvailable.map(([title, body]) => (
-              <div key={title} className="py-5 pr-8 border-b border-line">
-                <dt className="font-semibold mb-1">{title}</dt>
-                <dd className="text-sm text-neutral-400">{body}</dd>
-              </div>
-            ))}
-          </dl>
-          <CtaPair className="mt-12" />
-        </div>
-      </section>
+      <Block index="02" label="Skills" title="From the products I've built" wide>
+        <Expertise />
+      </Block>
+
+      <Block index="03" label="Also available" title="Usually for existing clients, or alongside the services above">
+        <DataTable columns={['Work', 'What it covers']} rows={alsoAvailable} />
+      </Block>
     </div>
   );
 }

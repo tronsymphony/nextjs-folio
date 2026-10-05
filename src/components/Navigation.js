@@ -15,6 +15,7 @@ const NETSUITE_LINKS = [
 const LINKS = [
   ['/netsuite/', 'NetSuite', NETSUITE_LINKS],
   ['/ai-app-audit/', 'App audit'],
+  ['/seo/', 'SEO'],
   ['/work/', 'Work'],
   ['/pricing/', 'Pricing'],
   ['/about/', 'About'],

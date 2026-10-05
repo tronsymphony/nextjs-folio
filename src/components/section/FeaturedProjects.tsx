@@ -4,14 +4,24 @@ import { ArrowUpRight } from "lucide-react";
 import { featuredCaseStudies } from "../../data/caseStudies";
 import { Accent, ArrowLink, SectionHead } from "../ui/Cta";
 
-// Selected work: large images in a two-column grid, details underneath.
-export default function FeaturedProjects({ index = "03" }: { index?: string }) {
-  const projects = featuredCaseStudies();
+type Project = ReturnType<typeof featuredCaseStudies>[number];
 
+// Selected work on the homepage.
+export default function FeaturedProjects({ index = "03" }: { index?: string }) {
   return (
     <section className="mx-auto max-w-[1440px] px-4 sm:px-8 pt-28 md:pt-40">
       <SectionHead index={index} label="Selected work" title={<>Work that ships <Accent>and stays up.</Accent></>} />
+      <WorkGrid projects={featuredCaseStudies()} />
+      <div className="mt-16" data-reveal>
+        <ArrowLink href="/work/">All case studies</ArrowLink>
+      </div>
+    </section>
+  );
+}
 
+// Large images in a two-column grid, the second column offset; details underneath.
+export function WorkGrid({ projects }: { projects: Project[] }) {
+  return (
       <div className="grid md:grid-cols-2 gap-x-8 gap-y-20">
         {projects.map((project, i) => (
           <Link
@@ -42,10 +52,5 @@ export default function FeaturedProjects({ index = "03" }: { index?: string }) {
           </Link>
         ))}
       </div>
-
-      <div className="mt-16" data-reveal>
-        <ArrowLink href="/work/">All case studies</ArrowLink>
-      </div>
-    </section>
   );
 }

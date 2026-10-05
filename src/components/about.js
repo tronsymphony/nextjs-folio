@@ -1,245 +1,84 @@
-import Link from "next/link";
 import Script from "next/script";
-import {
-  Code, Layers, LineChart, MapPin,
-  Bike, Check, ArrowRight, Terminal
-} from "lucide-react";
+import Expertise from "./Expertise";
+import { Accent, ArrowLink, PrimaryCta, SecondaryCta } from "./ui/Cta";
+import { Block, NumberedList, PageHero, Prose } from "./ui/Page";
+import { PERSON } from "../lib/site";
+
+const howIWork = [
+  "One engineer from the first call to launch. The person you talk to is the person writing the code.",
+  "Alongside your NetSuite partner or agency: they own configuration and campaigns, I own the integrations and the applications.",
+  "Small, fixed-scope steps first, so you can judge the work before committing to more.",
+  "Written plans and documentation you keep, whoever maintains the code next.",
+];
 
 export default function About() {
-
-  // Tech Stack Data
-  const techStack = [
-    { name: "React / Next.js", icon: Code },
-    { name: "Laravel / PHP", icon: Terminal },
-    { name: "Shopify Plus", icon: Layers },
-    { name: "Technical SEO", icon: LineChart },
-  ];
-
-  // Outcomes Data
-  const outcomes = [
-    {
-      title: "Conversion Design",
-      desc: "I craft user-friendly, visually striking digital experiences with a marketing-first focus to ensure optimal lead capture and conversion rates."
-    },
-    {
-      title: "Risk-Free Development",
-      desc: "I build highly scalable, clean codebases using Next.js and Laravel, guaranteeing zero technical debt and long-term stability for your investment."
-    },
-    {
-      title: "Strategic Oversight",
-      desc: "End-to-end strategic oversight, combining development and design expertise to deliver impactful projects that maximize your ROI."
-    }
-  ];
-
   return (
-    <>
-      {/* ------------------- 1. HERO SECTION ------------------- */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 bg-ink overflow-hidden" data-scroll-section>
-        {/* Background Glow */}
-        <div className="absolute top-0 right-1/2 translate-x-1/2 w-[600px] h-[400px] bg-accent/[0.04] blur-[120px] -z-10 rounded-full pointer-events-none" />
+    <div className="bg-ink">
+      <PageHero
+        back={["/", "Home"]}
+        eyebrow={PERSON.location}
+        title={
+          <>
+            {PERSON.name}, software engineer. <Accent>NetSuite, meet the front end.</Accent>
+          </>
+        }
+        lede={`${PERSON.yearsExperience} years of software engineering. Today I focus on Oracle NetSuite and the applications built on it, and I build and run my own product, Safe Streets Map.`}
+        facts={[
+          ["Experience", `${PERSON.yearsExperience} years`],
+          ["Focus", "NetSuite, front ends, product development"],
+          ["Own product", "Safe Streets Map"],
+          ["Based in", PERSON.location],
+        ]}
+      >
+        <PrimaryCta href="/call/">Book a 20-min call</PrimaryCta>
+        <SecondaryCta href="/work/">See the work</SecondaryCta>
+      </PageHero>
 
-        <div className="container mx-auto max-w-4xl text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/30 border border-accent text-accent text-xs font-bold mb-6 tracking-wide uppercase">
-            <MapPin size={12} /> Los Angeles Based
+      <Block index="01" label="About me">
+        <Prose
+          paragraphs={[
+            "I connect Oracle NetSuite to storefronts, 3PLs and CRMs, and build the customer portals and showrooms that run on its data, such as the Total Warehouse showroom, where equipment buyers browse live ERP inventory and request quotes.",
+            "I also build products end to end. Safe Streets Map is mine: free California street-safety maps built from state crash records, with more than 1,500 pages generated from the data, live weather and road conditions, a ride planner, a tool that checks a GPX ride against crash records in the browser, and a 3D riding simulator. Building it has meant data pipelines, map tiles, government APIs, search, accessibility and privacy decisions, the same problems clients bring me.",
+            "I have also built Shopify storefronts, WordPress sites, and React and Angular applications, and I am comfortable picking up an existing codebase and leaving it better documented than I found it.",
+          ]}
+        />
+      </Block>
+
+      <Block index="02" label="What I work with" title="Skills, from the products I've built" wide>
+        <Expertise />
+      </Block>
+
+      <Block index="03" label="How I work">
+        <NumberedList items={howIWork} tone="accent" />
+      </Block>
+
+      <Block index="04" label="Outside work">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 className="text-[clamp(1.75rem,3.4vw,3rem)] font-medium leading-[1.02] tracking-[-0.035em] mb-6">
+              Most of my thinking happens <Accent>on a bike.</Accent>
+            </h2>
+            <p className="text-lg text-muted leading-relaxed mb-6">
+              I ride the roads and climbs around Los Angeles; my latest rides are here. Cycling is also one of the three ways of
+              getting around that Safe Streets Map covers, along with walking and motorcycling.
+            </p>
+            <ArrowLink href="/work/safe-streets-map-crash-data-platform/">How Safe Streets Map is built</ArrowLink>
           </div>
-
-          <h1 className="text-4xl md:text-6xl font-medium text-white mb-6 tracking-tighter uppercase leading-[1.1]">
-            NetSuite, meet <br />
-            <span className="font-serif italic font-normal">
-              the front end.
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-neutral-400 font-medium">
-            15 years of software engineering, focused on Oracle NetSuite and the applications built on it.
-          </p>
-        </div>
-      </section>
-
-      {/* ------------------- 2. BIO & STRATEGY ------------------- */}
-      <section className="py-20 bg-ink px-4 sm:px-6 relative" data-scroll-section>
-        {/* Background Texture */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
-
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
-
-            {/* LEFT: Main Bio (Span 7) */}
-            <div className="lg:col-span-7">
-              <h2 className="text-3xl font-bold text-white mb-6">
-                One engineer, from <br />
-                <span className="text-accent">first call to launch</span>
-              </h2>
-
-              <div className="prose prose-invert max-w-none text-neutral-400 leading-relaxed text-lg space-y-6">
-                <p>
-                  Hi, I’m <strong className="text-white">Nitya Hoyos</strong>, a Los Angeles-based software engineer with 15 years of experience. Today I focus on Oracle NetSuite: connecting it to storefronts, 3PLs, and CRMs, and building the customer portals and showrooms that run on its data.
-                </p>
-                <p>
-                  I work directly with operations, IT, and sales leaders at companies that run on NetSuite, usually <strong className="text-white">alongside their NetSuite partner</strong>: they own configuration inside the ERP, I own the integrations and the applications outside it.
-                </p>
-
-
-
-                <div className="p-6 bg-neutral-900/50 border border-line rounded-lg mt-8">
-                  <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-                    <Layers className="text-accent" size={20} />
-                    Why Companies Choose an Expert
-                  </h3>
-                  <p className="text-sm mb-4">
-                    Experienced businesses understand the cost of fragmentation: project delays, miscommunication, and expensive rebuilds. I eliminate that risk covering:
-                  </p>
-                  <ul className="space-y-2">
-                    {[
-                      "Development: Scalable, clean platforms (React/Next.js/Laravel).",
-                      "Design: Conversion-focused UI/UX driving trust.",
-                      "Marketing: SEO & Analytics baked into the code."
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-neutral-300">
-                        <Check className="w-4 h-4 text-accent mt-1 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT: Toolkit & Stats (Span 5) */}
-            <div className="lg:col-span-5 space-y-8">
-
-              {/* Tech Stack Card */}
-              <div className="p-8 rounded-lg bg-neutral-900/30 border border-line">
-                <h3 className="text-xl font-bold text-white mb-6">Professional Toolkit</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {techStack.map((tech, idx) => (
-                    <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-neutral-950 border border-line hover:border-accent/50 transition-colors">
-                      <div className="p-2 bg-accent/10 rounded-lg text-accent">
-                        <tech.icon size={18} />
-                      </div>
-                      <span className="text-sm font-medium text-neutral-300">{tech.name}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-6 text-sm text-neutral-500 leading-relaxed">
-                  I architect the precise solution your business needs—whether it&apos;s a high-volume e-commerce platform or a bespoke enterprise application.
-                </p>
-              </div>
-
-            </div>
+          <div className="rounded-3xl overflow-hidden border border-line bg-ink-2">
+            <iframe
+              title="Latest rides on Strava"
+              height="454"
+              width="100%"
+              frameBorder="0"
+              scrolling="no"
+              loading="lazy"
+              src="https://www.strava.com/athletes/15797336/latest-rides/594248b42a8f75c469c571310aedb6ddf1691468"
+              className="block w-full h-[454px]"
+            />
+            <Script src="https://strava-embeds.com/embed.js" strategy="lazyOnload" />
           </div>
         </div>
-      </section>
-
-      {/* ------------------- 3. PERSONAL / CYCLING ------------------- */}
-      <section className="py-20 bg-ink border-y border-line overflow-hidden">
-        <div className="container mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-
-            {/* Text Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 mb-6">
-                <div className="p-2 bg-orange-500/10 rounded-lg">
-                  <Bike className="text-orange-500" size={24} />
-                </div>
-                <span className="text-orange-500 font-bold tracking-widest uppercase text-sm">The Drive</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                How Cycling Fuels <br /> My Strategic Work
-              </h2>
-              <p className="text-neutral-400 text-lg leading-relaxed mb-6">
-                While my work is deeply strategic, my passion for cycling mirrors the discipline I bring to every project.
-              </p>
-              <p className="text-neutral-400 text-lg leading-relaxed">
-                The challenging routes of Los Angeles require persistence and precise problem-solving—the same approach I take to debugging complex architectures and developing innovative solutions for your business.
-              </p>
-            </div>
-
-            {/* Strava Embed Wrapper */}
-            <div className="relative">
-              {/* Decorative Ring */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-accent/20 rounded-3xl blur-2xl opacity-50 -z-10"></div>
-
-              <div className="bg-neutral-900 border border-line rounded-lg overflow-hidden shadow-2xl">
-                {/* Iframe */}
-                <div className="relative w-full h-[454px]">
-                  <iframe
-                    height="454"
-                    width="100%"
-                    frameBorder="0"
-                    allowTransparency="true"
-                    scrolling="no"
-                    src="https://www.strava.com/athletes/15797336/latest-rides/594248b42a8f75c469c571310aedb6ddf1691468"
-                    className="w-full h-full"
-                  ></iframe>
-                </div>
-
-                {/* Optional: Load Script if Strava requires it for interactivity outside iframe */}
-                <Script
-                  src="https://strava-embeds.com/embed.js"
-                  strategy="lazyOnload"
-                />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------- 4. OUTCOMES (Ledger Style) ------------------- */}
-      <section className="py-24 bg-ink px-4 sm:px-6" data-scroll-section>
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-white mb-16 text-center">
-            The Strategic Outcomes I Deliver
-          </h2>
-
-          <div className="flex flex-col border-t border-line">
-            {outcomes.map((item, index) => (
-              <div
-                key={index}
-                className="group flex flex-col md:flex-row items-start md:items-center py-10 border-b border-line hover:border-neutral-600 transition-colors duration-300"
-              >
-                {/* Number */}
-                <span className="hidden md:block w-16 text-neutral-600 font-mono text-sm group-hover:text-accent transition-colors">
-                  0{index + 1}
-                </span>
-
-                {/* Title */}
-                <div className="md:w-1/3 mb-4 md:mb-0">
-                  <h3 className="text-2xl font-bold text-neutral-200 group-hover:text-white transition-colors">
-                    {item.title}
-                  </h3>
-                </div>
-
-                {/* Description */}
-                <div className="md:w-1/2 md:pl-8">
-                  <p className="text-neutral-400 leading-relaxed text-lg group-hover:text-neutral-300 transition-colors">
-                    {item.desc}
-                  </p>
-                </div>
-
-                {/* Arrow */}
-                <div className="hidden md:flex flex-1 justify-end opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                  <ArrowRight className="text-accent" />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="mt-20 text-center">
-            <h3 className="text-2xl font-bold text-white mb-6">Ready to Eliminate Vendor Fragmentation?</h3>
-            <div className="flex justify-center gap-6">
-              <Link href="/work/" className="text-neutral-400 hover:text-white underline underline-offset-4 decoration-neutral-700 hover:decoration-white transition-all">
-                View Portfolio
-              </Link>
-              <Link href="/contact" className="text-accent hover:text-accent font-bold underline underline-offset-4 decoration-accent/30 hover:decoration-accent transition-all">
-                Get in Touch
-              </Link>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    </>
+      </Block>
+    </div>
   );
 }

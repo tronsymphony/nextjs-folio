@@ -24,6 +24,18 @@ export const PERSON = {
     'React',
     'Angular',
     'Headless commerce',
+    'Technical SEO',
+    'Search marketing',
+    'Shopify',
+    'WordPress',
+    'Web accessibility (ADA, WCAG)',
+    'IndexedDB',
+    'Product development',
+    'Mapbox GL',
+    'Geospatial data',
+    'Three.js',
+    'PostgreSQL',
+    'Data pipelines',
   ],
 };
 

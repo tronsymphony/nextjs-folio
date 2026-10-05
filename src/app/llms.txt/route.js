@@ -20,6 +20,7 @@ export function GET() {
     '',
     `- [${audit.name}](${SITE_URL}/netsuite-audit/): fixed-scope, ${audit.durationDays}-business-day review of every system connected to NetSuite, delivered as a written findings report and prioritized remediation plan. Price: ${price(audit.price)}.`,
     `- [${appAudit.name}](${SITE_URL}/ai-app-audit/): fixed-scope, ${appAudit.durationDays}-business-day security and production-readiness review of an app built with AI coding tools (Lovable, Bolt, Cursor, Replit, v0, Claude Code). Price: ${price(appAudit.price)}.`,
+    `- [SEO & search marketing](${SITE_URL}/seo/): technical SEO, pages built from a client's own data, content marketing planned from Google Search Console and Semrush, and lead capture, implemented in the site's code. No paid ads or social media. Price: quoted on request.`,
     `- [Implementation](${SITE_URL}/pricing/): fixed-scope NetSuite integration and front-end projects. From: ${price(implementationFrom)}.`,
     `- [Retainer](${SITE_URL}/pricing/): ongoing monthly engineering for NetSuite integrations and applications. From: ${price(retainerFrom, ' per month')}.`,
     `- [NetSuite overview](${SITE_URL}/netsuite/): integrations, portals, storefronts, and how to choose between connectors, middleware, and custom code.`,
