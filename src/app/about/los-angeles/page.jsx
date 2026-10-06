@@ -42,10 +42,10 @@ const services = [
     body: 'A security and production-readiness review of apps built with Lovable, Bolt, Cursor or Claude Code, before they take real users or payments.',
   },
   {
-    href: '/seo/',
+    href: '/seo/ai-search-optimization/',
     tag: `Audit ${formatUSD(OFFERS.seoAudit.price)}`,
-    title: 'Technical SEO and search',
-    body: 'Technical fixes and pages planned from Search Console and Semrush, built into the site rather than handed over as a report.',
+    title: 'SEO and AI search optimization',
+    body: 'Technical fixes and pages planned from Search Console and Semrush, so Los Angeles customers find you on Google and in ChatGPT, Perplexity and Google’s AI answers. Built into the site, not handed over as a report.',
   },
 ];
 

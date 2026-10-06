@@ -23,7 +23,7 @@ const EXAMPLE = `# Casa Dev
 ## Services
 
 - [NetSuite integration audit](https://casa-dev.com/netsuite-audit/): fixed-scope review of every system connected to NetSuite.
-- [SEO & search marketing](https://casa-dev.com/seo/): technical SEO and pages built from data.
+- [SEO & AI search](https://casa-dev.com/seo/): technical SEO and pages built from data.
 
 ## Guides
 
@@ -114,7 +114,7 @@ export default function LlmsTxtGuide() {
           },
           breadcrumbNode([
             ['Home', '/'],
-            ['SEO & search marketing', '/seo/'],
+            ['SEO & AI search', '/seo/'],
             ['llms.txt', '/seo/llms-txt/'],
           ]),
           faqNode(faqs)
@@ -122,7 +122,7 @@ export default function LlmsTxtGuide() {
       />
       <article className="bg-canvas">
         <PageHero
-          back={['/seo/', 'SEO & search marketing']}
+          back={['/seo/', 'SEO & AI search']}
           eyebrow="SEO guide"
           size="md"
           title={<>What is llms.txt, and <Accent>how to add one</Accent></>}
@@ -200,7 +200,7 @@ export default function LlmsTxtGuide() {
           <LinkRows
             items={[
               { href: '/seo/technical-seo-audit/', tag: 'Service', title: 'Technical SEO audit', body: 'AI crawler access is one of nine areas the audit checks.' },
-              { href: '/seo/', tag: 'Service', title: 'SEO & search marketing' },
+              { href: '/seo/', tag: 'Service', title: 'SEO & AI search' },
             ]}
           />
         </Block>

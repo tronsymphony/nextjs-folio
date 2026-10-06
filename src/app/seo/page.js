@@ -8,9 +8,9 @@ import { ORG_ID, breadcrumbNode, faqNode, graph, url } from '../../lib/schema';
 import { PERSON } from '../../lib/site';
 
 export const metadata = {
-  title: 'SEO & Search Marketing Services, Built by an Engineer',
+  title: 'SEO & AI Search Optimization Services, Built by an Engineer',
   description:
-    'SEO and search marketing: technical SEO, pages built from your own data, content planned from Search Console and Semrush, and lead capture that turns visits into inquiries. An engineer who fixes the site and builds the pages, not just a report.',
+    'SEO and AI search optimization: technical SEO, visibility in ChatGPT, Perplexity and Google’s AI Overviews, pages built from your own data, content planned from Search Console and Semrush, and lead capture that turns visits into inquiries. An engineer who fixes the site and builds the pages, not just a report.',
   alternates: { canonical: '/seo/' },
 };
 
@@ -108,7 +108,7 @@ export default function SeoPage() {
             url: url('/seo/'),
             areaServed: 'United States',
           },
-          breadcrumbNode([['Home', '/'], ['SEO & search marketing', '/seo/']]),
+          breadcrumbNode([['Home', '/'], ['SEO & AI search', '/seo/']]),
           faqNode(faqs)
         )}
       />
@@ -132,6 +132,12 @@ export default function SeoPage() {
         <Block index="01" label="Start here">
           <LinkRows
             items={[
+              {
+                href: '/seo/ai-search-optimization/',
+                tag: 'New',
+                title: 'AI search optimization',
+                body: 'Get found and cited in ChatGPT, Claude, Perplexity and Google’s AI Overviews: crawler access, readable facts, and pages that answer what people ask.',
+              },
               {
                 href: '/seo/technical-seo-audit/',
                 tag: 'Fixed scope',

@@ -10,7 +10,6 @@ export const PERSON = {
   jobTitle: 'Oracle NetSuite & Custom Front-End Engineer',
   yearsExperience: 15,
   location: 'Los Angeles, California',
-  email: 'nityahoyos@gmail.com',
   telephone: '+1-424-384-9528',
   linkedin: 'https://www.linkedin.com/in/nityananda-h-b5a65080/',
   github: 'https://github.com/tronsymphony',
@@ -60,7 +59,7 @@ export const OFFERS = {
     creditedOnProceed: true, // audit fee credited toward the fixes
   },
   seoAudit: {
-    name: 'Technical SEO Audit',
+    name: 'Technical SEO & AI Search Audit',
     price: 395, // USD. Set low on 2026-10-05 to win first clients.
     durationDays: null, // TODO(owner): business days to deliver; null hides the figure
   },

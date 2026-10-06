@@ -103,7 +103,7 @@ export const expertise = [
       'llms.txt and crawler access for AI assistants',
       'Search Console and Semrush: site audits and keyword research',
     ],
-    proof: [['SEO & search marketing', '/seo/'], SHOWROOM, SAFE_STREETS],
+    proof: [['SEO & AI search', '/seo/'], SHOWROOM, SAFE_STREETS],
   },
   {
     area: 'Analytics & lead tracking',

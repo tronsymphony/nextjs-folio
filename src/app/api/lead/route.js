@@ -113,7 +113,7 @@ export async function POST(request) {
 
   await recordLead(lead);
 
-  const fallback = { error: `Something went wrong sending your message. Please email ${PERSON.email} directly.` };
+  const fallback = { error: `Something went wrong sending your message. Please try again in a minute, or book a review at casa-dev.com/call/.` };
   if (!process.env.RESEND_API_KEY) {
     console.error('[lead] RESEND_API_KEY is not set');
     return NextResponse.json(fallback, { status: 502 });

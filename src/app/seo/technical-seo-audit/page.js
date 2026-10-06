@@ -84,7 +84,7 @@ export default function TechnicalSeoAuditPage() {
           },
           breadcrumbNode([
             ['Home', '/'],
-            ['SEO & search marketing', '/seo/'],
+            ['SEO & AI search', '/seo/'],
             ['Technical SEO audit', '/seo/technical-seo-audit/'],
           ]),
           faqNode(faqs)
@@ -92,7 +92,7 @@ export default function TechnicalSeoAuditPage() {
       />
       <div className="bg-canvas">
         <PageHero
-          back={['/seo/', 'SEO & search marketing']}
+          back={['/seo/', 'SEO & AI search']}
           eyebrow="Fixed scope · Written report"
           title={<>A technical SEO audit that reads <Accent>the code.</Accent></>}
           lede="Crawler reports list thousands of symptoms. I find the few problems that actually cost you traffic, trace each one to the template or setting behind it, and rank the fixes by impact. Then your developer makes them, or I do."
@@ -122,7 +122,8 @@ export default function TechnicalSeoAuditPage() {
         <Block index="04" label="Related">
           <LinkRows
             items={[
-              { href: '/seo/', tag: 'Service', title: 'SEO & search marketing', body: 'Ongoing work after the audit: pages built from your data, content planned from search, monthly reviews.' },
+              { href: '/seo/', tag: 'Service', title: 'SEO & AI search', body: 'Ongoing work after the audit: pages built from your data, content planned from search, monthly reviews.' },
+              { href: '/seo/ai-search-optimization/', tag: 'Service', title: 'AI search optimization', body: 'What the AI search checks cover, and the work after them.' },
               { href: '/seo/llms-txt/', tag: 'Guide', title: 'What is llms.txt, and how to add one', body: 'One of the AI-search checks in the audit, explained.' },
               { href: '/work/safe-streets-map-crash-data-platform/', tag: 'Case study', title: 'Safe Streets Map: more than 1,500 pages built for search' },
             ]}

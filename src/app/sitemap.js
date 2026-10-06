@@ -13,6 +13,7 @@ const STATIC_ROUTES = [
   ['/ai-app-audit/', 0.8],
   ['/seo/', 0.8],
   ['/seo/technical-seo-audit/', 0.8],
+  ['/seo/ai-search-optimization/', 0.8],
   ['/seo/llms-txt/', 0.6],
   ['/edi/', 0.8],
   ['/netsuite/material-handling/', 0.8],

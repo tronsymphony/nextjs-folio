@@ -32,7 +32,6 @@ export function organizationNode() {
       'Oracle NetSuite integrations and customer portals, security and production-readiness audits for apps built with AI tools, and technical SEO.',
     founder: { '@id': PERSON_ID },
     telephone: PERSON.telephone,
-    email: PERSON.email,
     areaServed: [
       { '@type': 'City', name: 'Los Angeles', containedInPlace: { '@type': 'State', name: 'California' } },
       { '@type': 'State', name: 'California' },

@@ -21,7 +21,8 @@ export function GET() {
     '',
     `- [${audit.name}](${SITE_URL}/netsuite-audit/): fixed-scope, ${audit.durationDays}-business-day review of every system connected to NetSuite, delivered as a written findings report and prioritized remediation plan. Price: ${price(audit.price)}.`,
     `- [${appAudit.name}](${SITE_URL}/ai-app-audit/): fixed-scope, ${appAudit.durationDays}-business-day security and production-readiness review of an app built with AI coding tools (Lovable, Bolt, Cursor, Replit, v0, Claude Code). Price: ${price(appAudit.price)}.`,
-    `- [SEO & search marketing](${SITE_URL}/seo/): technical SEO, pages built from a client's own data, content marketing planned from Google Search Console and Semrush, and lead capture, implemented in the site's code. No paid ads or social media. Price: quoted on request.`,
+    `- [SEO & AI search](${SITE_URL}/seo/): technical SEO, AI search optimization, pages built from a client's own data, content marketing planned from Google Search Console and Semrush, and lead capture, implemented in the site's code. No paid ads or social media. Price: quoted on request.`,
+    `- [AI search optimization](${SITE_URL}/seo/ai-search-optimization/): getting found and cited in ChatGPT, Claude, Perplexity and Google AI Overviews: crawler access, readable HTML, structured data, pages that answer questions, and measuring visits from assistants.`,
     `- [Technical SEO audit](${SITE_URL}/seo/technical-seo-audit/): fixed-scope review of crawling, indexing, rendering, structured data, sitemaps, speed and AI crawler access, traced to the code, with a ranked fix list.`,
     `- [Implementation](${SITE_URL}/pricing/): fixed-scope NetSuite integration and front-end projects. From: ${price(implementationFrom)}.`,
     `- [Retainer](${SITE_URL}/pricing/): ongoing monthly engineering for NetSuite integrations and applications. From: ${price(retainerFrom, ' per month')}.`,
@@ -48,7 +49,7 @@ export function GET() {
     '## Contact',
     '',
     `- [Book a free 30-minute review](${SITE_URL}/call/)`,
-    `- Email: ${PERSON.email}`,
+    `- [Contact form](${SITE_URL}/contact/)`,
     `- [LinkedIn](${PERSON.linkedin})`,
     '',
   ];

@@ -48,18 +48,18 @@ export const LINES = [
   },
   {
     id: "seo",
-    title: "Technical SEO and search",
-    body: "Technical fixes and pages planned from Search Console and Semrush, built into the site by the engineer, not handed over as a report.",
+    title: "SEO and AI search",
+    body: "Technical fixes and pages planned from Search Console and Semrush, so customers find you on Google and in ChatGPT, Perplexity and Google's AI answers. Built into the site, not handed over as a report.",
     symptoms: [
       "Pages you need aren't indexed, or compete with each other.",
       "Search Console shows impressions but few clicks.",
-      "An SEO report sits unimplemented because nobody can change the code.",
+      "You don't know what ChatGPT or Google's AI says about your business.",
     ],
     start: OFFERS.seoAudit.name,
     startDetail: auditDetail(OFFERS.seoAudit, "Quoted on a call"),
     links: [
       ["/seo/", "SEO work"],
-      ["/seo/technical-seo-audit/", "The audit"],
+      ["/seo/ai-search-optimization/", "AI search"],
     ],
   },
 ];

@@ -8,7 +8,8 @@ const services = [
   { href: '/netsuite/', tag: 'Build', title: 'Oracle NetSuite integrations, portals and storefronts', body: offers.map((o) => o.title).join(' · ') },
   { href: '/netsuite-audit/', tag: 'Fixed price', title: 'NetSuite integration audit', body: 'A written review of everything connected to NetSuite, with a prioritized plan.' },
   { href: '/ai-app-audit/', tag: 'Fixed price', title: 'AI-built app audit', body: 'Security and production-readiness review of apps built with Lovable, Bolt, Cursor or Claude Code.' },
-  { href: '/seo/', tag: 'Ongoing', title: 'SEO & search marketing', body: 'Technical SEO, pages built from your data, and content planned from Search Console and Semrush.' },
+  { href: '/seo/', tag: 'Ongoing', title: 'SEO & AI search', body: 'Technical SEO, AI search optimization for ChatGPT, Perplexity and Google’s AI Overviews, and pages built from your data.' },
+  { href: '/seo/ai-search-optimization/', tag: 'New', title: 'AI search optimization', body: 'Get found and cited by AI assistants: crawler access, structured data, and pages that answer what people ask.' },
 ];
 
 // Work I still take on, mostly for existing clients or alongside the services above.

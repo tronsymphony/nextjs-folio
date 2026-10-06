@@ -84,9 +84,10 @@ export default function HomeMain({ hero = "sync-blinds" }) {
       items: publishedGuides().map((g) => ({ href: `/ai-app-audit/${g.slug}/`, title: g.h1 })),
     },
     {
-      label: "Search",
-      more: ["/seo/", "SEO & search marketing"],
+      label: "Search & AI search",
+      more: ["/seo/", "SEO & AI search"],
       items: [
+        { href: "/seo/ai-search-optimization/", title: "AI search optimization: get found in ChatGPT, Perplexity and AI Overviews" },
         { href: "/seo/technical-seo-audit/", title: "Technical SEO audit: fixed scope, done by an engineer" },
         { href: "/seo/llms-txt/", title: "What is llms.txt? How to add one to Next.js or WordPress" },
       ],
