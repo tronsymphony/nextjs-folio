@@ -1,34 +1,59 @@
-import { posts } from '../data/posts';
+import { publishedGuides } from '../data/appAuditGuides';
+import { ediDocuments, ediSlug } from '../data/ediDocuments';
+import { publishedCaseStudies } from '../data/caseStudies';
+import { publishedTopics } from '../data/netsuiteTopics';
+import { SITE_URL } from '../lib/site';
 
-export default async function sitemap() {
-    const baseUrl = 'https://casa-dev.com';
+// Every URL ends in a slash to match `trailingSlash: true`. Static routes carry
+// no lastModified: a date that always says "today" teaches Google to ignore it.
+const STATIC_ROUTES = [
+  ['/', 1],
+  ['/netsuite/', 0.9],
+  ['/netsuite-audit/', 0.9],
+  ['/ai-app-audit/', 0.8],
+  ['/seo/', 0.8],
+  ['/seo/technical-seo-audit/', 0.8],
+  ['/seo/ai-search-optimization/', 0.8],
+  ['/seo/llms-txt/', 0.6],
+  ['/edi/', 0.8],
+  ['/netsuite/material-handling/', 0.8],
+  ['/netsuite/integration-readiness-checklist/', 0.8],
+  ['/tools/netsuite-integration-estimator/', 0.8],
+  ['/work/', 0.8],
+  ['/pricing/', 0.7],
+  ['/call/', 0.7],
+  ['/services/', 0.6],
+  ['/about/', 0.6],
+  ['/about/los-angeles/', 0.4],
+  ['/about/portland/', 0.4],
+  ['/about/irvine/', 0.4],
+  ['/contact/', 0.5],
+  ['/privacy-policy/', 0.1],
+];
 
-    // Static routes
-    const routes = [
-        '',
-        '/about',
-        '/about/los-angeles',
-        '/about/portland',
-        '/about/irvine',
-        '/services',
-        '/portfolio',
-        '/blog',
-        '/pricing',
-        '/contact',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date().toISOString(),
-        changeFrequency: 'monthly',
-        priority: route === '' ? 1 : 0.8,
-    }));
+export default function sitemap() {
+  const staticEntries = STATIC_ROUTES.map(([path, priority]) => ({ url: `${SITE_URL}${path}`, priority }));
 
-    // Dynamic blog routes
-    const blogRoutes = posts.map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date).toISOString(),
-        changeFrequency: 'weekly',
-        priority: 0.6,
-    }));
+  const caseStudies = publishedCaseStudies().map((cs) => ({
+    url: `${SITE_URL}/work/${cs.slug}/`,
+    lastModified: cs.updatedAt,
+    priority: 0.8,
+  }));
 
-    return [...routes, ...blogRoutes];
+  const topics = publishedTopics().map((t) => ({
+    url: `${SITE_URL}/netsuite/${t.slug}/`,
+    lastModified: t.updatedAt,
+    priority: 0.7,
+  }));
+
+  const guides = publishedGuides().map((g) => ({
+    url: `${SITE_URL}/ai-app-audit/${g.slug}/`,
+    lastModified: g.updatedAt,
+    priority: 0.7,
+  }));
+
+  const edi = ediDocuments.map((d) => ({ url: `${SITE_URL}/edi/${ediSlug(d.code)}/`, priority: 0.6 }));
+
+  // The blog posts are noindexed (see posts.js), so they stay out of the sitemap.
+  return [...staticEntries, ...caseStudies, ...topics, ...guides, ...edi];
 }

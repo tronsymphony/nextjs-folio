@@ -69,24 +69,24 @@ export default function IndustrialLogisticsService() {
   ];
 
   return (
-    <div className="bg-[#0a0a0a] text-white min-h-screen">
+    <div className="bg-canvas text-ink min-h-screen">
       {/* ------------------- 1. HERO SECTION ------------------- */}
-      <section className="relative pt-36 pb-24 px-4 sm:px-6 overflow-hidden border-b border-neutral-900">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-blue-600/10 blur-[130px] -z-10 rounded-full pointer-events-none" />
+      <section className="relative pt-36 pb-24 px-4 sm:px-6 overflow-hidden border-b border-line">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-accent/[0.04] blur-[130px] -z-10 rounded-full pointer-events-none" />
 
         <div className="container mx-auto max-w-5xl text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold uppercase tracking-wider mb-8">
             <Truck className="w-4 h-4" /> Material Handling, Logistics & Industrial Distribution
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-medium tracking-[-0.04em] mb-8">
             High-Performance Web Platforms for{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400">
+            <span className="font-serif italic font-normal">
               Warehousing & Logistics Leaders
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-neutral-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+          <p className="text-lg sm:text-xl text-ink/80 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
             We build custom ERP-integrated portals, equipment rental engines, and automated lead
             generation systems that turn market intelligence (like CoStar industrial data) into closed
             deals.
@@ -95,22 +95,22 @@ export default function IndustrialLogisticsService() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#contact-section"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-accent to-accent hover:from-accent hover:to-accent text-ink font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-accent/20 flex items-center justify-center gap-2"
             >
               Schedule an Industrial Tech Consult <ArrowRight className="w-4 h-4" />
             </a>
             <Link
-              href="/pricing"
-              className="w-full sm:w-auto px-8 py-4 bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 font-semibold rounded-xl transition-all duration-200"
+              href="/tools/netsuite-integration-estimator/"
+              className="w-full sm:w-auto px-8 py-4 bg-canvas-2 hover:bg-canvas-3 border border-line text-ink/80 font-semibold rounded-xl transition-all duration-200"
             >
-              Calculate Project Scope
+              Estimate Integration Scope
             </Link>
           </div>
         </div>
       </section>
 
       {/* ------------------- 2. PAIN POINTS VS SOLUTIONS ------------------- */}
-      <section className="py-24 px-4 sm:px-6 bg-[#0f0f10] border-b border-neutral-900">
+      <section className="py-24 px-4 sm:px-6 bg-canvas-2 border-b border-line">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-xs font-bold text-red-400 uppercase tracking-widest mb-3">
@@ -125,13 +125,13 @@ export default function IndustrialLogisticsService() {
             {painPoints.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-[#141416] border border-red-500/10 rounded-2xl p-8 hover:border-red-500/30 transition-all duration-300"
+                className="bg-canvas-2 border border-red-500/10 rounded-2xl p-8 hover:border-red-500/30 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-6">
                   <ShieldAlert className="w-6 h-6 text-red-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-bold text-ink mb-3">{item.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -142,7 +142,7 @@ export default function IndustrialLogisticsService() {
       <section className="py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-3">
+            <h2 className="text-xs font-bold text-accent uppercase tracking-widest mb-3">
               Tailored Architecture
             </h2>
             <p className="text-3xl sm:text-4xl font-bold tracking-tight">
@@ -156,14 +156,14 @@ export default function IndustrialLogisticsService() {
               return (
                 <div
                   key={idx}
-                  className="bg-[#121316] border border-neutral-800 hover:border-blue-500/40 rounded-2xl p-8 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-canvas-2 border border-line hover:border-accent/40 rounded-2xl p-8 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/10 group-hover:bg-blue-500/20 flex items-center justify-center mb-6 transition-colors">
-                      <Icon className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 group-hover:bg-accent/20 flex items-center justify-center mb-6 transition-colors">
+                      <Icon className="w-6 h-6 text-accent" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">{item.title}</h3>
-                    <p className="text-neutral-400 leading-relaxed text-sm">{item.desc}</p>
+                    <h3 className="text-2xl font-bold text-ink mb-3">{item.title}</h3>
+                    <p className="text-muted leading-relaxed text-sm">{item.desc}</p>
                   </div>
                 </div>
               );
@@ -171,13 +171,13 @@ export default function IndustrialLogisticsService() {
           </div>
 
           {/* Checklist */}
-          <div className="bg-gradient-to-br from-[#121316] to-[#181a1f] border border-neutral-800 rounded-3xl p-8 sm:p-12">
-            <h3 className="text-2xl font-bold text-white mb-8">What You Get With Every Deployment:</h3>
+          <div className="bg-gradient-to-br from-canvas-2 to-canvas-3 border border-line rounded-3xl p-8 sm:p-12">
+            <h3 className="text-2xl font-bold text-ink mb-8">What You Get With Every Deployment:</h3>
             <div className="grid sm:grid-cols-2 gap-4">
               {features.map((feat, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span className="text-neutral-300 text-sm font-medium">{feat}</span>
+                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-ink/80 text-sm font-medium">{feat}</span>
                 </div>
               ))}
             </div>
@@ -186,33 +186,33 @@ export default function IndustrialLogisticsService() {
       </section>
 
       {/* ------------------- 4. COSTAR LEAD ACCELERATOR EXPLAINER ------------------- */}
-      <section className="py-24 px-4 sm:px-6 bg-[#0c0d10] border-y border-neutral-900">
+      <section className="py-24 px-4 sm:px-6 bg-canvas-3 border-y border-line">
         <div className="container mx-auto max-w-5xl">
-          <div className="bg-gradient-to-r from-blue-900/20 via-neutral-900 to-emerald-900/20 border border-blue-500/30 rounded-3xl p-8 sm:p-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold mb-6">
+          <div className="bg-gradient-to-r from-accent/20 via-canvas-2 to-accent/20 border border-accent/30 rounded-3xl p-8 sm:p-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-semibold mb-6">
               <Zap className="w-3.5 h-3.5" /> CoStar Intelligence Automation
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-6">
               Turn Commercial Real Estate Leases into Forklift & Racking Deals
             </h2>
-            <p className="text-neutral-300 text-base leading-relaxed mb-6">
+            <p className="text-ink/80 text-base leading-relaxed mb-6">
               When a company leases a new 100,000 sq ft distribution facility, they need equipment
               within 30 to 60 days. We engineer custom middleware that pulls new commercial lease
               filings, matches decision-maker profiles, and triggers personalized outreach before your
               competitors even know the space is occupied.
             </p>
-            <div className="grid sm:grid-cols-3 gap-6 pt-4 border-t border-neutral-800">
+            <div className="grid sm:grid-cols-3 gap-6 pt-4 border-t border-line">
               <div>
-                <p className="text-3xl font-extrabold text-blue-400">10x</p>
-                <p className="text-xs text-neutral-400 mt-1">Faster lead response to facility expansions</p>
+                <p className="text-3xl font-medium text-accent">10x</p>
+                <p className="text-xs text-muted mt-1">Faster lead response to facility expansions</p>
               </div>
               <div>
-                <p className="text-3xl font-extrabold text-emerald-400">0 hrs</p>
-                <p className="text-xs text-neutral-400 mt-1">Manual data entry into your ERP / CRM</p>
+                <p className="text-3xl font-medium text-accent">0 hrs</p>
+                <p className="text-xs text-muted mt-1">Manual data entry into your ERP / CRM</p>
               </div>
               <div>
-                <p className="text-3xl font-extrabold text-cyan-400">100%</p>
-                <p className="text-xs text-neutral-400 mt-1">Custom code ownership with zero lock-in</p>
+                <p className="text-3xl font-medium text-accent">100%</p>
+                <p className="text-xs text-muted mt-1">Custom code ownership with zero lock-in</p>
               </div>
             </div>
           </div>
@@ -226,13 +226,13 @@ export default function IndustrialLogisticsService() {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
               Let&apos;s Build Your Industrial Platform
             </h2>
-            <p className="text-neutral-400 max-w-xl mx-auto text-sm sm:text-base">
+            <p className="text-muted max-w-xl mx-auto text-sm sm:text-base">
               Speak directly with a senior engineer specialized in NetSuite integrations and logistics
               platforms. No agency layers or account managers.
             </p>
           </div>
 
-          <div className="bg-[#121316] border border-neutral-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
+          <div className="bg-canvas-2 border border-line rounded-3xl p-6 sm:p-10 shadow-2xl">
             <ContactForm />
           </div>
         </div>

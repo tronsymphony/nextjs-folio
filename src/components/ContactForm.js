@@ -1,21 +1,28 @@
 'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Honeypot from './Honeypot';
+import { submitLead } from '../lib/submitLead';
 
-export default function ContactForm({ onSubmitSuccess }) {
-  const router = useRouter();
+const EMPTY_FORM = {
+  name: '',
+  email: '',
+  company: '',
+  projectType: 'free-review',
+  message: '',
+  budget: '',
+  timeframe: ''
+};
+
+export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    projectType: 'website',
-    message: '',
-    budget: '',
-    timeframe: ''
-  });
+  const [renderedAt, setRenderedAt] = useState(0);
+  const [honeypot, setHoneypot] = useState('');
+  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState(EMPTY_FORM);
+
+  useEffect(() => setRenderedAt(Date.now()), []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,34 +38,20 @@ export default function ContactForm({ onSubmitSuccess }) {
     setError(null);
     
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const { name, email, company, message, projectType, budget, timeframe } = formData;
+      await submitLead({
+        source,
+        renderedAt,
+        honeypot,
+        name,
+        email,
+        company,
+        message,
+        payload: { 'Project type': projectType, Budget: budget, Timeframe: timeframe },
       });
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          projectType: 'website',
-          message: '',
-          budget: '',
-          timeframe: ''
-        });
-        
-        // Trigger success callback if provided
-        if (onSubmitSuccess) {
-          onSubmitSuccess();
-        }
-      } else {
-        throw new Error(data.error || 'Failed to send message');
-      }
+      setFormData(EMPTY_FORM);
+      if (onSubmitSuccess) onSubmitSuccess();
+      else setSent(true);
     } catch (err) {
       console.error('Error sending form:', err);
       setError(err.message || 'Something went wrong. Please try again.');
@@ -67,8 +60,18 @@ export default function ContactForm({ onSubmitSuccess }) {
     }
   };
 
+  if (sent) {
+    return (
+      <div className="bg-canvas-2 rounded-lg border border-line p-8 text-center" role="status">
+        <h3 className="text-2xl font-bold text-ink mb-2">Message received.</h3>
+        <p className="text-muted">I&rsquo;ll reply personally within one business day. A confirmation is on its way to your inbox.</p>
+      </div>
+    );
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-900 rounded-lg border border-gray-700 p-6 shadow-lg">
+    <form onSubmit={handleSubmit} className="relative bg-canvas-2 rounded-lg border border-line p-6 shadow-lg">
+      <Honeypot value={honeypot} onChange={setHoneypot} />
       {error && (
         <div className="mb-6 p-4 bg-red-900 bg-opacity-30 border border-red-700 rounded-lg text-red-200">
           <p className="flex items-center">
@@ -84,7 +87,7 @@ export default function ContactForm({ onSubmitSuccess }) {
         {/* Contact Info */}
         <div className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="name" className="block text-sm font-medium text-ink/80 mb-1">
               Name
             </label>
             <input
@@ -94,13 +97,13 @@ export default function ContactForm({ onSubmitSuccess }) {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               placeholder="Your name"
             />
           </div>
           
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="email" className="block text-sm font-medium text-ink/80 mb-1">
               Email
             </label>
             <input
@@ -110,13 +113,28 @@ export default function ContactForm({ onSubmitSuccess }) {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="company" className="block text-sm font-medium text-ink/80 mb-1">
+              Company
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
+              placeholder="Company name"
             />
           </div>
           
           <div>
-            <label htmlFor="projectType" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="projectType" className="block text-sm font-medium text-ink/80 mb-1">
               Project Type
             </label>
             <select
@@ -124,20 +142,22 @@ export default function ContactForm({ onSubmitSuccess }) {
               name="projectType"
               value={formData.projectType}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
             >
-              <option value="website">Website Development</option>
-              <option value="webapp">Web Application</option>
-              <option value="mobile">Mobile App</option>
-              <option value="ecommerce">E-commerce Site</option>
-              <option value="consultation">Technical Consultation</option>
-              <option value="other">Other</option>
+              <option value="free-review">Free 30-minute review</option>
+              <option value="netsuite-integration">NetSuite integration or portal</option>
+              <option value="audit">NetSuite integration audit</option>
+              <option value="ai-integration">AI integration</option>
+              <option value="app-audit">Audit of an app built with AI</option>
+              <option value="seo">SEO or technical SEO</option>
+              <option value="web-app">Custom web application or WordPress</option>
+              <option value="other">Something else</option>
             </select>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-1">
+              <label htmlFor="budget" className="block text-sm font-medium text-ink/80 mb-1">
                 Budget
               </label>
               <select
@@ -145,19 +165,20 @@ export default function ContactForm({ onSubmitSuccess }) {
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               >
                 <option value="">Select range</option>
-                <option value="< $5k">Under $5,000</option>
-                <option value="$5k - $10k">$5,000 - $10,000</option>
-                <option value="$10k - $25k">$10,000 - $25,000</option>
-                <option value="$25k+">$25,000+</option>
+                <option value="Under $1k">Under $1,000</option>
+                <option value="$1k - $5k">$1,000 - $5,000</option>
+                <option value="$5k - $15k">$5,000 - $15,000</option>
+                <option value="$15k+">$15,000+</option>
+                <option value="Monthly retainer">Ongoing monthly retainer</option>
                 <option value="Not sure">Not sure yet</option>
               </select>
             </div>
             
             <div>
-              <label htmlFor="timeframe" className="block text-sm font-medium text-gray-300 mb-1">
+              <label htmlFor="timeframe" className="block text-sm font-medium text-ink/80 mb-1">
                 Timeframe
               </label>
               <select
@@ -165,7 +186,7 @@ export default function ContactForm({ onSubmitSuccess }) {
                 name="timeframe"
                 value={formData.timeframe}
                 onChange={handleChange}
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               >
                 <option value="">Select timeframe</option>
                 <option value="ASAP">ASAP</option>
@@ -180,7 +201,7 @@ export default function ContactForm({ onSubmitSuccess }) {
         
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="message" className="block text-sm font-medium text-ink/80 mb-1">
             Project Details
           </label>
           <textarea
@@ -190,10 +211,10 @@ export default function ContactForm({ onSubmitSuccess }) {
             value={formData.message}
             onChange={handleChange}
             rows="8"
-            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white resize-none"
-            placeholder="Tell me about your project, goals, and specific requirements..."
+            className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink resize-none"
+            placeholder="Which systems are involved (NetSuite, Shopify, a 3PL...), what's broken or missing, and what a good outcome looks like."
           ></textarea>
-          <p className="mt-2 text-xs text-gray-400">
+          <p className="mt-2 text-xs text-muted">
             Please include any relevant details that would help me understand your project better.
           </p>
         </div>
@@ -203,15 +224,15 @@ export default function ContactForm({ onSubmitSuccess }) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-3 px-6 rounded-lg text-white font-medium transition-all duration-300 ${
+          className={`w-full py-3 px-6 rounded-lg text-ink font-medium transition-all duration-300 ${
             isSubmitting 
-              ? 'bg-gray-600 cursor-not-allowed' 
-              : 'bg-blue-600 hover:bg-blue-700'
+              ? 'bg-faint cursor-not-allowed' 
+              : 'bg-accent hover:bg-accent'
           }`}
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-ink" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -221,7 +242,7 @@ export default function ContactForm({ onSubmitSuccess }) {
             'Send Message'
           )}
         </button>
-        <p className="mt-4 text-center text-xs text-gray-400">
+        <p className="mt-4 text-center text-xs text-muted">
           By submitting this form, you agree to be contacted regarding your request.
         </p>
       </div>

@@ -1,222 +1,58 @@
-import Link from "next/link";
-import {
-  Accessibility, Zap, Palette, Code,
-  Database, RefreshCw, Wrench, Search,
-  ArrowRight, Check
-} from "lucide-react";
+import Expertise from './Expertise';
+import { Accent, PrimaryCta, SecondaryCta } from './ui/Cta';
+import { Block, DataTable, LinkRows, PageHero } from './ui/Page';
+import { offers } from '../data/netsuiteOffers';
+
+// The services people hire me for, with links to each page that sells them.
+const services = [
+  { href: '/netsuite/', tag: 'Build', title: 'Oracle NetSuite integrations, portals and storefronts', body: offers.map((o) => o.title).join(' · ') },
+  { href: '/netsuite-audit/', tag: 'Fixed price', title: 'NetSuite integration audit', body: 'A written review of everything connected to NetSuite, with a prioritized plan.' },
+  { href: '/ai-app-audit/', tag: 'Fixed price', title: 'AI-built app audit', body: 'Security and production-readiness review of apps built with Lovable, Bolt, Cursor or Claude Code.' },
+  { href: '/seo/', tag: 'Ongoing', title: 'SEO & AI search', body: 'Technical SEO, AI search optimization for ChatGPT, Perplexity and Google’s AI Overviews, and pages built from your data.' },
+  { href: '/seo/ai-search-optimization/', tag: 'New', title: 'AI search optimization', body: 'Get found and cited by AI assistants: crawler access, structured data, and pages that answer what people ask.' },
+];
+
+// Work I still take on, mostly for existing clients or alongside the services above.
+const alsoAvailable = [
+  ['AI integration', 'AI added to the tools you already run: documents and emails read into NetSuite records, search over your own data, drafts for staff to check, and image processing.'],
+  ['Product development', 'Taking a new product from idea to launch: scoping, prototype, build, analytics, and the admin tools to run it.'],
+  ['Custom web applications', 'React, Next.js and Angular applications, including migrations off legacy front ends.'],
+  ['Shopify & headless commerce', 'Shopify and Shopify Plus stores, or Shopify behind a custom, fast front end.'],
+  ['WordPress', 'Custom themes and server-rendered Gutenberg blocks, interactive tools like cost calculators, and staged deploys (WP Engine, Bitbucket Pipelines).'],
+  ['Accessibility (ADA / WCAG)', 'Audits and fixes to WCAG 2.2 AA, the standard ADA website claims are usually measured against.'],
+  ['Maps & data products', 'Interactive maps, custom tilesets and pipelines that turn public or internal data into something people can use.'],
+  ['Offline-first field apps', 'Apps for technicians and sales reps that keep working with no signal and sync work orders, visits and photos to NetSuite when they can.'],
+  ['Site search', 'Search over a catalog or inventory with relevance ranking, synonyms, typo tolerance and spec matching, like "5000 lb" finding every unit rated at least that much.'],
+  ['Performance', 'Core Web Vitals, bundle size, caching and image pipelines.'],
+  ['Analytics & lead tracking', 'PostHog, GA4, Tag Manager and Clarity set up to answer real questions, with bot and junk traffic filtered out and lead forms tracked without sending personal data.'],
+  ['Hosting & cloud costs', 'AWS (Amplify, S3, Route 53) and WP Engine setups, and reviews of what hosting costs and where it can come down.'],
+  ['Maintenance', 'Dependency upgrades, security patches and monitoring for sites I built or inherit.'],
+];
 
 export default function Services() {
-
-  // Data for Services Grid
-  const servicesList = [
-    {
-      title: "WCAG Compliance",
-      description: "From creative designs to ADA audits, I specialize in accessible, user-friendly experiences meeting ADA standards.",
-      icon: Accessibility,
-      color: "text-blue-400",
-      bg: "bg-blue-500/10"
-    },
-    {
-      title: "Speed Optimization",
-      description: "Optimize for speed and performance. Faster load times mean better SEO rankings and enhanced user experience.",
-      icon: Zap,
-      color: "text-yellow-400",
-      bg: "bg-yellow-500/10"
-    },
-    {
-      title: "Website Design",
-      description: "Combining creativity and technical expertise to craft visually appealing, user-focused websites that engage and convert.",
-      icon: Palette,
-      color: "text-purple-400",
-      bg: "bg-purple-500/10"
-    },
-    {
-      title: "Website Development",
-      description: "Responsive, scalable, and secure platforms. From static pages to complex web apps, I deliver robust code.",
-      icon: Code,
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10"
-    },
-    {
-      title: "Enterprise CMS",
-      description: "Streamline content management with advanced solutions. Perfect for large organizations needing efficiency.",
-      icon: Database,
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10"
-    },
-    {
-      title: "Website Redesign",
-      description: "Revamp your site with a modern design. Improve navigation, aesthetics, and functionality to stay competitive.",
-      icon: RefreshCw,
-      color: "text-orange-400",
-      bg: "bg-orange-500/10"
-    },
-    {
-      title: "Maintenance",
-      description: "Ensure your site is secure, updated, and performing at its best. Reliable maintenance for peace of mind.",
-      icon: Wrench,
-      color: "text-red-400",
-      bg: "bg-red-500/10"
-    },
-    {
-      title: "AI Integration",
-      description: "Harness artificial intelligence to automate business processes, personalize user experiences, and drive smarter decision-making.",
-      icon: Zap, // Or a better icon if I have one
-      color: "text-blue-500",
-      bg: "bg-blue-500/10"
-    },
-    {
-      title: "SEO Strategy",
-      description: "Boost visibility with expert SEO. I optimize content, structure, and off-page elements to drive organic traffic.",
-      icon: Search,
-      color: "text-pink-400",
-      bg: "bg-pink-500/10"
-    },
-  ];
-
-  // Data for "Why Me" Section
-  const whyMeList = [
-    { title: "Longevity", desc: "Serving the community for nearly a decade with exceptional web development." },
-    { title: "Dev & Design Focus", desc: "Expert development meets creative design to make your brand stand out." },
-    { title: "Breathtaking Design", desc: "Flexible, responsive, and industry-standard compliant designs." },
-    { title: "On-Brand Experiences", desc: "Design elements that reflect your identity while driving results." },
-    { title: "One-of-a-Kind Solutions", desc: "Custom, comprehensive solutions tailored to your specific needs." },
-    { title: "Partnership", desc: "Prioritizing clear communication and ongoing support for continued success." },
-  ];
-
   return (
-    <>
-      {/* ------------------- 1. HERO HEADER ------------------- */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 bg-[#0a0a0a] overflow-hidden" data-scroll-section>
-        {/* Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
+    <div className="bg-canvas">
+      <PageHero
+        back={['/', 'Home']}
+        eyebrow="Capabilities"
+        title={<>What I work on, and <Accent>what I&rsquo;ve built.</Accent></>}
+        lede="Three lines of work: Oracle NetSuite integrations, audits for apps built with AI tools, and technical SEO. Behind them sit fifteen years of engineering, work I've owned end to end for a NetSuite business, and a product I build and run myself."
+      >
+        <PrimaryCta href="/call/">Book a free 30-min review</PrimaryCta>
+        <SecondaryCta href="/work/">See the work</SecondaryCta>
+      </PageHero>
 
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase">
-            Services
-          </h1>
-          <p className="text-xl md:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-8">
-            Crafting Next-Level Digital Experiences
-          </p>
-          <p className="text-lg text-neutral-400 leading-relaxed max-w-2xl mx-auto">
-            Collaboration is at the heart of everything I do. From innovative apps to visually stunning websites,
-            I offer a diverse range of services to ensure your project&apos;s success.
-          </p>
-        </div>
-      </section>
+      <Block index="01" label="Services">
+        <LinkRows items={services} />
+      </Block>
 
-      {/* ------------------- 2. SERVICES GRID ------------------- */}
-      <section className="py-20 bg-[#0a0a0a] px-4 sm:px-6 relative" data-scroll-section>
-        {/* Background Texture */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+      <Block index="02" label="Skills" title="From the products I've built" wide>
+        <Expertise />
+      </Block>
 
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="mb-16 text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Boost Traffic, <span className="text-blue-500">Drive Revenue.</span>
-            </h2>
-            <p className="text-neutral-500 text-lg uppercase tracking-widest font-bold">Let&apos;s Go Digital</p>
-          </div>
-
-          {/* Featured Industrial / Logistics Banner */}
-          <div className="mb-12 p-8 rounded-3xl bg-gradient-to-r from-blue-950/40 via-neutral-900 to-emerald-950/40 border border-blue-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
-                Enterprise & Industrial
-              </span>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                Material Handling & Logistics Platforms
-              </h3>
-              <p className="text-neutral-300 text-sm leading-relaxed">
-                NetSuite ERP integrations, automated CoStar commercial lease pipeline ingestion, and custom B2B equipment rental engines.
-              </p>
-            </div>
-            <Link
-              href="/services/industrial-logistics"
-              className="whitespace-nowrap px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl text-sm transition-all flex items-center gap-2"
-            >
-              Explore Logistics Solutions <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {servicesList.map((service, index) => (
-              <div
-                key={index}
-                className="group relative p-6 rounded-2xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/80 hover:border-neutral-700 transition-all duration-300 hover:-translate-y-1"
-              >
-                {/* Icon */}
-                <div className={`w-12 h-12 ${service.bg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <service.icon className={`w-6 h-6 ${service.color}`} />
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">{service.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link
-              href="/contact/"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-3 bg-white !text-black font-bold rounded-full transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-            >
-              Talk to Me
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/contact/"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-3 border border-neutral-700 !text-white font-medium rounded-full hover:bg-neutral-800 transition-all"
-            >
-              More Services
-              <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------- 3. WHY ME (List Style) ------------------- */}
-      <section className="py-24 bg-[#0a0a0a] px-4 sm:px-6 border-t border-neutral-900" data-scroll-section>
-        <div className="container mx-auto max-w-5xl">
-          <h4 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center max-w-3xl mx-auto">
-            What Makes Me the <span className="text-emerald-400">Best Developer</span> for Your Next Project?
-          </h4>
-
-          <div className="flex flex-col border-t border-neutral-800">
-            {whyMeList.map((skill, index) => (
-              <div
-                key={index}
-                className="group flex flex-col md:flex-row items-start md:items-center py-8 border-b border-neutral-800 hover:border-neutral-600 transition-colors duration-300"
-              >
-                {/* Number */}
-                <span className="hidden md:block w-16 text-neutral-600 font-mono text-sm group-hover:text-emerald-400 transition-colors">
-                  0{index + 1}
-                </span>
-
-                {/* Title */}
-                <div className="md:w-1/3 mb-4 md:mb-0">
-                  <h3 className="text-xl font-bold text-neutral-200 group-hover:text-white transition-colors">
-                    {skill.title}
-                  </h3>
-                </div>
-
-                {/* Description */}
-                <div className="md:w-1/2 md:pl-8">
-                  <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
-                    {skill.desc}
-                  </p>
-                </div>
-
-                {/* Arrow Icon (Desktop Only) */}
-                <div className="hidden md:flex flex-1 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Check className="text-emerald-500" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+      <Block index="03" label="Also available" title="Usually for existing clients, or alongside the services above">
+        <DataTable columns={['Work', 'What it covers']} rows={alsoAvailable} />
+      </Block>
+    </div>
   );
 }
