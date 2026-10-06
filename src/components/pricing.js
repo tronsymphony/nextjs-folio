@@ -53,12 +53,12 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <div className="bg-[#0a0a0a] text-white min-h-screen">
+    <div className="bg-canvas text-ink min-h-screen">
       <section className="pt-36 pb-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <Eyebrow>How engagements work</Eyebrow>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6 mb-6">Start small. Stay if it works.</h1>
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">Start small. Stay if it works.</h1>
+          <p className="text-lg text-muted max-w-2xl mx-auto">
             Every engagement starts with a fixed-price audit, so you see how I work and what your systems need
             before committing to a build. Most clients go on to a project, then a retainer.
           </p>
@@ -71,27 +71,27 @@ export default function Pricing() {
             <div
               key={tier.name}
               className={`flex flex-col p-8 rounded-2xl border ${
-                tier.featured ? 'border-blue-500/50 bg-blue-500/5' : 'border-neutral-800 bg-neutral-900/40'
+                tier.featured ? 'border-accent/50 bg-accent/5' : 'border-line bg-canvas-2'
               }`}
             >
-              <p className="font-mono text-xs text-blue-400 mb-3">STEP {tier.step}</p>
+              <p className="font-mono text-xs text-accent mb-3">STEP {tier.step}</p>
               <h2 className="text-2xl font-bold mb-4">{tier.name}</h2>
               <p className="mb-1">
-                <span className="text-3xl font-extrabold">{tier.price}</span>
+                <span className="text-3xl font-medium">{tier.price}</span>
               </p>
-              <p className="text-sm text-neutral-500 mb-6">{tier.cadence}</p>
-              <p className="text-neutral-300 mb-6 leading-relaxed">{tier.summary}</p>
-              <ul className="space-y-3 mb-8 text-sm text-neutral-300">
+              <p className="text-sm text-muted mb-6">{tier.cadence}</p>
+              <p className="text-ink/80 mb-6 leading-relaxed">{tier.summary}</p>
+              <ul className="space-y-3 mb-8 text-sm text-ink/80">
                 {tier.includes.map((item) => (
                   <li key={item} className="flex gap-2">
-                    <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" /> {item}
+                    <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" /> {item}
                   </li>
                 ))}
               </ul>
               <Link
                 href={tier.cta.href}
                 className={`mt-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold transition-colors ${
-                  tier.featured ? 'bg-white !text-black hover:bg-neutral-200' : 'border border-neutral-700 hover:bg-white/5'
+                  tier.featured ? 'bg-ink !text-canvas hover:bg-accent' : 'border border-line hover:bg-ink/5'
                 }`}
               >
                 {tier.cta.label} <ArrowRight className="w-4 h-4" />
@@ -99,9 +99,9 @@ export default function Pricing() {
             </div>
           ))}
         </div>
-        <p className="text-center text-sm text-neutral-500 mt-10">
+        <p className="text-center text-sm text-muted mt-10">
           Not sure which applies?{' '}
-          <Link href="/call/" className="text-blue-400 underline">
+          <Link href="/call/" className="text-accent underline">
             Book a free 20-minute fit call
           </Link>
           .

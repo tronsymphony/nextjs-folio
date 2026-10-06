@@ -3,14 +3,41 @@
 
 @source "..";
 
+/* Design tokens. A light, warm paper page (canvas) with near-black text (ink)
+   and one accent. Fonts come from next/font in layout.js. */
+@theme inline {
+  --color-canvas: #f4f2ee;
+  --color-canvas-2: #ebe8e2;
+  --color-canvas-3: #e1ddd5;
+  --color-ink: #141413;
+  --color-muted: #5f5c56;
+  --color-faint: #8c887f;
+  --color-line: rgb(20 20 19 / 0.12);
+  --color-accent: #e8501a;
+
+  --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-accent), ui-serif, Georgia, serif;
+  --font-mono: var(--font-label), ui-monospace, monospace;
+}
+
 /* Base styles */
 html,
 body {
-  background-color: #1b1c1e;
-  color: #ededed;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
   margin: 0;
   padding: 0;
   min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
 }
 
 * {
@@ -22,6 +49,11 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background: var(--color-accent);
+  color: var(--color-canvas);
+}
+
 /* Entrance animations used by the homepage hero. */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(40px); }
@@ -31,6 +63,75 @@ a {
   from { opacity: 0; transform: translateX(40px); }
   to { opacity: 1; transform: translateX(0); }
 }
+/* Animates `translate` (not `transform`) and owns the start position via
+   fill-mode both, so no utility class has to hide the word first. */
+@keyframes wordUp {
+  from { translate: 0 110%; }
+  to { translate: 0 0; }
+}
+@keyframes travel {
+  from { top: 0; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  to { top: 100%; opacity: 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Scroll reveal: RevealObserver adds .reveal-ready to <html> once it runs, so
+   without JavaScript everything is simply visible. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-ready [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Logo: the cursor blinks once when the logo is hovered. */
+@keyframes doorBlink {
+  0%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+  50% { opacity: 1; }
+}
+a:hover .logo-cursor {
+  animation: doorBlink 0.9s steps(1, end) 1;
+}
+
+/* Film grain over a section: add .grain to a positioned element. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Underline that draws in on hover, for text links. */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.link-draw:hover {
+  background-size: 100% 1px;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   [class*="animate-[fade"] { animation: none !important; opacity: 1 !important; }
+  [class*="animate-[marquee"] { animation: none !important; }
+  [class*="animate-[travel"] { animation: none !important; display: none; }
+  .logo-cursor { animation: none !important; }
+  [class*="animate-[wordUp"] { animation: none !important; translate: none !important; }
+  .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
 }

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ClipboardCheck } from 'lucide-react';
 import Honeypot from './Honeypot';
 import { submitLead } from '../lib/submitLead';
 
@@ -32,15 +31,15 @@ export default function LeadMagnetCTA({ className = '' }) {
   };
 
   return (
-    <aside className={`relative p-8 rounded-2xl border border-blue-500/30 bg-blue-500/5 ${className}`}>
-      <div className="flex items-start gap-4 mb-6">
-        <ClipboardCheck className="w-8 h-8 text-blue-400 shrink-0" />
+    <aside className={`relative p-8 rounded-3xl border border-line bg-canvas-2 ${className}`}>
+      <div className="mb-6">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-4">Free checklist</p>
         <div>
-          <h2 className="text-2xl font-bold text-white mb-2">The NetSuite Integration Readiness Checklist</h2>
-          <p className="text-neutral-400">
+          <h2 className="text-2xl md:text-3xl font-medium tracking-[-0.03em] leading-[1.1] text-ink mb-3">The NetSuite Integration Readiness Checklist</h2>
+          <p className="text-muted leading-relaxed">
             The checks worth running before you connect anything to NetSuite: data ownership, sync design, failure
             handling, and security.{' '}
-            <Link href="/netsuite/integration-readiness-checklist/" className="text-blue-400 underline">
+            <Link href="/netsuite/integration-readiness-checklist/" className="text-ink underline decoration-accent underline-offset-4">
               Read it now
             </Link>
             , or get a copy by email.
@@ -48,11 +47,11 @@ export default function LeadMagnetCTA({ className = '' }) {
         </div>
       </div>
       {state === 'sent' ? (
-        <p className="text-emerald-400 font-medium" role="status">
+        <p className="text-accent font-medium" role="status">
           Sent. Check your inbox for the checklist.
         </p>
       ) : (
-        <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-3">
+        <form onSubmit={onSubmit} className="flex flex-col xl:flex-row gap-3">
           <Honeypot value={honeypot} onChange={setHoneypot} />
           <label className="sr-only" htmlFor="magnet-name">First name</label>
           <input
@@ -61,7 +60,7 @@ export default function LeadMagnetCTA({ className = '' }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="First name"
-            className="sm:w-40 px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white"
+            className="sm:w-36 px-5 py-3 bg-transparent border border-line rounded-full text-ink placeholder:text-faint focus:border-ink outline-none transition-colors"
           />
           <label className="sr-only" htmlFor="magnet-email">Work email</label>
           <input
@@ -71,12 +70,12 @@ export default function LeadMagnetCTA({ className = '' }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Work email"
-            className="flex-1 px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg text-white"
+            className="flex-1 min-w-0 px-5 py-3 bg-transparent border border-line rounded-full text-ink placeholder:text-faint focus:border-ink outline-none transition-colors"
           />
           <button
             type="submit"
             disabled={state === 'sending'}
-            className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-neutral-200 disabled:opacity-60 transition-colors"
+            className="px-6 py-3 bg-ink text-canvas font-medium rounded-full hover:bg-accent disabled:opacity-60 transition-colors"
           >
             {state === 'sending' ? 'Sending…' : 'Email me a copy'}
           </button>

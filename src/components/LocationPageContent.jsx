@@ -12,22 +12,22 @@ export default function LocationPageContent({ city, region, introText, specificC
       title: "Strategic Web Development",
       description: `Custom, high-performance platforms built for ${city} businesses that need more than just a template.`,
       icon: Code,
-      color: "text-blue-400",
-      bg: "bg-blue-500/10"
+      color: "text-accent",
+      bg: "bg-accent/10"
     },
     {
       title: "Technical SEO & Growth",
       description: "Advanced optimization to ensure your business dominates local search results and captures high-intent leads.",
       icon: Search,
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10"
+      color: "text-accent",
+      bg: "bg-accent/10"
     },
     {
       title: "AI Integration",
       description: "Leverage artificial intelligence to automate local workflows and personalize the customer experience.",
       icon: Zap,
-      color: "text-purple-400",
-      bg: "bg-purple-500/10"
+      color: "text-accent",
+      bg: "bg-accent/10"
     },
     {
       title: "Data-Driven Strategy",
@@ -39,43 +39,43 @@ export default function LocationPageContent({ city, region, introText, specificC
   ];
 
   return (
-    <div className="bg-[#050505] min-h-screen text-gray-300">
+    <div className="bg-canvas min-h-screen text-ink/80">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-accent/[0.03] blur-[120px] pointer-events-none rounded-full" />
         
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-900/30 border border-blue-800/50 text-blue-400 text-xs font-bold mb-8 tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/30 border border-accent/50 text-accent text-xs font-bold mb-8 tracking-widest uppercase">
             <MapPin size={12} /> Digital Partner in {city}
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase leading-[0.9]">
+          <h1 className="text-5xl md:text-7xl font-medium text-ink mb-8 tracking-tighter uppercase leading-[0.9]">
             Elevate Your Business in <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+            <span className="font-serif italic font-normal">
               {city}.
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted max-w-3xl mx-auto font-medium leading-relaxed">
             {introText}
           </p>
         </div>
       </section>
 
       {/* Strategic Value Section */}
-      <section className="py-24 px-4 sm:px-6 border-y border-white/5 relative">
+      <section className="py-24 px-4 sm:px-6 border-y border-line relative">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]" />
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-ink mb-8 tracking-tight">
                 Why Strategic Digital Presence Matters in {city}
               </h2>
-              <div className="space-y-6 text-lg text-gray-400 leading-relaxed">
+              <div className="space-y-6 text-lg text-muted leading-relaxed">
                 <p>
                   {region} is a competitive hub. To stand out, you need more than just a website—you need a 
-                  <span className="text-white"> growth-oriented digital platform</span> that combines 
+                  <span className="text-ink"> growth-oriented digital platform</span> that combines 
                   engineering excellence with conversion strategy.
                 </p>
                 <p>
@@ -86,12 +86,12 @@ export default function LocationPageContent({ city, region, introText, specificC
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {services.map((service, i) => (
-                <div key={i} className="p-6 rounded-lg bg-[#0a0a0a] border border-white/5 hover:border-white/10 transition-all group">
+                <div key={i} className="p-6 rounded-lg bg-canvas border border-line hover:border-ink/40 transition-all group">
                   <div className={`w-12 h-12 ${service.bg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                     <service.icon className={`w-6 h-6 ${service.color}`} />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{service.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{service.description}</p>
+                  <h3 className="text-lg font-bold text-ink mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -100,11 +100,11 @@ export default function LocationPageContent({ city, region, introText, specificC
       </section>
 
       {/* Trust Section */}
-      <section className="py-24 px-4 sm:px-6 bg-[#0a0a0a]">
+      <section className="py-24 px-4 sm:px-6 bg-canvas">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">The Casa Dev Advantage</h2>
-            <p className="text-gray-400 text-lg">Direct partnership, zero overhead, maximum results.</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">The Casa Dev Advantage</h2>
+            <p className="text-muted text-lg">Direct partnership, zero overhead, maximum results.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -126,11 +126,11 @@ export default function LocationPageContent({ city, region, introText, specificC
               }
             ].map((item, i) => (
               <div key={i} className="text-center flex flex-col items-center">
-                <div className="w-16 h-16 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6">
-                  <item.icon className="w-8 h-8 text-blue-400" />
+                <div className="w-16 h-16 rounded-lg bg-accent/10 flex items-center justify-center mb-6">
+                  <item.icon className="w-8 h-8 text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-bold text-ink mb-4">{item.title}</h3>
+                <p className="text-muted leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -139,17 +139,17 @@ export default function LocationPageContent({ city, region, introText, specificC
 
       {/* CTA Section */}
       <section className="py-24 px-4 sm:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-600/5" />
+        <div className="absolute inset-0 bg-accent/5" />
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter uppercase">
+          <h2 className="text-4xl md:text-6xl font-medium text-ink mb-8 tracking-tighter uppercase">
             Ready to Lead in <br /> {city}?
           </h2>
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-muted mb-12 max-w-2xl mx-auto">
             Stop competing for table scraps. Let&apos;s build a digital presence that dominates your local industry.
           </p>
           <Link 
             href="/netsuite-audit/"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-white !text-black font-black text-xl hover:bg-gray-200 transition-all rounded-lg"
+            className="inline-flex items-center gap-2 px-10 py-5 bg-ink !text-canvas font-medium text-xl hover:bg-accent transition-all rounded-lg"
           >
             Book a NetSuite Audit <ArrowRight className="w-6 h-6" />
           </Link>

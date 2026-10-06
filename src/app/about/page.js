@@ -19,5 +19,5 @@ export const metadata = {
   },
   title: "About Nitya Hoyos: NetSuite & Front-End Engineer",
   description:
-    "Nitya Hoyos is a Los Angeles-based software engineer with 15 years of experience, focused on Oracle NetSuite integrations, customer portals, and ERP-connected front ends in Next.js, React, and Angular.",
+    "Nitya Hoyos is a Los Angeles-based software engineer with 15 years of experience: Oracle NetSuite integrations and portals, product development, maps and data products, Shopify, WordPress, accessibility, and front ends in Next.js, React, and Angular.",
 };

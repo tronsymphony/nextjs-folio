@@ -1,3 +1,7 @@
+// Early general posts about AI. They are noindexed (and left out of the
+// sitemap) because they don't answer a specific search better than other
+// pages do; the URLs stay so existing links keep working. `cta: 'appAudit'`
+// ends a post with the AI-built app audit instead of the NetSuite audit.
 export const posts = [
   {
     slug: "how-ai-can-transform-your-small-business",
@@ -53,6 +57,7 @@ export const posts = [
   },
   {
     slug: "from-vibe-coding-to-production-ready",
+    cta: 'appAudit',
     title: "From 'Vibe Coding' to Production-Ready: Finishing Your AI-Assisted Project",
     description: "Built a great prototype with AI but stuck on the last 20%? Here is how to turn those AI 'vibes' into a scalable, secure, and production-ready application.",
     date: "2025-12-19",
@@ -78,6 +83,7 @@ export const posts = [
   },
   {
     slug: "the-human-ai-partnership-in-software",
+    cta: 'appAudit',
     title: "AI as a Co-Pilot, Not the Pilot: The Future of Quality Software",
     description: "Why the best software is built by humans leveraging AI, not by AI replacing humans. Discover our 'AI-Strategic' approach to development.",
     date: "2024-12-14",
@@ -98,6 +104,7 @@ export const posts = [
   },
   {
     slug: "mastering-vibe-coding",
+    cta: 'appAudit',
     title: "Mastering Vibe Coding: How to Build at the Speed of Thought",
     description: "Vibe coding is the new superpower for builders. Learn how to master the art of AI-driven development and how to handle the 'last 20%' that stops projects from launching.",
     date: "2025-12-25",

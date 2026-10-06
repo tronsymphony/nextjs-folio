@@ -27,7 +27,7 @@ export function organizationNode() {
     '@id': ORG_ID,
     name: SITE_NAME,
     url: SITE_URL,
-    logo: url('/images/logo.png'),
+    logo: url('/images/casa-dev-logo.svg'),
     description:
       'Oracle NetSuite integration and custom front-end engineering: customer portals, ERP-connected storefronts, and integration audits.',
     founder: { '@id': PERSON_ID },
@@ -57,6 +57,29 @@ export function auditServiceNode() {
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       url: url('/netsuite-audit/'),
+    };
+  }
+  return node;
+}
+
+export function appAuditServiceNode() {
+  const { appAudit } = OFFERS;
+  const node = {
+    '@type': 'Service',
+    '@id': url('/ai-app-audit/#service'),
+    name: appAudit.name,
+    serviceType: 'Security and production-readiness review',
+    provider: { '@id': ORG_ID },
+    url: url('/ai-app-audit/'),
+    description: `A fixed-scope, ${appAudit.durationDays}-business-day security and production-readiness review of an app built with AI coding tools, delivered as a written findings report with a prioritized fix plan.`,
+  };
+  if (appAudit.price) {
+    node.offers = {
+      '@type': 'Offer',
+      price: appAudit.price,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: url('/ai-app-audit/'),
     };
   }
   return node;

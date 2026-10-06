@@ -61,6 +61,10 @@ const faqs = [
     a: 'No. A read-only role is enough, and a sandbox account is preferred. Nothing in production is changed during the audit, and access can be revoked the day the report is delivered.',
   },
   {
+    q: 'Does the audit cover EDI?',
+    a: 'Yes. EDI is often where integration problems cost the most, through retailer chargebacks for late or wrong ASNs. The audit maps what your EDI provider sends and receives, how it reaches NetSuite, where documents fail or get retyped, and whether carton data exists before shipping.',
+  },
+  {
     q: 'We already have a NetSuite partner. Does this still make sense?',
     a: 'Yes. The audit is an independent second opinion focused on integrations and front ends, which many implementation partners do not specialize in. The report is yours to act on with your partner, your team, or me.',
   },
@@ -84,13 +88,13 @@ export default function NetSuiteAuditPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-[#0a0a0a] text-white min-h-screen">
-        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-neutral-900 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-blue-600/10 blur-[130px] -z-10 rounded-full pointer-events-none" />
+      <div className="bg-canvas text-ink min-h-screen">
+        <section className="relative pt-36 pb-20 px-4 sm:px-6 border-b border-line overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-accent/[0.04] blur-[130px] -z-10 rounded-full pointer-events-none" />
           <div className="container mx-auto max-w-4xl">
             <Eyebrow>Fixed scope · Fixed price · {audit.durationDays} business days</Eyebrow>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mt-6 mb-6">The NetSuite Integration Audit.</h1>
-            <p className="text-xl text-neutral-300 leading-relaxed max-w-3xl">
+            <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">The NetSuite Integration Audit.</h1>
+            <p className="text-xl text-ink/80 leading-relaxed max-w-3xl">
               A NetSuite integration audit is a fixed-scope review of every system that reads from or writes to your
               ERP. In {audit.durationDays} business days you get a written report showing where data is leaking, what
               will break as you grow, and exactly what to fix first, with effort estimates you can hand to anyone.
@@ -98,16 +102,16 @@ export default function NetSuiteAuditPage() {
             <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6">
               <a
                 href={buyHref}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white !text-black font-bold rounded-xl hover:bg-neutral-200 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-ink !text-canvas font-bold rounded-xl hover:bg-accent transition-colors"
               >
                 {audit.stripePaymentLink ? 'Book the audit' : 'Book the audit: start with a call'} <ArrowRight className="w-4 h-4" />
               </a>
               <SecondaryCta>Ask a question first</SecondaryCta>
             </div>
-            <p className="mt-6 text-neutral-400">
+            <p className="mt-6 text-muted">
               {audit.price ? (
                 <>
-                  <span className="text-2xl font-bold text-white">{formatUSD(audit.price)}</span> flat.
+                  <span className="text-2xl font-bold text-ink">{formatUSD(audit.price)}</span> flat.
                 </>
               ) : (
                 'Flat fee, quoted on a 20-minute call.'
@@ -117,11 +121,11 @@ export default function NetSuiteAuditPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900">
+        <section className="py-20 px-4 sm:px-6 border-b border-line">
           <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-3xl font-bold tracking-tight mb-4">Who it&rsquo;s for</h2>
-              <ul className="space-y-3 text-neutral-300">
+              <ul className="space-y-3 text-ink/80">
                 {[
                   'Your storefront, portal, or 3PL shows inventory or pricing that doesn’t match NetSuite.',
                   'An integration someone built years ago breaks and nobody wants to touch it.',
@@ -129,17 +133,17 @@ export default function NetSuiteAuditPage() {
                   'You’re choosing between the native connector, middleware, and custom work.',
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
-                    <Check className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" /> {item}
+                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" /> {item}
                   </li>
                 ))}
               </ul>
             </div>
             <div>
               <h2 className="text-3xl font-bold tracking-tight mb-4">What you get in writing</h2>
-              <ul className="space-y-3 text-neutral-300">
+              <ul className="space-y-3 text-ink/80">
                 {deliverables.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" /> {item}
+                    <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" /> {item}
                   </li>
                 ))}
               </ul>
@@ -147,29 +151,29 @@ export default function NetSuiteAuditPage() {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900 bg-[#0f0f10]">
+        <section className="py-20 px-4 sm:px-6 border-b border-line bg-canvas-2">
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold tracking-tight mb-10">What gets reviewed</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {reviewed.map(({ title, body }, i) => (
-                <div key={title} className="p-6 rounded-xl border border-neutral-800 bg-neutral-900/40">
-                  <p className="text-xs font-mono text-blue-400 mb-2">0{i + 1}</p>
+                <div key={title} className="p-6 rounded-xl border border-line bg-canvas-2">
+                  <p className="text-xs font-mono text-accent mb-2">0{i + 1}</p>
                   <h3 className="text-lg font-semibold mb-2">{title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{body}</p>
+                  <p className="text-sm text-muted leading-relaxed">{body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-6 border-b border-neutral-900">
+        <section className="py-20 px-4 sm:px-6 border-b border-line">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-3xl font-bold tracking-tight mb-10">How it runs</h2>
             <ol className="space-y-6">
               {steps.map(([when, what]) => (
                 <li key={when} className="grid sm:grid-cols-[140px_1fr] gap-2 sm:gap-6">
-                  <span className="font-mono text-sm text-blue-400">{when}</span>
-                  <span className="text-neutral-300">{what}</span>
+                  <span className="font-mono text-sm text-accent">{when}</span>
+                  <span className="text-ink/80">{what}</span>
                 </li>
               ))}
             </ol>
@@ -183,7 +187,7 @@ export default function NetSuiteAuditPage() {
               {faqs.map(({ q, a }) => (
                 <div key={q}>
                   <dt className="text-lg font-semibold mb-2">{q}</dt>
-                  <dd className="text-neutral-400 leading-relaxed">{a}</dd>
+                  <dd className="text-muted leading-relaxed">{a}</dd>
                 </div>
               ))}
             </dl>

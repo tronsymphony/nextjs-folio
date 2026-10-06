@@ -62,15 +62,15 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
 
   if (sent) {
     return (
-      <div className="bg-gray-900 rounded-lg border border-gray-700 p-8 text-center" role="status">
-        <h3 className="text-2xl font-bold text-white mb-2">Message received.</h3>
-        <p className="text-gray-400">I&rsquo;ll reply personally within one business day. A confirmation is on its way to your inbox.</p>
+      <div className="bg-canvas-2 rounded-lg border border-line p-8 text-center" role="status">
+        <h3 className="text-2xl font-bold text-ink mb-2">Message received.</h3>
+        <p className="text-muted">I&rsquo;ll reply personally within one business day. A confirmation is on its way to your inbox.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative bg-gray-900 rounded-lg border border-gray-700 p-6 shadow-lg">
+    <form onSubmit={handleSubmit} className="relative bg-canvas-2 rounded-lg border border-line p-6 shadow-lg">
       <Honeypot value={honeypot} onChange={setHoneypot} />
       {error && (
         <div className="mb-6 p-4 bg-red-900 bg-opacity-30 border border-red-700 rounded-lg text-red-200">
@@ -87,7 +87,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
         {/* Contact Info */}
         <div className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="name" className="block text-sm font-medium text-ink/80 mb-1">
               Name
             </label>
             <input
@@ -97,13 +97,13 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               placeholder="Your name"
             />
           </div>
           
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="email" className="block text-sm font-medium text-ink/80 mb-1">
               Email
             </label>
             <input
@@ -113,13 +113,13 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               placeholder="your.email@example.com"
             />
           </div>
 
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="company" className="block text-sm font-medium text-ink/80 mb-1">
               Company
             </label>
             <input
@@ -128,13 +128,13 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               placeholder="Company name"
             />
           </div>
           
           <div>
-            <label htmlFor="projectType" className="block text-sm font-medium text-gray-300 mb-1">
+            <label htmlFor="projectType" className="block text-sm font-medium text-ink/80 mb-1">
               Project Type
             </label>
             <select
@@ -142,7 +142,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               name="projectType"
               value={formData.projectType}
               onChange={handleChange}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+              className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
             >
               <option value="netsuite-integration">NetSuite integration</option>
               <option value="customer-portal">Customer / dealer portal on NetSuite</option>
@@ -155,7 +155,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
           
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-1">
+              <label htmlFor="budget" className="block text-sm font-medium text-ink/80 mb-1">
                 Budget
               </label>
               <select
@@ -163,7 +163,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               >
                 <option value="">Select range</option>
                 <option value="Under $10k">Under $10,000</option>
@@ -176,7 +176,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
             </div>
             
             <div>
-              <label htmlFor="timeframe" className="block text-sm font-medium text-gray-300 mb-1">
+              <label htmlFor="timeframe" className="block text-sm font-medium text-ink/80 mb-1">
                 Timeframe
               </label>
               <select
@@ -184,7 +184,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
                 name="timeframe"
                 value={formData.timeframe}
                 onChange={handleChange}
-                className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               >
                 <option value="">Select timeframe</option>
                 <option value="ASAP">ASAP</option>
@@ -199,7 +199,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
         
         {/* Message */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+          <label htmlFor="message" className="block text-sm font-medium text-ink/80 mb-1">
             Project Details
           </label>
           <textarea
@@ -209,10 +209,10 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
             value={formData.message}
             onChange={handleChange}
             rows="8"
-            className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white resize-none"
+            className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink resize-none"
             placeholder="Which systems are involved (NetSuite, Shopify, a 3PL...), what's broken or missing, and what a good outcome looks like."
           ></textarea>
-          <p className="mt-2 text-xs text-gray-400">
+          <p className="mt-2 text-xs text-muted">
             Please include any relevant details that would help me understand your project better.
           </p>
         </div>
@@ -222,15 +222,15 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-3 px-6 rounded-lg text-white font-medium transition-all duration-300 ${
+          className={`w-full py-3 px-6 rounded-lg text-ink font-medium transition-all duration-300 ${
             isSubmitting 
-              ? 'bg-gray-600 cursor-not-allowed' 
-              : 'bg-blue-600 hover:bg-blue-700'
+              ? 'bg-faint cursor-not-allowed' 
+              : 'bg-accent hover:bg-accent'
           }`}
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-ink" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -240,7 +240,7 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
             'Send Message'
           )}
         </button>
-        <p className="mt-4 text-center text-xs text-gray-400">
+        <p className="mt-4 text-center text-xs text-muted">
           By submitting this form, you agree to be contacted regarding your request.
         </p>
       </div>

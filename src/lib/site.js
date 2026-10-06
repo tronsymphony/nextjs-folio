@@ -24,6 +24,18 @@ export const PERSON = {
     'React',
     'Angular',
     'Headless commerce',
+    'Technical SEO',
+    'Search marketing',
+    'Shopify',
+    'WordPress',
+    'Web accessibility (ADA, WCAG)',
+    'IndexedDB',
+    'Product development',
+    'Mapbox GL',
+    'Geospatial data',
+    'Three.js',
+    'PostgreSQL',
+    'Data pipelines',
   ],
 };
 
@@ -39,6 +51,18 @@ export const OFFERS = {
     durationDays: 10,
     stripePaymentLink: null, // e.g. 'https://buy.stripe.com/...'
     creditedOnProceed: true, // audit fee credited toward implementation
+  },
+  appAudit: {
+    name: 'AI-Built App Audit',
+    price: 750, // TODO(owner): confirm. Test price for the first few audits.
+    durationDays: 5,
+    stripePaymentLink: null, // e.g. 'https://buy.stripe.com/...'
+    creditedOnProceed: true, // audit fee credited toward the fixes
+  },
+  seoAudit: {
+    name: 'Technical SEO Audit',
+    price: null, // TODO(owner): set a flat price, e.g. 1500 (USD); null shows "quoted on a call"
+    durationDays: null, // TODO(owner): business days to deliver; null hides the figure
   },
   implementationFrom: null, // e.g. 15000 (USD), "typical engagements start at"
   retainerFrom: null, // e.g. 3000 (USD / month)

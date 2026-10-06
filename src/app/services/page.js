@@ -5,7 +5,7 @@ import Services from '../../components/services';
 export const metadata = {
   title: 'Capabilities: NetSuite, Front-End & Web Engineering',
   description:
-    'Oracle NetSuite integrations, customer portals, and ERP-connected storefronts, plus custom web applications, headless commerce, performance, accessibility, and analytics work.',
+    'Oracle NetSuite integrations and portals, product development, SEO, Shopify and WordPress, ADA and WCAG accessibility, maps and data products, offline-capable apps, and custom React, Next.js and Angular applications.',
   alternates: { canonical: '/services/' },
 };
 
