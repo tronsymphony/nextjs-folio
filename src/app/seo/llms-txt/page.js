@@ -210,7 +210,7 @@ export default function LlmsTxtGuide() {
           body="The technical SEO audit checks crawler access, structured data and what is readable without JavaScript."
           href="/seo/technical-seo-audit/"
           cta="See the audit"
-          secondary={['/call/', 'Book a 20-min call']}
+          secondary={['/call/', 'Book a free 30-min review']}
         />
       </article>
       <Footer />

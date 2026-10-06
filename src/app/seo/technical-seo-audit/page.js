@@ -103,7 +103,7 @@ export default function TechnicalSeoAuditPage() {
             ['Data', 'Search Console, Semrush, your analytics'],
           ]}
         >
-          <PrimaryCta href="/call/">Book a 20-min call</PrimaryCta>
+          <PrimaryCta href="/call/">Book a free 30-min review</PrimaryCta>
           <SecondaryCta href="/contact/">Ask a question</SecondaryCta>
         </PageHero>
 
@@ -135,9 +135,9 @@ export default function TechnicalSeoAuditPage() {
 
         <ClosingCta
           title={<>Find out what&rsquo;s <Accent>holding the site back.</Accent></>}
-          body="A 20-minute call to look at your Search Console together and decide whether an audit is worth it."
+          body="A free 30-minute review of your Search Console together, to decide whether an audit is worth it."
           href="/call/"
-          cta="Book a 20-min call"
+          cta="Book a free 30-min review"
           secondary={['/seo/', 'See all SEO services']}
         />
       </div>

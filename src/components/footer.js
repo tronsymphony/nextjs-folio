@@ -98,7 +98,7 @@ export default function Footer() {
                   href="/call/"
                   className="inline-flex items-center justify-center px-7 py-4 rounded-full border border-line font-medium hover:border-ink transition-colors duration-300"
                 >
-                  20-min fit call
+                  Free 30-min review
                 </Link>
               </div>
             </div>

@@ -47,7 +47,7 @@ export function GET() {
     '',
     '## Contact',
     '',
-    `- [Book a 20-minute fit call](${SITE_URL}/call/)`,
+    `- [Book a free 30-minute review](${SITE_URL}/call/)`,
     `- Email: ${PERSON.email}`,
     `- [LinkedIn](${PERSON.linkedin})`,
     '',

@@ -77,7 +77,7 @@ const Navigation = () => {
             href="/call/"
             className="group inline-flex items-center gap-1.5 pl-4 pr-3.5 py-2 rounded-full bg-ink !text-canvas text-[14px] font-medium tracking-tight hover:bg-accent transition-colors duration-300"
           >
-            Book a call
+            Free review
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </li>
@@ -113,7 +113,7 @@ const Navigation = () => {
         </ul>
         <div className="flex flex-col gap-3">
           <Link href="/call/" className="flex items-center justify-between rounded-full bg-ink !text-canvas px-6 py-4 font-medium">
-            Book a 20-min call <ArrowUpRight className="w-5 h-5" />
+            Book a free 30-min review <ArrowUpRight className="w-5 h-5" />
           </Link>
           <Link href="/contact/" className="flex items-center justify-between rounded-full border border-line px-6 py-4 font-medium">
             Contact <ArrowUpRight className="w-5 h-5" />

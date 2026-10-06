@@ -125,7 +125,7 @@ export default function SeoPage() {
             ['Based in', PERSON.location],
           ]}
         >
-          <PrimaryCta href="/call/">Book a 20-min call</PrimaryCta>
+          <PrimaryCta href="/call/">Book a free 30-min review</PrimaryCta>
           {proof && <SecondaryCta href={`/work/${proof.slug}/`}>See the case study</SecondaryCta>}
         </PageHero>
 
@@ -203,9 +203,9 @@ export default function SeoPage() {
 
         <ClosingCta
           title={<>Find out what your customers <Accent>are searching for.</Accent></>}
-          body="A 20-minute call to look at your site and Search Console together, and whether I’m the right fit."
+          body="A free 30-minute review: we look at your site and Search Console together, and I tell you what I’d fix first."
           href="/call/"
-          cta="Book a 20-min call"
+          cta="Book a free 30-min review"
           secondary={['/contact/', 'Send a message']}
         />
       </div>
