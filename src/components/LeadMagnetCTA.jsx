@@ -31,15 +31,15 @@ export default function LeadMagnetCTA({ className = '' }) {
   };
 
   return (
-    <aside className={`relative p-8 rounded-3xl border border-line bg-ink-2 ${className}`}>
+    <aside className={`relative p-8 rounded-3xl border border-line bg-canvas-2 ${className}`}>
       <div className="mb-6">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-4">Free checklist</p>
         <div>
-          <h2 className="text-2xl md:text-3xl font-medium tracking-[-0.03em] leading-[1.1] text-paper mb-3">The NetSuite Integration Readiness Checklist</h2>
+          <h2 className="text-2xl md:text-3xl font-medium tracking-[-0.03em] leading-[1.1] text-ink mb-3">The NetSuite Integration Readiness Checklist</h2>
           <p className="text-muted leading-relaxed">
             The checks worth running before you connect anything to NetSuite: data ownership, sync design, failure
             handling, and security.{' '}
-            <Link href="/netsuite/integration-readiness-checklist/" className="text-paper underline decoration-accent underline-offset-4">
+            <Link href="/netsuite/integration-readiness-checklist/" className="text-ink underline decoration-accent underline-offset-4">
               Read it now
             </Link>
             , or get a copy by email.
@@ -60,7 +60,7 @@ export default function LeadMagnetCTA({ className = '' }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="First name"
-            className="sm:w-36 px-5 py-3 bg-transparent border border-line rounded-full text-paper placeholder:text-faint focus:border-paper outline-none transition-colors"
+            className="sm:w-36 px-5 py-3 bg-transparent border border-line rounded-full text-ink placeholder:text-faint focus:border-ink outline-none transition-colors"
           />
           <label className="sr-only" htmlFor="magnet-email">Work email</label>
           <input
@@ -70,12 +70,12 @@ export default function LeadMagnetCTA({ className = '' }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Work email"
-            className="flex-1 min-w-0 px-5 py-3 bg-transparent border border-line rounded-full text-paper placeholder:text-faint focus:border-paper outline-none transition-colors"
+            className="flex-1 min-w-0 px-5 py-3 bg-transparent border border-line rounded-full text-ink placeholder:text-faint focus:border-ink outline-none transition-colors"
           />
           <button
             type="submit"
             disabled={state === 'sending'}
-            className="px-6 py-3 bg-paper text-ink font-medium rounded-full hover:bg-accent disabled:opacity-60 transition-colors"
+            className="px-6 py-3 bg-ink text-canvas font-medium rounded-full hover:bg-accent disabled:opacity-60 transition-colors"
           >
             {state === 'sending' ? 'Sending…' : 'Email me a copy'}
           </button>

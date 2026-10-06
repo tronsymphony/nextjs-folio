@@ -47,7 +47,7 @@ export default async function CaseStudyPage({ params }) {
           breadcrumbNode([['Home', '/'], ['Work', '/work/'], [cs.client, `/work/${cs.slug}/`]])
         )}
       />
-      <article className="bg-ink">
+      <article className="bg-canvas">
         <PageHero
           back={['/work/', 'All work']}
           eyebrow={cs.industry}
@@ -65,7 +65,7 @@ export default async function CaseStudyPage({ params }) {
             <a
               href={cs.liveUrl}
               {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
-              className="group inline-flex items-center gap-2 pl-6 pr-5 py-3.5 rounded-full border border-line font-medium hover:border-paper transition-colors duration-300"
+              className="group inline-flex items-center gap-2 pl-6 pr-5 py-3.5 rounded-full border border-line font-medium hover:border-ink transition-colors duration-300"
             >
               See it live
               <ArrowUpRight className="w-4 h-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -74,7 +74,7 @@ export default async function CaseStudyPage({ params }) {
         </PageHero>
 
         <div className={`${WRAP} pb-20 md:pb-28`}>
-          <div className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-ink-3" data-reveal>
+          <div className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-canvas-3" data-reveal>
             <Image src={cs.heroImage} alt={`${cs.client} screenshot`} fill priority className="object-cover object-top" sizes="(max-width: 1440px) 100vw, 1440px" />
           </div>
         </div>
@@ -102,7 +102,7 @@ export default async function CaseStudyPage({ params }) {
             tone="accent"
             items={cs.approach.map((step) => (
               <>
-                <h3 className="text-2xl font-medium tracking-[-0.03em] text-paper mb-3">{step.heading}</h3>
+                <h3 className="text-2xl font-medium tracking-[-0.03em] text-ink mb-3">{step.heading}</h3>
                 <p className="text-muted leading-relaxed">{step.body}</p>
               </>
             ))}

@@ -3,17 +3,17 @@
 
 @source "..";
 
-/* Design tokens. One warm accent on near-black; everything else is paper and
-   greys. Fonts come from next/font in layout.js. */
+/* Design tokens. A light, warm paper page (canvas) with near-black text (ink)
+   and one accent. Fonts come from next/font in layout.js. */
 @theme inline {
-  --color-ink: #0b0b0a;
-  --color-ink-2: #121211;
-  --color-ink-3: #1a1a18;
-  --color-paper: #f2f0eb;
-  --color-muted: #9a978f;
-  --color-faint: #5f5d57;
-  --color-line: rgb(242 240 235 / 0.12);
-  --color-accent: #ff5a1f;
+  --color-canvas: #f4f2ee;
+  --color-canvas-2: #ebe8e2;
+  --color-canvas-3: #e1ddd5;
+  --color-ink: #141413;
+  --color-muted: #5f5c56;
+  --color-faint: #8c887f;
+  --color-line: rgb(20 20 19 / 0.12);
+  --color-accent: #e8501a;
 
   --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif-accent), ui-serif, Georgia, serif;
@@ -23,8 +23,8 @@
 /* Base styles */
 html,
 body {
-  background-color: var(--color-ink);
-  color: var(--color-paper);
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -51,7 +51,7 @@ a {
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-ink);
+  color: var(--color-canvas);
 }
 
 /* Entrance animations used by the homepage hero. */
@@ -68,6 +68,12 @@ a {
 @keyframes wordUp {
   from { translate: 0 110%; }
   to { translate: 0 0; }
+}
+@keyframes travel {
+  from { top: 0; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  to { top: 100%; opacity: 0; }
 }
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -87,14 +93,24 @@ a {
   transform: none;
 }
 
+/* Logo: the cursor blinks once when the logo is hovered. */
+@keyframes doorBlink {
+  0%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+  50% { opacity: 1; }
+}
+a:hover .logo-cursor {
+  animation: doorBlink 0.9s steps(1, end) 1;
+}
+
 /* Film grain over a section: add .grain to a positioned element. */
 .grain::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.07;
-  mix-blend-mode: overlay;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -114,6 +130,8 @@ a {
   html { scroll-behavior: auto; }
   [class*="animate-[fade"] { animation: none !important; opacity: 1 !important; }
   [class*="animate-[marquee"] { animation: none !important; }
+  [class*="animate-[travel"] { animation: none !important; display: none; }
+  .logo-cursor { animation: none !important; }
   [class*="animate-[wordUp"] { animation: none !important; translate: none !important; }
   .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
 }

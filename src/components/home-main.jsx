@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import FeaturedProjects from "./section/FeaturedProjects";
 import HeroField from "./home/HeroField";
+import SyncDemo from "./home/SyncDemo";
 import LeadMagnetCTA from "./LeadMagnetCTA";
 import { Accent, ArrowLink, PrimaryCta, SecondaryCta, SectionHead } from "./ui/Cta";
 import { offers } from "../data/netsuiteOffers";
@@ -93,65 +94,21 @@ function RevealWords({ segments, delay = 150, step = 55 }) {
   );
 }
 
-export default function HomeMain() {
+export default function HomeMain({ hero = "field" }) {
   const guides = [
     ...publishedTopics().map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1, tag: "NetSuite" })),
     ...publishedGuides().map((g) => ({ href: `/ai-app-audit/${g.slug}/`, title: g.h1, tag: "App security" })),
   ];
 
   return (
-    <div className="bg-ink">
-      {/* Hero */}
-      <section className="grain relative min-h-[100svh] flex flex-col overflow-hidden">
-        {/* Everything in the hero is sized by viewport height as well as width, so the fold fits on short laptop screens. */}
-        {/* Contour field across the whole hero; faded behind the headline and into the page below. */}
-        <div className="absolute inset-0">
-          <HeroField />
-        </div>
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none bg-gradient-to-t from-ink to-transparent" />
-
-        <div className={`${WRAP} relative z-10 flex-1 flex flex-col justify-end w-full pt-[max(6rem,13vh)] pb-[clamp(1.25rem,4vh,2.5rem)]`}>
-          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-[clamp(1rem,3vh,2rem)] animate-[fadeInUp_0.9s_ease-out_forwards]">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
-            Oracle NetSuite + custom front-end engineering
-            <span className="text-faint">/</span>
-            {PERSON.location}
-          </p>
-
-          <h1 className="max-w-[17ch] text-[clamp(2.6rem,min(7.4vw,11.5vh),8.25rem)] font-medium leading-[0.92] tracking-[-0.055em]">
-            <RevealWords segments={[["NetSuite, connected to the front ends your customers"], ["actually use.", true]]} />
-          </h1>
-
-          <div className="mt-[clamp(1.5rem,6vh,4.5rem)] grid lg:grid-cols-12 gap-6 lg:gap-10 items-end opacity-0 animate-[fadeInUp_1s_ease-out_0.35s_forwards]">
-            <div className="lg:col-span-5">
-              <p className="text-base md:text-lg text-muted leading-relaxed mb-[clamp(1rem,3vh,2rem)] max-w-md">
-                I build NetSuite integrations, customer portals, and ERP-connected storefronts in Next.js, React, and
-                Angular. You work with me directly, from the first call to launch.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <PrimaryCta />
-                <SecondaryCta href="/work/">See the work</SecondaryCta>
-              </div>
-            </div>
-            <dl className="lg:col-span-6 lg:col-start-7 grid grid-cols-3 border-t border-line">
-              {heroFacts.map(([value, label]) => (
-                <div key={label} className="pt-4 pr-4">
-                  <dt className="sr-only">{label}</dt>
-                  <dd className="text-xl md:text-[clamp(1.5rem,3.4vh,1.875rem)] font-medium tracking-[-0.03em]">{value}</dd>
-                  <dd className="mt-1 text-[13px] text-muted leading-snug">{label}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </section>
+    <div className="bg-canvas">
+      {hero === "sync" ? <SyncHero /> : <FieldHero />}
 
       {/* Systems marquee (decorative; the guides below carry the real links) */}
       <div className="border-y border-line py-6 overflow-hidden" aria-hidden="true">
         <div className="flex w-max animate-[marquee_45s_linear_infinite]">
           {[...SYSTEMS, ...SYSTEMS].map((s, i) => (
-            <span key={i} className="flex items-center gap-10 pr-10 text-3xl md:text-5xl font-medium tracking-[-0.04em] text-paper/25">
+            <span key={i} className="flex items-center gap-10 pr-10 text-3xl md:text-5xl font-medium tracking-[-0.04em] text-ink/25">
               {s}
               <span className="w-2 h-2 rounded-full bg-accent/70" />
             </span>
@@ -189,7 +146,7 @@ export default function HomeMain() {
             <li key={s.title} data-reveal style={{ "--reveal-delay": `${i * 80}ms` }}>
               <Link
                 href={s.href}
-                className="group grid grid-cols-[3rem_1fr_auto] md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-line transition-colors hover:bg-white/[0.02]"
+                className="group grid grid-cols-[3rem_1fr_auto] md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-line transition-colors hover:bg-ink/5"
               >
                 <span className="md:col-span-1 font-mono text-xs text-faint pt-3">0{i + 1}</span>
                 <h3 className="md:col-span-4 text-3xl md:text-4xl font-medium tracking-[-0.035em] leading-[1.05] transition-transform duration-500 group-hover:translate-x-2">
@@ -219,10 +176,10 @@ export default function HomeMain() {
               style={{ "--reveal-delay": `${i * 120}ms` }}
               className="flex flex-col pt-8 pb-12 md:px-8 md:first:pl-0 md:border-l md:first:border-l-0 border-line border-b md:border-b-0"
             >
-              <span className="text-[clamp(4rem,9vw,8rem)] font-medium leading-none tracking-[-0.06em] text-paper/15">{s.step}</span>
+              <span className="text-[clamp(4rem,9vw,8rem)] font-medium leading-none tracking-[-0.06em] text-ink/15">{s.step}</span>
               <h3 className="mt-8 text-3xl font-medium tracking-[-0.03em]">{s.title}</h3>
               <p className="mt-3 text-muted leading-relaxed">{s.body}</p>
-              <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-paper">{s.detail}</p>
+              <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink">{s.detail}</p>
             </li>
           ))}
         </ol>
@@ -239,12 +196,12 @@ export default function HomeMain() {
             <Link
               href="/tools/netsuite-integration-estimator/"
               data-reveal
-              className="group relative flex flex-col justify-between min-h-[260px] p-8 rounded-3xl bg-paper !text-ink overflow-hidden"
+              className="group relative flex flex-col justify-between min-h-[260px] p-8 rounded-3xl bg-ink !text-canvas overflow-hidden"
             >
-              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/60">Tool</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-canvas/60">Tool</span>
               <div>
                 <h3 className="text-3xl md:text-4xl font-medium tracking-[-0.035em] leading-[1.02]">NetSuite integration cost estimator</h3>
-                <p className="mt-3 text-ink/70 max-w-sm">Scope outline, risks, and a cost range. No email required.</p>
+                <p className="mt-3 text-canvas/70 max-w-sm">Scope outline, risks, and a cost range. No email required.</p>
               </div>
               <ArrowUpRight className="absolute top-7 right-7 w-7 h-7 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent" />
             </Link>
@@ -258,7 +215,7 @@ export default function HomeMain() {
                 <Link href={g.href} className="group flex items-center justify-between gap-6 py-5 border-b border-line">
                   <span className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
                     <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-faint sm:w-28 shrink-0">{g.tag}</span>
-                    <span className="text-lg tracking-[-0.015em] text-muted group-hover:text-paper transition-colors">{g.title}</span>
+                    <span className="text-lg tracking-[-0.015em] text-muted group-hover:text-ink transition-colors">{g.title}</span>
                   </span>
                   <ArrowUpRight className="w-4 h-4 shrink-0 text-faint transition-all duration-300 group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
@@ -283,7 +240,7 @@ export default function HomeMain() {
             <ul className="border-t border-line">
               {capabilities.map(([area, first]) => (
                 <li key={area} className="py-4 border-b border-line text-[15px] text-muted">
-                  <span className="text-paper">{area}</span> · {first}
+                  <span className="text-ink">{area}</span> · {first}
                 </li>
               ))}
             </ul>
@@ -295,5 +252,97 @@ export default function HomeMain() {
         </div>
       </section>
     </div>
+  );
+}
+
+// Hero with the contour-line background.
+function FieldHero() {
+  return (
+  <section className="grain relative min-h-[100svh] flex flex-col overflow-hidden">
+    {/* Everything in the hero is sized by viewport height as well as width, so the fold fits on short laptop screens. */}
+    {/* Contour field across the whole hero; faded behind the headline and into the page below. */}
+    <div className="absolute inset-0">
+      <HeroField />
+    </div>
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-canvas/70 via-canvas/10 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none bg-gradient-to-t from-canvas to-transparent" />
+
+    <div className={`${WRAP} relative z-10 flex-1 flex flex-col justify-end w-full pt-[max(6rem,13vh)] pb-[clamp(1.25rem,4vh,2.5rem)]`}>
+      <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-[clamp(1rem,3vh,2rem)] animate-[fadeInUp_0.9s_ease-out_forwards]">
+        <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
+        Oracle NetSuite + custom front-end engineering
+        <span className="text-faint">/</span>
+        {PERSON.location}
+      </p>
+
+      <h1 className="max-w-[17ch] text-[clamp(2.6rem,min(7.4vw,11.5vh),8.25rem)] font-medium leading-[0.92] tracking-[-0.055em]">
+        <RevealWords segments={[["NetSuite, connected to the front ends your customers"], ["actually use.", true]]} />
+      </h1>
+
+      <div className="mt-[clamp(1.5rem,6vh,4.5rem)] grid lg:grid-cols-12 gap-6 lg:gap-10 items-end opacity-0 animate-[fadeInUp_1s_ease-out_0.35s_forwards]">
+        <div className="lg:col-span-5">
+          <p className="text-base md:text-lg text-muted leading-relaxed mb-[clamp(1rem,3vh,2rem)] max-w-md">
+            I connect NetSuite to Shopify, EDI trading partners, 3PLs and CRMs, and build customer portals and storefronts in Next.js, React, and
+            Angular. You work with me directly, from the first call to launch.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <PrimaryCta />
+            <SecondaryCta href="/work/">See the work</SecondaryCta>
+          </div>
+        </div>
+        <dl className="lg:col-span-6 lg:col-start-7 grid grid-cols-3 border-t border-line">
+          {heroFacts.map(([value, label]) => (
+            <div key={label} className="pt-4 pr-4">
+              <dt className="sr-only">{label}</dt>
+              <dd className="text-xl md:text-[clamp(1.5rem,3.4vh,1.875rem)] font-medium tracking-[-0.03em]">{value}</dd>
+              <dd className="mt-1 text-[13px] text-muted leading-snug">{label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+  );
+}
+
+// Hero with the order-sync illustration on the right.
+function SyncHero() {
+  return (
+    <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(rgba(20,20,19,0.09)_1px,transparent_1px)] bg-[size:22px_22px] [mask-image:radial-gradient(ellipse_70%_70%_at_75%_50%,black,transparent)]" />
+      <div className={`${WRAP} relative z-10 flex-1 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full pt-[max(6.5rem,13vh)] pb-[clamp(1.5rem,4vh,2.5rem)]`}>
+        <div className="lg:col-span-6">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-[clamp(1rem,3vh,2rem)] animate-[fadeInUp_0.9s_ease-out_forwards]">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
+            Oracle NetSuite + custom front-end engineering
+          </p>
+          <h1 className="max-w-[13ch] text-[clamp(2.5rem,min(5.4vw,9.5vh),6.25rem)] font-medium leading-[0.94] tracking-[-0.05em]">
+            <RevealWords segments={[["NetSuite, connected to the front ends your customers"], ["actually use.", true]]} />
+          </h1>
+          <div className="opacity-0 animate-[fadeInUp_1s_ease-out_0.35s_forwards]">
+            <p className="mt-[clamp(1.25rem,4vh,2.5rem)] text-base md:text-lg text-muted leading-relaxed max-w-md">
+              I connect NetSuite to Shopify, EDI trading partners, 3PLs and CRMs, and build customer portals and storefronts in Next.js, React, and Angular. You
+              work with me directly, from the first call to launch.
+            </p>
+            <div className="mt-[clamp(1rem,3vh,2rem)] flex flex-wrap gap-3">
+              <PrimaryCta />
+              <SecondaryCta href="/work/">See the work</SecondaryCta>
+            </div>
+            <dl className="mt-[clamp(1.5rem,5vh,3.5rem)] grid grid-cols-3 max-w-lg border-t border-line">
+              {heroFacts.map(([value, label]) => (
+                <div key={label} className="pt-4 pr-4">
+                  <dt className="sr-only">{label}</dt>
+                  <dd className="text-xl md:text-2xl font-medium tracking-[-0.03em]">{value}</dd>
+                  <dd className="mt-1 text-[13px] text-muted leading-snug">{label}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+        <div className="lg:col-span-6 opacity-0 animate-[fadeInUp_1.1s_ease-out_0.5s_forwards]">
+          <SyncDemo />
+        </div>
+      </div>
+    </section>
   );
 }

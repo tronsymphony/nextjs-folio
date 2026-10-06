@@ -73,7 +73,7 @@ export default async function NetSuiteTopicPage({ params }) {
           faqNode(topic.faqs)
         )}
       />
-      <article className="bg-ink">
+      <article className="bg-canvas">
         <PageHero
           back={['/netsuite/', 'NetSuite guides']}
           eyebrow="NetSuite integration guide"
@@ -113,7 +113,7 @@ export default async function NetSuiteTopicPage({ params }) {
 
         {topic.codeSnippet && (
           <Block index={next()} label="Example" wide>
-            <pre className="p-6 md:p-8 rounded-3xl bg-ink-2 border border-line text-[13px] leading-relaxed text-paper/85 overflow-x-auto font-mono">
+            <pre className="p-6 md:p-8 rounded-3xl bg-canvas-2 border border-line text-[13px] leading-relaxed text-ink/85 overflow-x-auto font-mono">
               <code>{topic.codeSnippet}</code>
             </pre>
           </Block>

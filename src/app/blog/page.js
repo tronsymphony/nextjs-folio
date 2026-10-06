@@ -14,15 +14,15 @@ export default function BlogIndex() {
     return (
         <>
             <HomeFollow />
-            <main className="pt-32 pb-20 bg-ink min-h-screen">
+            <main className="pt-32 pb-20 bg-canvas min-h-screen">
                 <div className="container mx-auto px-4 sm:px-6">
                     <div className="max-w-4xl mx-auto mb-16">
-                        <h1 className="text-5xl sm:text-7xl font-medium text-white mb-6 tracking-tighter">
+                        <h1 className="text-5xl sm:text-7xl font-medium text-ink mb-6 tracking-tighter">
                             INSIGHTS <span className="font-serif italic font-normal">&</span> STRATEGY.
                         </h1>
-                        <p className="text-xl text-gray-400 font-medium leading-relaxed">
+                        <p className="text-xl text-muted font-medium leading-relaxed">
                             In-depth articles on how AI and modern web technology can drive
-                            <span className="text-white"> measurable growth</span> for your business.
+                            <span className="text-ink"> measurable growth</span> for your business.
                         </p>
                     </div>
 
@@ -30,14 +30,14 @@ export default function BlogIndex() {
                         {posts.map((post) => (
                             <article
                                 key={post.slug}
-                                className="group relative bg-ink border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition-all duration-300"
+                                className="group relative bg-canvas border border-line rounded-2xl overflow-hidden hover:border-ink/40 transition-all duration-300"
                             >
                                 <div className="grid md:grid-cols-2 gap-8 items-center p-8">
-                                    <div className="relative aspect-[16/9] md:aspect-square overflow-hidden rounded-xl bg-neutral-900">
+                                    <div className="relative aspect-[16/9] md:aspect-square overflow-hidden rounded-xl bg-canvas-2">
                                         {/* Placeholder for images - ideally use the actually generated images */}
                                         <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/20 group-hover:scale-110 transition-transform duration-500" />
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <Tag className="w-12 h-12 text-white/10" />
+                                            <Tag className="w-12 h-12 text-ink/10" />
                                         </div>
                                     </div>
 
@@ -46,7 +46,7 @@ export default function BlogIndex() {
                                             <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full">
                                                 {post.category}
                                             </span>
-                                            <span className="flex items-center gap-2 text-gray-500 text-sm">
+                                            <span className="flex items-center gap-2 text-muted text-sm">
                                                 <Calendar className="w-4 h-4" />
                                                 {new Date(post.date).toLocaleDateString('en-US', {
                                                     year: 'numeric',
@@ -56,19 +56,19 @@ export default function BlogIndex() {
                                             </span>
                                         </div>
 
-                                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 group-hover:text-accent transition-colors">
+                                        <h2 className="text-2xl sm:text-3xl font-bold text-ink mb-4 group-hover:text-accent transition-colors">
                                             <Link href={`/blog/${post.slug}`}>
                                                 {post.title}
                                             </Link>
                                         </h2>
 
-                                        <p className="text-gray-400 mb-8 line-clamp-2">
+                                        <p className="text-muted mb-8 line-clamp-2">
                                             {post.description}
                                         </p>
 
                                         <Link
                                             href={`/blog/${post.slug}`}
-                                            className="inline-flex items-center gap-2 text-white font-bold group/link"
+                                            className="inline-flex items-center gap-2 text-ink font-bold group/link"
                                         >
                                             Read Article
                                             <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

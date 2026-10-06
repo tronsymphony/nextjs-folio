@@ -112,7 +112,7 @@ export default function SeoPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-ink">
+      <div className="bg-canvas">
         <PageHero
           back={['/', 'Home']}
           eyebrow="SEO · Search marketing · Content"
@@ -129,7 +129,26 @@ export default function SeoPage() {
           {proof && <SecondaryCta href={`/work/${proof.slug}/`}>See the case study</SecondaryCta>}
         </PageHero>
 
-        <Block index="01" label="What I do">
+        <Block index="01" label="Start here">
+          <LinkRows
+            items={[
+              {
+                href: '/seo/technical-seo-audit/',
+                tag: 'Fixed scope',
+                title: 'Technical SEO audit',
+                body: 'The problems that actually cost you traffic, traced to the template or setting behind each one, with fixes ranked by impact.',
+              },
+              {
+                href: '/seo/llms-txt/',
+                tag: 'Free guide',
+                title: 'What is llms.txt, and how to add one',
+                body: 'What it does and doesn’t do for AI search, with Next.js and WordPress steps.',
+              },
+            ]}
+          />
+        </Block>
+
+        <Block index="02" label="What I do">
           <ol className="border-t border-line">
             {services.map(({ title, body }, i) => (
               <li key={title} className="grid md:grid-cols-8 gap-4 md:gap-8 py-8 border-b border-line">
@@ -144,7 +163,7 @@ export default function SeoPage() {
         </Block>
 
         {proof && (
-          <Block index="02" label="Proof" title={<>Safe Streets Map: <Accent>pages that answer searches.</Accent></>}>
+          <Block index="03" label="Proof" title={<>Safe Streets Map: <Accent>pages that answer searches.</Accent></>}>
             <p className="text-lg text-muted leading-relaxed max-w-3xl mb-10">
               My own product, built the same way: more than 1,500 static pages generated from California crash records, each
               answering a question people search, such as whether a city is safe to walk or where to get a police report.
@@ -155,14 +174,14 @@ export default function SeoPage() {
           </Block>
         )}
 
-        <Block index="03" label="How it works">
+        <Block index="04" label="How it works">
           <ol className="grid md:grid-cols-3 border-t border-line">
             {steps.map(([step, title, body], i) => (
               <li
                 key={step}
                 className={`flex flex-col pt-8 pb-10 md:px-8 md:first:pl-0 ${i > 0 ? 'md:border-l' : ''} border-line border-b md:border-b-0`}
               >
-                <span className="text-[clamp(3.5rem,7vw,6rem)] font-medium leading-none tracking-[-0.06em] text-paper/15">{step}</span>
+                <span className="text-[clamp(3.5rem,7vw,6rem)] font-medium leading-none tracking-[-0.06em] text-ink/15">{step}</span>
                 <h3 className="mt-6 text-2xl font-medium tracking-[-0.03em]">{title}</h3>
                 <p className="mt-3 text-muted leading-relaxed">{body}</p>
               </li>
@@ -170,15 +189,15 @@ export default function SeoPage() {
           </ol>
         </Block>
 
-        <Block index="04" label="Who it fits">
+        <Block index="05" label="Who it fits">
           <DataTable columns={['Your site', 'What I do']} rows={fit} />
         </Block>
 
-        <Block index="05" label="What I won't do">
+        <Block index="06" label="What I won't do">
           <NumberedList items={notDone} tone="accent" />
         </Block>
 
-        <Block index="06" label="Questions">
+        <Block index="07" label="Questions">
           <FaqList faqs={faqs} />
         </Block>
 

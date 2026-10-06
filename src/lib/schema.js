@@ -27,7 +27,7 @@ export function organizationNode() {
     '@id': ORG_ID,
     name: SITE_NAME,
     url: SITE_URL,
-    logo: url('/images/logo.png'),
+    logo: url('/images/casa-dev-logo.svg'),
     description:
       'Oracle NetSuite integration and custom front-end engineering: customer portals, ERP-connected storefronts, and integration audits.',
     founder: { '@id': PERSON_ID },

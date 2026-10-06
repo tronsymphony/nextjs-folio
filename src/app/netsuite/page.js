@@ -78,12 +78,12 @@ export default function NetSuiteHubPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-ink">
+      <div className="bg-canvas">
         <PageHero
           back={['/', 'Home']}
           eyebrow="Oracle NetSuite · Integrations · Front ends"
           title={<>NetSuite is your system of record. It shouldn&rsquo;t be a <Accent>dead end.</Accent></>}
-          lede={`I connect Oracle NetSuite to the storefronts, portals, and tools your customers and staff actually use, and build those front ends in Next.js, React, or Angular. ${PERSON.yearsExperience} years of software engineering, working directly with you, not through an account manager.`}
+          lede={`I connect Oracle NetSuite to the storefronts, EDI trading partners, 3PLs, portals, and tools your customers and staff actually use, and build those front ends in Next.js, React, or Angular. ${PERSON.yearsExperience} years of software engineering, working directly with you, not through an account manager.`}
         >
           <PrimaryCta />
           <SecondaryCta />

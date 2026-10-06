@@ -31,7 +31,7 @@ export function WorkGrid({ projects }: { projects: Project[] }) {
             style={{ "--reveal-delay": `${(i % 2) * 120}ms` } as React.CSSProperties}
             className={`group block ${i % 2 === 1 ? "md:mt-28" : ""}`}
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink-3">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-canvas-3">
               <Image
                 src={project.heroImage}
                 alt={`${project.client}: ${project.title}`}
@@ -39,7 +39,7 @@ export function WorkGrid({ projects }: { projects: Project[] }) {
                 className="object-cover object-top transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.04]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <span className="absolute top-5 right-5 flex items-center justify-center w-12 h-12 rounded-full bg-paper text-ink opacity-0 scale-75 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100">
+              <span className="absolute top-5 right-5 flex items-center justify-center w-12 h-12 rounded-full bg-ink text-canvas opacity-0 scale-75 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
             </div>

@@ -90,7 +90,7 @@ export default function AiAppAuditPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-ink">
+      <div className="bg-canvas">
         <PageHero
           back={['/', 'Home']}
           eyebrow={`Fixed scope · Fixed price · ${audit.durationDays} business days`}
@@ -105,7 +105,7 @@ export default function AiAppAuditPage() {
         >
           <a
             href={buyHref}
-            className="group inline-flex items-center justify-center gap-2 pl-6 pr-5 py-3.5 rounded-full bg-paper !text-ink font-medium tracking-tight hover:bg-accent transition-colors duration-300"
+            className="group inline-flex items-center justify-center gap-2 pl-6 pr-5 py-3.5 rounded-full bg-ink !text-canvas font-medium tracking-tight hover:bg-accent transition-colors duration-300"
           >
             {audit.stripePaymentLink ? 'Book the audit' : 'Request the audit'}
             <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

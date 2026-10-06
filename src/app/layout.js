@@ -43,7 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
-      <body className="font-sans bg-ink text-paper">
+      <body className="font-sans bg-canvas text-ink">
         <RevealObserver />
         <JsonLd data={graph(organizationNode(), personNode())} />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (

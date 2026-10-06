@@ -7,7 +7,7 @@ export function PrimaryCta({ href = '/netsuite-audit/', children = 'Book a NetSu
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center justify-center gap-2 pl-6 pr-5 py-3.5 rounded-full bg-paper !text-ink font-medium tracking-tight hover:bg-accent transition-colors duration-300 ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 pl-6 pr-5 py-3.5 rounded-full bg-ink !text-canvas font-medium tracking-tight hover:bg-accent transition-colors duration-300 ${className}`}
     >
       {children}
       <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -19,7 +19,7 @@ export function SecondaryCta({ href = '/call/', children = 'Book a 20-min fit ca
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-line text-paper font-medium tracking-tight hover:border-paper transition-colors duration-300 ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-line text-ink font-medium tracking-tight hover:border-ink transition-colors duration-300 ${className}`}
     >
       {children}
     </Link>
@@ -67,7 +67,7 @@ export function SectionHead({ index, label, title, children, className = "" }) {
 // Inline text link with the arrow and a drawn underline.
 export function ArrowLink({ href, children, className = '' }) {
   return (
-    <Link href={href} className={`group inline-flex items-center gap-1.5 font-medium text-paper ${className}`}>
+    <Link href={href} className={`group inline-flex items-center gap-1.5 font-medium text-ink ${className}`}>
       <span className="link-draw">{children}</span>
       <ArrowUpRight className="w-4 h-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
     </Link>

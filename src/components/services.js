@@ -27,7 +27,7 @@ const alsoAvailable = [
 
 export default function Services() {
   return (
-    <div className="bg-ink">
+    <div className="bg-canvas">
       <PageHero
         back={['/', 'Home']}
         eyebrow="Capabilities"

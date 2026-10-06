@@ -13,7 +13,7 @@ export default function Expertise() {
           </h3>
           <ul className="md:col-span-5 space-y-2">
             {items.map((item) => (
-              <li key={item} className="text-paper/85 leading-relaxed">
+              <li key={item} className="text-ink/85 leading-relaxed">
                 {item}
               </li>
             ))}

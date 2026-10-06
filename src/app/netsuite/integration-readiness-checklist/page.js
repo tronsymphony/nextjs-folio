@@ -36,14 +36,14 @@ export default function ChecklistPage() {
           ])
         )}
       />
-      <article className="bg-ink text-white print:bg-white print:text-black">
+      <article className="bg-canvas text-ink print:bg-white print:text-black">
         <header className="pt-36 pb-12 px-4 sm:px-6 print:pt-0">
           <div className="container mx-auto max-w-3xl">
             <div className="print:hidden">
               <Eyebrow>Free checklist · {checklistCount} checks</Eyebrow>
             </div>
             <h1 className="text-4xl sm:text-5xl font-medium tracking-[-0.04em] mt-6 mb-6">The NetSuite Integration Readiness Checklist</h1>
-            <p className="text-lg text-neutral-300 print:text-black leading-relaxed">
+            <p className="text-lg text-ink/80 print:text-black leading-relaxed">
               Most NetSuite integrations that fail were never going to work: two systems both believed they owned the
               same data, nobody planned for errors, or the design ignored the account&rsquo;s API limits. Run these
               checks before you connect anything to NetSuite. Every &ldquo;no&rdquo; is a risk worth resolving first.
@@ -61,8 +61,8 @@ export default function ChecklistPage() {
                 <h2 className="text-2xl font-bold mb-5">{section}</h2>
                 <ul className="space-y-3">
                   {items.map((item) => (
-                    <li key={item} className="flex gap-3 text-neutral-300 print:text-black leading-relaxed">
-                      <span aria-hidden="true" className="mt-1 w-4 h-4 shrink-0 rounded border border-neutral-600 print:border-black" />
+                    <li key={item} className="flex gap-3 text-ink/80 print:text-black leading-relaxed">
+                      <span aria-hidden="true" className="mt-1 w-4 h-4 shrink-0 rounded border border-line print:border-black" />
                       {item}
                     </li>
                   ))}

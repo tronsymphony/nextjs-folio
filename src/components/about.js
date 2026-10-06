@@ -13,7 +13,7 @@ const howIWork = [
 
 export default function About() {
   return (
-    <div className="bg-ink">
+    <div className="bg-canvas">
       <PageHero
         back={["/", "Home"]}
         eyebrow={PERSON.location}
@@ -64,7 +64,7 @@ export default function About() {
             </p>
             <ArrowLink href="/work/safe-streets-map-crash-data-platform/">How Safe Streets Map is built</ArrowLink>
           </div>
-          <div className="rounded-3xl overflow-hidden border border-line bg-ink-2">
+          <div className="rounded-3xl overflow-hidden border border-line bg-canvas-2">
             <iframe
               title="Latest rides on Strava"
               height="454"

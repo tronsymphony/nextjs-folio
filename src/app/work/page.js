@@ -17,7 +17,7 @@ export default function WorkPage() {
   return (
     <>
       <HomeFollow />
-      <div className="bg-ink">
+      <div className="bg-canvas">
         <PageHero
           back={['/', 'Home']}
           eyebrow={`${projects.length} case studies`}

@@ -56,14 +56,14 @@ void main() {
   float v = h * bands;
   float f = fract(v);
   float w = fwidth(v);
-  float line = 1.0 - smoothstep(0.0, w * 1.4, min(f, 1.0 - f));
+  float line = 1.0 - smoothstep(w * 0.4, w * 2.0, min(f, 1.0 - f));
   float major = 1.0 - step(0.5, mod(floor(v + 0.5), 5.0));
 
   float near = smoothstep(0.42, 0.0, distance(uv, pointer));
-  vec3 paper = vec3(0.949, 0.941, 0.922);
-  vec3 accent = vec3(1.0, 0.353, 0.122);
-  vec3 col = mix(paper, accent, near * 0.85);
-  float alpha = line * (0.07 + major * 0.08 + near * 0.35);
+  vec3 ink = vec3(0.078, 0.078, 0.075);
+  vec3 accent = vec3(0.91, 0.314, 0.102);
+  vec3 col = mix(ink, accent, near * 0.9);
+  float alpha = line * (0.2 + major * 0.18 + near * 0.55);
 
   outColor = vec4(col * alpha, alpha);
 }`;

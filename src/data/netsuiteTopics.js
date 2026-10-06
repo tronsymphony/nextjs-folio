@@ -14,10 +14,10 @@ export const netsuiteTopics = [
     // TODO(owner): add your own project experience to `diagnosis` and `gotchas`.
     status: 'published',
     updatedAt: '2026-10-05',
-    title: 'NetSuite Shopify Integration: Connector, Middleware, or Custom?',
+    title: 'NetSuite Shopify Integration & Connector: Cost, Options and Setup',
     description:
-      'How to integrate Shopify with Oracle NetSuite: the three approaches, what each costs you over time, the field-mapping decisions that cause most failures, and when not to build custom.',
-    h1: 'NetSuite + Shopify integration: choosing the approach that won’t break',
+      'How to integrate Shopify with Oracle NetSuite: the NetSuite Connector, Celigo or custom code, what each costs, the field-mapping decisions that cause most failures, and when not to build custom.',
+    h1: 'NetSuite Shopify integration: connector, Celigo or custom code',
     lede:
       'There are three ways to connect Shopify to NetSuite: Oracle’s NetSuite Connector, an integration platform like Celigo, or custom code on the NetSuite and Shopify APIs. The right choice depends less on features than on how far your catalog, pricing, and fulfillment differ from the defaults each tool assumes.',
     estimate: { system: 'shopify', records: ['items', 'inventory', 'orders', 'fulfillments'], direction: 'two-way' },
@@ -54,6 +54,10 @@ export const netsuiteTopics = [
       {
         q: 'Should Shopify or NetSuite be the source of truth for products?',
         a: 'Usually NetSuite owns items, pricing, and inventory, while Shopify owns merchandising content like descriptions and images. The important part is deciding per field, so a two-way sync never has both systems editing the same value.',
+      },
+      {
+        q: 'NetSuite Connector or Celigo for Shopify?',
+        a: 'Both handle the standard flows: items, inventory, orders and fulfillments. Oracle’s NetSuite Connector suits a single Shopify store with standard data; Celigo suits several channels and teams that want to adjust flows and watch errors in one dashboard. Either one starts to strain with kits, B2B price levels or multi-location allocation, which is when custom code is worth comparing.',
       },
       {
         q: 'How long does a NetSuite Shopify integration take?',
@@ -279,9 +283,9 @@ export const netsuiteTopics = [
     slug: 'netsuite-edi-integration',
     status: 'published',
     updatedAt: '2026-10-05',
-    title: 'NetSuite EDI Integration: Retailer Orders, ASNs and Invoices',
+    title: 'NetSuite EDI Integration: Providers, Cost, ASNs and Invoices',
     description:
-      'How EDI works with Oracle NetSuite: the 850, 855, 856 and 810 documents, full-service EDI providers versus building your own, retailer certification, and the mistakes that cause chargebacks.',
+      'How EDI works with Oracle NetSuite: the 850, 855, 856 and 810 documents, choosing an EDI provider, what an integration costs, retailer certification, and the mistakes that cause chargebacks.',
     h1: 'NetSuite EDI integration: trading with retailers without retyping',
     lede:
       'Large retailers and distributors send purchase orders and expect advance ship notices and invoices back as EDI documents, on their schedule and in their format. A NetSuite EDI integration turns those documents into sales orders and sends the replies from NetSuite’s fulfillments and invoices.',
@@ -308,6 +312,7 @@ export const netsuiteTopics = [
       'ASNs built from what was ordered instead of what was packed cause receiving errors at the retailer and chargebacks.',
       'Price differences between the PO and your NetSuite price levels must be resolved before invoicing; invoicing your price instead of theirs leads to deductions.',
       'Item cross-references kept in a spreadsheet instead of NetSuite break the first time someone adds a new product for one retailer.',
+      'Carton labels (GS1-128) printed from a different system than the one that builds the ASN end up with numbers that don’t match, and the retailer’s receiving dock rejects or fines the shipment.',
     ],
     whenNotToDoThis:
       'If you have one EDI partner and low volume, a web EDI portal from a provider, where someone keys documents by hand, can be cheaper than integrating. Integrate when the order count or the chargebacks make manual entry the larger cost.',
@@ -319,6 +324,18 @@ export const netsuiteTopics = [
       {
         q: 'Which EDI documents do suppliers need?',
         a: 'Most retailers require the 850 purchase order, 856 advance ship notice and 810 invoice, plus 997 acknowledgments. Some also require the 855 order acknowledgment, 846 inventory and 860 PO changes.',
+      },
+      {
+        q: 'How much does NetSuite EDI cost?',
+        a: 'Two parts: the EDI provider’s fees, usually a setup fee per trading partner plus a monthly or per-document charge, and the work to connect the provider to NetSuite, sized in the cost table above. Chargebacks avoided often pay for the integration; a late or wrong ASN can cost more than the document fees.',
+      },
+      {
+        q: 'What is an ASN, and why do retailers charge back for it?',
+        a: 'An ASN (EDI 856, advance ship notice) tells the retailer exactly what is in each carton before the truck arrives, so their dock can receive it by scanning labels. If the ASN is late, missing or doesn’t match the cartons, receiving slows down, and most large retailers pass that cost back to the supplier as a chargeback.',
+      },
+      {
+        q: 'Can you connect NetSuite to the EDI provider we already use?',
+        a: 'Usually, yes. Most EDI providers exchange documents through an API, SFTP or their own NetSuite app. The audit starts by mapping what your provider already sends and receives, and where NetSuite data is missing or retyped.',
       },
       {
         q: 'How long does a NetSuite EDI integration take?',
@@ -400,10 +417,10 @@ define(['N/query'], (query) => {
     slug: 'netsuite-restlet-vs-rest-api',
     status: 'published',
     updatedAt: '2026-10-05',
-    title: 'NetSuite RESTlet vs REST API (SuiteTalk REST): Which to Use',
+    title: 'NetSuite REST API vs RESTlets: Which to Use for Integrations',
     description:
-      'When to build a NetSuite RESTlet and when to use SuiteTalk REST web services: control over the contract, governance, authentication, idempotency, and a RESTlet example that cannot create duplicate orders.',
-    h1: 'NetSuite RESTlet vs SuiteTalk REST: choosing an integration API',
+      'The NetSuite REST API (SuiteTalk REST web services) or a RESTlet? When to use each: control over the contract, governance, authentication, idempotency, and a RESTlet example that cannot create duplicate orders.',
+    h1: 'NetSuite REST API vs RESTlets: choosing an integration API',
     lede:
       'SuiteTalk REST web services give you standard create, read, update and delete on NetSuite records plus a SuiteQL endpoint. A RESTlet is your own SuiteScript endpoint with whatever contract you design. Use REST for plain record access; use a RESTlet when one call must do several things in NetSuite.',
     diagnosis: [

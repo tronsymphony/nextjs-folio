@@ -54,7 +54,7 @@ export default async function AppAuditGuidePage({ params }) {
           faqNode(guide.faqs)
         )}
       />
-      <article className="bg-ink">
+      <article className="bg-canvas">
         <PageHero
           back={['/ai-app-audit/', 'AI-built app audit']}
           eyebrow="Security guide"
@@ -83,7 +83,7 @@ export default async function AppAuditGuidePage({ params }) {
                 </div>
                 <div className="md:col-span-4">
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-3">How to check</p>
-                  <p className="text-paper/85 leading-relaxed">{c.how}</p>
+                  <p className="text-ink/85 leading-relaxed">{c.how}</p>
                 </div>
                 <div className="md:col-span-4">
                   <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-3">Fix</p>
@@ -96,7 +96,7 @@ export default async function AppAuditGuidePage({ params }) {
 
         {guide.codeSnippet && (
           <Block index={next()} label="Example" wide>
-            <pre className="p-6 md:p-8 rounded-3xl bg-ink-2 border border-line text-[13px] leading-relaxed text-paper/85 overflow-x-auto font-mono">
+            <pre className="p-6 md:p-8 rounded-3xl bg-canvas-2 border border-line text-[13px] leading-relaxed text-ink/85 overflow-x-auto font-mono">
               <code>{guide.codeSnippet}</code>
             </pre>
           </Block>

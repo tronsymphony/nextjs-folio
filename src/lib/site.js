@@ -59,6 +59,11 @@ export const OFFERS = {
     stripePaymentLink: null, // e.g. 'https://buy.stripe.com/...'
     creditedOnProceed: true, // audit fee credited toward the fixes
   },
+  seoAudit: {
+    name: 'Technical SEO Audit',
+    price: null, // TODO(owner): set a flat price, e.g. 1500 (USD); null shows "quoted on a call"
+    durationDays: null, // TODO(owner): business days to deliver; null hides the figure
+  },
   implementationFrom: null, // e.g. 15000 (USD), "typical engagements start at"
   retainerFrom: null, // e.g. 3000 (USD / month)
 };

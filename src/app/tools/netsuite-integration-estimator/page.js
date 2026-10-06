@@ -52,14 +52,14 @@ export default function EstimatorPage() {
           faqNode(faqs)
         )}
       />
-      <div className="bg-ink text-white print:bg-white print:text-black">
+      <div className="bg-canvas text-ink print:bg-white print:text-black">
         <section className="pt-36 pb-12 px-4 sm:px-6 print:pt-0">
           <div className="container mx-auto max-w-6xl">
             <div className="print:hidden">
               <Eyebrow tone="emerald">Free tool · No email required</Eyebrow>
             </div>
             <h1 className="text-4xl sm:text-5xl font-medium tracking-[-0.04em] mt-6 mb-6">NetSuite integration cost estimator</h1>
-            <p className="text-lg text-neutral-300 print:text-black leading-relaxed max-w-3xl">
+            <p className="text-lg text-ink/80 print:text-black leading-relaxed max-w-3xl">
               &ldquo;What will this cost?&rdquo; is the first question in every NetSuite integration project, and the
               hardest to get a straight answer to. Describe what you need connected and you&rsquo;ll get a scope
               outline: the phases, the integration surface, the risks worth planning for, and a realistic range.
@@ -80,7 +80,7 @@ export default function EstimatorPage() {
               {faqs.map(({ q, a }) => (
                 <div key={q}>
                   <dt className="text-lg font-semibold mb-2">{q}</dt>
-                  <dd className="text-neutral-400 leading-relaxed">{a}</dd>
+                  <dd className="text-muted leading-relaxed">{a}</dd>
                 </div>
               ))}
             </dl>

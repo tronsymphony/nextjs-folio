@@ -27,7 +27,7 @@ export function PageHero({ back, eyebrow, title, lede, facts, size = 'lg', child
     <header className={`${WRAP} pt-36 md:pt-44 pb-16 md:pb-24`}>
       <div className="flex flex-wrap items-center justify-between gap-4 mb-12 md:mb-20 opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards]">
         {back ? (
-          <Link href={back[0]} className={`group inline-flex items-center gap-2 ${LABEL} text-muted hover:text-paper transition-colors`}>
+          <Link href={back[0]} className={`group inline-flex items-center gap-2 ${LABEL} text-muted hover:text-ink transition-colors`}>
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" /> {back[1]}
           </Link>
         ) : (
@@ -54,7 +54,7 @@ export function PageHero({ back, eyebrow, title, lede, facts, size = 'lg', child
           {facts.map(([label, value]) => (
             <div key={label} className="pt-5 pr-6 pb-2">
               <dt className={`${LABEL} text-faint mb-2`}>{label}</dt>
-              <dd className="text-[15px] text-paper leading-snug">{value}</dd>
+              <dd className="text-[15px] text-ink leading-snug">{value}</dd>
             </div>
           ))}
         </dl>
@@ -89,7 +89,7 @@ export function Block({ label, index, title, id, children, wide = false }) {
 // Body copy for long paragraphs inside a Block.
 export function Prose({ paragraphs }) {
   return (
-    <div className="space-y-6 text-lg md:text-xl text-paper/85 leading-[1.6] tracking-[-0.005em] max-w-3xl">
+    <div className="space-y-6 text-lg md:text-xl text-ink/85 leading-[1.6] tracking-[-0.005em] max-w-3xl">
       {paragraphs.map((p) => (
         <p key={p.slice(0, 48)}>{p}</p>
       ))}
@@ -123,7 +123,7 @@ export function DataTable({ columns, rows, mono = [] }) {
                   key={c}
                   className={`py-5 pr-6 leading-relaxed ${
                     mono.includes(c) ? 'font-mono text-[13px]' : 'text-[15px]'
-                  } ${c === 0 ? 'text-paper font-medium' : 'text-muted'}`}
+                  } ${c === 0 ? 'text-ink font-medium' : 'text-muted'}`}
                 >
                   {cell}
                 </td>
@@ -145,7 +145,7 @@ export function NumberedList({ items, tone = 'paper' }) {
           <span className={`font-mono text-xs pt-1.5 ${tone === 'accent' ? 'text-accent' : 'text-faint'}`}>
             {String(i + 1).padStart(2, '0')}
           </span>
-          <div className="text-lg leading-relaxed text-paper/85">{item}</div>
+          <div className="text-lg leading-relaxed text-ink/85">{item}</div>
         </li>
       ))}
     </ol>
@@ -182,7 +182,7 @@ export function LinkRows({ items }) {
           <Link href={item.href} className="group grid grid-cols-[1fr_auto] gap-6 py-6 border-b border-line">
             <span>
               {item.tag && <span className={`block ${LABEL} text-faint mb-2`}>{item.tag}</span>}
-              <span className="block text-xl md:text-2xl font-medium tracking-[-0.025em] leading-tight transition-colors group-hover:text-paper text-paper/90">
+              <span className="block text-xl md:text-2xl font-medium tracking-[-0.025em] leading-tight transition-colors group-hover:text-ink text-ink/90">
                 {item.title}
               </span>
               {item.body && <span className="block mt-2 text-muted leading-relaxed max-w-2xl">{item.body}</span>}
@@ -198,9 +198,9 @@ export function LinkRows({ items }) {
 // A large closing statement in a soft panel (e.g. "When not to do this").
 export function Callout({ label, children }) {
   return (
-    <div className="rounded-3xl bg-ink-2 border border-line p-8 md:p-12">
+    <div className="rounded-3xl bg-canvas-2 border border-line p-8 md:p-12">
       <p className={`${LABEL} text-accent mb-6`}>{label}</p>
-      <p className="text-[clamp(1.35rem,2.4vw,2rem)] font-medium leading-[1.25] tracking-[-0.025em] text-paper/90">{children}</p>
+      <p className="text-[clamp(1.35rem,2.4vw,2rem)] font-medium leading-[1.25] tracking-[-0.025em] text-ink/90">{children}</p>
     </div>
   );
 }
@@ -219,7 +219,7 @@ export function ClosingCta({ title, body, href, cta, secondary }) {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href={href}
-              className="group inline-flex items-center justify-center gap-2 pl-7 pr-6 py-4 rounded-full bg-paper !text-ink font-medium hover:bg-accent transition-colors duration-300"
+              className="group inline-flex items-center justify-center gap-2 pl-7 pr-6 py-4 rounded-full bg-ink !text-canvas font-medium hover:bg-accent transition-colors duration-300"
             >
               {cta}
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -227,7 +227,7 @@ export function ClosingCta({ title, body, href, cta, secondary }) {
             {secondary && (
               <Link
                 href={secondary[0]}
-                className="inline-flex items-center justify-center px-7 py-4 rounded-full border border-line font-medium hover:border-paper transition-colors duration-300"
+                className="inline-flex items-center justify-center px-7 py-4 rounded-full border border-line font-medium hover:border-ink transition-colors duration-300"
               >
                 {secondary[1]}
               </Link>

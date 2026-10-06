@@ -8,7 +8,8 @@ import { PERSON } from "../lib/site";
 // Pages that already end in a booking or contact form don't need the CTA band.
 const HIDE_CTA_ON = ["/contact/", "/call/", "/netsuite-audit/", "/seo/"];
 // The app-audit guides end in their own audit CTA; the NetSuite band would be off-topic there.
-const hideCta = (pathname) => HIDE_CTA_ON.includes(pathname) || pathname?.startsWith("/ai-app-audit/");
+const hideCta = (pathname) =>
+  HIDE_CTA_ON.includes(pathname) || pathname?.startsWith("/ai-app-audit/") || pathname?.startsWith("/seo/");
 
 // Hubs that list every guide, so each page links to all of them in two clicks.
 const COLUMNS = [
@@ -19,6 +20,7 @@ const COLUMNS = [
       ["/ai-app-audit/", "AI-built app audit"],
       ["/netsuite/", "NetSuite integrations"],
       ["/seo/", "SEO & search marketing"],
+      ["/seo/technical-seo-audit/", "Technical SEO audit"],
       ["/pricing/", "Pricing"],
     ],
   },
@@ -67,7 +69,7 @@ export default function Footer() {
   return (
     <>
       {!hideCta(pathname) && (
-        <section className="relative bg-ink border-t border-line overflow-hidden">
+        <section className="relative bg-canvas border-t border-line overflow-hidden">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-8 py-24 md:py-36">
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-10" data-reveal>
               (Next step)
@@ -86,14 +88,14 @@ export default function Footer() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/netsuite-audit/"
-                  className="group inline-flex items-center justify-center gap-2 pl-7 pr-6 py-4 rounded-full bg-paper !text-ink font-medium hover:bg-accent transition-colors duration-300"
+                  className="group inline-flex items-center justify-center gap-2 pl-7 pr-6 py-4 rounded-full bg-ink !text-canvas font-medium hover:bg-accent transition-colors duration-300"
                 >
                   Book a NetSuite audit
                   <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
                 <Link
                   href="/call/"
-                  className="inline-flex items-center justify-center px-7 py-4 rounded-full border border-line font-medium hover:border-paper transition-colors duration-300"
+                  className="inline-flex items-center justify-center px-7 py-4 rounded-full border border-line font-medium hover:border-ink transition-colors duration-300"
                 >
                   20-min fit call
                 </Link>
@@ -103,7 +105,7 @@ export default function Footer() {
         </section>
       )}
 
-      <footer className="bg-ink-2 border-t border-line overflow-hidden">
+      <footer className="bg-canvas-2 border-t border-line overflow-hidden">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 pt-20 md:pt-28">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-8 pb-20">
             <div className="lg:col-span-5">
@@ -136,7 +138,7 @@ export default function Footer() {
                   <ul className="space-y-3">
                     {col.links.map(([href, label]) => (
                       <li key={href + label}>
-                        <Link href={href} className="text-[15px] text-muted hover:text-paper transition-colors">
+                        <Link href={href} className="text-[15px] text-muted hover:text-ink transition-colors">
                           {label}
                         </Link>
                       </li>
@@ -153,11 +155,11 @@ export default function Footer() {
             </span>
             <div className="flex items-center gap-6">
               {SOCIAL.map(([label, href]) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hover:text-paper transition-colors">
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors">
                   {label}
                 </a>
               ))}
-              <a href="#" className="hover:text-paper transition-colors">
+              <a href="#" className="hover:text-ink transition-colors">
                 Back to top ↑
               </a>
             </div>
@@ -167,9 +169,9 @@ export default function Footer() {
         {/* Oversized wordmark, cropped by the page edge. */}
         <p
           aria-hidden="true"
-          className="select-none whitespace-nowrap text-center font-semibold leading-[0.78] tracking-[-0.07em] text-paper/[0.06] text-[27vw] -mb-[4vw]"
+          className="select-none whitespace-nowrap text-center font-semibold leading-[0.78] tracking-[-0.07em] text-ink/[0.06] text-[27vw] -mb-[4vw]"
         >
-          Casa Dev
+          Casa <span className="font-serif italic font-normal tracking-[-0.03em]">Dev</span>
         </p>
       </footer>
     </>
