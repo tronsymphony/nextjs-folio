@@ -13,6 +13,7 @@ const services = [
 
 // Work I still take on, mostly for existing clients or alongside the services above.
 const alsoAvailable = [
+  ['AI integration', 'AI added to the tools you already run: documents and emails read into NetSuite records, search over your own data, drafts for staff to check, and image processing.'],
   ['Product development', 'Taking a new product from idea to launch: scoping, prototype, build, analytics, and the admin tools to run it.'],
   ['Custom web applications', 'React, Next.js and Angular applications, including migrations off legacy front ends.'],
   ['Shopify & headless commerce', 'Shopify and Shopify Plus stores, or Shopify behind a custom, fast front end.'],

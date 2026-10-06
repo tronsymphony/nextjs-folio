@@ -121,7 +121,9 @@ export default function Footer() {
               <dl className="mt-10 grid grid-cols-2 gap-6 max-w-sm text-sm">
                 <div>
                   <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-2">Based in</dt>
-                  <dd className="text-muted">Los Angeles, California</dd>
+                  <dd className="text-muted">
+                    <Link href="/about/los-angeles/" className="link-draw hover:text-ink">Los Angeles, California</Link>
+                  </dd>
                 </div>
                 <div>
                   <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-2">Local time</dt>

@@ -33,7 +33,11 @@ export function organizationNode() {
     founder: { '@id': PERSON_ID },
     telephone: PERSON.telephone,
     email: PERSON.email,
-    areaServed: ['United States'],
+    areaServed: [
+      { '@type': 'City', name: 'Los Angeles', containedInPlace: { '@type': 'State', name: 'California' } },
+      { '@type': 'State', name: 'California' },
+      { '@type': 'Country', name: 'United States' },
+    ],
     address: { '@type': 'PostalAddress', addressLocality: 'Los Angeles', addressRegion: 'CA', addressCountry: 'US' },
     sameAs: [PERSON.linkedin, PERSON.github],
   };

@@ -8,7 +8,7 @@ const EMPTY_FORM = {
   name: '',
   email: '',
   company: '',
-  projectType: 'netsuite-integration',
+  projectType: 'free-review',
   message: '',
   budget: '',
   timeframe: ''
@@ -144,11 +144,13 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
               onChange={handleChange}
               className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
             >
-              <option value="netsuite-integration">NetSuite integration</option>
-              <option value="customer-portal">Customer / dealer portal on NetSuite</option>
-              <option value="commerce">E-commerce connected to an ERP</option>
+              <option value="free-review">Free 30-minute review</option>
+              <option value="netsuite-integration">NetSuite integration or portal</option>
               <option value="audit">NetSuite integration audit</option>
-              <option value="web-app">Custom web application</option>
+              <option value="ai-integration">AI integration</option>
+              <option value="app-audit">Audit of an app built with AI</option>
+              <option value="seo">SEO or technical SEO</option>
+              <option value="web-app">Custom web application or WordPress</option>
               <option value="other">Something else</option>
             </select>
           </div>
@@ -166,10 +168,10 @@ export default function ContactForm({ onSubmitSuccess, source = 'contact' }) {
                 className="w-full px-4 py-2 bg-canvas-3 border border-line rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent text-ink"
               >
                 <option value="">Select range</option>
-                <option value="Under $10k">Under $10,000</option>
-                <option value="$10k - $25k">$10,000 - $25,000</option>
-                <option value="$25k - $50k">$25,000 - $50,000</option>
-                <option value="$50k+">$50,000+</option>
+                <option value="Under $1k">Under $1,000</option>
+                <option value="$1k - $5k">$1,000 - $5,000</option>
+                <option value="$5k - $15k">$5,000 - $15,000</option>
+                <option value="$15k+">$15,000+</option>
                 <option value="Monthly retainer">Ongoing monthly retainer</option>
                 <option value="Not sure">Not sure yet</option>
               </select>
