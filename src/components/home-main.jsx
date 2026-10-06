@@ -96,6 +96,7 @@ function RevealWords({ segments, delay = 150, step = 55 }) {
 
 export default function HomeMain({ hero = "field" }) {
   const guides = [
+    { href: "/edi/", title: "EDI documents explained: 850, 855, 856, 810 and more", tag: "EDI" },
     ...publishedTopics().map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1, tag: "NetSuite" })),
     ...publishedGuides().map((g) => ({ href: `/ai-app-audit/${g.slug}/`, title: g.h1, tag: "App security" })),
   ];

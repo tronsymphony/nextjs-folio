@@ -9,6 +9,7 @@ const NETSUITE_LINKS = [
   ['/netsuite/material-handling/', 'Material handling & logistics'],
   ['/netsuite-audit/', 'Integration audit'],
   ['/tools/netsuite-integration-estimator/', 'Integration cost estimator'],
+  ['/edi/', 'EDI reference'],
   ['/services/', 'All capabilities'],
 ];
 

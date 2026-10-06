@@ -1,4 +1,5 @@
 import { publishedGuides } from '../data/appAuditGuides';
+import { ediDocuments, ediSlug } from '../data/ediDocuments';
 import { publishedCaseStudies } from '../data/caseStudies';
 import { publishedTopics } from '../data/netsuiteTopics';
 import { SITE_URL } from '../lib/site';
@@ -13,6 +14,7 @@ const STATIC_ROUTES = [
   ['/seo/', 0.8],
   ['/seo/technical-seo-audit/', 0.8],
   ['/seo/llms-txt/', 0.6],
+  ['/edi/', 0.8],
   ['/netsuite/material-handling/', 0.8],
   ['/netsuite/integration-readiness-checklist/', 0.8],
   ['/tools/netsuite-integration-estimator/', 0.8],
@@ -49,6 +51,8 @@ export default function sitemap() {
     priority: 0.7,
   }));
 
+  const edi = ediDocuments.map((d) => ({ url: `${SITE_URL}/edi/${ediSlug(d.code)}/`, priority: 0.6 }));
+
   // The blog posts are noindexed (see posts.js), so they stay out of the sitemap.
-  return [...staticEntries, ...caseStudies, ...topics, ...guides];
+  return [...staticEntries, ...caseStudies, ...topics, ...guides, ...edi];
 }
