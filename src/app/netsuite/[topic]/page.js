@@ -131,13 +131,14 @@ export default async function NetSuiteTopicPage({ params }) {
           <FaqList faqs={topic.faqs} />
         </Block>
 
-        {(caseStudy || related.length > 0) && (
+        {(caseStudy || related.length > 0 || topic.relatedLinks) && (
           <Block index={next()} label="Read next">
             <LinkRows
               items={[
                 ...(caseStudy
                   ? [{ href: `/work/${caseStudy.slug}/`, title: caseStudy.title, tag: `Case study · ${caseStudy.client}` }]
                   : []),
+                ...(topic.relatedLinks || []),
                 ...related.map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1, tag: 'Guide' })),
               ]}
             />

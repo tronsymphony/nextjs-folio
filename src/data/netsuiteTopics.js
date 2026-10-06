@@ -277,6 +277,10 @@ export const netsuiteTopics = [
       },
     ],
     relatedCaseStudy: null,
+    relatedLinks: [
+      { href: '/edi/edi-940/', tag: 'EDI reference', title: 'EDI 940 Warehouse Shipping Order' },
+      { href: '/edi/edi-945/', tag: 'EDI reference', title: 'EDI 945 Warehouse Shipping Advice' },
+    ],
     relatedTopics: ['netsuite-edi-integration', 'netsuite-shopify-integration'],
   },
   {
@@ -343,6 +347,7 @@ export const netsuiteTopics = [
       },
     ],
     relatedCaseStudy: null,
+    relatedLinks: [{ href: '/edi/', tag: 'Reference', title: 'Every EDI document explained: 850, 855, 856, 810 and more' }],
     relatedTopics: ['netsuite-3pl-integration', 'netsuite-restlet-vs-rest-api'],
   },
   {

@@ -1,6 +1,7 @@
 import { publishedCaseStudies } from '../../data/caseStudies';
 import { publishedTopics } from '../../data/netsuiteTopics';
 import { publishedGuides } from '../../data/appAuditGuides';
+import { ediDocuments, ediSlug } from '../../data/ediDocuments';
 import { OFFERS, PERSON, SITE_NAME, SITE_URL, formatUSD } from '../../lib/site';
 
 // A plain-text summary for LLM crawlers (llmstxt.org), generated from the same
@@ -38,6 +39,11 @@ export function GET() {
     ...publishedTopics().map((t) => `- [${t.h1}](${SITE_URL}/netsuite/${t.slug}/): ${t.lede}`),
     ...publishedGuides().map((g) => `- [${g.h1}](${SITE_URL}/ai-app-audit/${g.slug}/): ${g.lede}`),
     `- [What is llms.txt, and how to add one](${SITE_URL}/seo/llms-txt/): what the file is, what it does and doesn't do for AI search, and how to add it to Next.js or WordPress.`,
+    '',
+    '## EDI reference',
+    '',
+    `- [EDI transaction sets explained](${SITE_URL}/edi/): plain-language reference to the X12 documents suppliers, distributors and 3PLs exchange, and how each maps to NetSuite.`,
+    ...ediDocuments.map((d) => `- [EDI ${d.code} ${d.name}](${SITE_URL}/edi/${ediSlug(d.code)}/): ${d.summary}`),
     '',
     '## Contact',
     '',
