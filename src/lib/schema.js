@@ -29,11 +29,14 @@ export function organizationNode() {
     url: SITE_URL,
     logo: url('/images/casa-dev-logo.svg'),
     description:
-      'Oracle NetSuite integration and custom front-end engineering: customer portals, ERP-connected storefronts, and integration audits.',
+      'Oracle NetSuite integrations and customer portals, security and production-readiness audits for apps built with AI tools, and technical SEO.',
     founder: { '@id': PERSON_ID },
     telephone: PERSON.telephone,
-    email: PERSON.email,
-    areaServed: ['United States'],
+    areaServed: [
+      { '@type': 'City', name: 'Los Angeles', containedInPlace: { '@type': 'State', name: 'California' } },
+      { '@type': 'State', name: 'California' },
+      { '@type': 'Country', name: 'United States' },
+    ],
     address: { '@type': 'PostalAddress', addressLocality: 'Los Angeles', addressRegion: 'CA', addressCountry: 'US' },
     sameAs: [PERSON.linkedin, PERSON.github],
   };

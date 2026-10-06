@@ -15,10 +15,10 @@ export default function Home() {
 // The OG image comes from src/app/opengraph-image.jsx.
 export const metadata = {
   title: {
-    absolute: "Casa Dev: Oracle NetSuite Integration & Custom Front-End Engineering",
+    absolute: "Casa Dev: NetSuite Integrations, AI App Audits & Technical SEO",
   },
   description:
-    "NetSuite integrations, customer portals, and ERP-connected storefronts, built by a senior engineer with 15 years of experience. Start with a fixed-price NetSuite integration audit.",
+    "NetSuite integrations, security audits for apps built with AI tools, and technical SEO, from a senior engineer with 15 years of experience. Each starts with a fixed-price audit.",
   alternates: {
     canonical: "/",
   },
@@ -34,9 +34,9 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "NetSuite, connected to the front ends your customers actually use",
+    title: "Systems that agree, apps that hold up, sites that get found",
     description:
-      "Oracle NetSuite integrations, customer portals, and ERP-connected storefronts. 15 years of engineering. Start with a fixed-price integration audit.",
+      "NetSuite integrations, AI-built app audits and technical SEO from one senior engineer. Each starts with a fixed-price audit.",
     url: "/",
     type: "website",
   },

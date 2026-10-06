@@ -3,34 +3,49 @@ import { ArrowRight, Check } from 'lucide-react';
 import { Eyebrow } from './ui/Cta';
 import { OFFERS, formatUSD } from '../lib/site';
 
-const { audit, implementationFrom, retainerFrom } = OFFERS;
+const { audit, appAudit, seoAudit, implementationFrom, retainerFrom } = OFFERS;
+
+const priceOf = (o) => (o.price ? formatUSD(o.price) : 'quoted');
+const auditPrices = [audit, appAudit, seoAudit].map((o) => o.price).filter(Boolean);
 
 const tiers = [
   {
-    step: '01',
-    name: audit.name,
-    price: audit.price ? formatUSD(audit.price) : 'Fixed fee',
-    cadence: audit.price ? 'flat' : 'quoted on a 20-min call',
-    summary: `Start here. A ${audit.durationDays}-business-day review of everything connected to NetSuite, delivered as a written plan you own.`,
+    step: '00',
+    name: 'Free review',
+    price: '$0',
+    cadence: '30 minutes, video call',
+    summary: 'Send a link to your NetSuite setup, your app or your site. I look at it first, then we go through what I’d fix and in what order.',
     includes: [
-      'Integration map and data-flow review',
-      'Governance, performance, and security findings',
-      'Prioritized remediation plan with effort estimates',
-      audit.creditedOnProceed ? 'Fee credited toward implementation' : '60-minute walkthrough call',
+      'Looked at before the call, not during it',
+      'What to fix first, whether or not you hire me',
+      'A straight answer on fit',
     ],
-    cta: { href: '/netsuite-audit/', label: 'See the audit' },
+    cta: { href: '/call/', label: 'Book the review' },
     featured: true,
   },
   {
+    step: '01',
+    name: 'Fixed-price audit',
+    price: auditPrices.length ? `From ${formatUSD(Math.min(...auditPrices))}` : 'Fixed fee',
+    cadence: 'flat, agreed up front',
+    summary: 'A written review and a prioritized plan you own, for one of the three lines of work.',
+    includes: [
+      `${audit.name}: ${priceOf(audit)}, ${audit.durationDays} business days`,
+      `${appAudit.name}: ${priceOf(appAudit)}, ${appAudit.durationDays} business days`,
+      `${seoAudit.name}: ${priceOf(seoAudit)}${seoAudit.durationDays ? `, ${seoAudit.durationDays} business days` : ''}`,
+      'NetSuite and app audit fees credited toward the work if you go ahead',
+    ],
+    cta: { href: '/netsuite-audit/', label: 'See the NetSuite audit' },
+  },
+  {
     step: '02',
-    name: 'Implementation',
+    name: 'Build',
     price: implementationFrom ? `From ${formatUSD(implementationFrom)}` : 'Fixed-scope project',
     cadence: 'per project',
-    summary: 'Building what the audit found: integrations, customer and dealer portals, and ERP-connected storefronts.',
+    summary: 'Building what the audit found: integrations and portals, security fixes, or the pages and fixes search needs.',
     includes: [
-      'NetSuite REST, SuiteTalk, RESTlet and SuiteQL integrations',
-      'Next.js / React / Angular front ends on live ERP data',
       'Fixed scope and price agreed before work starts',
+      'NetSuite integrations, Next.js, React and Angular front ends',
       'Documentation and handover to your team',
     ],
     cta: { href: '/call/', label: 'Discuss a project' },
@@ -40,12 +55,11 @@ const tiers = [
     name: 'Retainer',
     price: retainerFrom ? `From ${formatUSD(retainerFrom)}` : 'Monthly',
     cadence: retainerFrom ? 'per month' : 'reserved capacity',
-    summary: 'An engineer who already knows your NetSuite account, on call for fixes, changes, and the next integration.',
+    summary: 'An engineer who already knows your systems, on call for fixes, changes, the next integration and monthly search reviews.',
     includes: [
       'Reserved hours each month',
-      'Monitoring of integration health and error queues',
+      'Monitoring of integrations and error queues',
       'Priority response when something breaks',
-      'Quarterly roadmap review',
     ],
     cta: { href: '/call/', label: 'Ask about availability' },
   },
@@ -59,14 +73,14 @@ export default function Pricing() {
           <Eyebrow>How engagements work</Eyebrow>
           <h1 className="text-4xl sm:text-6xl font-medium tracking-[-0.04em] mt-6 mb-6">Start small. Stay if it works.</h1>
           <p className="text-lg text-muted max-w-2xl mx-auto">
-            Every engagement starts with a fixed-price audit, so you see how I work and what your systems need
-            before committing to a build. Most clients go on to a project, then a retainer.
+            Start with a free 30-minute review. If there&rsquo;s more to do, a fixed-price audit comes next, so you see
+            how I work before committing to a build.
           </p>
         </div>
       </section>
 
       <section className="pb-24 px-4 sm:px-6">
-        <div className="container mx-auto max-w-6xl grid md:grid-cols-3 gap-6">
+        <div className="container mx-auto max-w-7xl grid md:grid-cols-2 xl:grid-cols-4 gap-6">
           {tiers.map((tier) => (
             <div
               key={tier.name}
@@ -102,7 +116,7 @@ export default function Pricing() {
         <p className="text-center text-sm text-muted mt-10">
           Not sure which applies?{' '}
           <Link href="/call/" className="text-accent underline">
-            Book a free 20-minute fit call
+            Book a free 30-minute review
           </Link>
           .
         </p>

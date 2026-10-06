@@ -10,7 +10,6 @@ export const PERSON = {
   jobTitle: 'Oracle NetSuite & Custom Front-End Engineer',
   yearsExperience: 15,
   location: 'Los Angeles, California',
-  email: 'nityahoyos@gmail.com',
   telephone: '+1-424-384-9528',
   linkedin: 'https://www.linkedin.com/in/nityananda-h-b5a65080/',
   github: 'https://github.com/tronsymphony',
@@ -47,21 +46,21 @@ export const CAL_LINK = null;
 export const OFFERS = {
   audit: {
     name: 'NetSuite Integration Audit',
-    price: null, // e.g. 3500 (USD)
+    price: 995, // USD. Set low on 2026-10-05 to win first clients (leads over margin).
     durationDays: 10,
     stripePaymentLink: null, // e.g. 'https://buy.stripe.com/...'
     creditedOnProceed: true, // audit fee credited toward implementation
   },
   appAudit: {
     name: 'AI-Built App Audit',
-    price: 750, // TODO(owner): confirm. Test price for the first few audits.
+    price: 395, // USD. Set low on 2026-10-05 to win first clients.
     durationDays: 5,
     stripePaymentLink: null, // e.g. 'https://buy.stripe.com/...'
     creditedOnProceed: true, // audit fee credited toward the fixes
   },
   seoAudit: {
-    name: 'Technical SEO Audit',
-    price: null, // TODO(owner): set a flat price, e.g. 1500 (USD); null shows "quoted on a call"
+    name: 'Technical SEO & AI Search Audit',
+    price: 395, // USD. Set low on 2026-10-05 to win first clients.
     durationDays: null, // TODO(owner): business days to deliver; null hides the figure
   },
   implementationFrom: null, // e.g. 15000 (USD), "typical engagements start at"

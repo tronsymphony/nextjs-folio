@@ -114,7 +114,7 @@ export default function NetSuiteAuditPage() {
                   <span className="text-2xl font-bold text-ink">{formatUSD(audit.price)}</span> flat.
                 </>
               ) : (
-                'Flat fee, quoted on a 20-minute call.'
+                'Flat fee, quoted on a free 30-minute review.'
               )}{' '}
               {audit.creditedOnProceed && 'Credited in full if you hire me to implement the fixes.'}
             </p>

@@ -544,6 +544,69 @@ define(['N/record', 'N/search'], (record, search) => {
     relatedCaseStudy: 'total-warehouse-netsuite-digital-showroom',
     relatedTopics: ['netsuite-restlet-vs-rest-api', 'suiteql-vs-saved-search'],
   },
+  {
+    slug: 'netsuite-ai',
+    // Keyword Planner (US, Sep 2025-Aug 2026): "netsuite ai" 100-1K a month, bids up to ~$50.
+    // TODO(owner): add your own project experience to `diagnosis` and `gotchas`.
+    status: 'published',
+    updatedAt: '2026-10-05',
+    title: 'NetSuite AI: Built-In Features, MCP, and Emailed Orders into Sales Orders',
+    description:
+      'What AI NetSuite already includes (Bill Capture, Text Enhance, the N/llm module, the AI Connector Service for MCP), and how to add the piece most distributors still type by hand: purchase orders that arrive by email, turned into checked sales orders.',
+    h1: 'NetSuite AI: what’s built in, and what’s worth adding',
+    lede:
+      'NetSuite now ships its own AI: Bill Capture for supplier invoices, Text Enhance for writing, the N/llm module for SuiteScript, and the AI Connector Service for assistants like Claude. What usually remains is the customer side: purchase orders that arrive by email and still get typed in by hand.',
+    diagnosis: [
+      'Start with what is already in your account. Bill Capture reads supplier invoices into vendor bills, Text Enhance drafts and rewrites text such as item descriptions, the N/llm SuiteScript module lets scripts send prompts to models hosted on Oracle’s OCI Generative AI service (with support for retrieval and embeddings), and the AI Connector Service supports the Model Context Protocol, so an assistant you choose can read and act in NetSuite under a user’s own role and permissions. Which of these you can use depends on your account and release, so check before paying anyone to rebuild one.',
+      'The gap these leave is inbound orders. Many distributors and wholesalers still receive purchase orders as PDFs, spreadsheets or the body of an email, each customer in its own format, with its own item codes and sometimes its own idea of the price. Someone types each one into a sales order. A model reads these documents well; reading is not the hard part. The hard part is checking what it read against NetSuite: which customer sent it, which of your items each customer code means, whether the price matches that customer’s price level, whether the ship-to address is one you know, and whether this PO is a resend of one you already entered.',
+      'So the design that works is a pipeline, not a chatbot. The email arrives, a model extracts the header and lines, code (not the model) looks each value up in NetSuite and flags anything that doesn’t match, and the result is a sales order in Pending Approval with the original document attached and the flags listed. A person approves in seconds instead of typing for minutes, and the cases the model gets wrong are caught by the checks rather than by the customer. Where that pipeline runs is the real decision: inside NetSuite with N/llm, outside it with a model API and SuiteTalk REST, or in an off-the-shelf SuiteApp.',
+    ],
+    decisionTable: [
+      { option: 'Built-in features (Bill Capture, Text Enhance)', bestFor: 'Supplier invoices and item copy, where the standard behavior fits.', tradeoff: 'Configurable, not changeable; they do one job.' },
+      { option: 'Off-the-shelf order automation SuiteApp', bestFor: 'High volumes of fairly standard emailed POs.', tradeoff: 'License cost; less control over unusual formats and your own validation rules.' },
+      { option: 'Custom, inside NetSuite (N/llm in SuiteScript)', bestFor: 'Logic that should live in NetSuite, with data staying in Oracle’s cloud.', tradeoff: 'Model choice limited to what OCI offers; script governance and usage limits apply.' },
+      { option: 'Custom, outside NetSuite (model API + SuiteTalk REST)', bestFor: 'Messy formats, customer item cross-references, your own checks, choice of model.', tradeoff: 'You host and monitor a small service; check the model provider’s data terms.' },
+      { option: 'AI Connector Service (MCP)', bestFor: 'Staff asking questions and taking actions in NetSuite from an AI assistant.', tradeoff: 'An assistant, not an automation pipeline; it acts with the user’s permissions.' },
+    ],
+    fieldMapping: [
+      ['Customer’s PO number', 'Sales order: PO # (otherrefnum)', 'Customer + PO number is the duplicate check for resent emails.'],
+      ['Sender address', 'Customer (entity)', 'Match on known sender addresses, not a name read from the PDF.'],
+      ['Customer item code', 'Item, via a cross-reference record', 'Customers rarely use your SKUs; keep their codes mapped to your items.'],
+      ['Unit price on the PO', 'Line rate vs the customer’s price level', 'Flag differences for review; never overwrite the price level.'],
+      ['Quantity and unit', 'Quantity and unit of measure', 'Cases vs eaches is the most common misread; check against the item’s units.'],
+      ['Ship-to address', 'Shipping address from the address book', 'A new address goes to review instead of being created silently.'],
+      ['Original email or PDF', 'File attached to the sales order', 'Anyone approving can see exactly what was read.'],
+    ],
+    gotchas: [
+      'Letting the model create approved orders. Keep them in Pending Approval until the checks have run clean on enough real orders to earn trust.',
+      'Pasting the whole price list or catalog into the prompt. Look items and prices up with SuiteQL after extraction; it is cheaper, faster and exact.',
+      'Skipping the duplicate check. Customers resend POs with “revised” in the subject, and without customer + PO number matching each one becomes a second order.',
+      'Treating units loosely. A PO for 10 cases read as 10 eaches ships the wrong amount; validate against the item’s units of measure.',
+      'Not checking where documents go. Read the model provider’s data terms, and keep customer documents out of any service that trains on inputs.',
+    ],
+    whenNotToDoThis:
+      'If your large customers already send orders by EDI, you don’t need AI for them: an EDI 850 is already structured, and an EDI integration is the better fix. If you get a handful of emailed orders a day, typing them is cheaper than building and maintaining a pipeline. And if NetSuite’s own feature covers the job, as Bill Capture does for supplier invoices, use it before building anything.',
+    faqs: [
+      {
+        q: 'Does NetSuite have AI built in?',
+        a: 'Yes. NetSuite includes Bill Capture for supplier invoices, Text Enhance for generating and improving text, the N/llm module so SuiteScript can call large language models hosted on Oracle’s cloud, and the AI Connector Service, which supports the Model Context Protocol for connecting your own AI assistant. Availability depends on your account and release.',
+      },
+      {
+        q: 'Can Claude or ChatGPT connect to NetSuite?',
+        a: 'Through the NetSuite AI Connector Service, which supports the Model Context Protocol (MCP), an assistant that supports MCP can read and act in NetSuite. It works under the signed-in user’s role, so it can only see and change what that user could.',
+      },
+      {
+        q: 'How accurate is AI at reading purchase orders?',
+        a: 'Good on clear documents and weaker on scans, handwriting and unusual layouts, which is why the checks against NetSuite matter more than the model. Before going live, run it on a few weeks of your real past POs and compare its sales orders with the ones your team entered.',
+      },
+      {
+        q: 'Can it handle POs that arrive by EDI?',
+        a: 'EDI orders don’t need AI. An EDI 850 is already structured data and maps directly to a sales order through an EDI integration. AI is for the orders that arrive as PDFs, spreadsheets and emails.',
+      },
+    ],
+    relatedCaseStudy: null,
+    relatedTopics: ['netsuite-edi-integration', 'netsuite-restlet-vs-rest-api', 'suiteql-vs-saved-search'],
+  },
 ];
 
 // ---------------------------------------------------------------------------

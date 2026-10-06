@@ -30,7 +30,7 @@ export default function About() {
           ["Based in", PERSON.location],
         ]}
       >
-        <PrimaryCta href="/call/">Book a 20-min call</PrimaryCta>
+        <PrimaryCta href="/call/">Book a free 30-min review</PrimaryCta>
         <SecondaryCta href="/work/">See the work</SecondaryCta>
       </PageHero>
 

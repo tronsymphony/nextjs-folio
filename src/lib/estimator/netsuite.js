@@ -3,10 +3,11 @@
 // visible and adjustable in one place.
 //
 // TODO(owner): calibrate HOURS and RATE against your own past projects.
+// Rate and ranges lowered on 2026-10-05 to price for leads.
 
 export const CONFIG = {
-  RATE: { low: 150, high: 200 }, // USD per hour
-  DISCOVERY: { base: [16, 24], perSystem: [4, 8] },
+  RATE: { low: 95, high: 125 }, // USD per hour
+  DISCOVERY: { base: [8, 16], perSystem: [2, 4] },
   // Build hours per connected system, by approach.
   PER_SYSTEM: {
     connector: [8, 20],
@@ -19,14 +20,14 @@ export const CONFIG = {
     middleware: [2, 5],
     custom: [4, 10],
   },
-  FRONT_END: [120, 240], // a customer portal or storefront on NetSuite data
+  FRONT_END: [80, 180], // a customer portal or storefront on NetSuite data
   MULTIPLIERS: {
     twoWay: 1.4,
     freshness: { daily: 1, hourly: 1.05, realtime: 1.2 },
     volume: { low: 1, medium: 1.1, high: 1.25 },
     customizations: { none: 1, some: 1.1, heavy: 1.25 },
   },
-  TESTING_SHARE: 0.2, // testing, cutover, and documentation as a share of build
+  TESTING_SHARE: 0.15, // testing, cutover, and documentation as a share of build
   HOURS_PER_WEEK: 30,
 };
 
@@ -65,8 +66,9 @@ const add = (a, b) => [a[0] + b[0], a[1] + b[1]];
 const scale = (r, m) => [r[0] * m, r[1] * m];
 
 function approachRange(table, approach) {
-  // "Not sure" spans the cheapest sensible option to the most involved one.
-  return approach === 'unsure' ? [table.middleware[0], table.custom[1]] : table[approach];
+  // "Not sure" spans a connector's low end to middleware's high end: what most
+  // integrations turn out to need. Fully custom builds are priced when chosen.
+  return approach === 'unsure' ? [table.connector[0], table.middleware[1]] : table[approach];
 }
 
 const roundTo = (n, step) => Math.round(n / step) * step;

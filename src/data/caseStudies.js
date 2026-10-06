@@ -13,7 +13,7 @@ export const caseStudies = [
     slug: 'total-warehouse-netsuite-digital-showroom',
     client: 'Total Warehouse',
     industry: 'Material handling & industrial equipment',
-    role: null, // TODO(owner): e.g. 'Lead engineer, design through launch'
+    role: 'Engineer, working mostly autonomously', // TODO(owner): add your title if you want it shown
     title: 'A NetSuite-connected digital showroom for forklifts and warehouse equipment',
     seoTitle: 'Total Warehouse: NetSuite Digital Showroom Case Study',
     summary:
@@ -33,15 +33,27 @@ export const caseStudies = [
         heading: 'Quote generation built into the flow',
         body: 'Quote requests start from the product a customer is looking at, which shortens the back-and-forth between a buyer and the sales team.',
       },
+      {
+        heading: 'Search that understands equipment',
+        body: 'Inventory search ranks results by relevance and handles synonyms, typos and capacities: a search for "5000 lb" finds every unit rated at least that much.',
+      },
+      {
+        heading: 'A technical SEO overhaul',
+        body: 'Fixed the structured-data errors, mapped legacy URLs to their new pages with 301 redirects, added image sitemaps, and built page titles from live unit counts, so each page says what is actually in stock.',
+      },
+      {
+        heading: 'Lead tracking that can be trusted',
+        body: 'Rebuilt lead tracking across PostHog and GA4. The analysis showed most paid search-partner clicks were foreign junk traffic, which changed how leads are measured. Lead funnels are tracked without sending personal data to analytics.',
+      },
     ],
-    stack: ['Next.js', 'React', 'Tailwind CSS'],
+    stack: ['Next.js', 'React', 'Tailwind CSS', 'Fuse.js', 'schema.org structured data', 'PostHog', 'GA4'],
     integrations: ['Oracle NetSuite'],
-    metrics: [], // TODO(owner): e.g. { label: 'Catalog sync', value: 'Real-time', note: 'how it was measured' }
+    metrics: [{ label: 'Units in the catalog', value: 'About 1,700', note: 'Read from NetSuite' }],
     quote: null, // TODO(owner): { text, author, title }
-    heroImage: '/images/totalwarehouse.jpg',
+    heroImage: '/images/totalwarehouse-showroom.webp',
     liveUrl: 'https://showroom.totalwarehouse.com',
     publishedAt: '2026-09-22',
-    updatedAt: '2026-09-22',
+    updatedAt: '2026-10-05',
     featured: true,
     order: 1,
     relatedTopics: [],
@@ -79,7 +91,7 @@ export const caseStudies = [
     integrations: ['CCRS (data.ca.gov)', 'NHTSA FARS', 'OpenStreetMap', 'National Weather Service', 'Caltrans'],
     metrics: [],
     quote: null,
-    heroImage: '/images/map.webp',
+    heroImage: '/images/safestreets-map-la.webp',
     liveUrl: 'https://www.safestreetsmap.com/',
     publishedAt: '2026-09-22',
     updatedAt: '2026-10-05',

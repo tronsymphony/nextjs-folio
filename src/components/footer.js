@@ -19,7 +19,7 @@ const COLUMNS = [
       ["/netsuite-audit/", "NetSuite integration audit"],
       ["/ai-app-audit/", "AI-built app audit"],
       ["/netsuite/", "NetSuite integrations"],
-      ["/seo/", "SEO & search marketing"],
+      ["/seo/", "SEO & AI search"],
       ["/seo/technical-seo-audit/", "Technical SEO audit"],
       ["/pricing/", "Pricing"],
     ],
@@ -98,7 +98,7 @@ export default function Footer() {
                   href="/call/"
                   className="inline-flex items-center justify-center px-7 py-4 rounded-full border border-line font-medium hover:border-ink transition-colors duration-300"
                 >
-                  20-min fit call
+                  Free 30-min review
                 </Link>
               </div>
             </div>
@@ -110,18 +110,23 @@ export default function Footer() {
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 pt-20 md:pt-28">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-8 pb-20">
             <div className="lg:col-span-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-6">Write to me</p>
-              <a
-                href={`mailto:${PERSON.email}?subject=Inquiry from casa-dev.com`}
-                className="group inline-flex items-center gap-3 text-[clamp(1.5rem,3vw,2.5rem)] font-medium tracking-[-0.03em] break-all"
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-6">Get in touch</p>
+              <Link
+                href="/call/"
+                className="group inline-flex items-center gap-3 text-[clamp(1.5rem,3vw,2.5rem)] font-medium tracking-[-0.03em]"
               >
-                <span className="link-draw">{PERSON.email}</span>
+                <span className="link-draw">Book a free 30-min review</span>
                 <ArrowUpRight className="w-6 h-6 shrink-0 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-              </a>
+              </Link>
+              <p className="mt-3 text-muted">
+                Or <Link href="/contact/" className="link-draw text-ink">send a message</Link>.
+              </p>
               <dl className="mt-10 grid grid-cols-2 gap-6 max-w-sm text-sm">
                 <div>
                   <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-2">Based in</dt>
-                  <dd className="text-muted">Los Angeles, California</dd>
+                  <dd className="text-muted">
+                    <Link href="/about/los-angeles/" className="link-draw hover:text-ink">Los Angeles, California</Link>
+                  </dd>
                 </div>
                 <div>
                   <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-2">Local time</dt>

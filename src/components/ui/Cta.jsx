@@ -15,7 +15,7 @@ export function PrimaryCta({ href = '/netsuite-audit/', children = 'Book a NetSu
   );
 }
 
-export function SecondaryCta({ href = '/call/', children = 'Book a 20-min fit call', className = '' }) {
+export function SecondaryCta({ href = '/call/', children = 'Book a free 30-min review', className = '' }) {
   return (
     <Link
       href={href}
