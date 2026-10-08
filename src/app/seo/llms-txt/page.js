@@ -22,16 +22,16 @@ const EXAMPLE = `# Casa Dev
 
 ## Services
 
-- [NetSuite integration audit](https://casa-dev.com/netsuite-audit/): fixed-scope review of every system connected to NetSuite.
-- [SEO & AI search](https://casa-dev.com/seo/): technical SEO and pages built from data.
+- [NetSuite integration audit](https://www.casa-dev.com/netsuite-audit/): fixed-scope review of every system connected to NetSuite.
+- [SEO & AI search](https://www.casa-dev.com/seo/): technical SEO and pages built from data.
 
 ## Guides
 
-- [NetSuite Shopify integration](https://casa-dev.com/netsuite/netsuite-shopify-integration/): connector, Celigo or custom code.
+- [NetSuite Shopify integration](https://www.casa-dev.com/netsuite/netsuite-shopify-integration/): connector, Celigo or custom code.
 
 ## Optional
 
-- [About](https://casa-dev.com/about/)`;
+- [About](https://www.casa-dev.com/about/)`;
 
 const NEXT_ROUTE = `// app/llms.txt/route.js
 // Generated from the same data as the site, so it never drifts.

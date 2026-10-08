@@ -55,13 +55,24 @@ export const checklist = [
     ],
   },
   {
-    section: 'Testing and launch',
+    section: 'Testing',
     items: [
       'A sandbox account is available and reasonably close to production.',
       'Test cases cover edge cases: partial shipments, returns, backorders, and price changes mid-order.',
       'Initial data load and ongoing sync are planned as separate jobs.',
-      'There is a rollback plan and a cutover checklist with named owners.',
       'Success is defined in numbers before launch, such as sync lag, error rate, and orders needing manual touch.',
+    ],
+  },
+  {
+    section: 'Go-live and the first two weeks',
+    items: [
+      'There is a cutover checklist with named owners and a rollback plan that says who decides to use it.',
+      'Orders and transactions in flight at cutover have a decided home: finished in the old process or moved, never both.',
+      'Reference data (items, customers, prices) syncs and is checked before any transactions flow.',
+      'Manual entry of the records the integration now creates stops on a named date, so nothing is entered twice.',
+      'The first day’s synced orders are compared one by one with the source system.',
+      'The old import, script, or connector is switched off, not left running beside the new one.',
+      'The integration owner reviews the error queue every day for the first two weeks.',
     ],
   },
 ];

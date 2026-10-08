@@ -2,7 +2,7 @@
 // Anything set to null is intentionally unset: the UI hides it rather than
 // showing a placeholder, so nothing fake ever ships.
 
-export const SITE_URL = 'https://casa-dev.com';
+export const SITE_URL = 'https://www.casa-dev.com';
 export const SITE_NAME = 'Casa Dev';
 
 export const PERSON = {

@@ -8,8 +8,8 @@ import { checklist, checklistCount } from '../../../data/readinessChecklist';
 import { ORG_ID, PERSON_ID, breadcrumbNode, graph, url } from '../../../lib/schema';
 
 export const metadata = {
-  title: 'NetSuite Integration Readiness Checklist',
-  description: `${checklistCount} checks to run before connecting a storefront, portal, 3PL, or any other system to Oracle NetSuite: data ownership, sync design, failure handling, security, and launch.`,
+  title: 'NetSuite Integration Go-Live & Readiness Checklist',
+  description: `${checklistCount} checks to run before connecting a storefront, portal, 3PL, or any other system to Oracle NetSuite: data ownership, sync design, failure handling, security, cutover, and the first two weeks after go-live.`,
   alternates: { canonical: '/netsuite/integration-readiness-checklist/' },
 };
 

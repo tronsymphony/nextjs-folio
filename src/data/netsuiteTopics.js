@@ -607,6 +607,69 @@ define(['N/record', 'N/search'], (record, search) => {
     relatedCaseStudy: null,
     relatedTopics: ['netsuite-edi-integration', 'netsuite-restlet-vs-rest-api', 'suiteql-vs-saved-search'],
   },
+  {
+    slug: 'netsuite-rental-management',
+    // Search Console (Sep-Oct 2026): ~20 variants of "netsuite rental management" / "equipment rental netsuite"
+    // were landing on /netsuite/material-handling/ at positions 50-90.
+    // TODO(owner): name the fields the Total Warehouse "Rented" formula reads, and add any rental gotchas you hit.
+    status: 'published',
+    updatedAt: '2026-10-07',
+    title: 'NetSuite Rental Management: Equipment Availability, Contracts and Billing',
+    description:
+      'How equipment rental companies run rentals on Oracle NetSuite: a rental SuiteApp, custom records and scripts, or separate rental software synced to NetSuite. Covers unit availability, a formula field for rented status, contracts, recurring billing and the fleet as fixed assets.',
+    h1: 'NetSuite rental management: tracking units, contracts and billing',
+    lede:
+      'Standard NetSuite sells and stocks items; it has no rental contract record. Equipment rental companies on NetSuite add one of three things: a rental SuiteApp, custom records and scripts, or separate rental software that syncs to NetSuite. Whichever you pick, the core question is the same: is this unit out right now, and who is billed for it?',
+    diagnosis: [
+      'A rental business needs NetSuite to know four things it doesn’t track out of the box: each individual unit (one forklift, not a quantity of a model), whether that unit is out on rent, the contract it is out on with its start, end and rate, and the charge for every billing period until it comes back. Selling the same unit later, as used equipment, adds a fifth: what it is worth after years in the fleet. Serialized inventory items and the Fixed Assets Management SuiteApp cover the unit and its value; the contract, the status and the period billing are where the options differ.',
+      'Rented status is the field everything else reads: the counter staff answering “do you have a 5,000 lb forklift Friday?”, the saved searches the branch managers use, and any website or portal that shows what is available. On Total Warehouse’s NetSuite account, each rental forklift carries a Rented field calculated by a formula rather than typed by hand. That choice matters more than it looks. A checkbox someone ticks goes stale the first time a unit comes back early and nobody unticks it; a formula computed from the record’s own fields gives every reader the same answer. In NetSuite this is a custom field with a formula and Store Value cleared, so the value is recalculated each time the record is read. With Store Value checked, the formula only sets the value when the record is created, and the flag stops tracking reality.',
+      'Contracts and billing are the larger decision. A rental SuiteApp brings contract records, availability calendars, delivery and pickup, and period billing ready-made, at a license cost and on the vendor’s model of how rentals work. Building it yourself means a custom contract record linked to the unit and customer, scheduled scripts that create each period’s invoice, and your own rules for partial periods, damage and fuel charges; SuiteBilling, NetSuite’s licensed subscription billing module, can handle the recurring charges if you already pay for it. Separate rental software keeps contracts outside NetSuite and syncs customers, invoices and fleet values back, which works until the two systems disagree about whether a unit is out.',
+    ],
+    decisionTable: [
+      { option: 'Rental SuiteApp', bestFor: 'A fleet with standard day, week and month rates that wants contracts, calendars and billing quickly.', tradeoff: 'License cost per user or unit; you adopt the vendor’s contract model.' },
+      { option: 'Custom records + scripts', bestFor: 'Unusual rate rules, rentals that convert to sales, or a small fleet alongside an equipment sales business.', tradeoff: 'You build and maintain contracts, period billing and availability yourself.' },
+      { option: 'Separate rental software synced to NetSuite', bestFor: 'Large rental operations already running dedicated rental software.', tradeoff: 'Two systems with an opinion on each unit’s status; the integration must name one owner.' },
+      { option: 'SuiteBilling for the charges', bestFor: 'Accounts that already license SuiteBilling and bill long-term rentals monthly.', tradeoff: 'A licensed module; still needs the unit status and contract records around it.' },
+    ],
+    fieldMapping: [
+      ['Rental unit (one forklift)', 'Serialized inventory item or custom unit record', 'Track the serial or unit number, not a quantity of the model.'],
+      ['Rented / available', 'Custom formula field, Store Value cleared', 'Computed on every read, so it can’t be left stale by hand.'],
+      ['Rental contract', 'Custom contract record (or the SuiteApp’s)', 'Links unit, customer, start, planned end, actual return and rate.'],
+      ['Rate', 'Day / week / month rates on the contract', 'Copy the rate onto the contract; a later price change must not rebill old contracts.'],
+      ['Period charge', 'Invoice per billing period (script or SuiteBilling)', 'One invoice per contract per period; check for an existing one before creating.'],
+      ['Return and condition', 'Actual return date, hour meter reading, damage notes', 'The return date ends billing; the hour meter feeds service intervals.'],
+      ['Fleet value', 'Fixed Assets Management asset record', 'Depreciation while rented; disposal when the unit is sold as used.'],
+    ],
+    gotchas: [
+      'Typing the rented status by hand. A unit returned early or swapped on site leaves the flag wrong, and the website or the counter promises a forklift that is already out.',
+      'Saving a formula field with Store Value checked. The formula runs once when the record is created, then the value never changes.',
+      'Billing from the planned end date instead of the actual return. Late returns go unbilled and early returns get overbilled.',
+      'Creating period invoices without a duplicate check. A scheduled script that reruns after a failure bills the same week twice.',
+      'Keeping rental units and units for sale in the same location with no flag. Sales sells a unit that is due back from a rental next week.',
+    ],
+    whenNotToDoThis:
+      'If rentals are a small side of an equipment sales business, a few units a month, a rented field on the unit and a sales order per rental may be all you need; don’t license or build a rental system for that. If your rentals already run in dedicated rental software that works, sync it to NetSuite rather than moving contracts into NetSuite.',
+    faqs: [
+      {
+        q: 'Does NetSuite have rental management?',
+        a: 'Not in the standard product. NetSuite tracks serialized items, customers, invoices and fixed assets, but has no rental contract record. Rental companies add a rental SuiteApp from a partner, build contract records and billing scripts, or sync dedicated rental software to NetSuite.',
+      },
+      {
+        q: 'How do you show whether a unit is rented in NetSuite?',
+        a: 'With a custom field calculated by a formula, with Store Value cleared so NetSuite recalculates it every time the record is read. Staff, saved searches and integrations then all see the same status, and nobody has to remember to update it.',
+      },
+      {
+        q: 'Can NetSuite bill rentals monthly?',
+        a: 'Yes, through SuiteBilling (a licensed module), through a rental SuiteApp, or through a scheduled script that creates an invoice for each contract and period. Whichever you use, bill from the actual return date and guard against creating the same period’s invoice twice.',
+      },
+      {
+        q: 'Can rental equipment be depreciated in NetSuite?',
+        a: 'Yes. The Fixed Assets Management SuiteApp tracks each unit as an asset, depreciates it while it is in the rental fleet, and records the disposal when it is sold.',
+      },
+    ],
+    relatedCaseStudy: 'total-warehouse-netsuite-digital-showroom',
+    relatedTopics: ['netsuite-customer-portal', 'suiteql-vs-saved-search'],
+  },
 ];
 
 // ---------------------------------------------------------------------------
