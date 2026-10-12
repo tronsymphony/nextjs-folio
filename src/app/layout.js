@@ -21,11 +21,11 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Casa Dev: NetSuite Integrations, AI App Audits & Technical SEO',
+    default: 'Casa Dev: AI Integrations, Data Products & Systems Integration',
     template: '%s | Casa Dev',
   },
   description:
-    'NetSuite integrations, security audits for apps built with AI tools, and technical SEO, from a senior engineer with 15 years of experience. Each starts with a fixed-price audit.',
+    'AI assistants connected to your business tools, data turned into maps and pages people search for, and integrations that keep your systems in sync. From a Los Angeles engineer with 15 years of experience; it starts with a free call.',
   robots: {
     index: true,
     follow: true,
