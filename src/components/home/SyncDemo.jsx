@@ -54,7 +54,7 @@ function Connector({ active }) {
   return (
     <div className="relative h-9 w-px mx-auto bg-line" aria-hidden="true">
       {active && (
-        <span className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent shadow-[0_0_0_4px_rgba(232,80,26,0.15)] animate-[travel_0.9s_cubic-bezier(0.4,0,0.2,1)_both]" />
+        <span className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-accent shadow-[0_0_0_4px_color-mix(in_oklab,var(--color-accent)_15%,transparent)] animate-[travel_0.9s_cubic-bezier(0.4,0,0.2,1)_both]" />
       )}
     </div>
   );

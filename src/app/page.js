@@ -15,10 +15,10 @@ export default function Home() {
 // The OG image comes from src/app/opengraph-image.jsx.
 export const metadata = {
   title: {
-    absolute: "Casa Dev: NetSuite Integrations, AI App Audits & Technical SEO",
+    absolute: "Casa Dev: AI Integrations, Data Products & Systems Integration",
   },
   description:
-    "NetSuite integrations, security audits for apps built with AI tools, and technical SEO, from a senior engineer with 15 years of experience. Each starts with a fixed-price audit.",
+    "AI assistants connected to your business tools, data turned into maps and pages people search for, and integrations that keep your systems in sync. From a Los Angeles engineer with 15 years of experience; it starts with a free call.",
   alternates: {
     canonical: "/",
   },
@@ -34,9 +34,9 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Systems that agree, apps that hold up, sites that get found",
+    title: "Your tools, your data, and AI that works with both",
     description:
-      "NetSuite integrations, AI-built app audits and technical SEO from one senior engineer. Each starts with a fixed-price audit.",
+      "AI connected to your business tools, data products and maps, and systems integration from one senior engineer. It starts with a free call.",
     url: "/",
     type: "website",
   },

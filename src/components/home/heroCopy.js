@@ -4,62 +4,65 @@ import { offers } from "../../data/netsuiteOffers";
 import { OFFERS, PERSON, formatUSD } from "../../lib/site";
 
 export const HERO_INTRO =
-  "I connect NetSuite to the rest of your business, audit apps built with AI tools before they take real users, and fix the technical SEO that keeps sites out of search. You work with me directly, from the first call to launch.";
+  "I connect AI assistants like Claude and ChatGPT to the tools your business runs on, turn public and private data into maps and pages people search for, and build the integrations that keep your systems in sync. You work with me directly, from the first call to launch.";
 
 export const heroFacts = [
   [`${PERSON.yearsExperience} yrs`, "Software engineering"],
-  ["3", "Fixed-price audits to start with"],
+  ["Free", "30-minute call to start"],
   ["1 engineer", "From first call to launch"],
 ];
 
 const auditDetail = (o, fallback) =>
   [o.durationDays && `${o.durationDays} business days`, o.price ? `${formatUSD(o.price)} flat` : fallback].filter(Boolean).join(" · ");
 
-// The three lines of work, given equal weight on the homepage.
+// The three lines of work on the homepage, AI integrations first (NetSuite is one system among several, not the lead).
 export const LINES = [
   {
-    id: "netsuite",
-    title: "NetSuite integrations",
-    body: "NetSuite connected to Shopify, EDI trading partners, 3PLs and CRMs, plus customer portals and storefronts that read live ERP data.",
+    id: "ai",
+    title: "AI connected to your tools",
+    body: "Claude, ChatGPT and agents connected to Shopify, HubSpot, QuickBooks, NetSuite or your own database through MCP, with each one limited to the data and actions you allow. Apps already built with Lovable, Bolt or Cursor get a security review before real users arrive.",
     symptoms: [
-      "Customers email to ask about stock, pricing and order status that NetSuite already knows.",
-      "Your storefront or portal shows inventory that doesn't match the ERP.",
+      "Your team copies answers out of five systems that an assistant could look up.",
+      "You want AI on your business data, but not with full access to everything.",
+      "An app built with AI tools is about to take real users or payments.",
+    ],
+    start: "Free 30-minute call",
+    startDetail: "Then a fixed quote for one workflow",
+    links: [
+      ["/call/", "Book the call"],
+      ["/ai-app-audit/", "The app audit"],
+    ],
+  },
+  {
+    id: "data",
+    title: "Data products and maps",
+    body: "Public records and your own data turned into interactive maps and pages that answer what people search for, on Google and in AI answers. Safe Streets Map is one: California crash records as maps and a thousand city pages.",
+    symptoms: [
+      "You hold data people would search for, but it sits in spreadsheets or PDFs.",
+      "You want a map people can explore, not a static chart.",
+      "Search Console shows impressions but few clicks.",
+    ],
+    start: OFFERS.seoAudit.name,
+    startDetail: auditDetail(OFFERS.seoAudit, "Quoted on a call"),
+    links: [
+      ["/work/safe-streets-map-crash-data-platform/", "Safe Streets Map"],
+      ["/seo/", "SEO and AI search"],
+    ],
+  },
+  {
+    id: "integrations",
+    title: "Systems that talk to each other",
+    body: "ERP, storefront, CRM, EDI trading partners and 3PLs kept in sync: NetSuite, Shopify, Salesforce, HubSpot and BigCommerce, plus portals that read live data.",
+    symptoms: [
+      "Customers email to ask about stock, pricing and order status your systems already know.",
+      "Your storefront shows inventory that doesn't match the ERP.",
       "An integration someone built years ago breaks, and nobody wants to touch it.",
     ],
     start: OFFERS.audit.name,
     startDetail: auditDetail(OFFERS.audit, "Fixed fee"),
     links: [
       ["/netsuite/", "NetSuite work"],
-      ["/netsuite-audit/", "The audit"],
-    ],
-  },
-  {
-    id: "app-audit",
-    title: "Audits for apps built with AI",
-    body: "A security and production-readiness review of apps built with Lovable, Bolt, Cursor or Claude Code, with a fix plan in order of what matters.",
-    symptoms: [
-      "Your app is about to take real users or payments.",
-      "You're not sure which users can see whose data.",
-      "Keys, webhooks and database rules were set up by the AI and never checked.",
-    ],
-    start: OFFERS.appAudit.name,
-    startDetail: auditDetail(OFFERS.appAudit, "Fixed fee"),
-    links: [["/ai-app-audit/", "The app audit"]],
-  },
-  {
-    id: "seo",
-    title: "SEO and AI search",
-    body: "Technical fixes and pages planned from Search Console and Semrush, so customers find you on Google and in ChatGPT, Perplexity and Google's AI answers. Built into the site, not handed over as a report.",
-    symptoms: [
-      "Pages you need aren't indexed, or compete with each other.",
-      "Search Console shows impressions but few clicks.",
-      "You don't know what ChatGPT or Google's AI says about your business.",
-    ],
-    start: OFFERS.seoAudit.name,
-    startDetail: auditDetail(OFFERS.seoAudit, "Quoted on a call"),
-    links: [
-      ["/seo/", "SEO work"],
-      ["/seo/ai-search-optimization/", "AI search"],
+      ["/edi/", "EDI"],
     ],
   },
 ];
@@ -70,6 +73,6 @@ const OFFER_LINKS = ["/netsuite/", "/netsuite/netsuite-customer-portal/", "/nets
 // Every service as a row (used by the lab's "Index" hero).
 export const services = [
   ...offers.map((o, i) => ({ title: o.title, body: o.body, href: OFFER_LINKS[i] || "/netsuite/" })),
-  { title: LINES[1].title, body: LINES[1].body, href: "/ai-app-audit/" },
-  { title: "SEO and search marketing", body: LINES[2].body, href: "/seo/" },
+  { title: LINES[0].title, body: LINES[0].body, href: "/call/" },
+  { title: LINES[1].title, body: LINES[1].body, href: "/seo/" },
 ];

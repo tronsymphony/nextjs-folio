@@ -3,22 +3,26 @@
 
 @source "..";
 
-/* Design tokens. A light, warm paper page (canvas) with near-black text (ink)
+/* Design tokens. A cool light page (canvas, the "cobalt" palette chosen 2026-10-11) with near-black text (ink)
    and one accent. Fonts come from next/font in layout.js. */
-@theme inline {
-  --color-canvas: #f4f2ee;
-  --color-canvas-2: #ebe8e2;
-  --color-canvas-3: #e1ddd5;
-  --color-ink: #141413;
-  --color-muted: #5f5c56;
-  --color-faint: #8c887f;
-  --color-line: rgb(20 20 19 / 0.12);
-  --color-accent: #e8501a;
+@theme {
+  --color-canvas: #f4f5f7;
+  --color-canvas-2: #e9ebef;
+  --color-canvas-3: #dcdfe5;
+  --color-ink: #0b0d12;
+  --color-muted: #5a5f6b;
+  --color-faint: #8a909c;
+  --color-line: rgb(11 13 18 / 0.11);
+  --color-accent: #2952ff;
+}
 
+/* Fonts stay inline: their variables are set by next/font on <html>. */
+@theme inline {
   --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif-accent), ui-serif, Georgia, serif;
   --font-mono: var(--font-label), ui-monospace, monospace;
 }
+
 
 /* Base styles */
 html,

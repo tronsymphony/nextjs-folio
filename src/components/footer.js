@@ -7,7 +7,7 @@ import { PERSON } from "../lib/site";
 
 // Pages that already end in a booking or contact form don't need the CTA band.
 const HIDE_CTA_ON = ["/contact/", "/call/", "/netsuite-audit/", "/seo/"];
-// The app-audit guides end in their own audit CTA; the NetSuite band would be off-topic there.
+// The app-audit and SEO pages end in their own audit CTA.
 const hideCta = (pathname) =>
   HIDE_CTA_ON.includes(pathname) || pathname?.startsWith("/ai-app-audit/") || pathname?.startsWith("/seo/");
 
@@ -79,26 +79,26 @@ export default function Footer() {
               className="max-w-5xl text-[clamp(2.75rem,8vw,7.5rem)] font-medium leading-[0.92] tracking-[-0.045em]"
               data-reveal
             >
-              Is NetSuite holding you back? <em className="font-serif italic font-normal text-muted">Let&rsquo;s fix it.</em>
+              Have work AI should be doing? <em className="font-serif italic font-normal text-muted">Let&rsquo;s map it out.</em>
             </h2>
             <div className="mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-10" data-reveal>
               <p className="max-w-md text-lg text-muted leading-relaxed">
-                Start with a fixed-price integration audit: a written plan showing what&rsquo;s broken, what will break next,
-                and what to fix first.
+                Start with a free 30-minute call: what you want connected, automated or found, and the smallest first step
+                worth paying for.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/netsuite-audit/"
+                  href="/call/"
                   className="group inline-flex items-center justify-center gap-2 pl-7 pr-6 py-4 rounded-full bg-ink !text-canvas font-medium hover:bg-accent transition-colors duration-300"
                 >
-                  Book a NetSuite audit
+                  Book the free call
                   <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
                 <Link
-                  href="/call/"
+                  href="/pricing/"
                   className="inline-flex items-center justify-center px-7 py-4 rounded-full border border-line font-medium hover:border-ink transition-colors duration-300"
                 >
-                  Free 30-min review
+                  See pricing
                 </Link>
               </div>
             </div>

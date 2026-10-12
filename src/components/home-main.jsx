@@ -4,6 +4,7 @@ import FeaturedProjects from "./section/FeaturedProjects";
 import HeroDemo from "./home/HeroDemo";
 import HeroGrid from "./home/HeroGrid";
 import HeroBlinds from "./home/HeroBlinds";
+import HeroWindow from "./home/HeroWindow";
 import LeadMagnetCTA from "./LeadMagnetCTA";
 import { Accent, ArrowLink, PrimaryCta, SecondaryCta, SectionHead } from "./ui/Cta";
 import { HERO_INTRO, heroFacts, LINES } from "./home/heroCopy";
@@ -16,25 +17,25 @@ import { expertise } from "../data/expertise";
 const ladder = [
   {
     step: "01",
-    title: "Audit",
-    body: "A fixed-price review of your NetSuite integrations, your AI-built app, or your site's search setup. You get a written plan you own.",
-    detail: "Fixed fee",
+    title: "Review",
+    body: "A free call, then a fixed-price review if it helps: the work you want AI to take on, the data you want people to find, or the systems that don't agree. You get a written plan you own.",
+    detail: "Free call · fixed-fee audits",
   },
   {
     step: "02",
     title: "Build",
-    body: "Fixed-scope work on what the audit found: integrations and portals, security fixes, or the pages and fixes search needs.",
+    body: "Fixed-scope work on what the review found: an AI connector, a map or data site, or the integration fixes.",
     detail: OFFERS.implementationFrom ? `From ${formatUSD(OFFERS.implementationFrom)}` : "Fixed scope",
   },
   {
     step: "03",
     title: "Retain",
-    body: "An engineer who already knows your systems, on call for fixes, the next integration, and monthly search reviews.",
+    body: "An engineer who already knows your systems, on call for fixes, the next connector or integration, and monthly search reviews.",
     detail: OFFERS.retainerFrom ? `From ${formatUSD(OFFERS.retainerFrom)}/mo` : "Monthly",
   },
 ];
 
-const SYSTEMS = ["NetSuite", "Shopify", "EDI", "Salesforce", "Lovable", "Supabase", "Stripe", "Cursor", "Search Console", "Semrush", "Next.js", "React"];
+const SYSTEMS = ["Claude", "ChatGPT", "MCP", "Mapbox", "PostgreSQL", "Shopify", "HubSpot", "NetSuite", "Supabase", "Search Console", "Next.js", "React"];
 
 // "Area: first item" for each expertise group, as a compact list.
 const capabilities = expertise.map(({ area, items }) => [area, items[0]]);
@@ -67,17 +68,9 @@ function RevealWords({ segments, delay = 150, step = 55 }) {
   );
 }
 
-export default function HomeMain({ hero = "sync-blinds" }) {
-  // Guides grouped by line of work, each list ending in a link to the rest.
+export default function HomeMain({ hero = "sync" }) {
+  // Guides grouped by line of work (AI first, NetSuite last), each list ending in a link to the rest.
   const guideGroups = [
-    {
-      label: "NetSuite & EDI",
-      more: ["/netsuite/", "All NetSuite guides"],
-      items: [
-        { href: "/edi/", title: "EDI documents explained: 850, 855, 856, 810 and more" },
-        ...publishedTopics().map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1 })),
-      ],
-    },
     {
       label: "Apps built with AI",
       more: ["/ai-app-audit/", "The app audit"],
@@ -92,10 +85,18 @@ export default function HomeMain({ hero = "sync-blinds" }) {
         { href: "/seo/llms-txt/", title: "What is llms.txt? How to add one to Next.js or WordPress" },
       ],
     },
+    {
+      label: "NetSuite & EDI",
+      more: ["/netsuite/", "All NetSuite guides"],
+      items: [
+        { href: "/edi/", title: "EDI documents explained: 850, 855, 856, 810 and more" },
+        ...publishedTopics().map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1 })),
+      ],
+    },
   ];
 
   const variant = HERO_VARIANTS[hero];
-  const Hero = variant?.Hero ?? (hero === "sync" ? SyncHero : SyncBlindsHero);
+  const Hero = variant?.Hero ?? (hero === "sync" ? SyncHero : hero === "sync-window" ? SyncWindowHero : SyncBlindsHero);
 
   return (
     <div className="bg-canvas">
@@ -116,7 +117,7 @@ export default function HomeMain({ hero = "sync-blinds" }) {
       {/* 01 Three lines of work */}
       <section className={`${WRAP} pt-28 md:pt-40`}>
         <SectionHead index="01" label="What I do" title={<>Three lines of work, <Accent>one engineer.</Accent></>}>
-          Each starts with a fixed-price audit, so you can judge the work before committing to more.
+          Each starts with a free call or a fixed-price audit, so you can judge the work before committing to more.
         </SectionHead>
         <ol className="grid lg:grid-cols-3 border-t border-line">
           {LINES.map((line, i) => (
@@ -235,7 +236,7 @@ export default function HomeMain({ hero = "sync-blinds" }) {
             data-reveal
           >
             {PERSON.name}, senior engineer. {PERSON.yearsExperience} years building software, from enterprise front ends and
-            NetSuite integrations to my own product, a crash-data map that grew through search.{" "}
+            ERP integrations to my own product, a crash-data map built with AI tools that grew through search.{" "}
             <span className="text-muted">The person on your first call is the person <Accent>writing your code.</Accent></span>
           </p>
           <div className="lg:col-span-4 lg:pt-3" data-reveal>
@@ -261,12 +262,23 @@ function SyncBlindsHero() {
   return <SyncHero background="blinds" />;
 }
 
+function SyncWindowHero() {
+  return <SyncHero background="window" />;
+}
+
 // Hero with the try-it demos on the right, over vertical blinds with the sun
 // behind them or, with background="grid", the dot grid.
 function SyncHero({ background = "grid" }) {
   return (
     <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
-      {background === "blinds" ? (
+      {background === "window" ? (
+        <>
+          <HeroWindow />
+          {/* Phones: the window fills the hero, so the text needs the wall back behind it. */}
+          <div className="absolute inset-0 pointer-events-none lg:hidden bg-gradient-to-b from-canvas/85 via-canvas/60 to-canvas/20" />
+          <div className="absolute inset-x-0 bottom-0 h-1/6 pointer-events-none bg-gradient-to-t from-canvas to-transparent" />
+        </>
+      ) : background === "blinds" ? (
         <>
           <HeroBlinds />
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-canvas/80 via-canvas/30 to-transparent" />
@@ -281,10 +293,10 @@ function SyncHero({ background = "grid" }) {
         <div className="lg:col-span-6">
           <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-[clamp(1rem,3vh,2rem)] animate-[fadeInUp_0.9s_ease-out_forwards]">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
-            NetSuite integrations · AI app audits · Technical SEO
+            AI integrations · Data &amp; maps · Systems integration
           </p>
           <h1 className="max-w-[14ch] text-[clamp(2.5rem,min(5.4vw,9.5vh),6.25rem)] font-medium leading-[0.94] tracking-[-0.05em]">
-            <RevealWords segments={[["Systems that agree, apps that hold up, sites that"], ["get found.", true]]} />
+            <RevealWords segments={[["Your tools, your data, and AI that"], ["works with both.", true]]} />
           </h1>
           <div className="opacity-0 animate-[fadeInUp_1s_ease-out_0.35s_forwards]">
             <p className="mt-[clamp(1.25rem,4vh,2.5rem)] text-base md:text-lg text-muted leading-relaxed max-w-md">{HERO_INTRO}</p>
