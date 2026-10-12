@@ -15,7 +15,7 @@ export const caseStudies = [
     industry: 'Material handling & industrial equipment',
     role: 'Engineer, working mostly autonomously', // TODO(owner): add your title if you want it shown
     title: 'A NetSuite-connected digital showroom for forklifts and warehouse equipment',
-    seoTitle: 'Total Warehouse: NetSuite Digital Showroom Case Study',
+    seoTitle: 'NetSuite Case Study: Total Warehouse Equipment Showroom',
     summary:
       'A custom Next.js showroom that reads product and inventory data directly from Oracle NetSuite, so customers can browse equipment and request quotes against live ERP data.',
     problem:

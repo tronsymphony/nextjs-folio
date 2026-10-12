@@ -6,7 +6,7 @@ import { PageHero, WRAP } from '../../components/ui/Page';
 import { publishedCaseStudies } from '../../data/caseStudies';
 
 export const metadata = {
-  title: 'Work: NetSuite, ERP & Front-End Case Studies',
+  title: 'NetSuite Case Studies & Front-End Work',
   description:
     'Case studies from Nitya Hoyos: a NetSuite-connected digital showroom for Total Warehouse, data platforms, and headless commerce builds.',
   alternates: { canonical: '/work/' },

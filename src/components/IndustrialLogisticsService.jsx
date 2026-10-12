@@ -51,6 +51,7 @@ export default function IndustrialLogisticsService() {
       icon: Cpu,
       title: 'B2B Equipment Rental & RFQ Engine',
       desc: 'Customer self-service portals with interactive fleet selectors, dynamic delivery calculation, and instant binding quote generation.',
+      link: { href: '/netsuite/netsuite-rental-management/', label: 'How rentals work in NetSuite' },
     },
     {
       icon: Layers,
@@ -164,6 +165,11 @@ export default function IndustrialLogisticsService() {
                     </div>
                     <h3 className="text-2xl font-bold text-ink mb-3">{item.title}</h3>
                     <p className="text-muted leading-relaxed text-sm">{item.desc}</p>
+                    {item.link && (
+                      <Link href={item.link.href} className="inline-block mt-4 text-sm font-medium text-accent hover:underline">
+                        {item.link.label} &rarr;
+                      </Link>
+                    )}
                   </div>
                 </div>
               );
