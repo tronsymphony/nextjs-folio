@@ -1,44 +1,21 @@
 import Footer from "../../../components/footer";
 import HomeFollow from "../../../components/home-follow";
 import LocationPageContent from "../../../components/LocationPageContent";
+import JsonLd from "../../../components/JsonLd";
+import { ORG_ID, graph, url } from "../../../lib/schema";
 
 export default function IrvineSEO() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Casa Dev - Irvine",
-    "image": "https://casa-dev.com/images/logo2.webp",
-    "@id": "https://casa-dev.com/about/irvine",
-    "url": "https://casa-dev.com/about/irvine",
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Irvine",
-      "addressRegion": "CA",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 33.6846,
-      "longitude": -117.8265
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    "sameAs": [
-      "https://github.com/tronsymphony"
-    ]
-  };
+  const jsonLd = graph({
+    '@type': 'Service',
+    name: 'NetSuite integration and custom front-end engineering in Irvine',
+    provider: { '@id': ORG_ID },
+    areaServed: { '@type': 'City', name: 'Irvine', containedInPlace: { '@type': 'State', name: 'CA' } },
+    url: url('/about/irvine/'),
+  });
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <HomeFollow />
       <LocationPageContent 
         city="Irvine"
@@ -52,14 +29,10 @@ export default function IrvineSEO() {
 }
 
 export const metadata = {
-  metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: "/about/irvine",
-    languages: {
-      "en-US": "/en-US",
-    },
+    canonical: "/about/irvine/",
   },
-  title: "Strategic Web Development & SEO Irvine | Casa Dev",
+  title: "NetSuite Integration & Front-End Engineering in Irvine",
   description:
     "Expert technical solutions for Irvine's enterprise and innovation sectors. Custom web development, AI integration, and results-driven SEO for Orange County leaders.",
   keywords:

@@ -1,44 +1,21 @@
 import Footer from "../../../components/footer";
 import HomeFollow from "../../../components/home-follow";
 import LocationPageContent from "../../../components/LocationPageContent";
+import JsonLd from "../../../components/JsonLd";
+import { ORG_ID, graph, url } from "../../../lib/schema";
 
 export default function PortlandSEO() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Casa Dev - Portland",
-    "image": "https://casa-dev.com/images/logo2.webp",
-    "@id": "https://casa-dev.com/about/portland",
-    "url": "https://casa-dev.com/about/portland",
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Portland",
-      "addressRegion": "OR",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 45.5152,
-      "longitude": -122.6784
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    "sameAs": [
-      "https://github.com/tronsymphony"
-    ]
-  };
+  const jsonLd = graph({
+    '@type': 'Service',
+    name: 'NetSuite integration and custom front-end engineering in Portland',
+    provider: { '@id': ORG_ID },
+    areaServed: { '@type': 'City', name: 'Portland', containedInPlace: { '@type': 'State', name: 'OR' } },
+    url: url('/about/portland/'),
+  });
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <HomeFollow />
       <LocationPageContent 
         city="Portland"
@@ -52,14 +29,10 @@ export default function PortlandSEO() {
 }
 
 export const metadata = {
-  metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: "/about/portland",
-    languages: {
-      "en-US": "/en-US",
-    },
+    canonical: "/about/portland/",
   },
-  title: "Strategic Web Development & SEO Portland | Casa Dev",
+  title: "NetSuite Integration & Front-End Engineering in Portland",
   description:
     "Scale your Portland-based business with expert technical strategy, custom web applications, and AI-driven SEO. Hand-crafted solutions for the Pacific Northwest's thriving tech scene.",
   keywords:

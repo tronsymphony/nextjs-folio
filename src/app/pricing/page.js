@@ -1,25 +1,22 @@
-import Footer from "../../components/footer";
-import HomeFollow from "../../components/home-follow";
-import Pricing from "../../components/pricing"
-export default function Home() {
- 
-  return (  
-      <>
-        <HomeFollow></HomeFollow>
-        <Pricing></Pricing>
-        <Footer></Footer>
-      </>
-  );
-}
+import Footer from '../../components/footer';
+import HomeFollow from '../../components/home-follow';
+import Pricing from '../../components/pricing';
+import { OFFERS, formatUSD } from '../../lib/site';
+
+const { audit, appAudit, seoAudit } = OFFERS;
 
 export const metadata = {
-  metadataBase: new URL("https://casa-dev.com"),
-  alternates: {
-    canonical: '/pricing',
-    languages: {
-      'en-US': '/en-US',
-    },
-  },
-  title: "Pricing | Full-Stack Developer | WordPress, Laravel, ReactJS, PhP, JS, Shopify | Santa Monica, Los Angeles",
-  description: "Discover premium web development services with Nitya Hoyos, a seasoned Full-Stack Developer based in Los Angeles. Skilled in WordPress, Laravel, ReactJS, NodeJS, and Shopify, I specialize in crafting bespoke digital solutions that drive business growth. Ready to elevate your online presence? Connect now for top-tier development projects tailored just for you.",
+  title: `Pricing: Free Review, Audits From ${formatUSD(Math.min(audit.price, appAudit.price, seoAudit.price))}, Projects, Retainers`,
+  description: `Start with a free 30-minute review. Fixed-price audits: NetSuite integrations ${formatUSD(audit.price)}, apps built with AI ${formatUSD(appAudit.price)}, technical SEO ${formatUSD(seoAudit.price)}. Then fixed-scope projects and monthly retainers.`,
+  alternates: { canonical: '/pricing/' },
 };
+
+export default function PricingPage() {
+  return (
+    <>
+      <HomeFollow />
+      <Pricing />
+      <Footer />
+    </>
+  );
+}

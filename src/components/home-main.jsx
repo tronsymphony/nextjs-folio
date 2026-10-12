@@ -1,552 +1,312 @@
-"use client";
-import Image from "next/image";
 import Link from "next/link";
-import ComparisonSection from "./section/ComparisonSection";
-import ContactForm from "./ContactForm";
-import ProjectCalculator from "./ProjectCalculator/ProjectCalculator";
-import Showcase from "./section/Showcase";
-import ValueProps from "./section/ValueProps";
-import Services from "./section/Services";
-import {
-  Shield,
-  Zap,
-  Clock,
-  ArrowRight,
-  ArrowUpRight,
-  MapPin,
-  Users,
-  Code,
-  Bell,
-  BarChart,
-  Check,
-  Star,
-  Award,
-} from "lucide-react";
-
-import { X, TrendingUp } from "lucide-react"; // Importing Lucide Icons
-import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import FeaturedProjects from "./section/FeaturedProjects";
+import HeroDemo from "./home/HeroDemo";
+import HeroGrid from "./home/HeroGrid";
+import HeroBlinds from "./home/HeroBlinds";
+import LeadMagnetCTA from "./LeadMagnetCTA";
+import { Accent, ArrowLink, PrimaryCta, SecondaryCta, SectionHead } from "./ui/Cta";
+import { HERO_INTRO, heroFacts, LINES } from "./home/heroCopy";
+import { HERO_VARIANTS } from "./home/HeroVariants";
+import { publishedTopics } from "../data/netsuiteTopics";
+import { publishedGuides } from "../data/appAuditGuides";
+import { OFFERS, PERSON, formatUSD } from "../lib/site";
+import { expertise } from "../data/expertise";
 
-export default function HomeMain() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isCtaHovered, setIsCtaHovered] = useState(false);
+const ladder = [
+  {
+    step: "01",
+    title: "Audit",
+    body: "A fixed-price review of your NetSuite integrations, your AI-built app, or your site's search setup. You get a written plan you own.",
+    detail: "Fixed fee",
+  },
+  {
+    step: "02",
+    title: "Build",
+    body: "Fixed-scope work on what the audit found: integrations and portals, security fixes, or the pages and fixes search needs.",
+    detail: OFFERS.implementationFrom ? `From ${formatUSD(OFFERS.implementationFrom)}` : "Fixed scope",
+  },
+  {
+    step: "03",
+    title: "Retain",
+    body: "An engineer who already knows your systems, on call for fixes, the next integration, and monthly search reviews.",
+    detail: OFFERS.retainerFrom ? `From ${formatUSD(OFFERS.retainerFrom)}/mo` : "Monthly",
+  },
+];
 
-  // Note: Replaced raw SVG paths with Lucide components for cleaner JSX and better maintainability.
-  // Assuming these Lucide icons map to the original SVG intent:
-  // X (for Limitation marker)
-  // Check (for Advantage marker)
-  // Limitation Icons: Code (for Templates/Customization), Zap (for Performance)
-  // Advantage Icons: Award (for Experience), Shield (for Security), TrendingUp (for Strategic Growth)
+const SYSTEMS = ["NetSuite", "Shopify", "EDI", "Salesforce", "Lovable", "Supabase", "Stripe", "Cursor", "Search Console", "Semrush", "Next.js", "React"];
 
-  const aiLimitations = [
-    {
-      title: "Boilerplate Risk & Technical Debt",
-      desc: "AI-generated or cheap code bases quickly become unmaintainable and insecure.",
-      Icon: Code,
-    },
-    {
-      title: "Performance Compromise",
-      desc: "Bloated code and unnecessary dependencies kill load times, SEO, and user experience.",
-      Icon: Zap,
-    },
-    {
-      title: "Marketing & Design Blind Spots",
-      desc: "Limited customization prevents the integration of strategic design or complex marketing funnels.",
-      Icon: X, // Using X for generic "problem"
-    },
-  ];
+// "Area: first item" for each expertise group, as a compact list.
+const capabilities = expertise.map(({ area, items }) => [area, items[0]]);
 
-  const strategicAdvantages = [
-    {
-      title: "Holistic Expertise (Dev, Design, Marketing)",
-      desc: "10+ years of problem-solving expertise aligned with your business goals, not just code functions.",
-      Icon: Award,
-    },
-    {
-      title: "Minimizing Risk & Technical Debt",
-      desc: "Clean, hand-crafted code ensures high security, optimal performance, and long-term scalability.",
-      Icon: Shield,
-    },
-    {
-      title: "Strategic Growth Foundation",
-      desc: "Building a platform designed to evolve and scale with your business's future requirements.",
-      Icon: TrendingUp,
-    },
-  ];
+const WRAP = "mx-auto max-w-[1440px] px-4 sm:px-8";
+const GUIDES_PER_LINE = 5;
 
-  const skills = [
+// Headline words slide up from behind a mask, one after another. Pure CSS, so
+// the text is in the HTML and fully visible if animations are off.
+function RevealWords({ segments, delay = 150, step = 55 }) {
+  let i = 0;
+  return segments.map(([text, accent], s) =>
+    text.split(" ").map((word) => {
+      const n = i++;
+      const inner = (
+        <span
+          className="inline-block animate-[wordUp_1.1s_cubic-bezier(0.2,0.7,0.2,1)_both]"
+          style={{ animationDelay: `${delay + n * step}ms` }}
+        >
+          {accent ? <Accent>{word}</Accent> : word}
+        </span>
+      );
+      return (
+        <span key={`${s}-${n}`}>
+          {n > 0 && " "}
+          <span className="inline-block overflow-hidden align-bottom pb-[0.1em] -mb-[0.1em] pr-[0.04em]">{inner}</span>
+        </span>
+      );
+    })
+  );
+}
+
+export default function HomeMain({ hero = "sync-blinds" }) {
+  // Guides grouped by line of work, each list ending in a link to the rest.
+  const guideGroups = [
     {
-      id: "development-expertise",
-      title: "Custom Solutions Without Agency Overhead",
-      description:
-        "Working directly with a skilled solo developer means personalized attention and faster results:",
-      benefits: [
-        "Direct communication with the person building your solution - no account managers or miscommunication",
-        "Flexible timelines and project scopes that adapt to your evolving business needs",
+      label: "NetSuite & EDI",
+      more: ["/netsuite/", "All NetSuite guides"],
+      items: [
+        { href: "/edi/", title: "EDI documents explained: 850, 855, 856, 810 and more" },
+        ...publishedTopics().map((t) => ({ href: `/netsuite/${t.slug}/`, title: t.h1 })),
       ],
     },
     {
-      id: "responsive-design",
-      title: "From Concept to Launch - All In One Place",
-      description:
-        "As your single point of contact for design and development, I streamline the entire process:",
-      benefits: [
-        "Unified vision across both design and technical implementation",
-        "Faster turnaround times without multiple team handoffs",
-        "Cost-effective approach that maximizes your investment",
-      ],
+      label: "Apps built with AI",
+      more: ["/ai-app-audit/", "The app audit"],
+      items: publishedGuides().map((g) => ({ href: `/ai-app-audit/${g.slug}/`, title: g.h1 })),
     },
     {
-      id: "marketing",
-      title: "Results-Driven Digital Strategy",
-      description:
-        "Your digital presence should work as hard as you do to grow your business:",
-      benefits: [
-        "SEO-optimized websites that help local customers find your business",
-        "Lead generation systems that convert visitors into paying customers",
-        "Analytics implementation to measure ROI and continuously improve",
-      ],
-    },
-    {
-      id: "value-proposition",
-      title: "Why Small Businesses & Startups Choose Me",
-      benefits: [
-        "Enterprise-quality solutions at prices accessible to growing businesses",
-        "Ongoing support and maintenance to protect your digital investment",
-        "Technical partnership that scales with your business growth",
-      ],
-    },
-  ];
-
-  // Client types specifically targeted
-  const clientTypes = [
-    {
-      title: "For Small Businesses",
-      description:
-        "Affordable custom websites and apps that generate real leads and sales without the enterprise price tag.",
-      icon: "/images/small-business-icon.svg",
-    },
-    {
-      title: "For Startups",
-      description:
-        "Quick-to-market MVPs and iterative development that helps you validate ideas, attract investors, and grow.",
-      icon: "/images/startup-icon.svg",
-    },
-    {
-      title: "For Professional Services",
-      description:
-        "Polished digital presence for consultants, lawyers, realtors and healthcare providers that converts prospects to clients.",
-      icon: "/images/professional-icon.svg",
-    },
-  ];
-
-  // Platform data for technology sections
-  // Platform data for technology sections
-  const platforms = {
-    firstRow: [
-      { name: "NetSuite", icon: "/images/netsuite.svg" },
-      { name: "Angular", icon: "/images/angular.svg" },
-      { name: "React JS", icon: "/images/icon-react.svg" },
-      { name: "Wordpress", icon: "/images/icon-wordpress.svg" },
-      { name: "PostHog", icon: "/images/posthog.svg" },
-      { name: "Mixpanel", icon: "/images/mixpanel.svg" },
-    ],
-    secondRow: [
-      { name: "NextJs", icon: "/images/nextjs.svg" },
-      { name: "VueJS", icon: "/images/vue-js.svg" },
-      { name: "Shopify", icon: "/images/icon-shopify.svg" },
-      { name: "Google Analytics", icon: "/images/ga4.svg" },
-      { name: "Laravel", icon: "/images/laravel.svg" },
-    ],
-  };
-
-  // Services data
-  const services = [
-    {
-      title: "Enterprise ERP & NetSuite Solutions",
-      description:
-        "Specialized development for NetSuite and ERP integrations. I automate workflows, build custom SuiteCommerce experiences, and optimize your operational data flow to maximize efficiency and ROI.",
-    },
-    {
-      title: "Advanced Analytics & UX Strategy",
-      description:
-        "Stop guessing. I implement deep tracking with PostHog, Mixpanel, and GA4 to visualize user behavior. I use this data to refine UI/UX designs, reduce churn, and increase conversion rates scientifically.",
-    },
-    {
-      title: "Small Business & Startup Development",
-      description:
-        "From high-converting WordPress sites to scalable React/Next.js web apps. I build cost-effective, custom solutions that establish credibility and generate leads without the enterprise price tag.",
-    },
-    {
-      title: "Custom React & Angular Apps",
-      description:
-        "Building complex, interactive single-page applications (SPAs) that feel like native software. Whether migrating legacy code or starting fresh, I ensure clean, maintainable architecture.",
-    },
-    {
-      title: "E-commerce & Shopify Growth",
-      description:
-        "Custom online stores optimized for sales. I handle everything from theme customization to complex inventory integrations, ensuring a seamless checkout experience for your customers.",
-    },
-    {
-      title: "Maintenance & Technical Partnership",
-      description:
-        "Ongoing support to keep your digital investment secure. I provide regular updates, security monitoring, and strategic advice as your business technology needs evolve.",
-    },
-  ];
-  const strategicValueProps = [
-    {
-      id: "holistic-expertise",
-      title: "Holistic Expertise: Dev + Design + Marketing",
-      description:
-        "My 10+ years of cross-disciplinary experience means you hire a partner, not just a programmer, eliminating costly communication gaps and maximizing results.",
-      benefits: [
-        "**Unified Vision:** Flawless execution where design supports conversion, and code supports SEO.",
-        "**Faster Velocity:** No delays waiting for handoffs between external design or marketing agencies.",
-      ],
-    },
-    {
-      id: "risk-mitigation",
-      title: "Future-Proof Platforms & Risk Mitigation",
-      description:
-        "Unlike AI boilerplate or cheap outsourcing that leads to technical debt, I hand-craft a scalable foundation.",
-      benefits: [
-        "**Minimized Rebuild Risk:** Clean, documented code that grows with your business needs.",
-        "Enterprise-level security and performance built from the ground up, not patched on later.",
-      ],
-    },
-    {
-      id: "strategic-partnership",
-      title: "Strategic Partnership, Not Freelance Task-Taker",
-      description:
-        "I integrate into your team, advising on the right technical strategy to meet specific business objectives (lead generation, conversion, scaling).",
-      benefits: [
-        "Direct communication with a decision-making expert—no account managers or middlemen.",
-        "Agile project scopes that adapt to evolving market demands and opportunities.",
-      ],
-    },
-    {
-      id: "vibe-coder-rescue",
-      title: "Vibe Coder Rescue: Finishing the Final 20%",
-      description:
-        "Stuck on the last 20% of your AI-assisted build? I help founders and 'vibe coders' turn prototypes into secure, scalable, production-ready platforms.",
-      benefits: [
-        "**Production Hardening:** Implementation of secure auth, complex logic, and custom integrations.",
-        "**Scalable Architecture:** Refactoring AI boilerplate into a foundation that lasts years, not months.",
+      label: "Search & AI search",
+      more: ["/seo/", "SEO & AI search"],
+      items: [
+        { href: "/seo/ai-search-optimization/", title: "AI search optimization: get found in ChatGPT, Perplexity and AI Overviews" },
+        { href: "/seo/technical-seo-audit/", title: "Technical SEO audit: fixed scope, done by an engineer" },
+        { href: "/seo/llms-txt/", title: "What is llms.txt? How to add one to Next.js or WordPress" },
       ],
     },
   ];
+
+  const variant = HERO_VARIANTS[hero];
+  const Hero = variant?.Hero ?? (hero === "sync" ? SyncHero : SyncBlindsHero);
 
   return (
-    <section className="pt-20">
-      {/* <section className="threedot" data-scroll-section> */}
-      {/* <HomeDot /> */}
-      {/* </section> */}
+    <div className="bg-canvas">
+      <Hero />
 
-      {/* Hero Section - Split Screen Redesign */}
-      <section className="relative w-full min-h-[75vh] flex items-center bg-[#050505] overflow-hidden px-4 sm:px-6 py-12 lg:py-8">
-        
-        {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black_70%,transparent_100%)]"></div>
-
-        <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
-            {/* Left Column: Typography */}
-            <div className="flex flex-col text-left">
-              <div className="inline-flex items-center gap-2 mb-6 animate-[fadeInUp_0.8s_ease-out_forwards]">
-                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                 <span className="text-emerald-400 font-mono text-sm uppercase tracking-[0.2em] font-bold">
-                    Full-Stack Digital Partner
-                 </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[0.9] tracking-tighter mb-6 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards] opacity-0">
-                DESIGN. <br/>
-                DEVELOP. <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  GROW.
-                </span>
-              </h1>
-
-               <p className="text-base text-gray-400 font-medium leading-relaxed max-w-xl mb-8 animate-[fadeInUp_0.8s_ease-out_0.4s_forwards] opacity-0">
-                Scale your business without the agency overhead. I integrate premium <span className="text-white font-bold">UI/UX Design</span>, 
-                <span className="text-blue-400"> Enterprise Development</span>, and <span className="text-purple-400">Marketing Strategy</span> into one cohesive solution for growth.
-              </p>
-
-               <div className="flex flex-wrap gap-3 animate-[fadeInUp_0.8s_ease-out_0.6s_forwards] opacity-0">
-                <Link
-                  href="/contact"
-                  className="px-6 py-3 bg-white !text-black font-bold text-base hover:bg-gray-200 transition-colors flex items-center gap-2 rounded-lg"
-                >
-                  Start Your Project <ArrowRight className="w-5 h-5"/>
-                </Link>
-                <Link
-                  href=""
-                  className="px-6 py-3 border border-white/20 text-white font-bold text-base hover:bg-white/10 transition-colors rounded-lg"
-                >
-                  View Case Studies
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Column: 3D Visual */}
-            <div className="relative hidden lg:block perspective-[2000px] animate-[fadeInLeft_1s_ease-out_0.6s_forwards] opacity-0">
-               {/* The tilted card container */}
-               <div className="relative w-full aspect-[4/3] bg-[#0F0F0F] rounded-lg border border-white/10 shadow-2xl transform transition-transform duration-700 hover:rotate-y-[-5deg] hover:rotate-x-[5deg] [transform:rotateY(-12deg)_rotateX(6deg)_rotateZ(-2deg)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden group">
-                  
-                  {/* Window Controls */}
-                  <div className="h-10 border-b border-white/5 bg-[#141414] flex items-center px-4 gap-2">
-                     <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                     <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                     <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                     <div className="ml-4 px-3 py-1 bg-black/50 rounded-md text-[10px] font-mono text-gray-500">
-                        BusinessLogic.ts
-                     </div>
-                  </div>
-
-                  {/* Code Content */}
-                  <div className="p-6 font-mono text-sm leading-relaxed text-gray-400">
-                     <div className="flex gap-4">
-                        <div className="text-gray-700 select-none text-right">
-                           {Array.from({length: 12}).map((_, i) => <div key={i}>{i+1}</div>)}
-                        </div>
-                        <div className="w-full">
-                           <div className="text-purple-400">const <span className="text-yellow-400">YourGrowth</span> = <span className="text-blue-400">{'{'}</span></div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">strategy</span>: <span className="text-green-400">&rsquo;Data-Driven UX&rsquo;</span>,
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">design</span>: <span className="text-green-400">&rsquo;Modern & Conversional&rsquo;</span>,
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">techStack</span>: [<span className="text-green-400">&rsquo;Next.js&rsquo;</span>, <span className="text-green-400">&rsquo;NetSuite&rsquo;</span>, <span className="text-green-400">&rsquo;Wordpress&rsquo;</span>, <span className="text-green-400">&rsquo;Angular&rsquo;</span>],
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-sky-400">marketing</span>: <span className="text-green-400">&rsquo;SEO & Analytics&rsquo;</span>,
-                           </div>
-                           <div className="pl-4 py-2">
-                              <span className="text-gray-500">\/\/ Result:</span>
-                           </div>
-                           <div className="pl-4">
-                              <span className="text-purple-400">return</span> <span className="text-yellow-400">MaximumROI</span><span className="text-blue-400">()</span>;
-                           </div>
-                           <div><span className="text-blue-400">{'}'}</span>;</div>
-                        </div>
-                     </div>
-                  </div>
-                  
-                  {/* Glow effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-transparent to-transparent pointer-events-none"></div>
-               </div>
-
-               {/* Back Decoration Card */}
-               <div className="absolute -inset-4 -z-10 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl blur-xl transform [transform:rotateY(-12deg)_rotateX(6deg)_translateZ(-50px)] opacity-50"></div>
-            </div>
-
-          </div>
+      {/* Systems marquee (decorative; the sections below carry the real links) */}
+      <div className="border-y border-line py-6 overflow-hidden" aria-hidden="true">
+        <div className="flex w-max animate-[marquee_45s_linear_infinite]">
+          {[...SYSTEMS, ...SYSTEMS].map((s, i) => (
+            <span key={i} className="flex items-center gap-10 pr-10 text-3xl md:text-5xl font-medium tracking-[-0.04em] text-ink/25">
+              {s}
+              <span className="w-2 h-2 rounded-full bg-accent/70" />
+            </span>
+          ))}
         </div>
+      </div>
 
-        <style jsx>{`
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(40px); }
-            to { opacity: 1; transform: translateX(0); }
-          }
-        `}</style>
+      {/* 01 Three lines of work */}
+      <section className={`${WRAP} pt-28 md:pt-40`}>
+        <SectionHead index="01" label="What I do" title={<>Three lines of work, <Accent>one engineer.</Accent></>}>
+          Each starts with a fixed-price audit, so you can judge the work before committing to more.
+        </SectionHead>
+        <ol className="grid lg:grid-cols-3 border-t border-line">
+          {LINES.map((line, i) => (
+            <li
+              key={line.id}
+              data-reveal
+              style={{ "--reveal-delay": `${i * 120}ms` }}
+              className="flex flex-col pt-8 pb-12 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-l lg:first:border-l-0 border-line border-b lg:border-b-0"
+            >
+              <span className="font-mono text-xs text-faint">0{i + 1}</span>
+              <h3 className="mt-6 text-3xl md:text-4xl font-medium tracking-[-0.035em] leading-[1.05]">{line.title}</h3>
+              <p className="mt-4 text-muted leading-relaxed">{line.body}</p>
+
+              <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">For when</p>
+              <ul className="mt-3 border-t border-line">
+                {line.symptoms.map((s) => (
+                  <li key={s} className="py-3 border-b border-line text-[15px] leading-snug">
+                    {s}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-auto pt-8">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint">Start with</p>
+                <p className="mt-2 text-lg font-medium tracking-[-0.02em]">{line.start}</p>
+                <p className="mt-1 text-sm text-muted">{line.startDetail}</p>
+                <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+                  {line.links.map(([href, label]) => (
+                    <ArrowLink key={href} href={href}>
+                      {label}
+                    </ArrowLink>
+                  ))}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <Showcase></Showcase>
+      {/* 02 Work */}
+      <FeaturedProjects index="02" />
 
-      <ProjectCalculator></ProjectCalculator>
-
-      <ComparisonSection 
-        aiLimitations={aiLimitations} 
-        strategicAdvantages={strategicAdvantages} 
-      />
-
-      <ValueProps strategicValueProps={strategicValueProps} />
-
-      {/* Featured Projects Section */}
-      <FeaturedProjects></FeaturedProjects>
-
-      <Services services={services} />
-
-      {/* Technologies Section */}
-      <section className="py-16 bg-[#050505] overflow-hidden" data-scroll-section>
-        <div className="container mx-auto px-4 mb-12">
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase max-w-4xl">
-            Enterprise-grade technology <br />
-            <span className="text-blue-500">at small business prices.</span>
-          </h2>
+      {/* 03 How engagements work */}
+      <section className={`${WRAP} pt-28 md:pt-40`}>
+        <SectionHead index="03" label="How we'd work together" title={<>Start small and <Accent>fixed-price.</Accent></>}>
+          Every engagement starts with something you can judge before committing to more.
+        </SectionHead>
+        <ol className="grid md:grid-cols-3 border-t border-line">
+          {ladder.map((s, i) => (
+            <li
+              key={s.step}
+              data-reveal
+              style={{ "--reveal-delay": `${i * 120}ms` }}
+              className="flex flex-col pt-8 pb-12 md:px-8 md:first:pl-0 md:border-l md:first:border-l-0 border-line border-b md:border-b-0"
+            >
+              <span className="text-[clamp(4rem,9vw,8rem)] font-medium leading-none tracking-[-0.06em] text-ink/15">{s.step}</span>
+              <h3 className="mt-8 text-3xl font-medium tracking-[-0.03em]">{s.title}</h3>
+              <p className="mt-3 text-muted leading-relaxed">{s.body}</p>
+              <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink">{s.detail}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="mt-10" data-reveal>
+          <ArrowLink href="/pricing/">See pricing</ArrowLink>
         </div>
+      </section>
 
-        {/* Rolling Logos - Custom Marquee Implementation */}
-        <div className="flex flex-col gap-6">
-          {/* First Row */}
-          <div className="flex overflow-hidden group select-none relative">
-             {/* Fade Gradients */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+      {/* 04 Guides and tools */}
+      <section className={`${WRAP} pt-28 md:pt-40`}>
+        <SectionHead index="04" label="Free guides & tools" title={<>Answers before <Accent>the first call.</Accent></>} />
+        <div className="grid lg:grid-cols-3 gap-10" data-reveal>
+          {guideGroups.map((group) => (
+            <div key={group.label}>
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-3">{group.label}</p>
+              <ul className="border-t border-line">
+                {group.items.slice(0, GUIDES_PER_LINE).map((g) => (
+                  <li key={g.href}>
+                    <Link href={g.href} className="group flex items-center justify-between gap-6 py-4 border-b border-line">
+                      <span className="text-[17px] leading-snug tracking-[-0.015em] text-muted group-hover:text-ink transition-colors">{g.title}</span>
+                      <ArrowUpRight className="w-4 h-4 shrink-0 text-faint transition-all duration-300 group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ArrowLink href={group.more[0]} className="mt-5">
+                {group.more[1]}
+              </ArrowLink>
+            </div>
+          ))}
+        </div>
+        <div className="mt-16 grid lg:grid-cols-2 gap-6">
+          <Link
+            href="/tools/netsuite-integration-estimator/"
+            data-reveal
+            className="group relative flex flex-col justify-between min-h-[260px] p-8 rounded-3xl bg-ink !text-canvas overflow-hidden"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-canvas/60">Tool</span>
+            <div>
+              <h3 className="text-3xl md:text-4xl font-medium tracking-[-0.035em] leading-[1.02]">NetSuite integration cost estimator</h3>
+              <p className="mt-3 text-canvas/70 max-w-sm">Scope outline, risks, and a cost range. No email required.</p>
+            </div>
+            <ArrowUpRight className="absolute top-7 right-7 w-7 h-7 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent" />
+          </Link>
+          <div data-reveal>
+            <LeadMagnetCTA className="h-full" />
+          </div>
+        </div>
+      </section>
 
-            <div className="flex gap-6 animate-marquee whitespace-nowrap">
-              {[...platforms.firstRow, ...platforms.firstRow].map((platform, index) => (
-                <div key={index} className="flex flex-col items-center justify-center p-4 bg-neutral-900/50 border border-white/5 rounded-lg min-w-[160px] hover:border-blue-500/50 transition-colors">
-                  <div className="w-12 h-12 flex items-center justify-center mb-3">
-                    <Zap className="w-8 h-8 text-blue-400" />
-                  </div>
-                  <span className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{platform.name}</span>
+      {/* 05 Who you'll work with */}
+      <section className={`${WRAP} pt-28 md:pt-40 pb-28 md:pb-40`}>
+        <SectionHead index="05" label="Who you'll work with" />
+        <div className="grid lg:grid-cols-12 gap-10">
+          <p
+            className="lg:col-span-8 text-[clamp(1.75rem,3.6vw,3.25rem)] font-medium leading-[1.08] tracking-[-0.035em]"
+            data-reveal
+          >
+            {PERSON.name}, senior engineer. {PERSON.yearsExperience} years building software, from enterprise front ends and
+            NetSuite integrations to my own product, a crash-data map that grew through search.{" "}
+            <span className="text-muted">The person on your first call is the person <Accent>writing your code.</Accent></span>
+          </p>
+          <div className="lg:col-span-4 lg:pt-3" data-reveal>
+            <ul className="border-t border-line">
+              {capabilities.map(([area, first]) => (
+                <li key={area} className="py-4 border-b border-line text-[15px] text-muted">
+                  <span className="text-ink">{area}</span> · {first}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              <ArrowLink href="/about/">More about me</ArrowLink>
+              <ArrowLink href="/services/">All skills</ArrowLink>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function SyncBlindsHero() {
+  return <SyncHero background="blinds" />;
+}
+
+// Hero with the try-it demos on the right, over vertical blinds with the sun
+// behind them or, with background="grid", the dot grid.
+function SyncHero({ background = "grid" }) {
+  return (
+    <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
+      {background === "blinds" ? (
+        <>
+          <HeroBlinds />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-canvas/80 via-canvas/30 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/5 pointer-events-none bg-gradient-to-t from-canvas to-transparent" />
+        </>
+      ) : (
+        <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(ellipse_85%_85%_at_70%_50%,black,transparent)]">
+          <HeroGrid />
+        </div>
+      )}
+      <div className={`${WRAP} relative z-10 flex-1 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full pt-[max(6.5rem,13vh)] pb-[clamp(1.5rem,4vh,2.5rem)]`}>
+        <div className="lg:col-span-6">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-[clamp(1rem,3vh,2rem)] animate-[fadeInUp_0.9s_ease-out_forwards]">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true" />
+            NetSuite integrations · AI app audits · Technical SEO
+          </p>
+          <h1 className="max-w-[14ch] text-[clamp(2.5rem,min(5.4vw,9.5vh),6.25rem)] font-medium leading-[0.94] tracking-[-0.05em]">
+            <RevealWords segments={[["Systems that agree, apps that hold up, sites that"], ["get found.", true]]} />
+          </h1>
+          <div className="opacity-0 animate-[fadeInUp_1s_ease-out_0.35s_forwards]">
+            <p className="mt-[clamp(1.25rem,4vh,2.5rem)] text-base md:text-lg text-muted leading-relaxed max-w-md">{HERO_INTRO}</p>
+            <div className="mt-[clamp(1rem,3vh,2rem)] flex flex-wrap gap-3">
+              <PrimaryCta href="/call/">Book a free 30-min review</PrimaryCta>
+              <SecondaryCta href="/work/">See the work</SecondaryCta>
+            </div>
+            <dl className="mt-[clamp(1.5rem,5vh,3.5rem)] grid grid-cols-3 max-w-lg border-t border-line">
+              {heroFacts.map(([value, label]) => (
+                <div key={label} className="pt-4 pr-4">
+                  <dt className="sr-only">{label}</dt>
+                  <dd className="text-xl md:text-2xl font-medium tracking-[-0.03em]">{value}</dd>
+                  <dd className="mt-1 text-[13px] text-muted leading-snug">{label}</dd>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Second Row */}
-          <div className="flex overflow-hidden group select-none relative">
-            {/* Fade Gradients */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
-
-            <div className="flex gap-6 animate-marquee-reverse whitespace-nowrap">
-              {[...platforms.secondRow, ...platforms.secondRow].map((platform, index) => (
-                <div key={index} className="flex flex-col items-center justify-center p-4 bg-neutral-900/50 border border-white/5 rounded-lg min-w-[160px] hover:border-purple-500/50 transition-colors">
-                  <div className="w-12 h-12 flex items-center justify-center mb-3">
-                    <Code className="w-8 h-8 text-purple-400" />
-                  </div>
-                  <span className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{platform.name}</span>
-                </div>
-              ))}
-            </div>
+            </dl>
           </div>
         </div>
-
-        <div className="container mx-auto px-4 mt-16">
-          <div className="max-w-xl">
-            <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
-              I select the right technology for your specific business needs
-              and budget - <span className="text-white font-bold">not the most expensive option.</span>
-            </p>
-            <Link 
-              href="/contact/" 
-              className="group inline-flex items-center gap-2 text-white font-bold border-b border-white/20 hover:border-blue-500 hover:text-blue-400 pb-1 transition-all"
-            >
-              Let&rsquo;s discuss your technology options
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+        <div className="lg:col-span-6 opacity-0 animate-[fadeInUp_1.1s_ease-out_0.5s_forwards]">
+          <HeroDemo />
         </div>
-
-        <style jsx>{`
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          @keyframes marquee-reverse {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-          }
-          .animate-marquee {
-            animation: marquee 40s linear infinite;
-          }
-          .animate-marquee-reverse {
-            animation: marquee-reverse 40s linear infinite;
-          }
-        `}</style>
-      </section>
-
-       {/* Latest Blog Posts Section */}
-      <section className="py-16 bg-[#050505] px-4 sm:px-6 border-t border-white/5" data-scroll-section>
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
-            <div className="max-w-xl">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tighter uppercase">
-                Latest <span className="text-blue-500">Insights.</span>
-              </h2>
-              <p className="text-gray-400 text-base">
-                Stay updated with the latest trends in AI integration and strategic web development.
-              </p>
-            </div>
-            <Link 
-              href="/blog" 
-              className="group flex items-center gap-2 text-white font-bold hover:text-blue-400 transition-colors uppercase tracking-widest text-sm"
-            >
-              View All Posts <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
-               <div className="p-8">
-                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
-                     AI Strategy
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
-                     <Link href="/blog/how-ai-can-transform-your-small-business">
-                        Maximizing ROI: How AI Can Transform Your Small Business in 2025
-                     </Link>
-                  </h3>
-                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
-                     Learn how artificial intelligence can streamline operations, enhance customer service, and drive growth for small businesses.
-                  </p>
-                  <Link 
-                    href="/blog/how-ai-can-transform-your-small-business"
-                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
-                  >
-                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-               </div>
-            </div>
-
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
-               <div className="p-8">
-                  <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
-                     Web Development
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
-                     <Link href="/blog/integrating-ai-to-supercharge-your-website">
-                        The Future of Web Development: Integrating AI to Supercharge Your Website
-                     </Link>
-                  </h3>
-                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
-                     Explore how AI-driven features like intelligent search and personalized recommendations can elevate your website.
-                  </p>
-                  <Link 
-                    href="/blog/integrating-ai-to-supercharge-your-website"
-                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
-                  >
-                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-               </div>
-            </div>
-
-            <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-lg overflow-hidden hover:border-white/10 transition-all duration-300">
-               <div className="p-8">
-                  <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest rounded-md mb-6 inline-block">
-                     Rescue
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
-                     <Link href="/blog/from-vibe-coding-to-production-ready">
-                        From &apos;Vibe Coding&apos; to Production-Ready: Finishing Your Project
-                     </Link>
-                  </h3>
-                  <p className="text-gray-400 mb-8 line-clamp-2 text-sm">
-                     Built a great prototype with AI but stuck on the last 20%? Here is how to turn those vibes into a production-ready application.
-                  </p>
-                  <Link 
-                    href="/blog/from-vibe-coding-to-production-ready"
-                    className="inline-flex items-center gap-2 text-white font-bold group/link text-sm"
-                  >
-                    Read Article <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </section>
   );
 }

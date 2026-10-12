@@ -60,12 +60,8 @@ export default function PrivacyPolicy() {
 }
 
 export const metadata = {
-  metadataBase: new URL("https://casa-dev.com"),
   alternates: {
-    canonical: "/privacy-policy",
-    languages: {
-      "en-US": "/en-US",
-    },
+    canonical: "/privacy-policy/",
   },
   title: "Privacy Policy | Casa Dev",
   description:

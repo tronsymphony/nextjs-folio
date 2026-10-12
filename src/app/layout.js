@@ -1,10 +1,16 @@
 import './globals.css';
 
-import { Inter } from 'next/font/google';
+import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { PostHogProvider } from '../providers/providers';
+import JsonLd from '../components/JsonLd';
+import RevealObserver from '../components/ui/RevealObserver';
+import { SITE_NAME, SITE_URL } from '../lib/site';
+import { graph, organizationNode, personNode } from '../lib/schema';
 
-const inter = Inter({ subsets: ['latin'] });
+const display = Inter_Tight({ subsets: ['latin'], variable: '--font-display' });
+const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-serif-accent' });
+const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-label' });
 
 export const viewport = {
   width: 'device-width',
@@ -13,89 +19,33 @@ export const viewport = {
 };
 
 export const metadata = {
-  metadataBase: new URL('https://casa-dev.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Casa Dev: Strategic Digital Partner | Dev, Design & Marketing',
+    default: 'Casa Dev: NetSuite Integrations, AI App Audits & Technical SEO',
     template: '%s | Casa Dev',
   },
   description:
-    'Casa Dev is a strategic digital partner specializing in custom, high-performance web development and design. We build scalable platforms that drive business growth.',
+    'NetSuite integrations, security audits for apps built with AI tools, and technical SEO, from a senior engineer with 15 years of experience. Each starts with a fixed-price audit.',
   robots: {
     index: true,
     follow: true,
   },
-  icons: {
-    icon: '/favicon.ico',
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'en_US',
   },
-};
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Casa Dev',
-  description:
-    'Casa Dev is a strategic digital partner specializing in custom, high-performance web development and design. We build scalable platforms that drive business growth, avoiding the technical debt of AI-generated code.',
-  url: 'https://casa-dev.com',
-  telephone: '+1-424-384-9528',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '123 Marina Del Rey Blvd',
-    addressLocality: 'Los Angeles',
-    addressRegion: 'CA',
-    postalCode: '90292',
-    addressCountry: 'US',
-  },
-  image: 'https://casa-dev.com/images/logo2.webp',
-  openingHours: 'Mo-Fr 09:00-18:00',
-  priceRange: '$$$',
-  sameAs: [
-    'https://www.facebook.com/casadev',
-    'https://twitter.com/casadev',
-    'https://www.linkedin.com/company/casadev',
-  ],
-  areaServed: [
-    {
-      '@type': 'City',
-      name: 'Los Angeles',
-    },
-    {
-      '@type': 'Country',
-      name: 'US',
-    },
-  ],
-  knowsAbout: [
-    'NetSuite ERP Development',
-    'Oracle NetSuite Integration',
-    'Next.js & React Architecture',
-    'Angular Development',
-    'WordPress Development',
-    'PostHog & Mixpanel Analytics',
-    'Technical SEO',
-    'UI/UX Design Systems',
-    'Enterprise Resource Planning',
-    'SaaS Product Strategy',
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+1-424-384-9528',
-    contactType: 'Customer Service',
-    areaServed: 'US',
-    availableLanguage: 'English',
+  twitter: {
+    card: 'summary_large_image',
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd),
-          }}
-        />
-      </head>
-      <body className={inter.className}>
+    <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+      <body className="font-sans bg-canvas text-ink">
+        <RevealObserver />
+        <JsonLd data={graph(organizationNode(), personNode())} />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         )}

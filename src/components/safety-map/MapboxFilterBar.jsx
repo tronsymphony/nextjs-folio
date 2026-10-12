@@ -35,11 +35,16 @@ export default function MapboxFilterBar({
   onToggleSafetyRegions,
   totalCount = 0,
   fatalCount = 0,
+  bikeCount = 0,
+  motoCount = 0,
+  carCount = 0,
   cities = [],
   selectedRoadType = 'all',
   onSelectRoadType = null,
   showBikeLanes = true,
-  onToggleBikeLanes = null
+  onToggleBikeLanes = null,
+  showDangerousRoads = true,
+  onToggleDangerousRoads = null
 }) {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
 
@@ -83,6 +88,11 @@ export default function MapboxFilterBar({
       onSelectMode('bicycle');
       onSelectSeverity('all');
       if (onToggleBikeLanes && !showBikeLanes) onToggleBikeLanes();
+    } else if (preset === 'car') {
+      onSelectMode('car');
+      onSelectSeverity('all');
+      if (onSelectRoadType) onSelectRoadType('all');
+      onSelectTime('all');
     } else if (preset === 'all') {
       onSelectMode('all');
       onSelectSeverity('all');
@@ -140,17 +150,59 @@ export default function MapboxFilterBar({
         </div>
 
         {/* GLANCEABLE STATS & ADVANCED CONTROLS TOGGLE */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+          {/* Active Mode Dedicated Status Indicator */}
+          {selectedMode === 'bicycle' ? (
+            <div 
+              className="flex items-center gap-2 px-3 py-1 rounded-xl bg-emerald-100/90 text-emerald-900 font-bold text-xs shrink-0 border border-emerald-300 shadow-xs" 
+              title="Exclusively displaying verified bicycle and e-bike casualties"
+            >
+              <span>🚲</span>
+              <span>{totalCount.toLocaleString()} Cycling Casualties</span>
+              <span className="px-1.5 py-0.2 rounded-md bg-emerald-700 text-white text-[9px] uppercase font-bold tracking-wider">
+                Bikes Only
+              </span>
+            </div>
+          ) : selectedMode === 'motorcycle' ? (
+            <div 
+              className="flex items-center gap-2 px-3 py-1 rounded-xl bg-purple-100/90 text-purple-900 font-bold text-xs shrink-0 border border-purple-300 shadow-xs" 
+              title="Exclusively displaying verified motorcycle incidents"
+            >
+              <span>🏍️</span>
+              <span>{totalCount.toLocaleString()} Motorcycle Crashes</span>
+              <span className="px-1.5 py-0.2 rounded-md bg-purple-700 text-white text-[9px] uppercase font-bold tracking-wider">
+                Moto Only
+              </span>
+            </div>
+          ) : selectedMode === 'car' ? (
+            <div 
+              className="flex items-center gap-2 px-3 py-1 rounded-xl bg-rose-100/90 text-rose-900 font-bold text-xs shrink-0 border border-rose-300 shadow-xs" 
+              title="Exclusively displaying reckless motorist collision hotspots"
+            >
+              <span>🚗</span>
+              <span>{totalCount.toLocaleString()} Reckless Car Crashes</span>
+              <span className="px-1.5 py-0.2 rounded-md bg-rose-700 text-white text-[9px] uppercase font-bold tracking-wider">
+                Cars Only
+              </span>
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 font-bold text-[11px] shrink-0 border border-emerald-200">
+                <span>🚲 {bikeCount.toLocaleString()} Bikes</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-50 text-purple-800 font-bold text-[11px] shrink-0 border border-purple-200">
+                <span>🏍️ {motoCount.toLocaleString()} Moto</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 font-medium text-[11px] shrink-0">
+                <span>🚗 {carCount.toLocaleString()} Cars (Last)</span>
+              </div>
+            </>
+          )}
+
           {/* Fatal Count Pill */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 font-bold text-[11px]">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-rose-50 text-rose-700 font-bold text-xs shrink-0 border border-rose-100">
             <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
             <span>{fatalCount.toLocaleString()} Fatal</span>
-          </div>
-
-          {/* Total Incidents Pill */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium text-[11px]">
-            <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
-            <span>{totalCount.toLocaleString()} Incidents</span>
           </div>
 
           {/* Advanced Filters Button */}
@@ -182,43 +234,49 @@ export default function MapboxFilterBar({
             <Sparkles className="w-3.5 h-3.5 text-amber-500" /> View:
           </span>
           <div className="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl shrink-0">
-            <button
-              onClick={() => applyPreset('critical')}
-              className={`px-3 py-1 rounded-lg font-bold transition-all text-xs flex items-center gap-1.5 ${
-                isPresetCritical
-                  ? 'bg-white text-rose-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-              title="Focus exclusively on fatal and severe injury collision zones"
-            >
-              <span className="w-2 h-2 rounded-full bg-rose-500"></span>
-              <span>Critical Hotspots</span>
-            </button>
-
-            <button
-              onClick={() => applyPreset('motorcycle')}
-              className={`px-3 py-1 rounded-lg font-bold transition-all text-xs flex items-center gap-1.5 ${
-                isPresetRider
-                  ? 'bg-white text-amber-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <span>🏍️</span>
-              <span>Canyon Riders</span>
-            </button>
-
+            {/* 1. CYCLING FOCUS (DEFAULT) */}
             <button
               onClick={() => applyPreset('bicycle')}
               className={`px-3 py-1 rounded-lg font-bold transition-all text-xs flex items-center gap-1.5 ${
                 isPresetBike
-                  ? 'bg-white text-emerald-800 shadow-xs'
+                  ? 'bg-white text-emerald-800 shadow-xs font-bold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
+              title="Prioritize cycling routes, protected bike paths, and vulnerable micro-mobility collision zones"
             >
               <span>🚲</span>
-              <span>Cycling & Lanes</span>
+              <span>Cycling Focus</span>
             </button>
 
+            {/* 2. MOTORCYCLES */}
+            <button
+              onClick={() => applyPreset('motorcycle')}
+              className={`px-3 py-1 rounded-lg font-bold transition-all text-xs flex items-center gap-1.5 ${
+                isPresetRider
+                  ? 'bg-white text-amber-900 shadow-xs font-bold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+              title="Motorcycle canyon twisties and high-speed sweeper hazards"
+            >
+              <span>🏍️</span>
+              <span>Motorcycles</span>
+            </button>
+
+            {/* 3. RECKLESS CAR CRASH ZONES */}
+            <button
+              onClick={() => applyPreset('car')}
+              className={`px-3 py-1 rounded-lg font-bold transition-all text-xs flex items-center gap-1.5 ${
+                selectedMode === 'car'
+                  ? 'bg-white text-rose-800 shadow-xs font-bold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+              title="Surface streets and highways where reckless drivers speed and collide"
+            >
+              <span>🚗</span>
+              <span>Reckless Cars</span>
+            </button>
+
+            {/* 4. ALL MODES */}
             <button
               onClick={() => applyPreset('all')}
               className={`px-2.5 py-1 rounded-lg font-medium transition-all text-xs flex items-center gap-1 ${
@@ -226,9 +284,10 @@ export default function MapboxFilterBar({
                   ? 'bg-white text-slate-900 font-bold shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
+              title="Comprehensive collision records across all vehicle types"
             >
-              <span>🚗</span>
-              <span>All Traffic</span>
+              <span>🌐</span>
+              <span>All Modes</span>
             </button>
           </div>
         </div>
@@ -243,9 +302,24 @@ export default function MapboxFilterBar({
                 : 'bg-slate-100 text-slate-500 hover:text-slate-800'
             }`}
           >
-            <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
-            <span>{showSafetyRegions ? 'Hazard Zones' : 'Zones: Off'}</span>
+            <Flame className="w-3.5 h-3.5 text-amber-600" />
+            <span>{showSafetyRegions ? 'Heat Trails' : 'Heat: Off'}</span>
           </button>
+
+          {onToggleDangerousRoads && (
+            <button
+              onClick={onToggleDangerousRoads}
+              className={`px-2.5 py-1 rounded-lg font-medium transition-all text-xs flex items-center gap-1.5 ${
+                showDangerousRoads
+                  ? 'bg-rose-100/70 text-rose-900 font-semibold'
+                  : 'bg-slate-100 text-slate-500 hover:text-slate-800'
+              }`}
+              title="Highlight high-danger roads and canyon passes"
+            >
+              <Flame className={`w-3.5 h-3.5 ${showDangerousRoads ? 'text-rose-600' : 'text-slate-400'}`} />
+              <span>{showDangerousRoads ? 'Danger Roads' : 'Roads: Off'}</span>
+            </button>
+          )}
 
           {onToggleBikeLanes && (
             <button
@@ -300,11 +374,11 @@ export default function MapboxFilterBar({
               <span className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Mode</span>
               <div className="flex items-center gap-0.5 bg-slate-200/60 p-0.5 rounded-lg">
                 {[
-                  { id: 'all', label: 'All', emoji: '👥' },
-                  { id: 'car', label: 'Cars', emoji: '🚗' },
-                  { id: 'motorcycle', label: 'Moto', emoji: '🏍️' },
                   { id: 'bicycle', label: 'Bike', emoji: '🚲' },
                   { id: 'ebike', label: 'E-Bike', emoji: '⚡' },
+                  { id: 'motorcycle', label: 'Moto', emoji: '🏍️' },
+                  { id: 'car', label: 'Cars', emoji: '🚗' },
+                  { id: 'all', label: 'All', emoji: '👥' },
                 ].map((m) => (
                   <button
                     key={m.id}

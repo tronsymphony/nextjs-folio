@@ -2,6 +2,9 @@
   "name": "forward",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@next/third-parties": "^15.0.0",
     "lucide-react": "^0.511.0",
     "mapbox-gl": "^3.31.0",
@@ -19,11 +23,13 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "resend": "^4.5.1",
-    "sass": "^1.88.0"
+    "sass": "^1.88.0",
+    "three": "^0.186.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",
     "@tailwindcss/postcss": "^4.1.6",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^22.15.18",
     "@types/react": "^19.1.4",
     "autoprefixer": "^10.4.21",
