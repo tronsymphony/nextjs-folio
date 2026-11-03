@@ -14,8 +14,10 @@ const audit = OFFERS.seoAudit;
 const priceText = audit.price ? `${formatUSD(audit.price)} flat` : 'Fixed fee, quoted on a call';
 
 export const metadata = {
-  title: 'AI Search Optimization: Get Found in ChatGPT, Perplexity & AI Overviews',
-  description: `AI search optimization by an engineer in Los Angeles: crawler access for ChatGPT, Claude and Perplexity, structured data, pages that answer what people ask, and a check of what AI assistants say about you now. Part of the ${priceText} technical SEO audit.`,
+  // 2026-11-03 keyword research: "ai search optimization" and "ai search engine optimization services" are 5,000 a month
+  // each (bids to $47), "ai search optimization agency" 500; the page already showed at ~12 for "ai overviews" queries.
+  title: 'AI Search Optimization Services: ChatGPT, Perplexity & AI Overviews',
+  description: `AI search engine optimization services by an engineer in Los Angeles: crawler access for ChatGPT, Claude and Perplexity, structured data, pages that answer what people ask, and a check of what AI assistants say about you now. Part of the ${priceText} technical SEO audit.`,
   alternates: { canonical: '/seo/ai-search-optimization/' },
 };
 
@@ -101,7 +103,7 @@ export default function AiSearchOptimizationPage() {
         <PageHero
           back={['/seo/', 'SEO & AI search']}
           eyebrow="ChatGPT · Claude · Perplexity · Google AI Overviews"
-          title={<>AI search optimization: be the business assistants <Accent>can find and cite.</Accent></>}
+          title={<>AI search optimization services: be the business assistants <Accent>can find and cite.</Accent></>}
           lede="More people ask ChatGPT, Perplexity and Google’s AI who to hire. I check what those assistants can read on your site and what they say about you, fix what hides you, and build the pages that answer the questions your customers ask."
           facts={[
             ['Starts with', 'Free 30-minute review'],

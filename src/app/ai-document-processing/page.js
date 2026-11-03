@@ -150,6 +150,7 @@ export default function AiDocumentProcessingPage() {
           <LinkRows
             items={[
               { href: '/work/safe-streets-map-crash-data-platform/', tag: 'Case study', title: 'Safe Streets Map' },
+              { href: '/sales-order-automation/', tag: 'Service', title: 'Sales order automation', body: 'Every order channel, from emailed POs to EDI and your store, into checked sales orders.' },
               { href: '/ai-integration/', tag: 'Service', title: 'AI integration', body: 'Assistants and automations connected to your tools.' },
               { href: '/netsuite/netsuite-edi-integration/', tag: 'Guide', title: 'When EDI is the better fix' },
             ]}

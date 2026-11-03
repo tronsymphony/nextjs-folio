@@ -9,13 +9,15 @@ import { OFFERS, PERSON, formatUSD } from '../../lib/site';
 // Keyword Planner (US, Sep 2025-Aug 2026): "api integration services" 500 a month, low competition, bids
 // $23-119; "custom api integration" 500, bids $20-92; "crm integration services" and "erp integration
 // service" 500 each. The systems line of work, with NetSuite as one system among several.
+// 2026-11-03 keyword research: "custom api integration" has the highest bids ($27-76), so the title leads with it;
+// "crm integration services" (500, bids to $59) is in the description.
 
 const audit = OFFERS.audit;
 
 export const metadata = {
-  title: 'API Integration Services: Connect Your Store, CRM & ERP',
+  title: 'Custom API Integration Services: Connect Your Store, CRM & ERP',
   description:
-    'Custom API integration services from a Los Angeles engineer: Shopify, BigCommerce, HubSpot, Salesforce, NetSuite, QuickBooks, 3PLs and EDI partners kept in sync, with retries, logs and alerts, so nobody retypes data between systems.',
+    'Custom API integration and CRM integration services from a Los Angeles engineer: Shopify, BigCommerce, HubSpot, Salesforce, NetSuite, QuickBooks, 3PLs and EDI partners kept in sync, with retries, logs and alerts, so nobody retypes data between systems.',
   alternates: { canonical: '/api-integration-services/' },
 };
 
@@ -108,7 +110,7 @@ export default function ApiIntegrationServicesPage() {
         <PageHero
           back={['/', 'Home']}
           eyebrow="Store · CRM · ERP · 3PL · EDI"
-          title={<>API integration services: systems that <Accent>agree with each other.</Accent></>}
+          title={<>Custom API integration services: systems that <Accent>agree with each other.</Accent></>}
           lede="Your store, CRM, ERP, warehouse and trading partners connected through their APIs, with retries, logs and alerts, so orders, stock and customers stay in sync and nobody retypes data."
           facts={[
             ['Starts with', 'Free 30-minute call'],

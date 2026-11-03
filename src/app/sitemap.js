@@ -10,6 +10,7 @@ const STATIC_ROUTES = [
   ['/', 1],
   ['/ai-integration/', 0.9],
   ['/ai-document-processing/', 0.9],
+  ['/sales-order-automation/', 0.9],
   ['/api-integration-services/', 0.9],
   ['/data-products/', 0.9],
   ['/netsuite/', 0.9],
