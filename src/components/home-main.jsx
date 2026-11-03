@@ -75,6 +75,7 @@ export default function HomeMain({ hero = "sync" }) {
       more: ["/ai-integration/", "AI integration"],
       items: [
         { href: "/ai-integration/", title: "AI integration: connect ChatGPT and Claude to your business tools" },
+        { href: "/mcp-server-development/", title: "Custom MCP servers: your systems inside Claude and ChatGPT" },
         { href: "/ai-document-processing/", title: "AI document processing: emailed orders and invoices into your system" },
         { href: "/sales-order-automation/", title: "Sales order automation: customer POs straight into your ERP" },
         { href: "/netsuite/netsuite-ai/", title: "NetSuite AI: what’s built in, and what’s worth adding" },

@@ -9,6 +9,7 @@ import { SITE_URL } from '../lib/site';
 const STATIC_ROUTES = [
   ['/', 1],
   ['/ai-integration/', 0.9],
+  ['/mcp-server-development/', 0.9],
   ['/ai-document-processing/', 0.9],
   ['/sales-order-automation/', 0.9],
   ['/api-integration-services/', 0.9],

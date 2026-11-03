@@ -17,6 +17,7 @@ const COLUMNS = [
     title: "Services",
     links: [
       ["/ai-integration/", "AI integration"],
+      ["/mcp-server-development/", "MCP server development"],
       ["/ai-document-processing/", "AI document processing"],
       ["/sales-order-automation/", "Sales order automation"],
       ["/api-integration-services/", "API integration services"],
