@@ -2,15 +2,29 @@
 
 import { useEffect, useRef } from 'react';
 
-// Background for the sync hero: a dot grid on a 2D canvas. A few orange
+// Background for the sync hero: a dot grid on a 2D canvas. A few accent
 // "packets" slide along the grid lines, dots darken around the cursor, and an
-// orange ripple spreads from wherever a `casa:sync` window event says (SyncDemo
+// accent ripple spreads from wherever a `casa:sync` window event says (SyncDemo
 // sends one when an order lands in NetSuite). Still grid only with reduced
 // motion; paused while off screen or in a hidden tab.
 
 const GAP = 22;
-const INK = '20,20,19';
-const ACCENT = '232,80,26';
+let INK = '11,13,18';
+let ACCENT = '41,82,255';
+
+// The palette's ink and accent as "r,g,b", read from the CSS variables so the
+// canvas follows globals.css.
+function readColors() {
+  const css = getComputedStyle(document.documentElement);
+  const toRgb = (hex) => {
+    const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+    if (!m) return null;
+    const n = parseInt(m[1], 16);
+    return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
+  };
+  INK = toRgb(css.getPropertyValue('--color-ink')) || INK;
+  ACCENT = toRgb(css.getPropertyValue('--color-accent')) || ACCENT;
+}
 const MAX_PACKETS = 7;
 const RIPPLE_MS = 1800;
 const RIPPLE_SPEED = 0.55; // px per ms
@@ -29,6 +43,7 @@ export default function HeroGrid({ className = '' }) {
     let pointer = null;
     const packets = [];
     const ripples = [];
+    readColors();
 
     function resize() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);

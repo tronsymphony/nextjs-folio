@@ -8,6 +8,9 @@ import { SITE_URL } from '../lib/site';
 // no lastModified: a date that always says "today" teaches Google to ignore it.
 const STATIC_ROUTES = [
   ['/', 1],
+  ['/ai-integration/', 0.9],
+  ['/ai-document-processing/', 0.9],
+  ['/api-integration-services/', 0.9],
   ['/netsuite/', 0.9],
   ['/netsuite-audit/', 0.9],
   ['/ai-app-audit/', 0.8],
