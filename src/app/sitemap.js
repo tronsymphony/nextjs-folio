@@ -11,6 +11,7 @@ const STATIC_ROUTES = [
   ['/ai-integration/', 0.9],
   ['/ai-document-processing/', 0.9],
   ['/api-integration-services/', 0.9],
+  ['/data-products/', 0.9],
   ['/netsuite/', 0.9],
   ['/netsuite-audit/', 0.9],
   ['/ai-app-audit/', 0.8],

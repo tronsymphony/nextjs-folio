@@ -19,6 +19,7 @@ const COLUMNS = [
       ["/ai-integration/", "AI integration"],
       ["/ai-document-processing/", "AI document processing"],
       ["/api-integration-services/", "API integration services"],
+      ["/data-products/", "Data products & maps"],
       ["/netsuite-audit/", "NetSuite integration audit"],
       ["/seo/", "SEO & AI search"],
       ["/seo/technical-seo-audit/", "Technical SEO audit"],

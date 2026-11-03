@@ -45,8 +45,8 @@ export const LINES = [
     start: OFFERS.seoAudit.name,
     startDetail: auditDetail(OFFERS.seoAudit, "Quoted on a call"),
     links: [
+      ["/data-products/", "Data products"],
       ["/work/safe-streets-map-crash-data-platform/", "Safe Streets Map"],
-      ["/seo/", "SEO and AI search"],
     ],
   },
   {
