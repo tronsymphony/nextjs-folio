@@ -20,17 +20,17 @@ export const LINES = [
   {
     id: "ai",
     title: "AI connected to your tools",
-    body: "Claude, ChatGPT and agents connected to Shopify, HubSpot, QuickBooks, NetSuite or your own database through MCP, with each one limited to the data and actions you allow. Apps already built with Lovable, Bolt or Cursor get a security review before real users arrive.",
+    body: "Claude, ChatGPT and agents connected to Shopify, HubSpot, QuickBooks, NetSuite or your own database, limited to the data and actions you allow. Emailed orders and invoices read into your system and checked before they are saved.",
     symptoms: [
       "Your team copies answers out of five systems that an assistant could look up.",
       "You want AI on your business data, but not with full access to everything.",
-      "An app built with AI tools is about to take real users or payments.",
+      "Someone spends hours a week retyping orders or invoices from email.",
     ],
     start: "Free 30-minute call",
     startDetail: "Then a fixed quote for one workflow",
     links: [
-      ["/call/", "Book the call"],
-      ["/ai-app-audit/", "The app audit"],
+      ["/ai-integration/", "AI integration"],
+      ["/ai-document-processing/", "Document processing"],
     ],
   },
   {
@@ -61,8 +61,8 @@ export const LINES = [
     start: OFFERS.audit.name,
     startDetail: auditDetail(OFFERS.audit, "Fixed fee"),
     links: [
+      ["/api-integration-services/", "API integration"],
       ["/netsuite/", "NetSuite work"],
-      ["/edi/", "EDI"],
     ],
   },
 ];

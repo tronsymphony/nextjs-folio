@@ -10,7 +10,6 @@ import { Accent, ArrowLink, PrimaryCta, SecondaryCta, SectionHead } from "./ui/C
 import { HERO_INTRO, heroFacts, LINES } from "./home/heroCopy";
 import { HERO_VARIANTS } from "./home/HeroVariants";
 import { publishedTopics } from "../data/netsuiteTopics";
-import { publishedGuides } from "../data/appAuditGuides";
 import { OFFERS, PERSON, formatUSD } from "../lib/site";
 import { expertise } from "../data/expertise";
 
@@ -72,9 +71,14 @@ export default function HomeMain({ hero = "sync" }) {
   // Guides grouped by line of work (AI first, NetSuite last), each list ending in a link to the rest.
   const guideGroups = [
     {
-      label: "Apps built with AI",
-      more: ["/ai-app-audit/", "The app audit"],
-      items: publishedGuides().map((g) => ({ href: `/ai-app-audit/${g.slug}/`, title: g.h1 })),
+      label: "AI for your business",
+      more: ["/ai-integration/", "AI integration"],
+      items: [
+        { href: "/ai-integration/", title: "AI integration: connect ChatGPT and Claude to your business tools" },
+        { href: "/ai-document-processing/", title: "AI document processing: emailed orders and invoices into your system" },
+        { href: "/netsuite/netsuite-ai/", title: "NetSuite AI: what’s built in, and what’s worth adding" },
+        { href: "/api-integration-services/", title: "API integration services: store, CRM and ERP kept in sync" },
+      ],
     },
     {
       label: "Search & AI search",
