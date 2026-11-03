@@ -144,8 +144,9 @@ export default function ApiIntegrationServicesPage() {
 
         <Block index="04" label="Built this way" title={<>On my own product: <Accent>Safe Streets Map.</Accent></>}>
           <p className="text-lg text-muted leading-relaxed max-w-3xl mb-10">
-            Safe Streets Map runs on other people’s APIs, most of them public feeds that change without notice. These are the
-            integrations it runs in production, with the same rules as above: logged, retried, and honest about stale data.
+            Safe Streets Map runs on other people’s APIs, most of them government feeds that change without notice and go quiet
+            for hours. It keeps them reliable with the same rules as above: logged, retried, and honest about stale data. If a
+            dozen public feeds can be kept in step, so can your store, CRM and ERP.
           </p>
           <DataTable columns={['System', 'What the integration does']} rows={streetsIntegrations} />
           <div className="mt-10">

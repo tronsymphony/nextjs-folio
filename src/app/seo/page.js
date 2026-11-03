@@ -7,14 +7,8 @@ import { getCaseStudy } from '../../data/caseStudies';
 import { ORG_ID, breadcrumbNode, faqNode, graph, url } from '../../lib/schema';
 import { PERSON } from '../../lib/site';
 
-// Safe Streets Map's own Search Console figures (../safestreets/scripts/gsc.mjs report --site=safestreetsmap.com
-// --days=28, run 2026-11-03). Refresh them with a new date range now and then; never round them up.
-const STREETS_SEARCH = [
-  ['Clicks from Google search', '484'],
-  ['Times shown in Google results', '11,183'],
-  ['Different pages shown in results', '2,643'],
-  ['Pages in the sitemap', 'about 6,800'],
-];
+// "About 400 times a day" is Safe Streets Map's Search Console average for Oct 5 - Nov 1, 2026 (11,183 impressions
+// in 28 days; ../safestreets/scripts/gsc.mjs report --site=safestreetsmap.com --days=28). Recheck before changing it.
 
 export const metadata = {
   title: 'SEO & AI Search Optimization Services, Built by an Engineer',
@@ -179,14 +173,25 @@ export default function SeoPage() {
 
         {proof && (
           <Block index="03" label="Proof" title={<>Safe Streets Map: <Accent>pages that answer searches.</Accent></>}>
-            <p className="text-lg text-muted leading-relaxed max-w-3xl mb-10">
-              My own product, built the same way: about 6,800 pages generated from California crash records and other public
-              data, each answering a question people search, such as whether a city is safe to walk or where to get a police
-              report. Titles and new pages are shaped by what Search Console shows people looking for, with structured data, a
-              generated sitemap and an llms.txt guide for AI assistants. Its Google numbers for four weeks:
+            <p className="text-lg text-muted leading-relaxed max-w-3xl mb-6">
+              Safe Streets Map is my own product, and it runs on the same playbook I’d run for you. It started as California’s
+              public crash records: millions of rows nobody could search. I turned them into thousands of pages, each answering
+              a question people type into Google, from “is this city safe to walk?” to “how do I get a police report?”, and let
+              Search Console decide what to build next.
             </p>
-            <DataTable columns={['Google Search Console, Oct 5 – Nov 1, 2026', 'Safe Streets Map']} rows={STREETS_SEARCH} mono={[1]} />
-            <div className="mt-10">
+            <p className="text-lg text-muted leading-relaxed max-w-3xl mb-6">
+              Today Google shows those pages about 400 times a day and sends readers every day. None of it is paid for: every
+              visit comes from a page that answers a real search.
+            </p>
+            <p className="text-lg text-ink leading-relaxed max-w-3xl mb-10">
+              Most businesses are sitting on the same raw material: locations, products, service areas, prices, records. If
+              yours lives in a spreadsheet or a database, it can become pages that reach customers who are already searching
+              for what you sell.
+            </p>
+            <div className="mb-10">
+              <PrimaryCta href="/call/">Book a free 30-min call</PrimaryCta>
+            </div>
+            <div>
               <LinkRows
                 items={[
                   { href: 'https://www.safestreetsmap.com/', tag: 'Live site', title: 'safestreetsmap.com', body: 'Look at the pages yourself.' },

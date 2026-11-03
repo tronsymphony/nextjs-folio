@@ -151,9 +151,13 @@ export default function AiIntegrationPage() {
             point. The assistant can read the records but never change them, and its answers come from the data rather than the
             model’s memory.
           </p>
-          <p className="text-lg text-muted leading-relaxed max-w-3xl mb-10">
+          <p className="text-lg text-muted leading-relaxed max-w-3xl mb-6">
             The same site uses Claude to read a bike club’s Instagram post into a draft group-ride listing, which a person checks and
             approves before it goes live.
+          </p>
+          <p className="text-lg text-ink leading-relaxed max-w-3xl mb-10">
+            Swap crash records for your orders, customers and inventory, and it’s the same build: your team asks in plain English,
+            and the answer comes from your own systems, within the limits you set.
           </p>
           <LinkRows
             items={[
