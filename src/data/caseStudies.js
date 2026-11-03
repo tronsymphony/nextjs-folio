@@ -101,29 +101,51 @@ export const caseStudies = [
     status: 'published',
   },
   {
-    slug: 'godaddy-venture-forward',
-    client: 'GoDaddy',
-    industry: 'Economic research',
-    role: null, // TODO(owner): state the engagement plainly, e.g. 'Front-end engineer, contract via <agency>'
-    title: 'Venture Forward: visualizing the economic impact of microbusinesses',
+    // Facts from ../streetsweeping/CLAUDE.md (2026-11-03). Its search traffic dipped while Google re-indexed LA in
+    // late October 2026, so no traffic figures here until that settles.
+    slug: 'curb-reader-street-sweeping',
+    client: 'Curb Reader (own product)',
+    industry: 'City open data',
+    role: 'Founder and sole engineer',
+    title: 'Street sweeping schedules for 25 cities, built from their own open data',
+    seoTitle: 'Case Study: Curb Reader, Street Sweeping Schedules from City Open Data',
     summary:
-      'A data-heavy research platform that processes millions of microbusiness data points to visualize their economic impact.',
+      'When street sweeping is on every street in Los Angeles, San Francisco, San Diego, New York, Chicago, Boston and 19 more cities and counties, with the tickets written there, read from each city’s own data and rebuilt every month.',
     problem:
-      'GoDaddy’s Venture Forward research program studies the economic impact of online microbusinesses. The findings live in large datasets that need to be explorable by policymakers, researchers, and the press.',
+      'Every city publishes its street sweeping schedule differently: map layers, spreadsheets, a database of street signs, or hand-written text like “NS 2nd Fri, SS 2nd Thu”. None of it answers what a resident wants to know: when is my side of my street swept next, and how often does the city write tickets there? The answers sat in city map viewers that few people find.',
     approach: [
       {
-        heading: 'Data visualization at scale',
-        body: 'A React front end that turns millions of microbusiness data points into maps and charts that non-specialists can explore.',
+        heading: 'Every city’s format, read into one schedule',
+        body: 'Build scripts read each city’s source, from ArcGIS layers and open-data portals to zipped shapefiles in state plane coordinates and New York’s database of 194,870 broom signs, into one model of days, weeks, hours, sides and seasons. Rows the scripts can’t read are left out and logged, never guessed.',
+      },
+      {
+        heading: 'Tickets placed on the block',
+        body: 'A year of each city’s street-cleaning citations is matched to the route, block and side it was written on, so every street page shows when tickets actually get written. Plates and vehicle details are never downloaded.',
+      },
+      {
+        heading: 'A page for every street',
+        body: 'About 10,800 pages, one per street in the largest cities and one per city, ward or neighborhood elsewhere, each titled with the search people type and showing the next sweep dates worked out in the browser.',
+      },
+      {
+        heading: 'Next dates people can rely on',
+        body: 'Seasons where a city stops sweeping in winter, New York’s holiday suspensions read from the city’s own calendar, calendar feeds, and a push reminder the evening before, all from the same schedule logic.',
+      },
+      {
+        heading: 'Kept current without calling the cities',
+        body: 'A monthly job re-downloads every source and rebuilds the site; if one source fails, last month’s files stay. Visitors only ever load the site’s own files, and an address typed into the search goes only to the map provider, never stored.',
       },
     ],
-    stack: ['React', 'Next.js', 'Data visualization'],
-    integrations: [],
-    metrics: [],
+    stack: ['Next.js', 'React', 'Mapbox GL', 'Tailwind CSS', 'Postgres', 'Web Push', 'GitHub Actions'],
+    integrations: ['City ArcGIS layers', 'data.lacity.org', 'DataSF', 'NYC Open Data', 'Chicago Data Portal', 'Mapbox'],
+    metrics: [
+      { label: 'Cities and counties', value: '25', note: 'Each from its own published data' },
+      { label: 'Pages', value: 'About 10,800', note: 'Streets, cities, wards and neighborhoods' },
+    ],
     quote: null,
-    heroImage: '/images/god.jpg',
-    liveUrl: 'https://godaddy.com/ventureforward',
-    publishedAt: '2026-09-22',
-    updatedAt: '2026-09-22',
+    heroImage: '/images/curbreader-street-sweeping.webp',
+    liveUrl: 'https://www.curbreader.com/',
+    publishedAt: '2026-11-03',
+    updatedAt: '2026-11-03',
     featured: true,
     order: 2,
     relatedTopics: [],

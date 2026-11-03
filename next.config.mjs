@@ -12,6 +12,7 @@ const nextConfig = {
             { source: '/services/industrial-logistics', destination: '/netsuite/material-handling/', permanent: true },
             { source: '/portfolio', destination: '/work/', permanent: true },
             { source: '/safepath', destination: '/work/safe-streets-map-crash-data-platform/', permanent: true },
+            { source: '/work/godaddy-venture-forward', destination: '/work/curb-reader-street-sweeping/', permanent: true },
         ];
     },
 };
