@@ -7,6 +7,15 @@ import { getCaseStudy } from '../../data/caseStudies';
 import { ORG_ID, breadcrumbNode, faqNode, graph, url } from '../../lib/schema';
 import { PERSON } from '../../lib/site';
 
+// Safe Streets Map's own Search Console figures (../safestreets/scripts/gsc.mjs report --site=safestreetsmap.com
+// --days=28, run 2026-11-03). Refresh them with a new date range now and then; never round them up.
+const STREETS_SEARCH = [
+  ['Clicks from Google search', '484'],
+  ['Times shown in Google results', '11,183'],
+  ['Different pages shown in results', '2,643'],
+  ['Pages in the sitemap', 'about 6,800'],
+];
+
 export const metadata = {
   title: 'SEO & AI Search Optimization Services, Built by an Engineer',
   description:
@@ -171,12 +180,20 @@ export default function SeoPage() {
         {proof && (
           <Block index="03" label="Proof" title={<>Safe Streets Map: <Accent>pages that answer searches.</Accent></>}>
             <p className="text-lg text-muted leading-relaxed max-w-3xl mb-10">
-              My own product, built the same way: more than 1,500 static pages generated from California crash records, each
-              answering a question people search, such as whether a city is safe to walk or where to get a police report.
-              Titles and new pages are shaped by what Search Console shows people looking for, with structured data, a
-              generated sitemap and an llms.txt guide for AI assistants.
+              My own product, built the same way: about 6,800 pages generated from California crash records and other public
+              data, each answering a question people search, such as whether a city is safe to walk or where to get a police
+              report. Titles and new pages are shaped by what Search Console shows people looking for, with structured data, a
+              generated sitemap and an llms.txt guide for AI assistants. Its Google numbers for four weeks:
             </p>
-            <LinkRows items={[{ href: `/work/${proof.slug}/`, title: proof.title, tag: `Case study · ${proof.client}`, body: proof.summary }]} />
+            <DataTable columns={['Google Search Console, Oct 5 – Nov 1, 2026', 'Safe Streets Map']} rows={STREETS_SEARCH} mono={[1]} />
+            <div className="mt-10">
+              <LinkRows
+                items={[
+                  { href: 'https://www.safestreetsmap.com/', tag: 'Live site', title: 'safestreetsmap.com', body: 'Look at the pages yourself.' },
+                  { href: `/work/${proof.slug}/`, title: proof.title, tag: `Case study · ${proof.client}`, body: proof.summary },
+                ]}
+              />
+            </div>
           </Block>
         )}
 
