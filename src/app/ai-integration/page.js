@@ -8,8 +8,9 @@ import { PERSON } from '../../lib/site';
 
 // The lead service page (Keyword Planner, US, Sep 2025-Aug 2026): "ai integration" 5K a month, medium
 // competition, bids $10-24; "ai integration services" 500, up 900%, low competition, bids $13-30;
-// "chatgpt integration(s)" 500; "ai automation services" 500. No client results are claimed here.
-// TODO(owner): add real AI integration projects to `proof` as they ship.
+// "chatgpt integration(s)" 500; "ai automation services" 500. No client results are claimed here; the proof is
+// Safe Streets Map (the MCP server over its crash data in ../ailearn/01-mcp-crash-data, and the screenshot-to-draft
+// ride listings). TODO(owner): add client AI projects as they ship.
 
 export const metadata = {
   title: 'AI Integration Services: Connect ChatGPT & Claude to Your Business Tools',
@@ -142,14 +143,38 @@ export default function AiIntegrationPage() {
           <NumberedList items={steps} />
         </Block>
 
-        <Block index="05" label="When not to">
+        <Block index="05" label="Built this way" title={<>On my own product: <Accent>Safe Streets Map.</Accent></>}>
+          <p className="text-lg text-muted leading-relaxed max-w-3xl mb-6">
+            Safe Streets Map turns California’s public crash records into maps and thousands of pages. I built an MCP server over its
+            data so Claude can answer questions like “which streets in Pasadena have the most serious crashes?” through four
+            read-only tools: find a city’s exact name, a city’s totals, the streets with the most crashes, and the crashes near a
+            point. The assistant can read the records but never change them, and its answers come from the data rather than the
+            model’s memory.
+          </p>
+          <p className="text-lg text-muted leading-relaxed max-w-3xl mb-6">
+            The same site uses Claude to read a bike club’s Instagram post into a draft group-ride listing, which a person checks and
+            approves before it goes live.
+          </p>
+          <p className="text-lg text-ink leading-relaxed max-w-3xl mb-10">
+            Swap crash records for your orders, customers and inventory, and it’s the same build: your team asks in plain English,
+            and the answer comes from your own systems, within the limits you set.
+          </p>
+          <LinkRows
+            items={[
+              { href: 'https://www.safestreetsmap.com/', tag: 'Live site', title: 'safestreetsmap.com', body: 'California crash maps, city pages and live traffic, built from public data.' },
+              { href: '/work/safe-streets-map-crash-data-platform/', tag: 'Case study', title: 'How Safe Streets Map is built' },
+            ]}
+          />
+        </Block>
+
+        <Block index="06" label="When not to">
           <Callout label="Honest scope">
             If a spreadsheet formula, a Zapier step or a built-in feature of your software already does the job, use it. AI is worth
             building when the input is messy, the volume is real and a person can check the result quickly.
           </Callout>
         </Block>
 
-        <Block index="06" label="Related">
+        <Block index="07" label="Related">
           <LinkRows
             items={[
               { href: '/ai-document-processing/', tag: 'Service', title: 'AI document processing', body: 'Emailed orders, invoices and forms read into your system and checked before saving.' },
@@ -159,7 +184,7 @@ export default function AiIntegrationPage() {
           />
         </Block>
 
-        <Block index="07" label="Questions">
+        <Block index="08" label="Questions">
           <FaqList faqs={faqs} />
         </Block>
       </div>

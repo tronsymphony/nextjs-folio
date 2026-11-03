@@ -42,6 +42,16 @@ const reliability = [
   'Tested on a sandbox. Built and run against test accounts with copies of real data before anything touches production.',
 ];
 
+// What Safe Streets Map (../safestreets) runs in production; keep in step with its CLAUDE.md.
+const streetsIntegrations = [
+  ['California Highway Patrol live incidents', 'Read every few minutes; each new collision is logged with when it first and last appeared. When the CHP’s list is over 20 minutes old, the site says so instead of showing it as current.'],
+  ['Caltrans traffic feeds', 'Message signs, highway cameras, lane closures and chain controls, matched to the collisions and roads near them.'],
+  ['National Weather Service and NOAA', 'Forecasts, alerts, station readings and rain radar for the maps, ride plans and road pages, cached so a slow response can’t stall a page.'],
+  ['California crash records (data.ca.gov)', 'This year’s reports read daily for each city’s page; past years rebuilt into the site’s data by scripts.'],
+  ['Mapbox', 'Routes, drive times at a chosen hour, how far you can get in a set time, and address search.'],
+  ['Sign-in and email', 'Google, Apple and emailed sign-in links, with mail sent through Resend.'],
+];
+
 const faqs = [
   {
     q: 'What are API integration services?',
@@ -132,14 +142,31 @@ export default function ApiIntegrationServicesPage() {
           <NumberedList items={reliability} tone="accent" />
         </Block>
 
-        <Block index="04" label="When not to">
+        <Block index="04" label="Built this way" title={<>On my own product: <Accent>Safe Streets Map.</Accent></>}>
+          <p className="text-lg text-muted leading-relaxed max-w-3xl mb-10">
+            Safe Streets Map runs on other people’s APIs, most of them government feeds that change without notice and go quiet
+            for hours. It keeps them reliable with the same rules as above: logged, retried, and honest about stale data. If a
+            dozen public feeds can be kept in step, so can your store, CRM and ERP.
+          </p>
+          <DataTable columns={['System', 'What the integration does']} rows={streetsIntegrations} />
+          <div className="mt-10">
+            <LinkRows
+              items={[
+                { href: 'https://www.safestreetsmap.com/traffic', tag: 'Live site', title: 'Live traffic on safestreetsmap.com', body: 'CHP collisions, Caltrans signs and cameras, and weather on one map.' },
+                { href: '/work/safe-streets-map-crash-data-platform/', tag: 'Case study', title: 'How Safe Streets Map is built' },
+              ]}
+            />
+          </div>
+        </Block>
+
+        <Block index="05" label="When not to">
           <Callout label="Honest scope">
             If a ready-made connector or a Zapier flow already does what you need without errors, keep it. Custom work is for the
             flows those tools get wrong, and for the volume where a failed sync costs real money.
           </Callout>
         </Block>
 
-        <Block index="05" label="Related">
+        <Block index="06" label="Related">
           <LinkRows
             items={[
               { href: '/ai-integration/', tag: 'Service', title: 'AI integration', body: 'Once systems are connected, AI can answer questions and do work across them.' },
@@ -150,7 +177,7 @@ export default function ApiIntegrationServicesPage() {
           />
         </Block>
 
-        <Block index="06" label="Questions">
+        <Block index="07" label="Questions">
           <FaqList faqs={faqs} />
         </Block>
       </div>
