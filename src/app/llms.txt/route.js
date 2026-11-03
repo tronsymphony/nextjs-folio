@@ -20,6 +20,7 @@ export function GET() {
     '## Services',
     '',
     `- [AI integration](${SITE_URL}/ai-integration/): ChatGPT, Claude and AI agents connected to a business's own tools (Shopify, HubSpot, QuickBooks, NetSuite, databases) through MCP or APIs, limited to the data and actions the business allows. Starts with a free 30-minute call; fixed quote per workflow.`,
+    `- [MCP server development](${SITE_URL}/mcp-server-development/): custom MCP servers that connect Claude, ChatGPT and other AI assistants to NetSuite, HubSpot, QuickBooks, a store or a business's own database, with tools named for the job, read-only first and each person's own permissions; when a vendor's official server is enough and when it isn't.`,
     `- [AI document processing](${SITE_URL}/ai-document-processing/): purchase orders, invoices and forms that arrive by email, read by AI, checked against the business's system by code, and saved as drafts for approval.`,
     `- [Sales order automation](${SITE_URL}/sales-order-automation/): customer purchase orders arriving by email, EDI, web store or portal turned into checked sales orders in NetSuite, QuickBooks or Shopify (duplicates, customer, items, price, unit, ship-to, credit and stock checked by code), with exceptions sent to a person.`,
     `- [API integration services](${SITE_URL}/api-integration-services/): custom integrations between stores, CRMs, ERPs, 3PLs and EDI partners, with retries, logs and alerts. The code and mappings belong to the client.`,

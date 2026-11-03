@@ -177,6 +177,7 @@ export default function AiIntegrationPage() {
         <Block index="07" label="Related">
           <LinkRows
             items={[
+              { href: '/mcp-server-development/', tag: 'Service', title: 'MCP server development', body: 'Your systems as tools inside Claude and ChatGPT, read-only first and per person.' },
               { href: '/ai-document-processing/', tag: 'Service', title: 'AI document processing', body: 'Emailed orders, invoices and forms read into your system and checked before saving.' },
               { href: '/api-integration-services/', tag: 'Service', title: 'API integration services', body: 'The system-to-system plumbing AI depends on: stores, CRMs, ERPs and 3PLs kept in sync.' },
               { href: '/netsuite/netsuite-ai/', tag: 'Guide', title: 'NetSuite AI: what’s built in, and what’s worth adding' },
