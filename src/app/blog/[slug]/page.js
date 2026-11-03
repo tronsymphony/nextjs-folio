@@ -4,6 +4,14 @@ import Footer from '../../../components/footer';
 import { Calendar, Tag, ArrowLeft, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import JsonLd from '../../../components/JsonLd';
+import { ORG_ID, PERSON_ID, breadcrumbNode, graph, url } from '../../../lib/schema';
+
+export function generateStaticParams() {
+    return posts.map(({ slug }) => ({ slug }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
@@ -11,8 +19,10 @@ export async function generateMetadata({ params }) {
     if (!post) return {};
 
     return {
-        title: `${post.title} | Casa Dev`,
+        title: post.title,
         description: post.description,
+        alternates: { canonical: `/blog/${post.slug}/` },
+        robots: { index: false, follow: true },
         openGraph: {
             title: post.title,
             description: post.description,
@@ -32,39 +42,29 @@ export default async function BlogPost({ params }) {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "BlogPosting",
-                        "headline": post.title,
-                        "description": post.description,
-                        "image": `https://casa-dev.com${post.image}`,
-                        "datePublished": post.date,
-                        "author": {
-                            "@type": "Organization",
-                            "name": "Casa Dev"
-                        },
-                        "publisher": {
-                            "@type": "Organization",
-                            "name": "Casa Dev",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "https://casa-dev.com/images/logo2.webp"
-                            }
-                        }
-                    })
-                }}
+            <JsonLd
+                data={graph(
+                    {
+                        '@type': 'BlogPosting',
+                        headline: post.title,
+                        description: post.description,
+                        url: url(`/blog/${post.slug}/`),
+                        image: url(`/blog/${post.slug}/opengraph-image`),
+                        datePublished: post.date,
+                        author: { '@id': PERSON_ID },
+                        publisher: { '@id': ORG_ID },
+                    },
+                    breadcrumbNode([['Home', '/'], ['Blog', '/blog/'], [post.title, `/blog/${post.slug}/`]])
+                )}
             />
             <HomeFollow />
-            <article className="pt-32 pb-20 bg-[#050505] min-h-screen text-gray-300">
+            <article className="pt-32 pb-20 bg-canvas min-h-screen text-ink/80">
                 <div className="container mx-auto px-4 sm:px-6">
                     <div className="max-w-3xl mx-auto">
                         {/* Back to Blog */}
                         <Link
                             href="/blog"
-                            className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-12 transition-colors uppercase text-xs font-bold tracking-widest"
+                            className="inline-flex items-center gap-2 text-muted hover:text-ink mb-12 transition-colors uppercase text-xs font-bold tracking-widest"
                         >
                             <ArrowLeft className="w-4 h-4" />
                             Back to Blog
@@ -73,10 +73,10 @@ export default async function BlogPost({ params }) {
                         {/* Header */}
                         <header className="mb-12">
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-widest rounded-full">
+                                <span className="px-3 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full">
                                     {post.category}
                                 </span>
-                                <span className="flex items-center gap-2 text-gray-500 text-sm">
+                                <span className="flex items-center gap-2 text-muted text-sm">
                                     <Calendar className="w-4 h-4" />
                                     {new Date(post.date).toLocaleDateString('en-US', {
                                         year: 'numeric',
@@ -85,53 +85,76 @@ export default async function BlogPost({ params }) {
                                     })}
                                 </span>
                             </div>
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-8 tracking-tighter leading-[1.1]">
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-ink mb-8 tracking-tighter leading-[1.1]">
                                 {post.title}
                             </h1>
 
-                            <div className="flex items-center justify-between border-y border-white/5 py-4">
+                            <div className="flex items-center justify-between border-y border-line py-4">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500" />
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-accent" />
                                     <div>
-                                        <div className="text-white font-bold text-sm">Case Dev Editorial</div>
-                                        <div className="text-gray-500 text-xs text-uppercase tracking-wider">Strategic Partner</div>
+                                        <div className="text-ink font-bold text-sm">Nitya Hoyos</div>
+                                        <div className="text-muted text-xs text-uppercase tracking-wider">Strategic Partner</div>
                                     </div>
                                 </div>
-                                <button className="text-gray-400 hover:text-white transition-colors">
+                                <button className="text-muted hover:text-ink transition-colors">
                                     <Share2 className="w-5 h-5" />
                                 </button>
                             </div>
                         </header>
 
                         {/* Featured Image Placeholder */}
-                        <div className="aspect-[21/9] bg-neutral-900 rounded-2xl mb-12 overflow-hidden relative">
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10" />
+                        <div className="aspect-[21/9] bg-canvas-2 rounded-2xl mb-12 overflow-hidden relative">
+                            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/10" />
                         </div>
 
                         {/* Content */}
                         <div
-                            className="prose prose-invert prose-lg max-w-none 
-              prose-headings:text-white prose-headings:font-bold prose-headings:tracking-tight
+                            className="prose prose-lg max-w-none 
+              prose-headings:text-ink prose-headings:font-bold prose-headings:tracking-tight
               prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
               prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-              prose-p:leading-relaxed prose-p:mb-6 prose-p:text-gray-400
-              prose-strong:text-white"
+              prose-p:leading-relaxed prose-p:mb-6 prose-p:text-muted
+              prose-strong:text-ink"
                             dangerouslySetInnerHTML={{ __html: post.content }}
                         />
 
                         {/* Footer / CTA */}
-                        <footer className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-white/10 text-center">
-                            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Ready to integrate AI into your business?</h3>
-                            <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-                                Let&apos;s discuss how we can build a strategic, AI-powered solution for your unique business needs.
-                            </p>
-                            <Link
-                                href="/contact"
-                                className="inline-flex px-8 py-4 bg-white !text-black font-bold text-lg hover:bg-gray-200 transition-colors"
-                            >
-                                Work with Casa Dev
-                            </Link>
-                        </footer>
+                        {post.cta === 'appAudit' ? (
+                            <footer className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/20 border border-line text-center">
+                                <h3 className="text-2xl sm:text-3xl font-bold text-ink mb-4">Built your app with AI?</h3>
+                                <p className="text-muted mb-8 max-w-xl mx-auto">
+                                    Check logins, permissions, exposed keys and payments before launch. Start with the free checklist, or have it reviewed.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <Link
+                                        href="/ai-app-audit/ai-built-app-launch-checklist/"
+                                        className="inline-flex justify-center px-8 py-4 bg-ink !text-canvas font-bold text-lg hover:bg-accent transition-colors"
+                                    >
+                                        Read the launch checklist
+                                    </Link>
+                                    <Link
+                                        href="/ai-app-audit/"
+                                        className="inline-flex justify-center px-8 py-4 border border-line text-ink font-bold text-lg hover:bg-ink/5 transition-colors"
+                                    >
+                                        See the app audit
+                                    </Link>
+                                </div>
+                            </footer>
+                        ) : (
+                            <footer className="mt-20 p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/20 border border-line text-center">
+                                <h3 className="text-2xl sm:text-3xl font-bold text-ink mb-4">Running on NetSuite?</h3>
+                                <p className="text-muted mb-8 max-w-xl mx-auto">
+                                    A fixed-price integration audit shows where your ERP, storefront, and portals are leaking data, and exactly what to fix first.
+                                </p>
+                                <Link
+                                    href="/netsuite-audit/"
+                                    className="inline-flex px-8 py-4 bg-ink !text-canvas font-bold text-lg hover:bg-accent transition-colors"
+                                >
+                                    See the NetSuite audit
+                                </Link>
+                            </footer>
+                        )}
                     </div>
                 </div>
             </article>

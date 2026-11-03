@@ -1,30 +1,32 @@
 'use client'
+import { useEffect, useState } from 'react';
 import Link from "next/link";
-import Image from 'next/image';
 import Navigation from "./Navigation";
+import Logo from "./Logo";
 
+// Site header: transparent over the top of the page, a blurred ink bar once
+// the page scrolls.
 export default function Header() {
-  return (
-    <header className="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-      <div className="container mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-        
-        {/* Logo */}
-        <div className="relative z-50">
-          <Link href="/" className="block">
-            <Image
-              src="/images/logo2.webp"
-              alt="Casa Dev"
-              width={100}
-              height={50}
-              priority
-              className="w-auto h-8 md:h-10 object-contain" // Responsive logo sizing
-            />
-          </Link>
-        </div>
+  const [scrolled, setScrolled] = useState(false);
 
-        {/* Navigation */}
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 w-full z-50 transition-[background-color,border-color,backdrop-filter] duration-500 border-b ${
+        scrolled ? 'bg-canvas/75 backdrop-blur-xl border-line' : 'bg-transparent border-transparent'
+      }`}
+    >
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 h-[72px] flex items-center justify-between">
+        <Link href="/" className="relative z-[60] flex items-center" aria-label="Casa Dev home">
+          <Logo />
+        </Link>
         <Navigation />
-        
       </div>
     </header>
   );

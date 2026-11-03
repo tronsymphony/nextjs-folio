@@ -26,7 +26,6 @@ cd var/www/html
 npm install
 npm run build
 pm2 restart 0
-npx next-sitemap
 
 
 # Configuration for Dynu.com
@@ -45,7 +44,7 @@ use=web, web=checkip.dynu.com/, web-skip='192.168.1.21'  # Get IP from server
 server=api.dynu.com                                    # IP update server
 protocol=dyndns2
 login=nityahoyos
-password='k.tTb#95.Es2hTW'
+password='<your Dynu password: store it only in /etc/ddclient.conf>'
 casa-dev.com
 
 sudo systemctl restart ddclient

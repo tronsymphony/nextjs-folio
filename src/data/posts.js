@@ -1,10 +1,13 @@
+// Early general posts about AI. They are noindexed (and left out of the
+// sitemap) because they don't answer a specific search better than other
+// pages do; the URLs stay so existing links keep working. `cta: 'appAudit'`
+// ends a post with the AI-built app audit instead of the NetSuite audit.
 export const posts = [
   {
     slug: "how-ai-can-transform-your-small-business",
     title: "Maximizing ROI: How AI Can Transform Your Small Business in 2025",
     description: "Learn how artificial intelligence can streamline operations, enhance customer service, and drive growth for small businesses and startups.",
     date: "2025-12-18",
-    image: "/images/blog/ai-business.webp",
     category: "AI Strategy",
     content: `
       <h2>The AI Revolution for Small Businesses</h2>
@@ -31,7 +34,6 @@ export const posts = [
     title: "The Future of Web Development: Integrating AI to Supercharge Your Website",
     description: "Explore how AI-driven features like intelligent search, personalized recommendations, and automated customer support can elevate your website's user experience.",
     date: "2024-12-15",
-    image: "/images/blog/ai-web.webp",
     category: "Web Development",
     content: `
       <h2>Beyond Static Pages: The AI-Powered Web</h2>
@@ -55,10 +57,10 @@ export const posts = [
   },
   {
     slug: "from-vibe-coding-to-production-ready",
+    cta: 'appAudit',
     title: "From 'Vibe Coding' to Production-Ready: Finishing Your AI-Assisted Project",
     description: "Built a great prototype with AI but stuck on the last 20%? Here is how to turn those AI 'vibes' into a scalable, secure, and production-ready application.",
     date: "2025-12-19",
-    image: "/images/blog/vibe-coding.webp",
     category: "Development Strategy",
     content: `
       <h2>The 'Vibe Coding' Wall</h2>
@@ -81,10 +83,10 @@ export const posts = [
   },
   {
     slug: "the-human-ai-partnership-in-software",
+    cta: 'appAudit',
     title: "AI as a Co-Pilot, Not the Pilot: The Future of Quality Software",
     description: "Why the best software is built by humans leveraging AI, not by AI replacing humans. Discover our 'AI-Strategic' approach to development.",
     date: "2024-12-14",
-    image: "/images/blog/human-ai.webp",
     category: "Philosophy",
     content: `
       <h2>The Myth of the 'Magic Button'</h2>
@@ -97,15 +99,15 @@ export const posts = [
       <p>At Casa Dev, we use AI to move faster, but we never let it lead. Every line of code is reviewed, every architectural decision is made by a human expert, and every user experience is crafted with intention.</p>
       
       <h2>The Best of Both Worlds</h2>
-      <p>By combining the speed of AI with the wisdom of 10+ years of hand-coding experience, we deliver projects that are both fast-to-market and built to last.</p>
+      <p>By combining the speed of AI with the judgment of 15 years of hand-coding experience, we deliver projects that are both fast-to-market and built to last.</p>
     `
   },
   {
     slug: "mastering-vibe-coding",
+    cta: 'appAudit',
     title: "Mastering Vibe Coding: How to Build at the Speed of Thought",
     description: "Vibe coding is the new superpower for builders. Learn how to master the art of AI-driven development and how to handle the 'last 20%' that stops projects from launching.",
     date: "2025-12-25",
-    image: "/images/blog/mastering-vibe-coding.webp",
     category: "Tutorial",
     content: `
       <h2>Welcome to the Era of 'Vibe Coding'</h2>
