@@ -40,6 +40,7 @@ export function GET() {
     '',
     '## Free resources',
     '',
+    `- [llms.txt Checker & Generator](${SITE_URL}/tools/llms-txt-checker/): free tool that checks a site's llms.txt against the llmstxt.org format, tests its links and robots.txt for AI crawlers, or drafts one from the sitemap.`,
     `- [NetSuite Integration Cost Estimator](${SITE_URL}/tools/netsuite-integration-estimator/): scope outline, risks, and cost range for a NetSuite integration.`,
     `- [NetSuite Integration Readiness Checklist](${SITE_URL}/netsuite/integration-readiness-checklist/): checks to run before connecting any system to NetSuite.`,
     ...publishedTopics().map((t) => `- [${t.h1}](${SITE_URL}/netsuite/${t.slug}/): ${t.lede}`),

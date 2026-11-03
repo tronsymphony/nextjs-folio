@@ -32,6 +32,7 @@ const COLUMNS = [
     links: [
       ["/netsuite/", "NetSuite integration guides"],
       ["/tools/netsuite-integration-estimator/", "Integration cost estimator"],
+      ["/tools/llms-txt-checker/", "llms.txt checker"],
       ["/edi/", "EDI documents explained"],
       ["/netsuite/integration-readiness-checklist/", "Readiness checklist"],
       ["/ai-app-audit/", "AI-built app security"],

@@ -24,6 +24,7 @@ const STATIC_ROUTES = [
   ['/netsuite/material-handling/', 0.8],
   ['/netsuite/integration-readiness-checklist/', 0.8],
   ['/tools/netsuite-integration-estimator/', 0.8],
+  ['/tools/llms-txt-checker/', 0.8],
   ['/work/', 0.8],
   ['/pricing/', 0.7],
   ['/call/', 0.7],

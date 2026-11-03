@@ -88,6 +88,7 @@ export default function HomeMain({ hero = "sync" }) {
         { href: "/seo/ai-search-optimization/", title: "AI search optimization: get found in ChatGPT, Perplexity and AI Overviews" },
         { href: "/seo/technical-seo-audit/", title: "Technical SEO audit: fixed scope, done by an engineer" },
         { href: "/seo/llms-txt/", title: "What is llms.txt? How to add one to Next.js or WordPress" },
+        { href: "/tools/llms-txt-checker/", title: "Free llms.txt checker and generator" },
       ],
     },
     {

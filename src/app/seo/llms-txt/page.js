@@ -1,7 +1,7 @@
 import HomeFollow from '../../../components/home-follow';
 import Footer from '../../../components/footer';
 import JsonLd from '../../../components/JsonLd';
-import { Accent } from '../../../components/ui/Cta';
+import { Accent, PrimaryCta } from '../../../components/ui/Cta';
 import { Block, Callout, ClosingCta, DataTable, FaqList, LinkRows, PageHero, Prose, formatDay } from '../../../components/ui/Page';
 import { ORG_ID, PERSON_ID, breadcrumbNode, faqNode, graph, url } from '../../../lib/schema';
 import { PERSON } from '../../../lib/site';
@@ -133,7 +133,9 @@ export default function LlmsTxtGuide() {
             ['Time to add', 'Under an hour'],
             ['Live example', 'casa-dev.com/llms.txt'],
           ]}
-        />
+        >
+          <PrimaryCta href="/tools/llms-txt-checker/">Check or generate your llms.txt</PrimaryCta>
+        </PageHero>
 
         <Block index="01" label="What it is">
           <Prose
@@ -199,6 +201,7 @@ export default function LlmsTxtGuide() {
         <Block index="09" label="Read next">
           <LinkRows
             items={[
+              { href: '/tools/llms-txt-checker/', tag: 'Free tool', title: 'llms.txt checker and generator', body: 'Test a site’s llms.txt, its links and robots.txt, or draft one from your sitemap.' },
               { href: '/seo/technical-seo-audit/', tag: 'Service', title: 'Technical SEO audit', body: 'AI crawler access is one of nine areas the audit checks.' },
               { href: '/seo/', tag: 'Service', title: 'SEO & AI search' },
             ]}
