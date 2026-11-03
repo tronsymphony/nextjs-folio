@@ -10,11 +10,13 @@ import { PERSON } from '../../lib/site';
 // searchable pages and studies, with Safe Streets Map as the proof. No Keyword Planner volumes checked yet for
 // "interactive map development", "custom map development", "data visualization services" or "public records data";
 // check them before retitling. No client results are claimed.
+// 2026-11-03 keyword research: "data products" phrasings have almost no searches; "data visualization companies" and
+// "data visualization as a service" have 500 a month each, so the title leads with data visualization.
 
 export const metadata = {
-  title: 'Data Products & Interactive Maps from Public Records',
+  title: 'Data Visualization Services: Interactive Maps from Public Records',
   description:
-    'Public records and your own data turned into interactive maps, searchable pages and data studies, by the Los Angeles engineer who built Safe Streets Map. Crash, permit, census and location data, with sources shown. Starts with a free 30-minute call.',
+    'Data visualization services: public records and your own data turned into interactive maps, searchable pages and data studies, by the Los Angeles engineer who built Safe Streets Map. Crash, permit, census and location data, with sources shown. Starts with a free 30-minute call.',
   alternates: { canonical: '/data-products/' },
 };
 
@@ -142,7 +144,7 @@ export default function DataProductsPage() {
         <PageHero
           back={['/', 'Home']}
           eyebrow="Public records · Your data · Maps · Pages"
-          title={<>Data products: records people can actually <Accent>find and use.</Accent></>}
+          title={<>Data visualization and data products: records people can <Accent>find and use.</Accent></>}
           lede="I turn public records and your own data into interactive maps, searchable pages and studies, so the facts you hold reach the people searching for them, on Google and in AI answers."
           facts={[
             ['Starts with', 'Free 30-minute call'],
