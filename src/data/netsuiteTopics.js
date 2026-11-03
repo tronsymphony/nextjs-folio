@@ -612,12 +612,14 @@ define(['N/record', 'N/search'], (record, search) => {
     // Search Console (Sep-Oct 2026): ~20 variants of "netsuite rental management" / "equipment rental netsuite"
     // were landing on /netsuite/material-handling/ at positions 50-90.
     // TODO(owner): name the fields the Total Warehouse "Rented" formula reads, and add any rental gotchas you hit.
+    // 2026-11-03: "netsuite for rental management companies" had 288 impressions at ~60 in three months, plus long-tail
+    // asks about maintenance, utilization, re-rents and scheduling; the title, SuiteApp names and those FAQs answer them.
     status: 'published',
-    updatedAt: '2026-10-07',
-    title: 'NetSuite Rental Management: Equipment Availability, Contracts and Billing',
+    updatedAt: '2026-11-03',
+    title: 'NetSuite Rental Management for Equipment Rental Companies',
     description:
-      'How equipment rental companies run rentals on Oracle NetSuite: a rental SuiteApp, custom records and scripts, or separate rental software synced to NetSuite. Covers unit availability, a formula field for rented status, contracts, recurring billing and the fleet as fixed assets.',
-    h1: 'NetSuite rental management: tracking units, contracts and billing',
+      'How equipment rental companies run on Oracle NetSuite: a rental SuiteApp, custom records and scripts, or rental software synced to NetSuite. Covers availability and scheduling, contracts, period billing, re-rents, maintenance, utilization and the fleet as fixed assets.',
+    h1: 'NetSuite rental management for equipment rental companies',
     lede:
       'Standard NetSuite sells and stocks items; it has no rental contract record. Equipment rental companies on NetSuite add one of three things: a rental SuiteApp, custom records and scripts, or separate rental software that syncs to NetSuite. Whichever you pick, the core question is the same: is this unit out right now, and who is billed for it?',
     diagnosis: [
@@ -626,7 +628,7 @@ define(['N/record', 'N/search'], (record, search) => {
       'Contracts and billing are the larger decision. A rental SuiteApp brings contract records, availability calendars, delivery and pickup, and period billing ready-made, at a license cost and on the vendor’s model of how rentals work. Building it yourself means a custom contract record linked to the unit and customer, scheduled scripts that create each period’s invoice, and your own rules for partial periods, damage and fuel charges; SuiteBilling, NetSuite’s licensed subscription billing module, can handle the recurring charges if you already pay for it. Separate rental software keeps contracts outside NetSuite and syncs customers, invoices and fleet values back, which works until the two systems disagree about whether a unit is out.',
     ],
     decisionTable: [
-      { option: 'Rental SuiteApp', bestFor: 'A fleet with standard day, week and month rates that wants contracts, calendars and billing quickly.', tradeoff: 'License cost per user or unit; you adopt the vendor’s contract model.' },
+      { option: 'Rental SuiteApp (e.g. SuiteWorks Tech Rental Management, NetScore Rental Management)', bestFor: 'A fleet with standard day, week and month rates that wants contracts, calendars and billing quickly.', tradeoff: 'License cost per user or unit; you adopt the vendor’s contract model. Ask for a demo on your own rate rules.' },
       { option: 'Custom records + scripts', bestFor: 'Unusual rate rules, rentals that convert to sales, or a small fleet alongside an equipment sales business.', tradeoff: 'You build and maintain contracts, period billing and availability yourself.' },
       { option: 'Separate rental software synced to NetSuite', bestFor: 'Large rental operations already running dedicated rental software.', tradeoff: 'Two systems with an opinion on each unit’s status; the integration must name one owner.' },
       { option: 'SuiteBilling for the charges', bestFor: 'Accounts that already license SuiteBilling and bill long-term rentals monthly.', tradeoff: 'A licensed module; still needs the unit status and contract records around it.' },
@@ -653,6 +655,26 @@ define(['N/record', 'N/search'], (record, search) => {
       {
         q: 'Does NetSuite have rental management?',
         a: 'Not in the standard product. NetSuite tracks serialized items, customers, invoices and fixed assets, but has no rental contract record. Rental companies add a rental SuiteApp from a partner, build contract records and billing scripts, or sync dedicated rental software to NetSuite.',
+      },
+      {
+        q: 'Which rental SuiteApps are there for NetSuite?',
+        a: 'Partners sell rental SuiteApps that run inside NetSuite, among them SuiteWorks Tech’s Rental Management and NetScore Rental Management. Compare them on your own rate rules (minimum charges, weekend rates, partial periods), how they decide a unit is available, and what they cost per user or unit, and ask to see an invoice for a late return in the demo.',
+      },
+      {
+        q: 'How do you check which units are free on a future date?',
+        a: 'The rented field answers “is it out now”; a future date needs reservations. Each contract or reservation carries a planned start and end, and a unit is free for a request when none of its reservations overlaps the requested dates. Build that overlap check once, in a saved search or SuiteQL query, and have the counter, the website and any quote tool all use it.',
+      },
+      {
+        q: 'How do you handle re-rents in NetSuite?',
+        a: 'When you rent a unit from another supplier to fill an order, record a purchase order and vendor bill to that supplier, and mark the contract line as a re-rent so the unit never counts toward your own fleet’s availability or depreciation. The margin on a re-rent is the customer’s charge minus the supplier’s, which a saved search can report per branch.',
+      },
+      {
+        q: 'How do you track rental equipment maintenance in NetSuite?',
+        a: 'Record the hour meter reading on every return. A saved search or script compares the hours since the last service with the unit’s service interval and flags the units due, so they come off the available list before they go out again. A rental SuiteApp or NetSuite Field Service Management can turn those flags into scheduled work orders.',
+      },
+      {
+        q: 'How do you measure fleet utilization in NetSuite?',
+        a: 'Time utilization is the days a unit spent on rent divided by the days you owned it in the period; dollar utilization is its rental revenue divided by its original cost. Both come from the contract dates, the invoices and the fixed asset record, so they can run as saved searches by unit, category and branch once contracts record the actual return date.',
       },
       {
         q: 'How do you show whether a unit is rented in NetSuite?',
